@@ -933,7 +933,7 @@
       <div class="founder-num-row">
         <span class="founder-label">Founding member list</span>
         <span class="founder-num">Reserved</span>
-        <span class="founder-of">of 500 total spots</span>
+        <span class="founder-of">confirmed by email on launch day</span>
       </div>
 
       <div class="next-steps">
@@ -1210,7 +1210,7 @@
 
 <!-- FINAL CTA -->
 <section id="final-cta">
-  <h2>500 founding spots. One locked price.<br>Become a Founding Member.</h2>
+  <h2><span id="final-spots-left">496</span> of 500 founding spots left.<br>Become a Founding Member.</h2>
   <p class="final-sub">Join before the window closes. No payment today.</p>
 
   <div id="footer-capture">
@@ -1310,18 +1310,25 @@
   }
 
   // Init dynamic counters on page load
+  // REAL spots remaining. Update manually as signups arrive (source of truth:
+  // formsubmit emails to Jon) until Phase 2 wires this to Supabase.
+  const SPOTS_LEFT = 496;
+
   function initCounters() {
+    const claimed = 500 - SPOTS_LEFT;
+    const pct = Math.max(1, Math.round(claimed / 500 * 100));
 
     const navSpots = document.getElementById('nav-spots');
-    if (navSpots) navSpots.textContent = '500 founding spots';
+    if (navSpots) navSpots.textContent = SPOTS_LEFT + ' spots left';
 
     const spotsClaimedEl = document.getElementById('spots-claimed');
-    if (spotsClaimedEl) spotsClaimedEl.textContent = 'Founding member access';
+    if (spotsClaimedEl) spotsClaimedEl.textContent = claimed + ' founding members';
 
     const spotsFill = document.getElementById('spots-fill');
-    if (spotsFill) setTimeout(() => { spotsFill.style.width = '100%'; }, 300);
+    if (spotsFill) setTimeout(() => { spotsFill.style.width = pct + '%'; }, 300);
 
-
+    const finalSpots = document.getElementById('final-spots-left');
+    if (finalSpots) finalSpots.textContent = SPOTS_LEFT;
   }
 
   // HERO FORM
