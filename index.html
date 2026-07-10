@@ -10,7 +10,7 @@
   <meta property="og:url" content="https://truefinds.ai">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@mytruefinds">
+  <meta name="twitter:site" content="@gotruefinds">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -931,9 +931,9 @@
       </div>
 
       <div class="founder-num-row">
-        <span class="founder-label">Your founding spot</span>
-        <span class="founder-num" id="founder-num">#&hellip;</span>
-        <span class="founder-of">of 500</span>
+        <span class="founder-label">Founding member list</span>
+        <span class="founder-num">Reserved</span>
+        <span class="founder-of">of 500 total spots</span>
       </div>
 
       <div class="next-steps">
@@ -1210,7 +1210,7 @@
 
 <!-- FINAL CTA -->
 <section id="final-cta">
-  <h2><span id="spots-left-count"></span> spots left.<br>Become a Founding Member.</h2>
+  <h2>500 founding spots. One locked price.<br>Become a Founding Member.</h2>
   <p class="final-sub">Join before the window closes. No payment today.</p>
 
   <div id="footer-capture">
@@ -1265,7 +1265,7 @@
       </svg>
     </a>
     <div class="footer-links">
-      <a href="https://twitter.com/mytruefinds" class="footer-link" target="_blank" rel="noopener">@mytruefinds</a>
+      <a href="https://twitter.com/gotruefinds" class="footer-link" target="_blank" rel="noopener">@gotruefinds</a>
       <a href="#" class="footer-link">Privacy</a>
       <a href="#" class="footer-link">Terms</a>
     </div>
@@ -1311,21 +1311,17 @@
 
   // Init dynamic counters on page load
   function initCounters() {
-    const num       = getFounderNum();
-    const spotsLeft = 500 - num;
-    const pct       = Math.round(num / 500 * 100);
 
     const navSpots = document.getElementById('nav-spots');
-    if (navSpots) navSpots.textContent = spotsLeft + ' spots left';
+    if (navSpots) navSpots.textContent = '500 founding spots';
 
     const spotsClaimedEl = document.getElementById('spots-claimed');
-    if (spotsClaimedEl) spotsClaimedEl.textContent = num + ' founding members';
+    if (spotsClaimedEl) spotsClaimedEl.textContent = 'Founding member access';
 
     const spotsFill = document.getElementById('spots-fill');
-    if (spotsFill) setTimeout(() => { spotsFill.style.width = pct + '%'; }, 300);
+    if (spotsFill) setTimeout(() => { spotsFill.style.width = '100%'; }, 300);
 
-    const spotsLeftCount = document.getElementById('spots-left-count');
-    if (spotsLeftCount) spotsLeftCount.textContent = spotsLeft;
+
   }
 
   // HERO FORM
@@ -1394,14 +1390,13 @@
 
   function showHeroSuccess(email, refCode) {
     const refUrl     = SITE_URL + '?ref=' + refCode;
-    const founderNum = getFounderNum();
 
-    document.getElementById('founder-num').textContent     = '#' + founderNum;
+    
     document.getElementById('ref-url-display').textContent = refUrl;
 
     // Share links
     const tweet = encodeURIComponent(
-      'I just reserved founding spot #' + founderNum + ' on True Finds (@mytruefinds)\n\n' +
+      'I just reserved a founding spot on True Finds (@gotruefinds)\n\n' +
       'Sinclair is a free AI that tells you if an Amazon deal is real before you buy. ' +
       '500 spots only. No payment to reserve.\n\n' +
       'Grab yours: ' + refUrl
