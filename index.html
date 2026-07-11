@@ -1374,6 +1374,19 @@
       });
     } catch (err) { /* silent */ }
 
+    // Beehiiv via serverless function (API key stays server-side in Vercel env)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          referral_code: refCode,
+          referred_by:   referrer || 'direct',
+        })
+      });
+    } catch (err) { /* silent */ }
+
     // Beehiiv API (uncomment when BEEHIIV_PUB_ID + BEEHIIV_API_KEY are set)
     // try {
     //   await fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
