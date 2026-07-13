@@ -835,6 +835,10 @@
       nav            { padding: 0 20px; }
     }
   </style>
+<script>
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once identify alias reset set_config opt_in_capturing opt_out_capturing startSessionRecording stopSessionRecording debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init('phc_CLvBxqLcpD4duGYCEs7vb32vQSXcebYR7BvuQxYeTj9f', { api_host: 'https://us.i.posthog.com' });
+</script>
 </head>
 <body>
 
@@ -1364,7 +1368,12 @@
     showHeroSuccess(email, refCode);
   });
 
+  function phCapture(name, props) {
+    try { if (window.posthog && posthog.capture) posthog.capture(name, props || {}); } catch (e) { /* silent */ }
+  }
+
   async function submitEmail(email, refCode, referrer) {
+    phCapture('signup_submitted', { referred_by: referrer || 'direct' });
     // formsubmit.co: first submission triggers a verification email to Jon@digitaljag.com.
     // After clicking that one-time verify link, all future submissions flow through automatically.
     try {
@@ -1452,6 +1461,7 @@
 
     // Copy button
     document.getElementById('copy-btn').addEventListener('click', () => {
+      phCapture('referral_link_copied');
       navigator.clipboard.writeText(refUrl).then(() => {
         const btn  = document.getElementById('copy-btn');
         const prev = btn.textContent;
@@ -1511,6 +1521,16 @@
     footerSubmit.disabled = false;
   });
 
+  // SHARE CLICK TRACKING
+  document.querySelectorAll('.share-row').forEach(row => {
+    row.addEventListener('click', (e) => {
+      const a = e.target.closest('.btn-share');
+      if (!a) return;
+      const channel = a.id.replace('share-', '').replace('-link', '');
+      phCapture('share_clicked', { channel });
+    });
+  });
+
   // CATEGORY QUESTION
   let chosenCat = '';
 
@@ -1519,6 +1539,7 @@
     document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('selected'));
     e.target.classList.add('selected');
     chosenCat = e.target.dataset.cat;
+    phCapture('category_answered', { category: chosenCat });
     try {
       await fetch('https://formsubmit.co/ajax/Jon@digitaljag.com', {
         method: 'POST',
