@@ -1245,6 +1245,7 @@
         <div class="footer-success-sub">Check your inbox for confirmation. We&rsquo;ll email you first on launch day.</div>
       </div>
     </div>
+    <a id="footer-goto-perks" class="btn-primary" style="display:inline-block; margin-top:14px; text-decoration:none; cursor:pointer;">Get your referral link and move up the queue &uarr;</a>
   </div>
 </section>
 
@@ -1511,6 +1512,9 @@
     localStorage.setItem('tf_email',    email);
     localStorage.setItem('tf_ref_code', refCode);
 
+    // Reveal the hero success state too (referral link + interests question)
+    showHeroSuccess(email, refCode);
+
     document.getElementById('footer-capture').style.display = 'none';
     const footerPost = document.getElementById('footer-post');
     footerPost.style.display = 'block';
@@ -1519,6 +1523,13 @@
 
     footerSubmit.classList.remove('loading');
     footerSubmit.disabled = false;
+  });
+
+  // Footer success CTA: scroll up to the revealed referral/interests content
+  document.getElementById('footer-goto-perks').addEventListener('click', () => {
+    phCapture('footer_perks_cta_clicked');
+    const post = document.getElementById('hero-post');
+    if (post) post.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // SHARE CLICK TRACKING
