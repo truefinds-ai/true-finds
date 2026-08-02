@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How It Works: The Sinclair Verdict | True Finds</title>
+<meta name="description" content="Sinclair, the free AI price protector from True Finds, reads 12 months of real Amazon price history and gives one of four plain verdicts. No login, no charts to interpret.">
+<style>
+  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
+  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; }
+  .topbar .links { display:flex; gap:18px; align-items:center; }
+  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:600; }
+  .topbar a.tl:hover { color:#fff; }
+  .topbar a.tcta { background:var(--green); color:#fff; text-decoration:none; font-size:14px; font-weight:700; padding:9px 18px; border-radius:999px; }
+  .hero { background:var(--navy); color:#fff; text-align:center; padding:64px 24px 72px; }
+  .hero h1 { font-size:clamp(30px,5vw,44px); line-height:1.2; margin-bottom:16px; }
+  .hero p { max-width:640px; margin:0 auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.88); }
+  main { max-width:960px; margin:0 auto; padding:0 22px; }
+  section { padding:56px 0 8px; }
+  h2.sec { color:var(--navy); font-size:clamp(24px,3.5vw,30px); text-align:center; margin-bottom:8px; }
+  p.sec-sub { text-align:center; color:#48586A; font-size:16.5px; max-width:620px; margin:0 auto 36px; line-height:1.6; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+  .step { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
+  .step .n { width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .step h3 { color:var(--navy); font-size:17px; margin-bottom:8px; }
+  .step p { font-size:15px; line-height:1.6; color:#48586A; }
+  .verdicts { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; }
+  .vcard { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
+  .chip { display:inline-block; font-weight:800; font-size:14px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; border-width:2px; border-style:solid; margin-bottom:14px; }
+  .chip.gd { color:#116947; background:#DCFCE7; border-color:var(--green); }
+  .chip.inf { color:var(--red-deep); background:var(--red-tint); border-color:var(--red-deep); }
+  .chip.tp { color:#334155; background:var(--slate-tint); border-color:var(--slate); }
+  .chip.ned { color:var(--navy); background:#F1F5F9; border-color:var(--navy); }
+  .vcard .def { font-weight:700; color:var(--navy); font-size:16.5px; margin-bottom:8px; }
+  .vcard p.body { font-size:15px; line-height:1.65; color:#48586A; }
+  .demo-wrap { background:var(--navy); border-radius:18px; padding:44px 24px; text-align:center; }
+  .demo-card { background:#fff; border-radius:14px; max-width:430px; margin:0 auto; padding:26px 26px 24px; text-align:left; }
+  .demo-title { font-weight:700; color:#22303C; font-size:17px; margin-bottom:10px; }
+  .demo-price { font-size:30px; font-weight:800; color:var(--navy); }
+  .demo-was { color:#94A3B8; text-decoration:line-through; font-size:16px; margin-left:10px; }
+  .demo-chip { display:inline-block; margin-top:12px; font-weight:800; font-size:13px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; color:#fff; background:var(--green); }
+  .demo-line { color:#48586A; font-size:14px; margin-top:12px; }
+  .demo-note { color:rgba(255,255,255,0.6); font-size:12.5px; margin-top:16px; }
+  .why { max-width:680px; margin:0 auto; }
+  .why p { font-size:17px; line-height:1.75; margin-bottom:16px; }
+  .privacy { background:var(--navy-deep); border-radius:18px; color:#fff; padding:36px 28px; text-align:center; }
+  .privacy h3 { font-size:20px; margin-bottom:10px; }
+  .privacy p { color:rgba(255,255,255,0.85); font-size:15.5px; line-height:1.65; max-width:640px; margin:0 auto; }
+  .cta { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:18px; padding:36px 28px; text-align:center; margin:56px 0 64px; }
+  .cta p { font-size:16.5px; line-height:1.65; max-width:640px; margin:0 auto 20px; }
+  .cta a.btn { display:inline-block; background:var(--green); color:#fff; text-decoration:none; font-weight:700; font-size:17px; padding:15px 32px; border-radius:999px; }
+  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
+  footer a { color:var(--green); text-decoration:none; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> True Finds</a>
+  <div class="links">
+    <a class="tl" href="/guides/">Guides</a>
+    <a class="tcta" href="/#hero">Become a Founding Member</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Four plain verdicts.<br>Zero guessing.</h1>
+  <p>Sinclair, our free AI price protector, reads 12 months of a product's real Amazon price history and answers one question in plain language: is this price actually good? No login. No charts to interpret. About one second.</p>
+</div>
+
+<main>
+<section>
+  <h2 class="sec">How it works</h2>
+  <p class="sec-sub">You shop the way you always have. Sinclair does the checking you never had time for.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>You look at a product</h3><p>On any Amazon product page, Sinclair wakes up automatically. Nothing to click, nothing to sign into.</p></div>
+    <div class="step"><div class="n">2</div><h3>Sinclair reads the history</h3><p>12 months of that product's real price record: what it actually sold for, not what the seller says it was worth.</p></div>
+    <div class="step"><div class="n">3</div><h3>One plain verdict appears</h3><p>Right on the page, before you click buy. The evidence is there if you want to look deeper. The conclusion is there if you don't.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">The four verdicts</h2>
+  <p class="sec-sub">Only four possible answers, each one deliberately simple. Two give you permission, one exposes the trick, one admits the limits.</p>
+  <div class="verdicts">
+    <div class="vcard"><span class="chip gd">GENUINE DEAL</span><div class="def">A real low. Good time to buy.</div><p class="body">The price is at or near this product's true low over its recorded history. Not "lower than the sticker," which any seller can arrange, but low against what it actually sold for.</p></div>
+    <div class="vcard"><span class="chip inf">INFLATED</span><div class="def">Not a real discount. The "was" price was raised.</div><p class="body">The discount is manufactured: the reference price went up so today's price could look like a bargain against it. Invisible without price history, obvious with it.</p></div>
+    <div class="vcard"><span class="chip tp">TYPICAL PRICE</span><div class="def">Normal price. Fine to buy if you need it.</div><p class="body">This is roughly what the product usually costs. Not a warning; if you need it today, the normal price is a fair price. Just the truth, so you decide with accurate expectations.</p></div>
+    <div class="vcard"><span class="chip ned">NOT ENOUGH DATA</span><div class="def">Too new to judge. Not enough price history yet.</div><p class="body">A tool that always has an answer is guessing some of the time. Our standard is the opposite: every verdict backed by data, or no verdict at all. When we don't know, we say so.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="demo-wrap">
+    <div class="demo-card">
+      <div class="demo-title">Wireless Noise-Canceling Headphones</div>
+      <span class="demo-price">$248</span><span class="demo-was">was $349</span><br>
+      <span class="demo-chip">GENUINE DEAL</span>
+      <div class="demo-line">Lowest price in 90 days. No inflated markup.</div>
+    </div>
+    <div class="demo-note">Illustration with sample data. Real verdicts are computed from each product's actual price history.</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Why a verdict instead of a chart</h2>
+  <div class="why">
+    <p>Price history charts have existed for years, and most shoppers never use them, because reading a chart at the moment of purchase is work. You came to buy headphones, not to interpret a graph.</p>
+    <p>A verdict is the chart's conclusion with the work already done. The evidence stays available for anyone who wants to look deeper. But nobody has to earn the truth by studying a graph; it's just there, in plain words, next to the price it describes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="privacy">
+    <h3>The privacy promise</h3>
+    <p>Sinclair reads the product page you are on. Nothing else. No browsing history, no tracking across sites, and the narrowest permissions Chrome allows for the job. Any future feature that learns your preferences requires your explicit approval first. We make money when members choose to pay for premium tools, never by selling data.</p>
+  </div>
+</section>
+
+<div class="cta">
+  <p><strong>The verdict will always be free.</strong> Founding membership is limited to 500 people. Signing up is free, you pay nothing until we launch, and your rate locks at $8.97/month for life while later members pay the higher public rate.</p>
+  <a class="btn" href="/?utm_source=how-it-works&utm_medium=site&utm_campaign=verdict-page#hero">Become a Founding Member</a>
+</div>
+</main>
+
+<footer>&copy; 2026 True Finds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/guides/">Guide library</a> &middot; <a href="/how-it-works/">How it works</a></footer>
+</body>
+</html>
