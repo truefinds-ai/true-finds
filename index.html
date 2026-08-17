@@ -543,6 +543,8 @@
     .vp.inflated .vp-dot { background: #DC2626; }
     .vp.typical  { background: #EEF1F4; color: #4A6070; }
     .vp.typical .vp-dot  { background: #8BA0AD; }
+    .vp.nodata   { background: #F1F5F9; color: #1A3C5E; }
+    .vp.nodata .vp-dot   { background: #1A3C5E; }
 
     .verdict-note { font-size: 13px; color: var(--gray-500); margin-left: auto; font-style: italic; }
 
@@ -1120,8 +1122,12 @@
         <div class="vp genuine"><div class="vp-dot"></div>GENUINE DEAL</div>
         <div class="vp inflated"><div class="vp-dot"></div>INFLATED</div>
         <div class="vp typical"><div class="vp-dot"></div>TYPICAL PRICE</div>
+        <!-- The fourth verdict, and the one that earns the other three. A tool
+             that always has an answer is guessing some of the time, so showing
+             three here made the honest state look like something we hide. -->
+        <div class="vp nodata"><div class="vp-dot"></div>NOT ENOUGH DATA</div>
       </div>
-      <span class="verdict-note">Evidence shown with every verdict, never just a conclusion.</span>
+      <span class="verdict-note">Four answers, including &ldquo;we don&rsquo;t know yet.&rdquo; Evidence shown with every verdict, never just a conclusion.</span>
     </div>
   </div>
 </section>
@@ -1289,6 +1295,16 @@
     </a>
     <div class="footer-links">
       <a href="https://twitter.com/gotruefinds" class="footer-link" target="_blank" rel="noopener">@gotruefinds</a>
+      <!-- Both hrefs are placeholders and stay that way until the pages exist.
+           Privacy is the one with a deadline on it: the Chrome Web Store listing
+           names https://truefinds.ai/privacy as the extension's policy URL, and
+           the store will not accept a submission without a live page there. It
+           belongs in this repo as /privacy/index.html, alongside /how-it-works/,
+           since this is what serves truefinds.ai. The wording is drafted in the
+           app repo at extension/store/PRIVACY_POLICY.md and is marked pending
+           counsel review; publish it here once Jon clears it, then point this
+           href at /privacy/. Do not link this to the draft before then, and do
+           not ship the extension listing before the page is live. -->
       <a href="#" class="footer-link">Privacy</a>
       <a href="#" class="footer-link">Terms</a>
     </div>
