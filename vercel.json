@@ -7,6 +7,10 @@
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
     { "source": "/_next/:path*", "destination": "https://true-finds-app.vercel.app/_next/:path*" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
-    { "source": "/privacy/", "destination": "/privacy/index.html" }
+    { "source": "/privacy/", "destination": "/privacy/index.html" },
+    { "source": "/support", "destination": "/support/index.html" },
+    { "source": "/support/", "destination": "/support/index.html" },
+    { "source": "/contact", "destination": "/support/index.html" },
+    { "source": "/contact/", "destination": "/support/index.html" }
   ]
 }
