@@ -5,6 +5,9 @@
   ],
   "rewrites": [
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
+    { "source": "/deals", "destination": "https://true-finds-app.vercel.app/deals" },
+    { "source": "/deals/", "destination": "https://true-finds-app.vercel.app/deals" },
+    { "source": "/deals/:category", "destination": "https://true-finds-app.vercel.app/deals/:category" },
     { "source": "/_next/:path*", "destination": "https://true-finds-app.vercel.app/_next/:path*" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/privacy/", "destination": "/privacy/index.html" },
