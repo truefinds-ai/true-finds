@@ -1381,38 +1381,70 @@
     const refCode  = makeCode(email);
     const referrer = sessionStorage.getItem('tf_referred_by') || '';
 
-    await submitEmail(email, refCode, referrer);
-    showHeroSuccess(email, refCode);
+    const result = await submitEmail(email, refCode, referrer);
+
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+
+    if (result.ok) {
+      showHeroSuccess(email, refCode);
+    } else {
+      showSignupProblem(heroForm, result);
+    }
   });
 
   async function submitEmail(email, refCode, referrer) {
-    // formsubmit.co: first submission triggers a verification email to Jon@digitaljag.com.
-    // After clicking that one-time verify link, all future submissions flow through automatically.
+    const payload = {
+      email,
+      referral_code: refCode,
+      referred_by:   referrer || 'direct',
+    };
+
+    // formsubmit.co: notification to Jon. Best effort. A failure here must not block
+    // the signup, but it is reported back so it stops being invisible.
+    // First submission triggers a one-time verification email to Jon@digitaljag.com.
+    let notified = false;
     try {
-      await fetch('https://formsubmit.co/ajax/Jon@digitaljag.com', {
+      const r = await fetch('https://formsubmit.co/ajax/Jon@digitaljag.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject:      'New True Finds founding access signup: ' + email,
-          email,
-          referral_code: refCode,
-          referred_by:   referrer || 'direct',
-        })
+        body: JSON.stringify(Object.assign({
+          _subject: 'New True Finds founding access signup: ' + email,
+        }, payload)),
       });
-    } catch (err) { /* silent */ }
+      notified = r.ok;
+    } catch (err) {
+      console.warn('signup: notification failed', err);
+    }
 
-    // Beehiiv via serverless function (API key stays server-side in Vercel env)
+    // Beehiiv, through the serverless route. This call decides whether the signup
+    // actually happened, so its outcome is returned rather than discarded.
+    //
+    // fetch() rejects only on a network failure. A 500 or a 502 resolves normally,
+    // so res.ok must be checked explicitly or a Bad Gateway reads as a success.
     try {
-      await fetch('/api/subscribe', {
+      const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          referral_code: refCode,
-          referred_by:   referrer || 'direct',
-        })
+        body: JSON.stringify(payload),
       });
-    } catch (err) { /* silent */ }
+
+      if (!res.ok) {
+        console.warn('signup: /api/subscribe returned ' + res.status);
+        return { ok: false, reason: 'http_' + res.status, notified };
+      }
+
+      let data = null;
+      try { data = await res.json(); } catch (e) { /* an empty 2xx body still counts */ }
+      if (data && data.ok === false) {
+        return { ok: false, reason: 'api_rejected', notified };
+      }
+
+      return { ok: true, notified };
+    } catch (err) {
+      console.warn('signup: /api/subscribe unreachable', err);
+      return { ok: false, reason: 'network', notified };
+    }
 
     // Beehiiv API (uncomment when BEEHIIV_PUB_ID + BEEHIIV_API_KEY are set)
     // try {
@@ -1434,6 +1466,33 @@
     //     })
     //   });
     // } catch (err) { /* silent */ }
+  }
+
+  // Three outcomes, and the middle one matters most: if the notification reached
+  // Jon but Beehiiv did not, the person is not lost. Their address is in his inbox
+  // and he can finish it by hand, so telling them they failed would be untrue.
+  function showSignupProblem(formEl, result) {
+    let box = formEl.parentNode.querySelector('.signup-problem');
+    if (!box) {
+      box = document.createElement('p');
+      box.className = 'signup-problem';
+      box.setAttribute('role', 'alert');
+      box.style.cssText =
+        'margin-top:14px;font-size:1.05rem;line-height:1.5;font-weight:600;color:#E07820;';
+      formEl.parentNode.insertBefore(box, formEl.nextSibling);
+    }
+
+    if (result.notified) {
+      box.textContent =
+        'We have your address, but we could not finish setting up your account just now. ' +
+        'We will complete it by hand and email you shortly. Nothing more to do.';
+    } else {
+      box.innerHTML =
+        'Something went wrong on our end and we could not save your address. ' +
+        'Please try again in a moment. If it keeps happening, ' +
+        '<a href="/support" style="color:inherit;text-decoration:underline;">let us know here</a> ' +
+        'and we will add you personally.';
+    }
   }
 
   function showHeroSuccess(email, refCode) {
@@ -1517,7 +1576,15 @@
     const refCode  = makeCode(email);
     const referrer = sessionStorage.getItem('tf_referred_by') || '';
 
-    await submitEmail(email, refCode, referrer);
+    const result = await submitEmail(email, refCode, referrer);
+
+    footerSubmit.classList.remove('loading');
+    footerSubmit.disabled = false;
+
+    if (!result.ok) {
+      showSignupProblem(footerForm, result);
+      return;
+    }
 
     localStorage.setItem('tf_email',    email);
     localStorage.setItem('tf_ref_code', refCode);
