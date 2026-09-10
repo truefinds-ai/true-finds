@@ -710,7 +710,7 @@
     }
 
     .vs-col-label.founder { color: var(--green-light); }
-    .vs-col-label.public  { color: rgba(255,255,255,0.28); }
+    .vs-col-label.public  { color: rgba(255,255,255,0.66); }
 
     .vs-price {
       font-size: clamp(30px, 4vw, 46px);
@@ -718,21 +718,49 @@
     }
 
     .vs-price.founder { color: var(--white); }
-    .vs-price.public  { color: rgba(255,255,255,0.22); }
+    .vs-price.public  { color: rgba(255,255,255,0.78); }
 
-    .vs-per { font-size: 13px; margin-top: 5px; }
+    .vs-per { font-size: 14px; margin-top: 5px; }
     .vs-per.founder { color: rgba(255,255,255,0.60); }
-    .vs-per.public  { color: rgba(255,255,255,0.20); }
+    .vs-per.public  { color: rgba(255,255,255,0.62); }
 
-    .vs-note { font-size: 12px; margin-top: 6px; font-weight: 600; }
+    .vs-note { font-size: 13px; margin-top: 6px; font-weight: 600; }
     .vs-note.founder { color: var(--green-light); }
-    .vs-note.public  { color: rgba(255,255,255,0.20); }
+    .vs-note.public  { color: rgba(255,255,255,0.62); }
 
-    .vs-divider { color: rgba(255,255,255,0.14); font-size: 28px; font-weight: 300; }
+    .vs-divider { color: rgba(255,255,255,0.30); font-size: 28px; font-weight: 300; }
+
+    /* Founding offer: intro row with its own call to action */
+    .fo-intro {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 28px; flex-wrap: wrap;
+    }
+    .fo-intro .s-sub { margin: 0; flex: 1 1 440px; }
+    .fo-join {
+      flex: none; text-decoration: none; display: inline-block;
+      font-size: 16px; padding: 15px 26px;
+    }
+
+    /* The call to action that closes the price comparison */
+    .vs-cta {
+      grid-column: 1 / -1;
+      margin-top: 26px; padding-top: 26px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .vs-cta a { text-decoration: none; font-size: 17px; padding: 16px 34px; }
+    .vs-cta-note { font-size: 14px; color: rgba(255,255,255,0.72); }
 
     .vs-disclaimer {
-      font-size: 13px; color: rgba(255,255,255,0.70);
-      margin-top: 20px; text-align: center; line-height: 1.6;
+      margin-top: 22px; text-align: center; line-height: 1.6;
+    }
+
+    .vs-disclaimer > * { display: block; }
+    .vs-disclaimer > span { font-size: 14.5px; color: rgba(255,255,255,0.74); }
+
+    .vs-reassure {
+      font-size: 17px; font-weight: 700; color: #fff;
+      margin-bottom: 8px; letter-spacing: -0.2px;
     }
 
     /* FINAL CTA */
@@ -1253,7 +1281,10 @@
   <div class="section-inner">
     <span class="s-label">Founding Members</span>
     <h2 class="s-title">500 spots. A price that never changes.<br>You&rsquo;re early.</h2>
-    <p class="s-sub">Founding members are the people who believed before there was anything to show. We&rsquo;re honoring that with a rate locked for life.</p>
+    <div class="fo-intro">
+      <p class="s-sub">Founding members are the people who believed before there was anything to show. We&rsquo;re honoring that with a rate locked for life.</p>
+      <a href="#hero" class="btn-primary fo-join">Become a Founding Member &rarr;</a>
+    </div>
 
     <div class="perks-grid">
       <div class="perk-card">
@@ -1292,8 +1323,17 @@
         <div class="vs-per public">per month</div>
         <div class="vs-note public">2&ndash;5 AI shopping agents</div>
       </div>
+
+      <div class="vs-cta">
+        <a href="#hero" class="btn-primary">Lock $8.97 for life &rarr;</a>
+        <span class="vs-cta-note">Less than half the expected public price, for as long as you stay.</span>
+      </div>
     </div>
-    <p class="vs-disclaimer">No payment today. No credit card required. You&rsquo;ll receive your founding member invitation by email when we launch. The Verify Badge is free forever. Premium plan pricing is an estimate and subject to change.</p>
+    <p class="vs-disclaimer">
+      <strong class="vs-reassure">No payment today. No credit card required.</strong>
+      <span>You&rsquo;ll receive your founding member invitation by email when we launch. The Verify Badge is free forever.</span>
+      <span>Premium plan pricing is an estimate and subject to change.</span>
+    </p>
   </div>
 </section>
 
