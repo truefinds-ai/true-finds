@@ -125,6 +125,21 @@
     .install-link.on-dark      { color: #6FE3B4; }
     .install-link.on-dark:hover{ color: #fff; }
 
+    /* Evidence proof row (replaces the founding-spots progress bar) */
+    .proof-row {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 14px; max-width: 720px; margin: 30px auto 0;
+    }
+    .proof-item {
+      flex: 1 1 190px; min-width: 170px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.11);
+      border-radius: 12px; padding: 16px 14px; text-align: center;
+    }
+    .proof-num   { display: block; font-size: 24px; font-weight: 800; color: #4DD9A4; letter-spacing: -0.5px; }
+    .proof-label { display: block; font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.80); margin-top: 5px; line-height: 1.4; }
+    .proof-asof  { font-size: 12px; color: rgba(255,255,255,0.55); text-align: center; margin-top: 12px; }
+
     /* HERO */
     #hero {
       background: var(--navy);
@@ -228,11 +243,11 @@
     @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
 
     .hero-micro {
-      font-size: 13px; color: rgba(255,255,255,0.38);
+      font-size: 13.5px; color: rgba(255,255,255,0.72);
       margin-bottom: 26px;
     }
 
-    .hero-micro strong { color: rgba(255,255,255,0.60); font-weight: 500; }
+    .hero-micro strong { color: #fff; font-weight: 700; }
 
     /* Progress bar */
     .spots-progress { max-width: 340px; margin: 0 auto; }
@@ -716,13 +731,13 @@
     .vs-divider { color: rgba(255,255,255,0.14); font-size: 28px; font-weight: 300; }
 
     .vs-disclaimer {
-      font-size: 12px; color: rgba(255,255,255,0.28);
+      font-size: 13px; color: rgba(255,255,255,0.70);
       margin-top: 20px; text-align: center; line-height: 1.6;
     }
 
     /* FINAL CTA */
     #final-cta {
-      background: var(--navy-deep);
+      background: var(--navy-dark);
       text-align: center; padding: 96px 24px;
       position: relative; overflow: hidden;
     }
@@ -746,7 +761,7 @@
     #final-cta h2 span { color: var(--green-light); }
 
     .final-sub {
-      font-size: 16px; color: rgba(255,255,255,0.52);
+      font-size: 16.5px; color: rgba(255,255,255,0.82);
       margin-bottom: 36px; position: relative;
     }
 
@@ -787,7 +802,7 @@
       animation: spin 0.7s linear infinite;
     }
 
-    .footer-form-micro { font-size: 13px; color: rgba(255,255,255,0.28); position: relative; }
+    .footer-form-micro { font-size: 13.5px; color: rgba(255,255,255,0.72); position: relative; }
 
     #footer-post {
       display: none;
@@ -893,7 +908,7 @@
     </svg>
   </a>
   <div class="nav-right">
-    <span class="nav-spots" id="nav-spots"></span>
+    <span class="nav-spots" id="nav-spots">Free &middot; no account</span>
     <a href="/deals" class="nav-guides">Deals</a>
     <a href="/how-it-works/" class="nav-guides secondary">How It Works</a>
     <a href="/guides/" class="nav-guides secondary">Guides</a>
@@ -909,7 +924,7 @@
 
     <div class="founding-badge">
       <div class="badge-dot"></div>
-      Founding Member Access &middot; 500 Spots Total
+      Free Chrome Extension &middot; Live Now
     </div>
 
     <h1>Know the truth<br>before you buy.</h1>
@@ -924,9 +939,9 @@
       <div class="install-row">
         <a class="btn-install" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome &mdash; Free</a>
       </div>
-      <p class="install-micro">Live now on the Chrome Web Store. <strong>No account. No card. About ten seconds.</strong></p>
+      <p class="install-micro">Live now on the Chrome Web Store. <strong>Free to install, free to use, and free forever.</strong> No account, no card, about ten seconds.</p>
 
-      <div class="or-rule">Or lock your founding rate</div>
+      <div class="or-rule">Optional &middot; lock the founding rate</div>
 
       <form id="signup-form" novalidate>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
@@ -934,18 +949,24 @@
         <button type="submit" class="btn-primary" id="submit-btn">Become a Founding Member &rarr;</button>
       </form>
 
-      <p class="hero-micro">Free to sign up. You pay nothing until we launch. <strong>We email you first on launch day.</strong></p>
+      <p class="hero-micro">Signing up is free and there is nothing to pay today. It reserves <strong>$8.97/month locked for life</strong> for the premium agents when they launch. The Verify Badge stays free either way.</p>
       <p class="hero-micro" style="margin-top:6px;">After you reserve: get your personal link, move up the queue with every friend who joins, and tell Sinclair what you shop for.</p>
 
-      <div class="spots-progress">
-        <div class="spots-labels">
-          <span class="claimed" id="spots-claimed"></span>
-          <span>500 total</span>
+      <div class="proof-row">
+        <div class="proof-item">
+          <span class="proof-num">18,000+</span>
+          <span class="proof-label">store prices recorded every morning</span>
         </div>
-        <div class="spots-track">
-          <div class="spots-fill" id="spots-fill" style="width: 0%"></div>
+        <div class="proof-item">
+          <span class="proof-num">90 days</span>
+          <span class="proof-label">of real Amazon history behind every verdict</span>
+        </div>
+        <div class="proof-item">
+          <span class="proof-num">$0</span>
+          <span class="proof-label">to install and use. No account.</span>
         </div>
       </div>
+      <p class="proof-asof">Counts checked 10 September 2026.</p>
 
       <div class="hero-visual">
         <div class="verify-card">
@@ -1279,8 +1300,8 @@
 
 <!-- FINAL CTA -->
 <section id="final-cta">
-  <h2><span id="final-spots-left">496</span> of 500 founding spots left.<br>Become a Founding Member.</h2>
-  <p class="final-sub">Free to sign up, nothing to pay until we launch, and your $8.97/month founding rate locks for life while later members pay the higher public rate.</p>
+  <h2>Sinclair is free.<br>Start using it now.</h2>
+  <p class="final-sub">The Verify Badge is free forever. No account, no card, nothing to pay. If you want the founding rate as well, it reserves $8.97/month locked for life for the premium agents, and there is still nothing to pay today.</p>
 
   <div class="install-row">
     <a class="btn-install" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome &mdash; Free</a>
@@ -1293,7 +1314,7 @@
       <input type="email" id="footer-email" placeholder="your@email.com" autocomplete="email" required>
       <button type="submit" id="footer-submit">Reserve My Spot &rarr;</button>
     </form>
-    <p class="footer-form-micro">Free to sign up. You pay nothing until we launch. We email you first on launch day.</p>
+    <p class="footer-form-micro">Optional. Signing up is free, there is nothing to pay today, and it locks $8.97/month for life when the premium agents launch.</p>
   </div>
 
   <div id="footer-post">
@@ -1365,17 +1386,6 @@
   const referredBy = urlParams.get('ref') || sessionStorage.getItem('tf_referred_by') || '';
   if (referredBy) sessionStorage.setItem('tf_referred_by', referredBy);
 
-  // Founder number: seeds at 43 on launch day (June 24 2026), grows ~3/day, capped at 499.
-  function getFounderNum() {
-    const stored = localStorage.getItem('tf_founder_num');
-    if (stored) return parseInt(stored, 10);
-    const launch   = new Date('2026-06-24').getTime();
-    const daysLive = Math.max(0, Math.floor((Date.now() - launch) / 86400000));
-    const num      = Math.min(43 + daysLive * 3, 499);
-    localStorage.setItem('tf_founder_num', num);
-    return num;
-  }
-
   // Unique referral code from email (client-side, no backend needed)
   function makeCode(email) {
     let h = 5381;
@@ -1386,27 +1396,11 @@
     return Math.abs(h).toString(36).toUpperCase().padStart(7, '0');
   }
 
-  // Init dynamic counters on page load
-  // REAL spots remaining. Update manually as signups arrive (source of truth:
-  // formsubmit emails to Jon) until Phase 2 wires this to Supabase.
-  const SPOTS_LEFT = 496;
-
-  function initCounters() {
-    const claimed = 500 - SPOTS_LEFT;
-    const pct = Math.max(1, Math.round(claimed / 500 * 100));
-
-    const navSpots = document.getElementById('nav-spots');
-    if (navSpots) navSpots.textContent = SPOTS_LEFT + ' spots left';
-
-    const spotsClaimedEl = document.getElementById('spots-claimed');
-    if (spotsClaimedEl) spotsClaimedEl.textContent = claimed + ' founding members';
-
-    const spotsFill = document.getElementById('spots-fill');
-    if (spotsFill) setTimeout(() => { spotsFill.style.width = pct + '%'; }, 300);
-
-    const finalSpots = document.getElementById('final-spots-left');
-    if (finalSpots) finalSpots.textContent = SPOTS_LEFT;
-  }
+  // The founding-spots counter was removed on 2026-09-10. A countdown sitting at
+  // 99 percent remaining reads as "nobody signed up", not as scarcity. The hero
+  // now leads with observed evidence instead. The 500 cap is still stated as a
+  // limit in the founding offer section; it is just no longer counted down.
+  function initCounters() { /* intentionally empty */ }
 
   // HERO FORM
   const heroForm  = document.getElementById('signup-form');
