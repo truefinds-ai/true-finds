@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>True Finds: Stop Overpaying on Amazon</title>
-  <meta name="description" content="Sinclair is your AI price protector. A free Chrome extension that tells you instantly if an Amazon deal is real. No login. Launching 2026.">
+  <meta name="description" content="Sinclair is your AI price protector. A free Chrome extension that tells you instantly if an Amazon deal is real. No login. Free on the Chrome Web Store.">
   <meta property="og:title" content="True Finds: Stop overpaying on Amazon.">
   <meta property="og:description" content="Sinclair tells you instantly if an Amazon deal is real. Free Chrome extension. Founding access now open.">
   <meta property="og:url" content="https://truefinds.ai">
@@ -93,6 +93,37 @@
     .nav-cta:hover { background: var(--green-dark); }
     .nav-guides { color: rgba(255,255,255,0.80); text-decoration: none; font-size: 14px; font-weight: 600; }
     .nav-guides:hover { color: #fff; }
+
+    /* Chrome Web Store install */
+    .btn-install {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--green); color: var(--white); text-decoration: none;
+      font-size: 17px; font-weight: 800; font-family: inherit;
+      padding: 16px 30px; border-radius: 10px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-install:hover  { background: var(--green-dark); }
+    .btn-install:active { transform: scale(0.98); }
+    .btn-install svg    { width: 20px; height: 20px; flex: none; }
+
+    .install-row   { display: flex; justify-content: center; margin-bottom: 14px; }
+    .install-micro { font-size: 14px; color: rgba(255,255,255,0.72); margin-bottom: 24px; }
+    .install-micro strong { color: #fff; font-weight: 700; }
+
+    .or-rule {
+      display: flex; align-items: center; gap: 14px;
+      max-width: 460px; margin: 0 auto 22px;
+      color: rgba(255,255,255,0.55); font-size: 12px;
+      font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+    }
+    .or-rule::before, .or-rule::after {
+      content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.16);
+    }
+
+    .install-link      { color: var(--green-dark); font-weight: 700; text-decoration: underline; }
+    .install-link:hover{ color: var(--navy); }
+    .install-link.on-dark      { color: #6FE3B4; }
+    .install-link.on-dark:hover{ color: #fff; }
 
     /* HERO */
     #hero {
@@ -842,7 +873,11 @@
       .privacy-inner { flex-direction: column; }
       .vs-table      { grid-template-columns: 1fr; gap: 16px; }
       .vs-divider    { display: none; }
-      nav            { padding: 0 20px; }
+      nav            { padding: 0 16px; gap: 10px; }
+      .nav-right     { gap: 10px; }
+      .nav-guides.secondary { display: none; }
+      .nav-cta       { padding: 9px 14px; font-size: 12.5px; }
+      .nav-logo svg  { height: 28px; }
     }
   </style>
 </head>
@@ -860,9 +895,10 @@
   <div class="nav-right">
     <span class="nav-spots" id="nav-spots"></span>
     <a href="/deals" class="nav-guides">Deals</a>
-    <a href="/how-it-works/" class="nav-guides">How It Works</a>
-    <a href="/guides/" class="nav-guides">Guides</a>
-    <a href="#hero" class="nav-cta">Become a Founding Member</a>
+    <a href="/how-it-works/" class="nav-guides secondary">How It Works</a>
+    <a href="/guides/" class="nav-guides secondary">Guides</a>
+    <a href="#hero" class="nav-guides secondary">Founding Member</a>
+    <a href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" class="nav-cta" target="_blank" rel="noopener">Add to Chrome</a>
   </div>
 </nav>
 
@@ -879,11 +915,19 @@
     <h1>Know the truth<br>before you buy.</h1>
 
     <p class="hero-sub">
-      Sinclair is your AI price protector. A free Chrome extension that checks every Amazon price in real time and tells you plainly: is this deal actually good? No login needed. Launching 2026.
+      Sinclair is your AI price protector. A free Chrome extension that checks every Amazon price in real time and tells you plainly: is this deal actually good? No login needed. Free on the Chrome Web Store.
     </p>
 
     <!-- HERO CAPTURE (form + mockup) -->
     <div id="hero-capture">
+
+      <div class="install-row">
+        <a class="btn-install" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome &mdash; Free</a>
+      </div>
+      <p class="install-micro">Live now on the Chrome Web Store. <strong>No account. No card. About ten seconds.</strong></p>
+
+      <div class="or-rule">Or lock your founding rate</div>
+
       <form id="signup-form" novalidate>
         <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
         <input type="email" id="email-input" placeholder="your@email.com" autocomplete="email" required>
@@ -955,7 +999,7 @@
           <div class="ns-dot done"></div>
           <div>
             <div class="ns-title">Today</div>
-            <div class="ns-desc">Your spot is locked. Nothing to pay, nothing to install yet.</div>
+            <div class="ns-desc">Your spot is locked, nothing to pay. Sinclair is live now, so <a class="install-link on-dark" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">add it to Chrome free</a> and start using it today.</div>
           </div>
         </div>
         <div class="next-step">
@@ -969,7 +1013,7 @@
           <div class="ns-dot"></div>
           <div>
             <div class="ns-title">Your choice</div>
-            <div class="ns-desc">Install Sinclair free, or join as a founding member at $8.97/month locked for life. No pressure. That decision is yours at launch.</div>
+            <div class="ns-desc">The Verify Badge is free forever, and it is <a class="install-link on-dark" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">available right now</a>. Founding membership at $8.97/month locked for life covers the premium agents, and that decision is yours when they launch.</div>
           </div>
         </div>
       </div>
@@ -1097,7 +1141,7 @@
         <div class="step-num">1</div>
         <span class="step-emoji">&#129513;</span>
         <div class="step-title">Add Sinclair to Chrome</div>
-        <p class="step-desc">Install takes about 10 seconds. No account required. Sinclair starts working the moment you land on any Amazon product page.</p>
+        <p class="step-desc">Install takes about 10 seconds. No account required. Sinclair starts working the moment you land on any Amazon product page. <a class="install-link" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Get it on the Chrome Web Store &rarr;</a></p>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
@@ -1237,6 +1281,11 @@
 <section id="final-cta">
   <h2><span id="final-spots-left">496</span> of 500 founding spots left.<br>Become a Founding Member.</h2>
   <p class="final-sub">Free to sign up, nothing to pay until we launch, and your $8.97/month founding rate locks for life while later members pay the higher public rate.</p>
+
+  <div class="install-row">
+    <a class="btn-install" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome &mdash; Free</a>
+  </div>
+  <p class="install-micro">The Verify Badge is free forever. Founding membership is for the premium agents.</p>
 
   <div id="footer-capture">
     <form id="footer-form" novalidate>
