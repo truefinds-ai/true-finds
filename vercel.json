@@ -4,6 +4,7 @@
     { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false }
   ],
   "rewrites": [
+    { "source": "/api/unsubscribe", "destination": "https://true-finds-app.vercel.app/api/unsubscribe" },
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
     { "source": "/deals", "destination": "https://true-finds-app.vercel.app/deals" },
     { "source": "/deals/", "destination": "https://true-finds-app.vercel.app/deals" },
