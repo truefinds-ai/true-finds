@@ -47,3 +47,34 @@ supabase/.temp
 
 # never commit the GitHub token
 .github-token
+
+# ---------------------------------------------------------------------------
+# Internal records. This repo is PUBLIC. Nothing below may ever be committed.
+# Added 2026-09-14 after finding TRUEFINDS_DECISIONS.md untracked and unignored
+# in the working folder, one `git add .` away from publication.
+# The rule it restores is stated in true-finds-app/CLAUDE.md: the decisions log
+# and CLAUDE.md live in true-finds-app only, because they carry locked pricing,
+# thresholds and build state.
+# ---------------------------------------------------------------------------
+TRUEFINDS_DECISIONS.md
+TRUEFINDS_CANON.md
+PROJECT_MAP.md
+HANDOFF_*.md
+claude.md
+CLAUDE.md
+.claude/
+
+# Copies and archives of the PRIVATE app repo
+true-finds-app-main/
+true-finds-app-*/
+old product tests/
+Older verdict app-truefinds/
+*.zip
+
+# Internal working directories, none of these are served
+docs/
+brand/
+extension-test/
+store-assets/
+supabase/
+scripts/
