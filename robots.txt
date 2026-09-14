@@ -1,0 +1,19 @@
+# truefinds.ai
+# Everything is open. The judgment is the product, and it is worth nothing
+# if nobody can find it.
+#
+# Individual deal pages carry a noindex meta tag and are deliberately NOT
+# blocked here. A crawler has to fetch a page to read its noindex tag, so
+# blocking them in this file would have the opposite of the intended effect:
+# Google would index the bare URL with no content rather than skipping it.
+#
+# AI crawlers are open on purpose, for now. Cloudflare AI Crawl Control
+# reports zero AI crawler requests on this domain, so there is nothing being
+# strip-mined and discovery is the live problem rather than extraction.
+# Revisit only when observe-mode data shows real volume on /deal/.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://truefinds.ai/sitemap.xml
