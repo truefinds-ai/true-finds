@@ -2,10 +2,10 @@
 # Everything is open. The judgment is the product, and it is worth nothing
 # if nobody can find it.
 #
-# Individual deal pages carry a noindex meta tag and are deliberately NOT
-# blocked here. A crawler has to fetch a page to read its noindex tag, so
-# blocking them in this file would have the opposite of the intended effect:
-# Google would index the bare URL with no content rather than skipping it.
+# Individual deal pages are indexed as of 16 September 2026. They were never
+# blocked here even while they carried a noindex tag, because a crawler has to
+# fetch a page to read that tag. They are listed in /sitemap-deals.xml, which
+# is generated from the current deal run rather than written by hand.
 #
 # AI crawlers are open on purpose, for now. Cloudflare AI Crawl Control
 # reports zero AI crawler requests on this domain, so there is nothing being
@@ -17,3 +17,4 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://truefinds.ai/sitemap.xml
+Sitemap: https://truefinds.ai/sitemap-deals.xml

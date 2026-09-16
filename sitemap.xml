@@ -2,9 +2,10 @@
 <!--
   truefinds.ai sitemap
   Every URL below was fetched and returned 200 on 14 September 2026.
-  Individual deal pages (/deal/ASIN) are deliberately absent: they carry a
-  noindex meta tag by design. Hubs carry the SEO, deal pages carry the
-  conversion.
+  This file lists the static pages. Deal pages are indexed as of 16 September
+  2026 and are listed in /sitemap-deals.xml, which is generated from the
+  current deal run rather than written by hand, so it stays correct as the run
+  changes. robots.txt points crawlers at both.
   lastmod values come from the last commit that touched each file, not from
   the date this sitemap was written.
 -->
