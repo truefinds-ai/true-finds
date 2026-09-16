@@ -5,6 +5,7 @@
   ],
   "rewrites": [
     { "source": "/api/unsubscribe", "destination": "https://true-finds-app.vercel.app/api/unsubscribe" },
+    { "source": "/api/watch", "destination": "https://true-finds-app.vercel.app/api/watch" },
     { "source": "/api/goodbye", "destination": "https://true-finds-app.vercel.app/api/goodbye" },
     { "source": "/api/profile", "destination": "https://true-finds-app.vercel.app/api/profile" },
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
