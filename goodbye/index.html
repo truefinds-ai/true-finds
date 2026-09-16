@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thanks for trying Sinclair | True Finds</title>
+<meta name="description" content="You removed Sinclair. If you have ten seconds, tell us what was missing.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://truefinds.ai/goodbye">
+<style>
+  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-text:#158055; --green-tint:#EAF7F1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
+  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; }
+  .topbar .links { display:flex; gap:18px; align-items:center; }
+  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:600; }
+  .topbar a.tl:hover { color:#fff; }
+  .topbar a.tcta { background:var(--green); color:#fff; text-decoration:none; font-size:14px; font-weight:700; padding:9px 18px; border-radius:999px; }
+  @media (max-width:560px) {
+    .topbar { padding:12px 16px; }
+    .topbar .links { gap:12px; }
+    .topbar a.tl { font-size:13px; white-space:nowrap; }
+    .topbar a.tcta { font-size:13px; padding:8px 14px; }
+  }
+  .hero { background:var(--navy); color:#fff; text-align:center; padding:52px 24px 56px; }
+  .hero h1 { font-size:clamp(28px,4.5vw,36px); line-height:1.25; margin-bottom:14px; }
+  .hero p { font-size:17px; line-height:1.65; color:rgba(255,255,255,0.88); max-width:540px; margin:0 auto; }
+  main { max-width:640px; margin:0 auto; padding:44px 22px 64px; }
+  .lead { font-size:17px; line-height:1.7; margin-bottom:26px; }
+  .pills { display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px; }
+  .pill { background:#fff; border:2px solid #CBD5E1; color:var(--navy); border-radius:999px; padding:11px 17px; font-size:15px; font-weight:600; cursor:pointer; font-family:inherit; transition:border-color .15s, background .15s, color .15s; }
+  .pill:hover { border-color:var(--green); }
+  .pill.selected { background:var(--green); border-color:var(--green); color:#fff; }
+  .note-wrap { margin-bottom:20px; }
+  .note-wrap label { display:block; font-size:15px; font-weight:600; color:var(--navy); margin-bottom:8px; }
+  textarea { width:100%; min-height:110px; border:2px solid #CBD5E1; border-radius:12px; padding:13px 15px; font-size:16px; font-family:inherit; color:#22303C; line-height:1.6; resize:vertical; }
+  textarea:focus { outline:none; border-color:var(--green); }
+  .send { background:var(--green); color:#fff; border:none; border-radius:999px; padding:14px 30px; font-size:16px; font-weight:700; cursor:pointer; font-family:inherit; }
+  .send:hover { background:var(--green-text); }
+  .send:disabled { background:#94A3B8; cursor:default; }
+  .done { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:14px; padding:28px 24px; text-align:center; }
+  .done h2 { color:var(--navy); font-size:21px; margin-bottom:10px; }
+  .done p { font-size:16px; line-height:1.65; margin-bottom:18px; }
+  .done a.btn { display:inline-block; background:var(--green); color:#fff; text-decoration:none; font-weight:700; font-size:16px; padding:13px 26px; border-radius:999px; }
+  .hidden { display:none; }
+  .after { border-top:1px solid #E3E9EF; margin-top:38px; padding-top:28px; }
+  .after h2 { color:var(--navy); font-size:19px; margin-bottom:10px; }
+  .after p { font-size:16px; line-height:1.7; margin-bottom:14px; }
+  .after a { color:var(--green-text); font-weight:600; text-decoration:none; }
+  .after a:hover { text-decoration:underline; }
+  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
+  footer a { color:#6B7A88; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto;vertical-align:-5px"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> True Finds</a>
+  <div class="links">
+    <a class="tl" href="/deals">Deals</a>
+    <a class="tl" href="/how-it-works/">How It Works</a>
+    <a class="tl" href="/guides/">Guides</a>
+    <a class="tcta" href="/#hero">Become a Founding Member</a>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Thanks for giving Sinclair a try</h1>
+  <p>No hard feelings, and nothing to undo. If you have ten seconds, we would rather know what was missing than guess.</p>
+</div>
+
+<main>
+  <div id="form-block">
+    <p class="lead">What made you remove it? Pick whichever is closest.</p>
+
+    <div class="pills" id="reasons">
+      <button class="pill" type="button" data-reason="did-not-work">It did not work on the pages I visited</button>
+      <button class="pill" type="button" data-reason="did-not-understand">I was not sure what it was telling me</button>
+      <button class="pill" type="button" data-reason="not-enough-amazon">I do not shop on Amazon much</button>
+      <button class="pill" type="button" data-reason="found-elsewhere">I get this information somewhere else</button>
+      <button class="pill" type="button" data-reason="other">Something else</button>
+    </div>
+
+    <div class="note-wrap">
+      <label for="note">Anything you want to add? Optional, and we read every one.</label>
+      <textarea id="note" placeholder="In your own words."></textarea>
+    </div>
+
+    <button class="send" id="send" type="button" disabled>Send</button>
+  </div>
+
+  <div id="done-block" class="done hidden">
+    <h2>Thank you. That genuinely helps.</h2>
+    <p>Sinclair is early, and the things people tell us here are what decide what gets built next.</p>
+    <a class="btn" href="/deals">See what the price record says today</a>
+  </div>
+
+  <div class="after">
+    <h2>If you want to keep checking prices</h2>
+    <p>Every verdict Sinclair gives in the browser is also on the site. <a href="/deals">The deals page</a> shows what the price record actually says about a product, including the ones where the discount is not real.</p>
+    <p>You can reinstall any time from the <a href="https://chromewebstore.google.com/" rel="noopener">Chrome Web Store</a>, and nothing about your removal is held against you. We never had an account for you in the first place.</p>
+  </div>
+</main>
+
+<footer>&copy; 2026 True Finds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/deals">Deals</a> &middot; <a href="/how-it-works/">How it works</a> &middot; <a href="/guides/">Guide library</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/support">Support</a></footer>
+
+<script>
+(function () {
+  var chosen = '';
+  var sendBtn = document.getElementById('send');
+
+  document.getElementById('reasons').addEventListener('click', function (e) {
+    if (!e.target.classList.contains('pill')) return;
+    var pills = document.querySelectorAll('.pill');
+    for (var i = 0; i < pills.length; i++) pills[i].classList.remove('selected');
+    e.target.classList.add('selected');
+    chosen = e.target.dataset.reason;
+    sendBtn.disabled = false;
+  });
+
+  sendBtn.addEventListener('click', async function () {
+    if (!chosen) return;
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending';
+
+    // Same origin. /api/goodbye is rewritten to the app in vercel.json, so
+    // there is no CORS here and no third party in the path.
+    try {
+      await fetch('/api/goodbye', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reason: chosen,
+          note: document.getElementById('note').value
+        })
+      });
+    } catch (err) {
+      // Someone on their way out does not need to hear that our write failed.
+      // They answered, which was the ask. We thank them either way.
+    }
+
+    document.getElementById('form-block').classList.add('hidden');
+    document.getElementById('done-block').classList.remove('hidden');
+  });
+})();
+</script>
+
+</body>
+</html>

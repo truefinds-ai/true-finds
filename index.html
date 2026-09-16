@@ -464,6 +464,8 @@
 
     .cat-pill:hover { border-color: var(--green); color: var(--white); }
     .cat-pill.selected { background: var(--green); border-color: var(--green); color: var(--white); }
+    .q-save { background: var(--green); color: var(--white); border: none; border-radius: 999px; padding: 9px 22px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit; margin-right: 10px; }
+    .q-save:disabled { background: #94A3B8; cursor: default; }
 
     .q-skip {
       font-size: 12px; color: rgba(255,255,255,0.28);
@@ -1107,7 +1109,7 @@
       <div class="q-card" id="q-card">
         <div class="q-eyebrow">Optional: one click</div>
         <div class="q-text">What do you shop for most on Amazon?</div>
-        <div class="q-sub">Pick your top one. You can add more once Sinclair is live.</div>
+        <div class="q-sub">Pick up to three. Sinclair uses them to decide what to show you, never who gets your click.</div>
         <div class="cat-grid" id="cat-grid">
           <button class="cat-pill" data-cat="Electronics & Tech">Electronics &amp; Tech</button>
           <button class="cat-pill" data-cat="Home & Kitchen">Home &amp; Kitchen</button>
@@ -1118,6 +1120,7 @@
           <button class="cat-pill" data-cat="Baby & Kids">Baby &amp; Kids</button>
           <button class="cat-pill" data-cat="Tools & Home Improvement">Tools &amp; DIY</button>
         </div>
+        <button class="q-save" id="q-save" disabled>Save</button>
         <button class="q-skip" id="q-skip">Skip</button>
       </div>
 
@@ -1692,29 +1695,62 @@
   });
 
   // CATEGORY QUESTION
-  let chosenCat = '';
+  //
+  // Up to three, saved to our own database through /api/profile.
+  //
+  // What this replaces, on 2026-09-16: a single pill posted straight to a
+  // third-party form relay, which emailed the answer to a personal inbox and
+  // stored nothing. The cleanest opted-in data the product collects was
+  // arriving as unqueryable mail, joined to nothing, and failing silently.
+  const MAX_CATS = 3;
+  let chosenCats = [];
+  const saveBtn = document.getElementById('q-save');
 
-  document.getElementById('cat-grid').addEventListener('click', async (e) => {
+  document.getElementById('cat-grid').addEventListener('click', (e) => {
     if (!e.target.classList.contains('cat-pill')) return;
-    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('selected'));
-    e.target.classList.add('selected');
-    chosenCat = e.target.dataset.cat;
+    const cat = e.target.dataset.cat;
+    const at = chosenCats.indexOf(cat);
+
+    if (at > -1) {
+      chosenCats.splice(at, 1);
+      e.target.classList.remove('selected');
+    } else {
+      // A fourth click is refused rather than silently swapping one out, which
+      // would leave someone looking at a pill they just pressed, unselected.
+      if (chosenCats.length >= MAX_CATS) return;
+      chosenCats.push(cat);
+      e.target.classList.add('selected');
+    }
+
+    saveBtn.disabled = chosenCats.length === 0;
+  });
+
+  saveBtn.addEventListener('click', async () => {
+    if (!chosenCats.length) return;
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'Saving';
+
     try {
-      await fetch('https://formsubmit.co/ajax/Jon@digitaljag.com', {
+      await fetch('/api/profile', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          _subject:          'True Finds category: ' + submittedEmail + ' shops for ' + chosenCat,
-          email:             submittedEmail,
-          shopping_category: chosenCat,
+          email: submittedEmail,
+          categories: chosenCats,
+          source: 'landing'
         })
       });
-    } catch (err) { /* silent */ }
+    } catch (err) {
+      // Nothing to hand back to someone who just did us a favor on an optional
+      // question. The card closes either way and the log is where we find out.
+    }
+
+    saveBtn.textContent = 'Saved';
     setTimeout(() => {
       const card = document.getElementById('q-card');
       card.style.opacity       = '0.4';
       card.style.pointerEvents = 'none';
-    }, 600);
+    }, 700);
   });
 
   document.getElementById('q-skip').addEventListener('click', () => {
