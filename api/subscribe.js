@@ -14,7 +14,10 @@ module.exports = async (req, res) => {
   const key = process.env.BEEHIIV_API_KEY;
   if (!key) return res.status(500).json({ error: 'Not configured' });
 
-  const { email, referred_by, referral_code } = req.body || {};
+  const { email, referred_by, referral_code, source } = req.body || {};
+  // Where the signup came from. Allowlisted so a caller cannot write arbitrary
+  // values into Beehiiv; anything unknown is recorded as the homepage.
+  const medium = ['landing', 'welcome'].includes(source) ? source : 'landing';
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) {
     return res.status(400).json({ error: 'Invalid email' });
   }
@@ -31,7 +34,7 @@ module.exports = async (req, res) => {
         reactivate_existing: true,
         send_welcome_email: true,
         utm_source: 'truefinds.ai',
-        utm_medium: 'landing',
+        utm_medium: medium,
         utm_campaign: 'founding-members',
         referring_site: 'https://truefinds.ai',
         custom_fields: [
