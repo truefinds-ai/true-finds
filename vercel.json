@@ -21,6 +21,8 @@
     { "source": "/goodbye/", "destination": "/goodbye/index.html" },
     { "source": "/privacy", "destination": "/privacy/index.html" },
     { "source": "/privacy/", "destination": "/privacy/index.html" },
+    { "source": "/muse", "destination": "/muse/index.html" },
+    { "source": "/muse/", "destination": "/muse/index.html" },
     { "source": "/support", "destination": "/support/index.html" },
     { "source": "/support/", "destination": "/support/index.html" },
     { "source": "/contact", "destination": "/support/index.html" },
