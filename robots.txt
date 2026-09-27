@@ -18,3 +18,4 @@ Disallow: /api/
 
 Sitemap: https://truefinds.ai/sitemap.xml
 Sitemap: https://truefinds.ai/sitemap-deals.xml
+Sitemap: https://truefinds.ai/sitemap-stores.xml

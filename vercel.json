@@ -15,6 +15,7 @@
     { "source": "/store/:domain/:handle", "destination": "https://true-finds-app.vercel.app/store/:domain/:handle" },
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
     { "source": "/sitemap-deals.xml", "destination": "https://true-finds-app.vercel.app/sitemap.xml" },
+    { "source": "/sitemap-stores.xml", "destination": "https://true-finds-app.vercel.app/sitemap-stores.xml" },
     { "source": "/deals", "destination": "https://true-finds-app.vercel.app/deals" },
     { "source": "/deals/", "destination": "https://true-finds-app.vercel.app/deals" },
     { "source": "/deals/:category", "destination": "https://true-finds-app.vercel.app/deals/:category" },
