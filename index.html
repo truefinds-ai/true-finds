@@ -252,7 +252,94 @@
     .footer-links a:hover { text-decoration: underline; }
     .footer-bottom { color: #D5E1EC; font-size: 14px; margin-top: 22px; }
 
-  </style>
+  
+    /* Marco on the homepage: "Same item, different stores" (added 2026-09-30) */
+    #compare [hidden] { display: none !important; }
+    .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .cmp-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .cmp-img { background: #FAFBFC; height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .cmp-img img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
+    .cmp-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .cmp-brand { font-size: 14px; font-weight: 700; color: var(--green-dark); }
+    .cmp-card h3 { font-size: 18px; line-height: 1.3; }
+    .cmp-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 16px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 10px; }
+    .cmp-row strong { color: var(--navy); font-size: 18px; white-space: nowrap; }
+    .cmp-row a { color: var(--green-dark); font-weight: 700; text-decoration: none; white-space: nowrap; }
+    .cmp-row a:hover { text-decoration: underline; }
+    .cmp-actions { margin-top: auto; padding-top: 6px; }
+    .cmp-skel { background: var(--white); border: 1px solid var(--line); border-radius: 16px; height: 420px; animation: cmpPulse 1.4s ease-in-out infinite; }
+    @keyframes cmpPulse { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+    .marco-card { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; margin-top: 24px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+    .marco-card h3 { font-size: 22px; margin-bottom: 8px; }
+    .marco-card p { font-size: 17px; color: var(--ink); }
+    .marco-steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .marco-steps li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: var(--ink); }
+    .marco-example { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+    .marco-example .cmp-row:first-of-type { border-top: 0; padding-top: 0; }
+    .marco-label { font-size: 14px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+    @media (max-width: 1000px) { .cmp-grid { grid-template-columns: 1fr; } .marco-card { grid-template-columns: 1fr; padding: 22px; } }
+
+    /* Ask Sinclair (added 2026-09-30; soft bar, examples, mic and paste, one thing at a time) */
+    .ask-card { background: linear-gradient(135deg, #EEF7F3 0%, #E8EEF5 100%); border-radius: 28px; padding: 32px; box-shadow: 0 1px 3px rgba(26,60,94,.06); }
+    .ask-label { display: block; font-size: 19px; color: var(--ink); margin-top: 6px; }
+    .ask-form { margin-top: 18px; }
+    .ask-bar { display: flex; align-items: center; gap: 4px; background: #fff; border-radius: 999px; padding: 6px 6px 6px 22px; box-shadow: 0 2px 14px rgba(26,60,94,.12), 0 0 0 1px #DCE3EA; transition: box-shadow .15s; }
+    .ask-bar:focus-within { box-shadow: 0 2px 14px rgba(26,60,94,.12), 0 0 0 2px var(--green); }
+    .ask-bar input { flex: 1 1 auto; min-width: 0; height: 50px; border: 0; background: transparent; font-size: 19px; color: var(--navy); font-family: inherit; }
+    .ask-bar input:focus { outline: none; }
+    .ask-bar input::placeholder { color: #5B6B7B; }
+    .ask-icon { flex: 0 0 auto; height: 46px; min-width: 46px; border: 0; background: transparent; border-radius: 999px; color: var(--navy); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; }
+    .ask-icon:hover { background: #EEF2F6; }
+    .ask-icon[hidden] { display: none; }
+    .ask-icon.on { background: var(--green); color: #fff; animation: askPulse 1.2s ease-in-out infinite; }
+    @keyframes askPulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
+    .ask-go { flex: 0 0 auto; height: 50px; border: 0; border-radius: 999px; background: var(--green); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 26px; cursor: pointer; }
+    .ask-go:hover { background: #148259; }
+    .ask-go:disabled { opacity: .6; }
+    .ask-go-mobile { display: none; width: 100%; margin-top: 12px; height: 56px; }
+    .ask-try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+    .ask-try span { font-size: 17px; font-weight: 600; color: var(--ink); }
+    .ask-try button { min-height: 44px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; }
+    .ask-try button:hover { box-shadow: 0 0 0 2px var(--green); }
+    .ask-note { margin-top: 14px; font-size: 17px; font-weight: 600; color: #14734F; }
+    .ask-out { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .ask-out[hidden] { display: none; }
+    .ask-msg { background: #fff; border-radius: 16px; padding: 14px 18px; font-size: 17px; color: var(--ink); }
+    .ask-wait { display: flex; align-items: center; gap: 12px; background: #fff; border-radius: 16px; padding: 16px 20px; font-size: 18px; color: var(--navy); }
+    .ask-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--green); animation: askPulse 1s ease-in-out infinite; flex: 0 0 auto; }
+    .ask-panel { background: #fff; border-radius: 18px; padding: 20px 22px; box-shadow: 0 1px 4px rgba(26,60,94,.06); }
+    .ask-eyebrow { font-size: 14px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #3E4F60; }
+    .ask-why { margin-top: 8px; }
+    .ask-why summary { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; list-style: none; }
+    .ask-why summary::-webkit-details-marker { display: none; }
+    .ask-i { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--navy); background: #fff; color: var(--navy); font-family: Georgia, serif; font-style: italic; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; }
+    .ask-why[open] .ask-i { background: var(--navy); color: #fff; }
+    .ask-why p { margin-top: 4px; border-left: 4px solid var(--navy); background: #E8EEF5; border-radius: 8px; padding: 8px 12px; font-size: 17px; color: var(--ink); }
+    .ask-lead { font-size: 21px; font-weight: 600; line-height: 1.35; color: var(--navy); margin-top: 8px; }
+    .ask-line { font-size: 17px; color: var(--ink); margin-top: 4px; }
+    .ask-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 10px; }
+    .ask-links a { min-height: 44px; display: inline-flex; align-items: center; font-size: 18px; font-weight: 700; color: #14734F; text-decoration: none; }
+    .ask-links a:hover { text-decoration: underline; }
+    .ask-h { font-size: 21px; color: var(--navy); }
+    .ask-list { list-style: none; margin-top: 6px; }
+    .ask-list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; padding: 12px 0; border-top: 1px solid #E3E8EE; }
+    .ask-list li:first-child { border-top: 0; }
+    .ask-list li[hidden] { display: none; }
+    .ask-store { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .ask-price { margin-left: 8px; font-size: 18px; font-weight: 800; color: var(--navy); }
+    .ask-sub { margin-left: 8px; font-size: 16px; font-weight: 600; color: #3E4F60; }
+    .ask-go-store { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #E8F5EF; padding: 0 16px; font-size: 17px; font-weight: 700; color: #14734F; text-decoration: none; }
+    .ask-go-store:hover { background: #D5EEE3; }
+    .ask-more { min-height: 44px; border: 0; background: none; padding: 0; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .ask-save { align-self: flex-start; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--navy); color: #fff; padding: 0 26px; font-size: 18px; font-weight: 700; text-decoration: none; }
+    @media (max-width: 640px) {
+      .ask-card { padding: 22px 16px; border-radius: 22px; }
+      .ask-bar { padding-left: 16px; }
+      .ask-bar .ask-go { display: none; }
+      .ask-go-mobile { display: block; }
+      .ask-save { align-self: stretch; }
+    }
+</style>
 </head>
 <body>
 
@@ -318,6 +405,33 @@
   <p class="wrap proof-asof">Measured September 21, 2026. Nothing on True Finds is sponsored.</p>
 </section>
 
+<section class="section" id="ask">
+  <div class="wrap">
+    <div class="ask-card">
+      <span class="eyebrow">Ask Sinclair</span>
+      <h2>Is it a real deal, and where else can I get it?</h2>
+      <label for="ask-q" class="ask-label">Paste a product link or type what you&rsquo;re shopping for</label>
+      <form class="ask-form" id="ask-form">
+        <div class="ask-bar">
+          <input id="ask-q" name="q" type="text" placeholder="Paste a link or type a product" autocomplete="off" enterkeyhint="search">
+          <button class="ask-icon" type="button" id="ask-paste" aria-label="Paste the link you copied" hidden>Paste</button>
+          <button class="ask-icon" type="button" id="ask-mic" aria-label="Speak your question" title="Speak your question" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+          <button class="ask-go" type="submit" id="ask-btn">Ask Sinclair</button>
+        </div>
+        <button class="ask-go ask-go-mobile" type="submit" id="ask-btn-m">Ask Sinclair</button>
+      </form>
+      <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
+      <div class="ask-try" id="ask-try">
+        <span>Try:</span>
+        <button type="button" data-q="https://thebeautyandskin.com/products/evergreen-style-cream">R&#332;Z Style Cream</button>
+        <button type="button" data-q="https://www.amazon.com/dp/B0GJTFXNRX">Apple AirTag</button>
+        <button type="button" data-q="https://thebeautyandskin.com/products/bond-repair-treatment-starter-kit">Bond Repair Kit</button>
+      </div>
+      <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="deals">
   <div class="wrap">
     <div class="section-head">
@@ -363,6 +477,40 @@
       </a>
     </div>
     <p class="fine">Verdicts rechecked September 24, 2026. The live price is on Amazon, one click through, and that is the price that applies when you buy.</p>
+  </div>
+</section>
+
+<section class="section soft" id="compare">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Meet Marco</span>
+        <h2>Same item, different stores</h2>
+        <p class="sub">Marco is the True Finds agent who compares stores. When the same product is sold somewhere else, Marco shows you where, with the price right now, so you choose where to buy.</p>
+      </div>
+    </div>
+    <div id="cmp-live" class="cmp-grid" aria-live="polite">
+      <div class="cmp-skel" aria-hidden="true"></div>
+      <div class="cmp-skel" aria-hidden="true"></div>
+      <div class="cmp-skel" aria-hidden="true"></div>
+    </div>
+    <div id="cmp-marco" class="marco-card">
+      <div>
+        <h3>How Marco helps you shop</h3>
+        <ul class="marco-steps">
+          <li><span class="step-n">1</span><span>You look at a product on a store True Finds covers.</span></li>
+          <li><span class="step-n">2</span><span>Marco checks whether other stores sell the very same item, including the brand&rsquo;s own shop.</span></li>
+          <li><span class="step-n">3</span><span>You see the stores side by side and pick the one you like. Partner links are always disclosed.</span></li>
+        </ul>
+      </div>
+      <div class="marco-example" aria-label="Example">
+        <span class="marco-label">Example</span>
+        <div class="cmp-row"><span>The store you are on</span><strong>Sinclair&rsquo;s verdict</strong></div>
+        <div class="cmp-row"><span>Also sold direct by the brand</span><strong>Price right now</strong></div>
+        <div class="cmp-row"><span>Also at another store</span><strong>Price right now</strong></div>
+      </div>
+    </div>
+    <p class="fine" id="cmp-fine" hidden>Prices from Shopify, checked just now. They can change. <span id="cmp-earn" hidden>True Finds may earn a commission from these stores. It never changes a verdict.</span></p>
   </div>
 </section>
 
@@ -1004,6 +1152,257 @@
       if (fp) fp.style.display = 'block';
     }
   });
+</script>
+<script>
+  // Marco on the homepage, added 2026-09-30. Loads live when the section is
+  // near the screen, so the page itself never waits. Shows up to three items
+  // sold at another store right now above the Meet Marco card; with none, the
+  // Meet Marco card alone.
+  (function () {
+    var box = document.getElementById('cmp-live');
+    var marco = document.getElementById('cmp-marco');
+    var fine = document.getElementById('cmp-fine');
+    var earn = document.getElementById('cmp-earn');
+    if (!box || !marco) return;
+
+    function vid() {
+      try {
+        var v = localStorage.getItem('tf_visitor_id');
+        if (!v) {
+          v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+          localStorage.setItem('tf_visitor_id', v);
+        }
+        return v;
+      } catch (e) { return 'anonymous'; }
+    }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+        else fetch('/api/compare/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+      } catch (e) {}
+    }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+
+    function explainer() {
+      box.hidden = true;
+      track('home_compare_view', { state: 'explainer', shown: 0 });
+    }
+
+    function render(items) {
+      box.innerHTML = '';
+      var anyEarn = false;
+      items.forEach(function (it, i) {
+        var card = el('article', 'cmp-card');
+        var img = el('div', 'cmp-img');
+        if (it.image) { var im = document.createElement('img'); im.src = it.image; im.alt = it.title; im.loading = 'lazy'; img.appendChild(im); }
+        card.appendChild(img);
+        var body = el('div', 'cmp-body');
+        body.appendChild(el('div', 'cmp-brand', it.brand));
+        body.appendChild(el('h3', null, it.title));
+
+        var r1 = el('div', 'cmp-row');
+        r1.appendChild(el('span', null, 'At ' + it.store.name));
+        if (it.store.price_cents != null) r1.appendChild(el('strong', null, usd(it.store.price_cents)));
+        else {
+          var a1 = el('a', null, 'Sinclair\u2019s check \u2192');
+          a1.href = it.store.page;
+          a1.addEventListener('click', function () { track('home_compare_click', { target: 'sinclair', store: it.store.name, brand: it.brand, position: i + 1 }); });
+          r1.appendChild(a1);
+        }
+        body.appendChild(r1);
+
+        var r2 = el('div', 'cmp-row');
+        r2.appendChild(el('span', null, 'Also at ' + it.other.name));
+        r2.appendChild(el('strong', null, usd(it.other.price_cents)));
+        body.appendChild(r2);
+
+        var act = el('div', 'cmp-actions');
+        var go = el('a', 'btn btn-ghost btn-block', 'Go to ' + it.other.name);
+        go.href = it.other.link;
+        go.rel = 'sponsored noopener';
+        go.addEventListener('click', function () { track('home_compare_click', { target: 'other_store', store: it.other.host, brand: it.brand, position: i + 1 }); });
+        act.appendChild(go);
+        if (it.store.price_cents != null) {
+          var a2 = el('a', 'link-arrow', 'See Sinclair\u2019s check \u2192');
+          a2.href = it.store.page;
+          a2.style.display = 'inline-block';
+          a2.style.marginTop = '12px';
+          a2.addEventListener('click', function () { track('home_compare_click', { target: 'sinclair', store: it.store.name, brand: it.brand, position: i + 1 }); });
+          act.appendChild(a2);
+        }
+        body.appendChild(act);
+        card.appendChild(body);
+        box.appendChild(card);
+        if (it.other.earns) anyEarn = true;
+      });
+      fine.hidden = false;
+      earn.hidden = !anyEarn;
+      track('home_compare_view', { state: 'live', shown: items.length });
+    }
+
+    var started = false;
+    function load() {
+      if (started) return;
+      started = true;
+      var done = false;
+      var timer = setTimeout(function () { if (!done) { done = true; explainer(); } }, 8000);
+      fetch('/api/compare/featured', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (done) return;
+          done = true; clearTimeout(timer);
+          if (d && d.ok && d.items && d.items.length) render(d.items); else explainer();
+        })
+        .catch(function () { if (!done) { done = true; clearTimeout(timer); explainer(); } });
+    }
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
+      }, { rootMargin: '400px 0px' });
+      io.observe(box);
+    } else { load(); }
+  })();
+</script>
+<script>
+  // Ask Sinclair, added 2026-09-30, redesigned the same day: soft bar, visible
+  // label, tap-to-try examples, microphone where the browser supports speech,
+  // Paste on phones, and an answer that shows one thing at a time. Built with
+  // DOM calls, never innerHTML, because part of the answer echoes the shopper.
+  (function () {
+    var form = document.getElementById('ask-form');
+    var input = document.getElementById('ask-q');
+    var btns = [document.getElementById('ask-btn'), document.getElementById('ask-btn-m')];
+    var out = document.getElementById('ask-out');
+    var note = document.getElementById('ask-note');
+    var mic = document.getElementById('ask-mic');
+    var pasteBtn = document.getElementById('ask-paste');
+    if (!form || !input || !out) return;
+    var busy = false;
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+    function tap(target, host) { track('home_compare_click', { target: 'ask_' + target, store: host || '' }); }
+    function say(text) { if (!note) return; note.textContent = text || ''; note.hidden = !text; }
+    function setBusy(b) { busy = b; btns.forEach(function (x) { if (x) { x.disabled = b; x.textContent = b ? 'Checking...' : 'Ask Sinclair'; } }); }
+    function link(href, text, cls, external, target, host) {
+      var a = el('a', cls, text); a.href = href;
+      if (external) { a.target = '_blank'; a.rel = 'noopener noreferrer sponsored'; }
+      a.addEventListener('click', function () { tap(target, host); });
+      return a;
+    }
+    function run(q, via) {
+      q = (q || '').trim();
+      if (busy) return;
+      say('');
+      out.hidden = false; clear(out);
+      if (!q) { out.appendChild(el('p', 'ask-msg', 'Type a product or paste a link to get started.')); return; }
+      setBusy(true);
+      var wait = el('div', 'ask-wait'); wait.appendChild(el('span', 'ask-dot'));
+      wait.appendChild(el('span', null, 'Sinclair is checking the price. Marco is looking at other stores.'));
+      out.appendChild(wait);
+      fetch('/api/ask?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { render(d); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
+        .catch(function () { clear(out); out.appendChild(el('p', 'ask-msg', "Sinclair couldn't check that right now. Please try again in a minute.")); })
+        .then(function () { setBusy(false); });
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
+    Array.prototype.forEach.call(document.querySelectorAll('#ask-try button'), function (b) {
+      b.addEventListener('click', function () { input.value = b.getAttribute('data-q'); tap('example', b.textContent); run(input.value, 'example'); });
+    });
+
+    // Microphone: only where the browser can turn speech into text.
+    var Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var rec = null;
+    if (mic && Speech) {
+      mic.hidden = false;
+      mic.addEventListener('click', function () {
+        if (rec) { rec.stop(); return; }
+        var heard = '';
+        rec = new Speech(); rec.lang = 'en-US'; rec.interimResults = true; rec.maxAlternatives = 1;
+        rec.onresult = function (e) { var t = []; for (var i = 0; i < e.results.length; i++) t.push(e.results[i][0].transcript); heard = t.join(' ').trim(); input.value = heard; };
+        rec.onerror = function (e) {
+          say(e.error === 'not-allowed' || e.error === 'service-not-allowed' ? 'To speak your question, allow the microphone for truefinds.ai, or type it instead.' : "Sinclair didn't catch that. Tap the microphone and try again, or type it.");
+          tap('mic_' + e.error);
+        };
+        rec.onend = function () { rec = null; mic.classList.remove('on'); mic.setAttribute('aria-pressed', 'false'); if (heard) { tap('mic_heard'); run(heard, 'voice'); } else if (note && note.textContent === 'Listening... say the product name.') { say(''); } };
+        mic.classList.add('on'); mic.setAttribute('aria-pressed', 'true'); say('Listening... say the product name.');
+        try { rec.start(); } catch (err) { rec = null; mic.classList.remove('on'); say("Sinclair didn't catch that. Tap the microphone and try again, or type it."); }
+      });
+    }
+
+    // Paste: phones only (touch screens), where a long press is harder.
+    var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (pasteBtn && coarse && navigator.clipboard && navigator.clipboard.readText) {
+      pasteBtn.hidden = false;
+      pasteBtn.addEventListener('click', function () {
+        navigator.clipboard.readText().then(function (t) {
+          t = (t || '').trim(); if (!t) throw new Error('empty');
+          input.value = t; tap('paste'); run(t, 'paste');
+        }).catch(function () { say("Your phone didn't share the copied link. Press and hold in the box, then tap Paste."); tap('paste_blocked'); });
+      });
+    }
+
+    function render(d) {
+      clear(out);
+      if (!d || !d.ok) { out.appendChild(el('p', 'ask-msg', (d && d.message) || "Sinclair couldn't check that right now. Please try again in a minute.")); return; }
+      var top = el('div', 'ask-panel');
+      top.appendChild(el('p', 'ask-eyebrow', d.title));
+      if (d.sinclair) {
+        var why = el('details', 'ask-why'); var sum = el('summary');
+        sum.setAttribute('aria-label', d.sinclair.label + '. What ' + d.sinclair.label + ' means');
+        var c = el('span', 'chip', d.sinclair.label);
+        c.style.background = d.sinclair.background; c.style.color = d.sinclair.text; c.style.borderColor = d.sinclair.border;
+        sum.appendChild(c); var i = el('span', 'ask-i', 'i'); i.setAttribute('aria-hidden', 'true'); sum.appendChild(i);
+        why.appendChild(sum); why.appendChild(el('p', null, d.sinclair.definition));
+        why.addEventListener('toggle', function () { if (why.open) tap('verdict_info'); });
+        top.appendChild(why);
+        (d.sinclair.lines || []).forEach(function (l, n) { top.appendChild(el('p', n === 0 ? 'ask-lead' : 'ask-line', l)); });
+        var links = el('div', 'ask-links');
+        links.appendChild(link(d.sinclair.href, "See Sinclair's full verdict →", null, false, 'verdict'));
+        if (d.amazonHref) links.appendChild(link(d.amazonHref, 'Check price on Amazon →', null, false, 'amazon'));
+        top.appendChild(links);
+      }
+      out.appendChild(top);
+
+      var rows = [], earns = false;
+      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced' }); });
+      (d.stores || []).forEach(function (s) { if (s.earns) earns = true; rows.push({ name: s.name, sub: s.label, link: s.link, host: s.host, target: 'store' }); });
+      var panel = el('div', 'ask-panel');
+      panel.appendChild(el('h3', 'ask-h', 'Where else to buy'));
+      if (!rows.length) { panel.appendChild(el('p', 'ask-line', "Sinclair couldn't find this at other stores yet.")); }
+      else {
+        var ul = el('ul', 'ask-list');
+        rows.forEach(function (r, n) {
+          var li = el('li'); if (n >= 2) li.hidden = true;
+          var left = el('span'); left.appendChild(el('span', 'ask-store', r.name));
+          if (r.price) left.appendChild(el('span', 'ask-price', r.price)); else if (r.sub) left.appendChild(el('span', 'ask-sub', r.sub));
+          li.appendChild(left); var go = link(r.link, 'Visit store →', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); li.appendChild(go);
+          ul.appendChild(li);
+        });
+        panel.appendChild(ul);
+        if (rows.length > 2) {
+          var extra = rows.length - 2;
+          var more = el('button', 'ask-more', 'See ' + extra + ' more ' + (extra === 1 ? 'store' : 'stores')); more.type = 'button';
+          more.addEventListener('click', function () { Array.prototype.forEach.call(ul.children, function (x) { x.hidden = false; }); more.remove(); tap('more_stores'); });
+          panel.appendChild(more);
+        }
+        if (d.offers && d.offers.length) panel.appendChild(el('p', 'fine', 'Prices from Shopify stores, checked just now. They can change.'));
+      }
+      out.appendChild(panel);
+      if (d.compareHref) out.appendChild(link(d.compareHref + '#save', 'Compare and save it', 'ask-save', false, 'compare_save'));
+      if (earns) out.appendChild(el('p', 'fine', 'True Finds may earn a commission from these stores. It never changes a verdict.'));
+    }
+  })();
 </script>
 </body>
 </html>
