@@ -73,6 +73,18 @@
     .nav-links a { text-decoration: none; font-weight: 600; font-size: 16px; color: var(--navy); }
     .nav-links a:hover { color: var(--green-dark); }
     @media (max-width: 900px) { .nav-links { display: none; } .nav-inner .btn { margin-left: auto; } }
+    /* Phone tab bar, 1 Oct 2026 (Jon: no navigation on the phone). NN/g: hidden
+       navigation cuts mobile discoverability by more than 20 percent; with four or
+       fewer links, show them. Same four tabs as the app pages. */
+    .tabbar { display: none; }
+    @media (max-width: 900px) {
+      body { padding-bottom: 76px; }
+      .tabbar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: #fff; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
+      .tabbar a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0; font-size: 13px; font-weight: 700; color: var(--navy); text-decoration: none; }
+      .tabbar a[aria-current="page"] { color: var(--green-dark); }
+      .tabbar svg { width: 22px; height: 22px; }
+    }
+
 
     /* Hero */
     .hero { background: linear-gradient(180deg, #F2F8F5 0%, #FFFFFF 100%); padding: 64px 0 56px; overflow: hidden; }
@@ -372,6 +384,7 @@
     <div class="nav-links">
       <a href="/deals">Deals</a>
       <a href="/gifts">Gifts</a>
+      <a href="/plan">Lists</a>
       <a href="#brands">Brand stores</a>
       <a href="/how-it-works/">How It Works</a>
       <a href="/guides/">Guides</a>
@@ -804,6 +817,7 @@
     <div class="footer-links">
       <a href="/deals">Deals</a>
       <a href="/gifts">Gifts</a>
+      <a href="/plan">Lists</a>
       <a href="/guides/">Guides</a>
       <a href="/how-it-works/">How It Works</a>
       <a href="https://www.facebook.com/gotruefinds" target="_blank" rel="noopener">Facebook</a>
@@ -1432,5 +1446,11 @@
     }
   })();
 </script>
+<nav class="tabbar" aria-label="True Finds">
+  <a href="/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Check a price</a>
+  <a href="/deals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>Deals</a>
+  <a href="/gifts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg>Gifts</a>
+  <a href="/plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>Lists</a>
+</nav>
 </body>
 </html>
