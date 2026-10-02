@@ -45,8 +45,8 @@
     /* Buttons */
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; text-decoration: none; border-radius: 12px; padding: 14px 24px; font-size: 17px; border: 2px solid transparent; cursor: pointer; font-family: inherit; transition: background .2s, transform .15s, box-shadow .2s; }
     .btn svg { width: 22px; height: 22px; }
-    .btn-green { background: var(--green); color: var(--white); box-shadow: 0 6px 18px rgba(26,158,110,.28); }
-    .btn-green:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .btn-green { background: #14734F; color: var(--white); box-shadow: 0 6px 18px rgba(26,158,110,.28); }
+    .btn-green:hover { background: #0F5C3F; transform: translateY(-1px); }
     .btn-ghost { background: var(--white); color: var(--navy); border-color: var(--line); }
     .btn-ghost:hover { border-color: var(--navy); }
     .btn-lg { padding: 17px 28px; font-size: 18px; }
@@ -58,7 +58,7 @@
 
     /* Chips */
     .chip { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .06em; padding: 5px 11px; border-radius: 999px; border: 1.5px solid; }
-    .chip.sm { font-size: 11px; padding: 3px 9px; white-space: nowrap; }
+    .chip.sm { font-size: 13px; padding: 3px 9px; white-space: nowrap; }
     .chip.genuine { color: var(--green-dark); background: var(--green-tint); border-color: #9CD9BF; }
     .chip.inflated { color: var(--red); background: var(--red-tint); border-color: #F1B4AC; }
     .chip.typical { color: var(--amber); background: var(--amber-tint); border-color: #E7D08E; }
@@ -182,7 +182,7 @@
     @media (max-width: 560px) { .verdict-grid { grid-template-columns: 1fr; } }
 
     /* Truth band */
-    .truth { background: linear-gradient(135deg, #1A9E6E, #148259); color: var(--white); text-align: center; padding: 72px 0; }
+    .truth { background: linear-gradient(135deg, #14734F, #0F5C3F); color: var(--white); text-align: center; padding: 72px 0; }
     .truth h2 { color: var(--white); font-size: clamp(32px, 4.5vw, 48px); }
     .truth p { font-size: 19px; font-weight: 600; max-width: 680px; margin: 0 auto; }
 
@@ -239,7 +239,7 @@
     .btn-share { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--navy); cursor: pointer; }
     .cat-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
     .cat-pill { border: 1.5px solid var(--line); background: var(--white); border-radius: 999px; padding: 8px 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; color: var(--navy); }
-    .cat-pill.selected { background: var(--green); border-color: var(--green); color: var(--white); }
+    .cat-pill.selected { background: #14734F; border-color: #14734F; color: var(--white); }
     .fade-in { animation: fade .4s ease; }
     @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
@@ -308,14 +308,22 @@
     .ask-icon[hidden] { display: none; }
     .ask-icon.on { background: var(--green); color: #fff; animation: askPulse 1.2s ease-in-out infinite; }
     @keyframes askPulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
-    .ask-go { flex: 0 0 auto; height: 50px; border: 0; border-radius: 999px; background: var(--green); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 26px; cursor: pointer; }
-    .ask-go:hover { background: #148259; }
+    .ask-go { flex: 0 0 auto; height: 50px; border: 0; border-radius: 999px; background: #14734F; color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 26px; cursor: pointer; }
+    .ask-go:hover { background: #0F5C3F; }
     .ask-go:disabled { opacity: .6; }
     .ask-go-mobile { display: none; width: 100%; height: 56px; }
     .ask-mrow { display: none; }
     .ask-try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
     .ask-try span { font-size: 17px; font-weight: 600; color: var(--ink); }
     .ask-try button { min-height: 44px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; }
+    .ask-also { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+    .ask-also span { font-size: 17px; font-weight: 600; color: var(--ink); }
+    .ask-also a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: none; }
+    .ask-also a:hover { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
+    .prime-bar { background: var(--navy); color: #fff; }
+    .prime-bar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; padding-top: 12px; padding-bottom: 12px; text-align: center; font-size: 17px; font-weight: 600; line-height: 1.4; }
+    .prime-bar a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; color: var(--navy); padding: 0 18px; font-weight: 700; text-decoration: none; }
+    .prime-bar a:hover { background: #E8F5EF; }
     .ask-try button:hover { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
     .ask-note { margin-top: 14px; font-size: 17px; font-weight: 600; color: #14734F; }
     .ask-out { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
@@ -355,8 +363,8 @@
     .ask-store { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; }
     .ask-price { font-size: 21px; font-weight: 800; color: var(--navy); line-height: 1.2; }
     .ask-sub { font-size: 16px; color: #3E4F60; line-height: 1.35; margin-top: 2px; }
-    .ask-go-store { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: var(--green); padding: 0 18px; font-size: 17px; font-weight: 700; color: #fff; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
-    .ask-go-store:hover { background: #148259; }
+    .ask-go-store { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #14734F; padding: 0 18px; font-size: 17px; font-weight: 700; color: #fff; text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+    .ask-go-store:hover { background: #0F5C3F; }
     .ask-more { min-height: 44px; border: 0; background: none; padding: 0; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
     .ask-save { align-self: flex-start; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--navy); color: #fff; padding: 0 26px; font-size: 18px; font-weight: 700; text-decoration: none; }
     @media (max-width: 640px) {
@@ -394,6 +402,17 @@
   </div>
 </nav>
 
+<div class="prime-bar" id="prime-bar" hidden>
+  <div class="wrap"><span id="prime-text">Prime Big Deal Days are October 6 and 7. Check the real price before you buy.</span> <a href="#ask">Check a price</a></div>
+</div>
+<script>
+  (function () {
+    var now = Date.now(), start = Date.parse('2026-10-06T04:00:00Z'), end = Date.parse('2026-10-08T04:00:00Z');
+    if (now >= end) return;
+    if (now >= start) document.getElementById('prime-text').textContent = 'Prime Big Deal Days are live today. Check the real price before you buy.';
+    document.getElementById('prime-bar').hidden = false;
+  })();
+</script>
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
@@ -459,10 +478,16 @@
       </form>
       <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
       <div class="ask-try" id="ask-try">
-        <span>Try:</span>
+        <span>Is this deal real? Try:</span>
         <button type="button" data-q="https://thebeautyandskin.com/products/evergreen-style-cream">R&#332;Z Style Cream</button>
         <button type="button" data-q="https://www.amazon.com/dp/B0GJTFXNRX">Apple AirTag</button>
         <button type="button" data-q="https://thebeautyandskin.com/products/bond-repair-treatment-starter-kit">Bond Repair Kit</button>
+      </div>
+      <div class="ask-also" id="ask-also">
+        <span>Or start with:</span>
+        <a href="/gifts#gifts-for-her" data-tap="gift for her">A gift for her</a>
+        <a href="/plan?list=new-puppy" data-tap="new puppy">A new puppy</a>
+        <a href="/plan?list=family-trip" data-tap="family trip">A family trip</a>
       </div>
       <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
     </div>
@@ -1354,6 +1379,9 @@
         .then(function () { setBusy(false); });
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
+    Array.prototype.forEach.call(document.querySelectorAll('#ask-also a'), function (a) {
+      a.addEventListener('click', function () { tap('starter', a.getAttribute('data-tap')); });
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#ask-try button'), function (b) {
       b.addEventListener('click', function () { input.value = b.getAttribute('data-q'); tap('example', b.textContent); run(input.value, 'example'); });
     });
