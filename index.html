@@ -378,6 +378,19 @@
       .ask-next .ask-save { align-self: stretch; }
       .ask-later { justify-content: center; text-align: center; }
     }
+    /* Touch screens cannot add a Chrome extension (Android and iOS Chrome support none, 4 Oct 2026): they get the link by email instead. */
+    .tf-touch-only { display: none; }
+    @media (hover: none) and (pointer: coarse) { .tf-desktop-only { display: none !important; } .tf-touch-only { display: block; } }
+    .tf-inst { background: #fff; border: 2px solid #D6DEE6; border-radius: 16px; padding: 16px; margin-top: 14px; text-align: left; width: 100%; flex-basis: 100%; }
+    .tf-inst p { margin: 0; }
+    .tf-inst .tf-inst-prompt { font-size: 18px; font-weight: 700; color: var(--navy); }
+    .tf-inst .tf-inst-line { font-size: 16px; line-height: 1.45; color: #3E4F60; margin-top: 4px; }
+    .tf-inst form { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tf-inst input { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 0 16px; font-size: 17px; border-radius: 999px; border: 2px solid #C9D3DD; color: var(--navy); font-family: inherit; }
+    .tf-inst button { min-height: 48px; padding: 0 20px; font-size: 17px; font-weight: 700; border: 0; border-radius: 999px; background: #14734F; color: #fff; font-family: inherit; }
+    .tf-inst .tf-inst-msg { font-size: 16px; font-weight: 600; color: var(--navy); margin-top: 8px; min-height: 1px; }
+    .tf-inst .tf-inst-note { font-size: 13px; color: #5B6B7B; margin-top: 4px; }
+    .tf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -398,7 +411,7 @@
       <a href="/guides/">Guides</a>
       <a href="#founding">Founding Member</a>
     </div>
-    <a class="btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
+    <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
   </div>
 </nav>
 
@@ -420,7 +433,18 @@
       <h1>Know the truth<br>before you buy.</h1>
       <p class="lead">Sinclair, your free AI shopping companion, reads the price history behind a product and tells you plainly whether the deal is real. On Amazon, and now at independent brand stores.</p>
       <div class="hero-ctas">
-        <a class="btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
+        <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
+        <div class="tf-inst tf-touch-only">
+        <p class="tf-inst-prompt">Email me the link to my computer</p>
+        <p class="tf-inst-line">Sinclair adds to Chrome on a computer. We will send you the link.</p>
+        <form class="tf-inst-form" novalidate>
+          <label class="tf-sr" for="tf-inst-email-1">Your email</label>
+          <input id="tf-inst-email-1" type="email" autocomplete="email" placeholder="Your email" required>
+          <button type="submit">Email me the link</button>
+        </form>
+        <p class="tf-inst-msg" role="status" aria-live="polite"></p>
+        <p class="tf-inst-note">We will never sell your personal information.</p>
+      </div>
         <a class="btn btn-ghost btn-lg" href="/real-deals">See this week&rsquo;s real deals</a>
       </div>
       <ul class="hero-ticks">
@@ -641,7 +665,7 @@
         <li><span class="step-n">2</span><div><strong>See the verdict beside the price.</strong> Sinclair reads that product&rsquo;s own price record and shows one of four answers, with the evidence.</div></li>
         <li><span class="step-n">3</span><div><strong>Buy with confidence, or wait.</strong> Not ready yet? Save it to your Sinclair list, and Sinclair re-checks the verdict each time you open it.</div></li>
       </ol>
-      <a class="btn btn-green" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Get it on the Chrome Web Store</a>
+      <a class="tf-desktop-only btn btn-green" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Get it on the Chrome Web Store</a>
     </div>
     <figure class="shot shot-wide">
       <div class="shot-bar"><span></span><span></span><span></span></div>
@@ -730,7 +754,7 @@
           <div class="ns-dot done"></div>
           <div>
             <div class="ns-title">Today</div>
-            <div class="ns-desc">Sinclair is free and live now. <a class="install-link on-dark" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add it to Chrome</a> and get your first verdict on any Amazon product page.</div>
+            <div class="ns-desc">Sinclair is free and live now. <a class="tf-desktop-only install-link on-dark" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add it to Chrome</a> and get your first verdict on any Amazon product page.</div>
           </div>
         </div>
         <div class="next-step">
@@ -815,7 +839,18 @@
   <div class="wrap">
     <h2>Sinclair is free. Start using it today.</h2>
     <p>No account, no card, about ten seconds.</p>
-    <a class="btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
+    <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
+        <div class="tf-inst tf-touch-only">
+        <p class="tf-inst-prompt">Email me the link to my computer</p>
+        <p class="tf-inst-line">Sinclair adds to Chrome on a computer. We will send you the link.</p>
+        <form class="tf-inst-form" novalidate>
+          <label class="tf-sr" for="tf-inst-email-2">Your email</label>
+          <input id="tf-inst-email-2" type="email" autocomplete="email" placeholder="Your email" required>
+          <button type="submit">Email me the link</button>
+        </form>
+        <p class="tf-inst-msg" role="status" aria-live="polite"></p>
+        <p class="tf-inst-note">We will never sell your personal information.</p>
+      </div>
   </div>
 </section>
 
@@ -1543,5 +1578,20 @@
 })();
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+  // "Email me the link to my computer" on touch screens (4 Oct 2026).
+  document.querySelectorAll('.tf-inst-form').forEach(function (form) {
+    var box = form.closest('.tf-inst'), input = form.querySelector('input'), btn = form.querySelector('button'), msg = box.querySelector('.tf-inst-msg');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = (input.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
+      btn.disabled = true; msg.textContent = 'Sending...';
+      fetch('/api/install-link', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
+        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'Sent. Open the email on your computer to add Sinclair.'; })
+        .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
+    });
+  });
+</script>
 </body>
 </html>
