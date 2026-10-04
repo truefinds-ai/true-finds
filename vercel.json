@@ -1,7 +1,10 @@
 {
   "redirects": [
     { "source": "/ig", "destination": "/?utm_source=instagram&utm_medium=organic&utm_campaign=bio", "permanent": false },
-    { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false }
+    { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false },
+    { "source": "/deals", "destination": "/real-deals", "permanent": true },
+    { "source": "/deals/", "destination": "/real-deals", "permanent": true },
+    { "source": "/deals/:category", "destination": "/real-deals/:category", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/unsubscribe", "destination": "https://true-finds-app.vercel.app/api/unsubscribe" },
@@ -25,9 +28,9 @@
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
     { "source": "/sitemap-deals.xml", "destination": "https://true-finds-app.vercel.app/sitemap.xml" },
     { "source": "/sitemap-stores.xml", "destination": "https://true-finds-app.vercel.app/sitemap-stores.xml" },
-    { "source": "/deals", "destination": "https://true-finds-app.vercel.app/deals" },
-    { "source": "/deals/", "destination": "https://true-finds-app.vercel.app/deals" },
-    { "source": "/deals/:category", "destination": "https://true-finds-app.vercel.app/deals/:category" },
+    { "source": "/real-deals", "destination": "https://true-finds-app.vercel.app/real-deals" },
+    { "source": "/real-deals/", "destination": "https://true-finds-app.vercel.app/real-deals" },
+    { "source": "/real-deals/:category", "destination": "https://true-finds-app.vercel.app/real-deals/:category" },
     { "source": "/gifts", "destination": "https://true-finds-app.vercel.app/gifts" },
     { "source": "/gifts/", "destination": "https://true-finds-app.vercel.app/gifts" },
     { "source": "/api/gifts/check", "destination": "https://true-finds-app.vercel.app/api/gifts/check" },

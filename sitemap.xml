@@ -21,37 +21,37 @@
 
   <!-- Deals hub. Regenerated weekly, and the most citable thing on the site. -->
   <url>
-    <loc>https://truefinds.ai/deals</loc>
+    <loc>https://truefinds.ai/real-deals</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/baby</loc>
+    <loc>https://truefinds.ai/real-deals/baby</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/beauty-and-personal-care</loc>
+    <loc>https://truefinds.ai/real-deals/beauty-and-personal-care</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/electronics</loc>
+    <loc>https://truefinds.ai/real-deals/electronics</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/home-and-kitchen</loc>
+    <loc>https://truefinds.ai/real-deals/home-and-kitchen</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/pet-supplies</loc>
+    <loc>https://truefinds.ai/real-deals/pet-supplies</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://truefinds.ai/deals/tools-and-home-improvement</loc>
+    <loc>https://truefinds.ai/real-deals/tools-and-home-improvement</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
