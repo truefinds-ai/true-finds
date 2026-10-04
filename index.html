@@ -435,12 +435,12 @@
       <div class="hero-ctas">
         <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
         <div class="tf-inst tf-touch-only">
-        <p class="tf-inst-prompt">Email me the link to my computer</p>
-        <p class="tf-inst-line">Sinclair adds to Chrome on a computer. We will send you the link.</p>
+        <p class="tf-inst-prompt">Join free and get Sinclair&rsquo;s link for your computer</p>
+        <p class="tf-inst-line">We&rsquo;ll email you the link, plus the real deals Sinclair verified and early access to new features.</p>
         <form class="tf-inst-form" novalidate>
           <label class="tf-sr" for="tf-inst-email-1">Your email</label>
           <input id="tf-inst-email-1" type="email" autocomplete="email" placeholder="Your email" required>
-          <button type="submit">Email me the link</button>
+          <button type="submit">Join free</button>
         </form>
         <p class="tf-inst-msg" role="status" aria-live="polite"></p>
         <p class="tf-inst-note">We will never sell your personal information.</p>
@@ -841,12 +841,12 @@
     <p>No account, no card, about ten seconds.</p>
     <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
         <div class="tf-inst tf-touch-only">
-        <p class="tf-inst-prompt">Email me the link to my computer</p>
-        <p class="tf-inst-line">Sinclair adds to Chrome on a computer. We will send you the link.</p>
+        <p class="tf-inst-prompt">Join free and get Sinclair&rsquo;s link for your computer</p>
+        <p class="tf-inst-line">We&rsquo;ll email you the link, plus the real deals Sinclair verified and early access to new features.</p>
         <form class="tf-inst-form" novalidate>
           <label class="tf-sr" for="tf-inst-email-2">Your email</label>
           <input id="tf-inst-email-2" type="email" autocomplete="email" placeholder="Your email" required>
-          <button type="submit">Email me the link</button>
+          <button type="submit">Join free</button>
         </form>
         <p class="tf-inst-msg" role="status" aria-live="polite"></p>
         <p class="tf-inst-note">We will never sell your personal information.</p>
@@ -1579,16 +1579,16 @@
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script>
-  // "Email me the link to my computer" on touch screens (4 Oct 2026).
+  // Touch-screen Join box (4 Oct 2026): joins the list (source phone); the welcome email carries the Add to Chrome link.
   document.querySelectorAll('.tf-inst-form').forEach(function (form) {
     var box = form.closest('.tf-inst'), input = form.querySelector('input'), btn = form.querySelector('button'), msg = box.querySelector('.tf-inst-msg');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var email = (input.value || '').trim();
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
-      btn.disabled = true; msg.textContent = 'Sending...';
-      fetch('/api/install-link', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'Sent. Open the email on your computer to add Sinclair.'; })
+      btn.disabled = true; msg.textContent = 'Joining...';
+      fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'phone' }) })
+        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You\u2019re in. Open our welcome email on your computer to add Sinclair.'; })
         .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
     });
   });
