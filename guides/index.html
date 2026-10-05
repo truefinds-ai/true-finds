@@ -35,6 +35,27 @@
   footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
   footer a { color:var(--green-text); text-decoration:none; font-weight:600; }
 </style>
+<style id="tf-guides-index">
+  main.gi { max-width:1100px; padding:44px 24px 64px; }
+  main.gi h1 { font-size:clamp(30px,5vw,46px); line-height:1.15; font-weight:800; }
+  .gi-intro { font-size:18px; line-height:28px; color:#334155; max-width:720px; margin:14px 0 32px; }
+  .gi-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:20px; }
+  @media (max-width:900px) { .gi-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); } }
+  .gi-card { display:flex; flex-direction:column; border:1px solid #E2E8F0; border-radius:12px; overflow:hidden; text-decoration:none; color:#1A3C5E; background:#FFFFFF; }
+  .gi-card:hover { border-color:#14734F; }
+  .gi-card:focus-visible { outline:3px solid #14734F; outline-offset:2px; }
+  .gi-media { aspect-ratio:16/10; width:100%; display:block; object-fit:cover; background:#F1F5F9; }
+  .gi-band { aspect-ratio:16/10; width:100%; display:flex; align-items:flex-end; padding:18px; font-size:14px; line-height:20px; font-weight:700; letter-spacing:1px; }
+  .gi-text { padding:18px 20px 20px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .gi-eyebrow { font-size:13px; line-height:18px; font-weight:700; letter-spacing:1px; color:#14734F; }
+  .gi-title { font-size:19px; line-height:26px; font-weight:800; color:#1A3C5E; }
+  .gi-desc { font-size:16px; line-height:24px; color:#334155; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .gi-time { margin-top:auto; padding-top:4px; font-size:13px; line-height:18px; font-weight:600; color:#475569; }
+  main.gi .cta { margin-top:48px; max-width:760px; }
+  main.gi .cta a.btn { display:inline-flex; align-items:center; min-height:48px; background:#14734F; font-size:17px; }
+  /* Phone rules last, so they win over the base rules above. */
+  @media (max-width:600px) { .gi-grid { grid-template-columns:minmax(0, 1fr); } main.gi { padding:32px 16px 56px; } .gi-band { aspect-ratio:auto; height:auto; min-height:48px; align-items:center; padding:12px 18px; } }
+</style>
 </head>
 <body>
 <div class="topbar">
@@ -46,88 +67,119 @@
     <a class="tcta" href="/#hero">Become a Founding Member</a>
   </div>
 </div>
-<main>
-  
+<main class="gi">
   <h1>Shopping Truth Guides</h1>
-  <div class="dateline">By the True Finds team &middot; Updated August 2026</div>
-  
-  <article><p>Practical, plain-language guides on the gap between what shopping labels claim and what is actually true: price history, manufactured discounts, review timing, and what the words on packages really mean. New guides are added regularly.</p>
-<style>
- .card { display:block; border:1px solid #E3E9EF; border-radius:14px; padding:20px 22px; margin-bottom:14px; text-decoration:none; }
- .card:hover { border-color:#1A9E6E; }
- .card-date { font-size:12.5px; color:#6B7A88; margin-bottom:6px; }
- .card-title { font-size:19px; font-weight:700; color:#1A3C5E; line-height:1.35; margin-bottom:7px; }
- .card-meta { font-size:14.5px; color:#48586A; line-height:1.55; }
-</style>
-<a class="card" href="/guides/holiday-shipping-cutoffs-2026.html">
-      <div class="card-date">October 6, 2026</div>
-      <div class="card-title">Holiday 2026 shipping: when to order so gifts arrive on time</div>
-      <div class="card-meta">The Postal Service's 2026 holiday dates, plus a simple way to work out your own order-by date for any online store, so every gift arrives before the holiday.</div>
-    </a>
-<a class="card" href="/guides/gifts-comfort-hobbies-pets.html">
-      <div class="card-date">October 5, 2026</div>
-      <div class="card-title">Thoughtful gifts for comfort, hobbies and the pets they love</div>
-      <div class="card-meta">Gift ideas that get used every day: comfortable socks, clip-on sunglasses, a relaxing paint-by-numbers hobby and treats for the family pet, each from a store Sinclair checks.</div>
-    </a>
-<a class="card" href="/guides/is-that-prime-day-deal-real.html">
-      <div class="card-date">October 4, 2026</div>
-      <div class="card-title">Is that Prime Big Deal Days discount real? A five-minute check</div>
-      <div class="card-meta">Most October sale prices are not new lows. Here is a simple way to tell a real deal from a dressed-up one before you buy, at Amazon, Target, Walmart or anywhere else.</div>
-    </a>
-<a class="card" href="/guides/five-things-to-check-before-you-buy-on-amazon.html">
-      <div class="card-date">August 2, 2026</div>
-      <div class="card-title">Five Things to Check Before You Buy Anything on Amazon</div>
-      <div class="card-meta">A 60-second checklist for smarter Amazon shopping: price history, review timing, sellers, countdown timers, and the wait-a-day rule.</div>
-    </a>
-<a class="card" href="/guides/when-were-the-reviews-written.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">When Were the Reviews Written? The Question That Exposes Manufactured Ratings</div>
-      <div class="card-meta">A 4.6-star average is a summary; the dates underneath are the story. How review timing reveals what a rating hides, in about thirty seconds.</div>
-    </a>
-<a class="card" href="/guides/olive-oil-extra-virgin-truth.html">
-      <div class="card-date">July 29, 2026</div>
-      <div class="card-title">Your Olive Oil Says 'Extra Virgin.' Do You Know If That's True?</div>
-      <div class="card-meta">Extra virgin is a real, measurable standard that imported oils have repeatedly failed. How to read an olive oil label like someone who knows the tricks.</div>
-    </a>
-<a class="card" href="/guides/supplement-cabinet-check.html">
-      <div class="card-date">July 27, 2026</div>
-      <div class="card-title">Open Your Medicine Cabinet. Count the Supplement Bottles.</div>
-      <div class="card-meta">77 percent of Americans over 55 take supplements, and almost none of us can verify what the labels claim. What you can check today, and what should be automatic.</div>
-    </a>
-<a class="card" href="/guides/the-anchor-price-trick.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">The Anchor Trick: Why 'Was $149.99' Works on Your Brain</div>
-      <div class="card-meta">Anchoring is the psychology behind every struck-through price. Knowing about it does not turn it off. Here is the only real defense.</div>
-    </a>
-<a class="card" href="/guides/are-big-sale-event-deals-real.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">Prime Day, Lightning Deals, Flash Sales: How Many Are Real?</div>
-      <div class="card-meta">Amazon prices change hundreds of times a day, and sale events run on urgency. How to tell a genuine event deal from a typical price in a costume.</div>
-    </a>
-<a class="card" href="/guides/protein-powder-label-math.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">The Label Says 25 Grams of Protein. The Industry Has a Term You Should Know.</div>
-      <div class="card-meta">Protein spiking lets a label pass the standard test while shortchanging you. What it is, why it is hard to catch, and what to look for at the shelf.</div>
-    </a>
-<a class="card" href="/guides/honey-label-truth.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">Raw. Pure. Natural. Which Honey Label Words Actually Mean Something?</div>
-      <div class="card-meta">Honey is one of the most adulterated foods in the world, and most label words carry no enforceable meaning. Here is what actually tells you something.</div>
-    </a>
-<a class="card" href="/guides/online-fraud-over-60-real-shape.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">$7.7 Billion Reported Stolen From Americans Over 60. Most of It Didn't Look Like Fraud.</div>
-      <div class="card-meta">The FBI's numbers on elder fraud are staggering, but the everyday losses look like discounts and reviews, not scams. What protection actually looks like.</div>
-    </a>
-<a class="card" href="/guides/how-free-shopping-tools-make-money.html">
-      <div class="card-date">August 2026</div>
-      <div class="card-title">A Question Worth Asking About Every Free Shopping Tool: How Does It Make Money?</div>
-      <div class="card-meta">Some of the most popular free shopping tools had an answer their users didn't like. Here is how to evaluate any free tool, including ours.</div>
-    </a>
-</article>
+  <div class="dateline">By the True Finds team &middot; Updated October 2026</div>
+  <p class="gi-intro">Practical, plain-language guides on the gap between what shopping labels claim and what is actually true: price history, manufactured discounts, review timing, gift ideas from stores Sinclair checks, and what the words on packages really mean. New guides are added regularly.</p>
+  <div class="gi-grid">
+<a class="gi-card" href="/guides/holiday-shipping-cutoffs-2026.html">
+  <div class="gi-band" style="background:#F1F5F9;color:#1A3C5E">HOW-TO</div>
+  <div class="gi-text">
+    <div class="gi-title">Holiday 2026 shipping: when to order so gifts arrive on time</div>
+    <div class="gi-desc">The Postal Service&#x27;s 2026 holiday dates, plus a simple way to work out your own order-by date for any online store, so every gift arrives before the holiday.</div>
+    <div class="gi-time">4 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/gifts-comfort-hobbies-pets.html">
+  <img class="gi-media" src="/guides/img/gifts-comfort-hobbies-pets/sockwell-big-easy.jpg" alt="Sockwell relaxed-fit socks" loading="lazy">
+  <div class="gi-text"><div class="gi-eyebrow">GIFT GUIDE</div>
+    <div class="gi-title">Thoughtful gifts for comfort, hobbies and the pets they love</div>
+    <div class="gi-desc">Gift ideas that get used every day: comfortable socks, clip-on sunglasses, a relaxing paint-by-numbers hobby, treats for the family pet and a roaster for the host, each from a store Sinclair checks.</div>
+    <div class="gi-time">3 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/is-that-prime-day-deal-real.html">
+  <div class="gi-band" style="background:#FEF3C7;color:#92400E">REAL DEALS</div>
+  <div class="gi-text">
+    <div class="gi-title">Is that Prime Big Deal Days discount real? A five-minute check</div>
+    <div class="gi-desc">Most October sale prices are not new lows. Here is a simple way to tell a real deal from a dressed-up one before you buy, at Amazon, Target, Walmart or anywhere else.</div>
+    <div class="gi-time">4 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/five-things-to-check-before-you-buy-on-amazon.html">
+  <div class="gi-band" style="background:#F1F5F9;color:#1A3C5E">HOW-TO</div>
+  <div class="gi-text">
+    <div class="gi-title">Five Things to Check Before You Buy Anything on Amazon</div>
+    <div class="gi-desc">A 60-second checklist for smarter Amazon shopping: price history, review timing, sellers, countdown timers, and the wait-a-day rule.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/when-were-the-reviews-written.html">
+  <div class="gi-band" style="background:#F1F5F9;color:#1A3C5E">HOW-TO</div>
+  <div class="gi-text">
+    <div class="gi-title">When Were the Reviews Written? The Question That Exposes Manufactured Ratings</div>
+    <div class="gi-desc">A 4.6-star average is a summary; the dates underneath are the story. How review timing reveals what a rating hides, in about thirty seconds.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/olive-oil-extra-virgin-truth.html">
+  <div class="gi-band" style="background:#DCFCE7;color:#14532D">LABEL CHECK</div>
+  <div class="gi-text">
+    <div class="gi-title">Your Olive Oil Says &#x27;Extra Virgin.&#x27; Do You Know If That&#x27;s True?</div>
+    <div class="gi-desc">Extra virgin is a real, measurable standard that imported oils have repeatedly failed. How to read an olive oil label like someone who knows the tricks.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/supplement-cabinet-check.html">
+  <div class="gi-band" style="background:#DCFCE7;color:#14532D">LABEL CHECK</div>
+  <div class="gi-text">
+    <div class="gi-title">Open Your Medicine Cabinet. Count the Supplement Bottles.</div>
+    <div class="gi-desc">77 percent of Americans over 55 take supplements, and almost none of us can verify what the labels claim. What you can check today, and what should be automatic.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/the-anchor-price-trick.html">
+  <div class="gi-band" style="background:#FEF3C7;color:#92400E">REAL DEALS</div>
+  <div class="gi-text">
+    <div class="gi-title">The Anchor Trick: Why &#x27;Was $149.99&#x27; Works on Your Brain</div>
+    <div class="gi-desc">Anchoring is the psychology behind every struck-through price. Knowing about it does not turn it off. Here is the only real defense.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/are-big-sale-event-deals-real.html">
+  <div class="gi-band" style="background:#FEF3C7;color:#92400E">REAL DEALS</div>
+  <div class="gi-text">
+    <div class="gi-title">Prime Day, Lightning Deals, Flash Sales: How Many Are Real?</div>
+    <div class="gi-desc">Amazon prices change hundreds of times a day, and sale events run on urgency. How to tell a genuine event deal from a typical price in a costume.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/protein-powder-label-math.html">
+  <div class="gi-band" style="background:#DCFCE7;color:#14532D">LABEL CHECK</div>
+  <div class="gi-text">
+    <div class="gi-title">The Label Says 25 Grams of Protein. The Industry Has a Term You Should Know.</div>
+    <div class="gi-desc">Protein spiking lets a label pass the standard test while shortchanging you. What it is, why it is hard to catch, and what to look for at the shelf.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/honey-label-truth.html">
+  <div class="gi-band" style="background:#DCFCE7;color:#14532D">LABEL CHECK</div>
+  <div class="gi-text">
+    <div class="gi-title">Raw. Pure. Natural. Which Honey Label Words Actually Mean Something?</div>
+    <div class="gi-desc">Honey is one of the most adulterated foods in the world, and most label words carry no enforceable meaning. Here is what actually tells you something.</div>
+    <div class="gi-time">1 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/online-fraud-over-60-real-shape.html">
+  <div class="gi-band" style="background:#F1F5F9;color:#1A3C5E">HOW-TO</div>
+  <div class="gi-text">
+    <div class="gi-title">$7.7 Billion Reported Stolen From Americans Over 60. Most of It Didn&#x27;t Look Like Fraud.</div>
+    <div class="gi-desc">The FBI&#x27;s numbers on elder fraud are staggering, but the everyday losses look like discounts and reviews, not scams. What protection actually looks like.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+<a class="gi-card" href="/guides/how-free-shopping-tools-make-money.html">
+  <div class="gi-band" style="background:#F1F5F9;color:#1A3C5E">HOW-TO</div>
+  <div class="gi-text">
+    <div class="gi-title">A Question Worth Asking About Every Free Shopping Tool: How Does It Make Money?</div>
+    <div class="gi-desc">Some of the most popular free shopping tools had an answer their users didn&#x27;t like. Here is how to evaluate any free tool, including ours.</div>
+    <div class="gi-time">2 min read</div>
+  </div>
+</a>
+  </div>
   <div class="cta">
     <p><strong>Know the truth before you buy.</strong> Sinclair, your free AI shopping companion from True Finds, checks whether a sale price is real before you pay it. Paste a product link or type what you are looking for.</p>
-    <a class="btn" href="/?utm_source=guides&utm_medium=site&utm_campaign=guide-index">Check a price with Sinclair</a>
+    <a class="btn" href="/?utm_source=guides&amp;utm_medium=site&amp;utm_campaign=guide-index">Check a price with Sinclair</a>
   </div>
 </main>
 <!-- tf-join:start (footer Join strip, 4 Oct 2026, Jon: "We need a "Join" or "Sign Up" on the footer, too, so we keep the user engaged." Source of truth: true-finds-app/scripts/guides/join_strip.html) -->
