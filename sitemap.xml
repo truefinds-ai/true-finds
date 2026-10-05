@@ -64,6 +64,22 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- About -->
+  <url>
+    <loc>https://truefinds.ai/about</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- For stores and brands -->
+  <url>
+    <loc>https://truefinds.ai/for-stores</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
   <!-- Guides index -->
   <url>
     <loc>https://truefinds.ai/guides</loc>
