@@ -18,6 +18,7 @@
     { "source": "/api/list-store/confirm", "destination": "https://true-finds-app.vercel.app/api/list-store/confirm" },
     { "source": "/compare", "destination": "https://true-finds-app.vercel.app/compare" },
     { "source": "/api/ask", "destination": "https://true-finds-app.vercel.app/api/ask" },
+    { "source": "/api/ask/notify", "destination": "https://true-finds-app.vercel.app/api/ask/notify" },
     { "source": "/api/install-link", "destination": "https://true-finds-app.vercel.app/api/install-link" },
     { "source": "/api/compare/save", "destination": "https://true-finds-app.vercel.app/api/compare/save" },
     { "source": "/api/compare/featured", "destination": "https://true-finds-app.vercel.app/api/compare/featured" },

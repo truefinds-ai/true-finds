@@ -91,7 +91,9 @@
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid #BFE6D5; color: var(--green-dark); font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 999px; margin-bottom: 22px; }
     .eyebrow-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(26,158,110,.18); }
-    .hero h1 { font-size: clamp(42px, 6vw, 68px); font-weight: 900; letter-spacing: -0.035em; margin-bottom: 20px; }
+    /* 6 Oct 2026: the H1 is now a full sentence (fix plan item 9), so it is sized down to keep the Ask box on a phone's first screen. */
+    .hero h1 { font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; }
+    @media (max-width: 480px) { .hero h1 { font-size: 30px; } .hero .lead { font-size: 19px; margin-bottom: 18px; } }
     .lead { font-size: 21px; color: var(--muted); max-width: 560px; margin-bottom: 30px; }
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
     .hero-ticks { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; }
@@ -313,9 +315,6 @@
     .ask-go:disabled { opacity: .6; }
     .ask-go-mobile { display: none; width: 100%; height: 56px; }
     .ask-mrow { display: none; }
-    .ask-try { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
-    .ask-try span { font-size: 17px; font-weight: 600; color: var(--ink); }
-    .ask-try button { min-height: 44px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; }
     .ask-also { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
     .ask-also span { font-size: 17px; font-weight: 600; color: var(--ink); }
     .ask-also a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: none; }
@@ -324,7 +323,6 @@
     .prime-bar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; padding-top: 12px; padding-bottom: 12px; text-align: center; font-size: 17px; font-weight: 600; line-height: 1.4; }
     .prime-bar a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; color: var(--navy); padding: 0 18px; font-weight: 700; text-decoration: none; }
     .prime-bar a:hover { background: #E8F5EF; }
-    .ask-try button:hover { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
     .ask-note { margin-top: 14px; font-size: 17px; font-weight: 600; color: #14734F; }
     .ask-out { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
     .ask-out[hidden] { display: none; }
@@ -357,7 +355,22 @@
     .ask-later { min-height: 44px; display: inline-flex; align-items: center; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
     .ask-badge { width: 56px; height: 56px; border-radius: 12px; background: #E8F5EF; color: #14734F; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px #BFE3D2; flex: 0 0 auto; }
     .ask-who { flex: 1 1 auto; min-width: 0; }
-    .ask-who .ask-go-store { margin-top: 10px; }
+    .ask-list li { flex-wrap: wrap; }
+    .ask-btns { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+    .ask-savecard { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; padding: 0 18px; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
+    .ask-savecard:hover { background: #F4F7FA; }
+    .ask-list li.ask-nyrow { display: block; }
+    .ask-notyet { background: #E8F5EF; border-radius: 16px; padding: 16px; box-shadow: 0 0 0 1px #BFE3D2; margin-top: 8px; }
+    .ask-ny-line { font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--navy); }
+    .ask-ny-form { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .ask-ny-form input { flex: 1 1 200px; min-width: 0; height: 48px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 18px; font: inherit; font-size: 17px; color: var(--navy); }
+    .ask-ny-form input:focus { outline: none; box-shadow: 0 0 0 2px var(--green); }
+    .ask-ny-btn { flex: 0 0 auto; min-height: 48px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 24px; cursor: pointer; }
+    .ask-ny-btn:disabled { opacity: .6; }
+    .ask-ny-msg { margin-top: 10px; font-size: 17px; font-weight: 700; }
+    .ask-ny-msg.done { color: #14734F; }
+    .ask-ny-msg.bad { color: #B91C1C; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
     .ask-list li:first-child { border-top: 0; }
     .ask-list li[hidden] { display: none; }
     .ask-store { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; }
@@ -393,6 +406,30 @@
     .tf-inst-ask { margin: 10px 0 0; font-size: 17px; font-weight: 600; flex-basis: 100%; }
     .tf-inst-ask a { color: #14734F; text-decoration: underline; text-underline-offset: 3px; }
     .tf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* tf-menu:start (6 Oct 2026) */
+  .tf-menu { position:relative; flex:0 0 auto; }
+  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .tf-menu > summary::-webkit-details-marker { display:none; }
+  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
+  .tf-menu .tf-x { display:none; }
+  .tf-menu[open] .tf-x { display:block; }
+  .tf-menu[open] .tf-bars { display:none; }
+  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; box-shadow:0 10px 30px rgba(26,60,94,0.25), 0 0 0 1px #E1E7EE; }
+  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
+  .tf-menu nav a:hover { background:#F4F7FA; }
+  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#1A9E6E; color:#fff; padding:0 16px; }
+  .tf-menu nav a.tf-menu-cta:hover { background:#148259; }
+  .nav .tf-menu > summary { color:#1A3C5E; }
+  .nav .tf-menu > summary:hover { background:#EEF2F6; }
+  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
+  @media (max-width:479px) {
+    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
+    .topbar a.brand svg { height:22px !important; }
+    .topbar a.tcta { padding:0 11px; font-size:14px; }
+    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
+    .topbar .tf-menu > summary { width:42px; }
+  }
+  /* tf-menu:end */
 </style>
 </head>
 <body>
@@ -414,6 +451,9 @@
       <a href="#founding">Founding Member</a>
     </div>
     <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/" aria-current="page">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides/">Guides</a><a href="/about/">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+    
+    
   </div>
 </nav>
 
@@ -432,8 +472,8 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow-pill"><span class="dot"></span>Free add-on for Chrome &middot; Live now</div>
-      <h1>Know the truth<br>before you buy.</h1>
-      <p class="lead">Sinclair, your free AI shopping companion, reads the price history behind a product and tells you plainly whether the deal is real. On Amazon, and now at independent brand stores.</p>
+      <h1>Sinclair, your free AI shopping companion, checks the true price before you buy.</h1>
+      <p class="lead">Ask in your own words, paste a link, or share it from the Amazon app.</p>
       <div class="hero-ctas">
         <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
         <div class="tf-inst tf-touch-only">
@@ -505,16 +545,9 @@
         </div>
       </form>
       <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
-      <div class="ask-try" id="ask-try">
-        <span>Is this deal real? Try:</span>
-        <button type="button" data-q="https://thebeautyandskin.com/products/evergreen-style-cream">R&#332;Z Style Cream</button>
-        <button type="button" data-q="https://www.amazon.com/dp/B0GJTFXNRX">Apple AirTag</button>
-        <button type="button" data-q="https://thebeautyandskin.com/products/bond-repair-treatment-starter-kit">Bond Repair Kit</button>
-      </div>
       <div class="ask-also" id="ask-also">
         <span>Or start with:</span>
         <a href="/gifts#gifts-for-her" data-tap="gift for her">A gift for her</a>
-        <a href="/plan?list=new-puppy" data-tap="new puppy">A new puppy</a>
         <a href="/plan?list=family-trip" data-tap="family trip">A family trip</a>
       </div>
       <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
@@ -1428,7 +1461,7 @@
     var note = document.getElementById('ask-note');
     var mic = document.getElementById('ask-mic');
     if (!form || !input || !out) return;
-    var busy = false;
+    var busy = false, asked = '';
     function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
     function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
     function usd(c) { return '$' + (c / 100).toFixed(2); }
@@ -1460,16 +1493,14 @@
       out.appendChild(wait);
       fetch('/api/ask?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
-        .then(function (d) { render(d); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
+        .then(function (d) { asked = q; render(d);
+          if (d && d.ok && (d.missing || !((d.offers || []).length + (d.stores || []).length))) track('ask_no_result', { surface: 'home', via: via, kind: d.kind || '', closest: (d.offers || []).length + (d.stores || []).length }); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
         .catch(function () { clear(out); out.appendChild(el('p', 'ask-msg', "Sinclair couldn't check that right now. Please try again in a minute.")); })
         .then(function () { setBusy(false); });
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
     Array.prototype.forEach.call(document.querySelectorAll('#ask-also a'), function (a) {
       a.addEventListener('click', function () { tap('starter', a.getAttribute('data-tap')); });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('#ask-try button'), function (b) {
-      b.addEventListener('click', function () { input.value = b.getAttribute('data-q'); tap('example', b.textContent); run(input.value, 'example'); });
     });
 
     // Microphone: only where the browser can turn speech into text.
@@ -1490,6 +1521,41 @@
         mic.classList.add('on'); mic.setAttribute('aria-pressed', 'true'); say('Listening... say the product name.');
         try { rec.start(); } catch (err) { rec = null; mic.classList.remove('on'); say("Sinclair didn't catch that. Tap the microphone and try again, or type it."); }
       });
+    }
+
+    // Sinclair's line (Jon 6 Oct, verbatim), then one email field and "Let me know".
+    // A shopper who left an email here before gets the button alone.
+    function notYet() {
+      var box = el('div', 'ask-notyet');
+      box.appendChild(el('p', 'ask-ny-line', "That's not in True Finds yet. I'll add it to Sinclair and let you know when it's in."));
+      box.appendChild(el('p', 'ask-line', 'Your check has been counted, and products shoppers ask about are added first.'));
+      var known = null; try { known = localStorage.getItem('tf_email'); } catch (e) {}
+      var f = el('form', 'ask-ny-form'); f.noValidate = true;
+      var inp = null;
+      if (!known) {
+        var lab = el('label', 'sr-only', 'Your email'); lab.htmlFor = 'ask-ny-email'; f.appendChild(lab);
+        inp = el('input'); inp.id = 'ask-ny-email'; inp.type = 'email'; inp.inputMode = 'email'; inp.autocomplete = 'email'; inp.placeholder = 'Your email'; f.appendChild(inp);
+      }
+      var b = el('button', 'ask-ny-btn', 'Let me know'); b.type = 'submit'; f.appendChild(b);
+      var msg = el('p', 'ask-ny-msg'); msg.hidden = true;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var to = (known || (inp && inp.value) || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) { msg.textContent = 'That email does not look right.'; msg.className = 'ask-ny-msg bad'; msg.hidden = false; return; }
+        b.disabled = true; b.textContent = 'Saving...';
+        fetch('/api/ask/notify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: to, q: asked, surface: 'home' }) })
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            if (j && j.ok) {
+              try { localStorage.setItem('tf_email', to); } catch (e2) {}
+              track('ask_notify_submit', { surface: 'home', state: known ? 'remembered' : 'typed' });
+              f.remove(); msg.textContent = "Done. I'll email you."; msg.className = 'ask-ny-msg done'; msg.hidden = false;
+            } else { throw new Error('x'); }
+          })
+          .catch(function () { b.disabled = false; b.textContent = 'Let me know'; msg.textContent = "That didn't save. Please try again in a minute."; msg.className = 'ask-ny-msg bad'; msg.hidden = false; });
+      });
+      box.appendChild(f); box.appendChild(msg);
+      return box;
     }
 
     function render(d) {
@@ -1516,12 +1582,13 @@
       if (top) out.appendChild(top);
 
       var rows = [], earns = false;
-      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced' }); });
-      (d.stores || []).forEach(function (s) { if (s.earns) earns = true; rows.push({ name: s.name, sub: s.label, link: s.link, host: s.host, target: 'store' }); });
+      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null }); });
+      (d.stores || []).forEach(function (s) { if (s.earns) earns = true; rows.push({ name: s.name, sub: s.label, link: s.link, host: s.host, target: 'store', save: s.save || null }); });
       var panel = el('div', 'ask-panel');
-      panel.appendChild(el('h3', 'ask-h', 'Where else to buy'));
+      panel.appendChild(el('h3', 'ask-h', d.missing && rows.length ? 'Closest we have' : 'Where else to buy'));
       if (!d.sinclair && d.title) { var q = el('p', 'ask-q-line', 'You asked about'); q.appendChild(el('span', 'ask-q-chip', d.title)); panel.appendChild(q); }
-      if (!rows.length) { panel.appendChild(el('p', 'ask-line', "Sinclair couldn't find this at other stores yet.")); }
+      // No dead end (6 Oct 2026, mobile fix plan item 3): never "couldn't find" as the last line.
+      if (!rows.length) { panel.appendChild(notYet()); }
       else {
         var ul = el('ul', 'ask-list');
         rows.forEach(function (r, n) {
@@ -1536,9 +1603,18 @@
           if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', 'Live price')); head.appendChild(pr); }
           body.appendChild(head);
           if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
-          var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' \u2192', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); body.appendChild(go);
+          // Buy and Save side by side, so Save shows without scrolling at 375px (6 Oct, item 4).
+          var btnrow = el('div', 'ask-btns');
+          var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' \u2192', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
+          if (r.save) {
+            var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
+            sv.addEventListener('click', function () { tap('save_card', r.host); track('save_tap', { surface: 'home', target: 'ask_card', store: r.host || '' }); });
+            btnrow.appendChild(sv);
+          }
           li.appendChild(body);
+          li.appendChild(btnrow);
           ul.appendChild(li);
+          if (d.missing && n === 0) { var nyRow = el('li', 'ask-nyrow'); nyRow.appendChild(notYet()); ul.appendChild(nyRow); }
         });
         panel.appendChild(ul);
         if (rows.length > 4) {

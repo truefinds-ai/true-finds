@@ -54,6 +54,30 @@
   .promise a { color:var(--green-text); font-weight:600; }
   footer { border-top:1px solid var(--line); padding:26px 24px; text-align:center; font-size:14px; color:#4A5A68; }
   footer a { color:#4A5A68; }
+  /* tf-menu:start (6 Oct 2026) */
+  .tf-menu { position:relative; flex:0 0 auto; }
+  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .tf-menu > summary::-webkit-details-marker { display:none; }
+  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
+  .tf-menu .tf-x { display:none; }
+  .tf-menu[open] .tf-x { display:block; }
+  .tf-menu[open] .tf-bars { display:none; }
+  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; box-shadow:0 10px 30px rgba(26,60,94,0.25), 0 0 0 1px #E1E7EE; }
+  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
+  .tf-menu nav a:hover { background:#F4F7FA; }
+  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#1A9E6E; color:#fff; padding:0 16px; }
+  .tf-menu nav a.tf-menu-cta:hover { background:#148259; }
+  .nav .tf-menu > summary { color:#1A3C5E; }
+  .nav .tf-menu > summary:hover { background:#EEF2F6; }
+  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
+  @media (max-width:479px) {
+    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
+    .topbar a.brand svg { height:22px !important; }
+    .topbar a.tcta { padding:0 11px; font-size:14px; }
+    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
+    .topbar .tf-menu > summary { width:42px; }
+  }
+  /* tf-menu:end */
 </style>
 </head>
 <body>
@@ -63,6 +87,7 @@
     <a class="tl" href="/real-deals">Real Deals</a>
     <a class="tl" href="/how-it-works/">How It Works</a>
     <a class="tl" href="/guides/">Guides</a>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides/">Guides</a><a href="/about/">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
   </div>
 </div>
 
