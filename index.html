@@ -315,6 +315,11 @@
     .ask-go:disabled { opacity: .6; }
     .ask-go-mobile { display: none; width: 100%; height: 56px; }
     .ask-mrow { display: none; }
+    .ask-paste { display: none; flex: 0 0 auto; height: 56px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; color: var(--navy); font: inherit; font-size: 18px; font-weight: 700; padding: 0 22px; cursor: pointer; }
+    .ask-share-help { display: none; margin-top: 10px; font-size: 16px; color: #3E4F60; }
+    .ask-card.ask-in-hero { margin: 0 0 24px; padding-top: 16px; }
+    .ask-card.ask-in-hero h2 { font-size: 21px; line-height: 1.25; margin-top: 8px !important; }
+    .ask-card.ask-in-hero .ask-form { margin-top: 12px; }
     .ask-also { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
     .ask-also span { font-size: 17px; font-weight: 600; color: var(--ink); }
     .ask-also a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: none; }
@@ -359,6 +364,9 @@
     .ask-btns { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
     .ask-savecard { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; padding: 0 18px; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
     .ask-savecard:hover { background: #F4F7FA; }
+    .ask-verified { display: inline-flex; align-items: center; margin-left: 8px; vertical-align: 2px; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; padding: 1px 8px; font-size: 13px; font-weight: 700; }
+    .ask-opts { font-size: 15px; color: #3E4F60; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ask-more-btn { display: block; width: 100%; min-height: 48px; margin-top: 4px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; text-decoration: none; }
     .ask-list li.ask-nyrow { display: block; }
     .ask-notyet { background: #E8F5EF; border-radius: 16px; padding: 16px; box-shadow: 0 0 0 1px #BFE3D2; margin-top: 8px; }
     .ask-ny-line { font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--navy); }
@@ -387,6 +395,8 @@
       .ask-bar .ask-go { display: none; }
       .ask-mrow { display: flex; gap: 10px; margin-top: 12px; }
       .ask-go-mobile { display: block; flex: 1; }
+      .ask-paste { display: block; }
+      .ask-share-help { display: block; }
       .ask-next { align-items: stretch; }
       .ask-next .ask-save { align-self: stretch; }
       .ask-later { justify-content: center; text-align: center; }
@@ -541,19 +551,36 @@
           <button class="ask-go" type="submit" id="ask-btn">Ask Sinclair</button>
         </div>
         <div class="ask-mrow">
+          <button class="ask-paste" type="button" id="ask-paste">Paste</button>
           <button class="ask-go ask-go-mobile" type="submit" id="ask-btn-m">Ask Sinclair</button>
         </div>
+        <p class="ask-share-help">From the Amazon app: tap Share, Copy, then paste here.</p>
       </form>
       <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
       <div class="ask-also" id="ask-also">
         <span>Or start with:</span>
         <a href="/gifts#gifts-for-her" data-tap="gift for her">A gift for her</a>
+        <a href="/plan?list=new-puppy" data-tap="new puppy">A new puppy</a>
         <a href="/plan?list=family-trip" data-tap="family trip">A family trip</a>
       </div>
       <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
     </div>
   </div>
 </section>
+
+<script>
+  /* Phones (6 Oct 2026, Jon via Cowork): the Ask box sits right under the hero's sub line,
+     not three screens down. Moved once, before first paint; the Ask script finds it by id. */
+  (function () {
+    if (!window.matchMedia || !window.matchMedia('(max-width: 980px)').matches) return;
+    var sec = document.getElementById('ask'), card = sec && sec.querySelector('.ask-card'), lead = document.querySelector('.hero .lead');
+    if (!card || !lead) return;
+    sec.removeAttribute('id'); sec.hidden = true;
+    card.id = 'ask'; card.classList.add('ask-in-hero');
+    lead.insertAdjacentElement('afterend', card);
+    var link = document.querySelector('.tf-inst-ask'); if (link) link.hidden = true;
+  })();
+</script>
 
 <section class="section" id="deals">
   <div class="wrap">
@@ -1494,11 +1521,19 @@
       fetch('/api/ask?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(function (d) { asked = q; render(d);
-          if (d && d.ok && (d.missing || !((d.offers || []).length + (d.stores || []).length))) track('ask_no_result', { surface: 'home', via: via, kind: d.kind || '', closest: (d.offers || []).length + (d.stores || []).length }); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
+          if (/(?:a\.co|amzn\.to|amzn\.com)\/[A-Za-z0-9]/i.test(q)) track('amazon_share_paste', { surface: 'home', via: via, resolved: (d && d.shared) || (d && d.ok ? 'asin' : 'none') });
+          if (d && d.ok && (d.missing || !((d.offers || []).length + (d.stores || []).length + (d.catalog || []).length))) track('ask_no_result', { surface: 'home', via: via, kind: d.kind || '', closest: (d.offers || []).length + (d.stores || []).length + (d.catalog || []).length }); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
         .catch(function () { clear(out); out.appendChild(el('p', 'ask-msg', "Sinclair couldn't check that right now. Please try again in a minute.")); })
         .then(function () { setBusy(false); });
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
+    // Paste button on phones (6 Oct 2026): one tap pastes what the Amazon app copied, and asks.
+    var pasteBtn = document.getElementById('ask-paste');
+    if (pasteBtn) pasteBtn.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.readText) { say('From the Amazon app: tap Share, Copy, then paste here.'); return; }
+      navigator.clipboard.readText().then(function (t) { t = (t || '').trim(); if (t) { input.value = t; run(t, 'paste'); } })
+        .catch(function () { say('From the Amazon app: tap Share, Copy, then paste here.'); });
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#ask-also a'), function (a) {
       a.addEventListener('click', function () { tap('starter', a.getAttribute('data-tap')); });
     });
@@ -1581,51 +1616,92 @@
       }
       if (top) out.appendChild(top);
 
-      var rows = [], earns = false;
+      // One result card: photo, store, product, price, then Buy and Save side by side (6 Oct 2026).
+      function cardLi(r) {
+        var li = el('li');
+        if (r.image && /^https:\/\//.test(r.image)) {
+          var img = document.createElement('img'); img.className = 'ask-thumb'; img.src = r.image; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; li.appendChild(img);
+        } else {
+          var badge = el('span', 'ask-badge', ((r.name.match(/[A-Za-z0-9]/) || ['?'])[0]).toUpperCase()); badge.setAttribute('aria-hidden', 'true'); li.appendChild(badge);
+        }
+        var body = el('div', 'ask-who');
+        var head = el('div', 'ask-head'); var nm = el('p', 'ask-store', r.name);
+        if (r.verified) nm.appendChild(el('span', 'ask-verified', 'Verified'));
+        head.appendChild(nm);
+        if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', r.priceLabel || 'Live price')); head.appendChild(pr); }
+        body.appendChild(head);
+        if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
+        if (r.options && r.options.length) body.appendChild(el('p', 'ask-opts', r.options.join(', ')));
+        var btnrow = el('div', 'ask-btns');
+        var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' →', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
+        if (r.save) {
+          var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
+          sv.addEventListener('click', function () { tap('save_card', r.host); track('save_tap', { surface: 'home', target: r.target === 'catalog' ? 'ask_catalog' : 'ask_card', store: r.host || '' }); });
+          btnrow.appendChild(sv);
+        }
+        li.appendChild(body);
+        li.appendChild(btnrow);
+        return li;
+      }
+
+      var rows = [], earns = false, catalog = [];
+      // Every matching product from Shopify's catalog at US stores (6 Oct 2026, item 11), 10 at a time.
+      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null }); });
+      var catHosts = {}; catalog.forEach(function (c) { catHosts[c.host.replace(/^www\./, '')] = true; });
       (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null }); });
       (d.stores || []).forEach(function (s) { if (s.earns) earns = true; rows.push({ name: s.name, sub: s.label, link: s.link, host: s.host, target: 'store', save: s.save || null }); });
-      var panel = el('div', 'ask-panel');
-      panel.appendChild(el('h3', 'ask-h', d.missing && rows.length ? 'Closest we have' : 'Where else to buy'));
-      if (!d.sinclair && d.title) { var q = el('p', 'ask-q-line', 'You asked about'); q.appendChild(el('span', 'ask-q-chip', d.title)); panel.appendChild(q); }
-      // No dead end (6 Oct 2026, mobile fix plan item 3): never "couldn't find" as the last line.
-      if (!rows.length) { panel.appendChild(notYet()); }
-      else {
-        var ul = el('ul', 'ask-list');
-        rows.forEach(function (r, n) {
-          var li = el('li'); if (rows.length > 4 && n >= 3) li.hidden = true;
-          if (r.image && /^https:\/\//.test(r.image)) {
-            var img = document.createElement('img'); img.className = 'ask-thumb'; img.src = r.image; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; li.appendChild(img);
-          } else {
-            var badge = el('span', 'ask-badge', ((r.name.match(/[A-Za-z0-9]/) || ['?'])[0]).toUpperCase()); badge.setAttribute('aria-hidden', 'true'); li.appendChild(badge);
+      rows = rows.filter(function (r) { return !catHosts[r.host.replace(/^www\./, '')]; });
+
+      if (catalog.length) {
+        var cpanel = el('div', 'ask-panel');
+        cpanel.appendChild(el('h3', 'ask-h', d.missing ? 'Closest we have' : 'At stores across the US'));
+        if (d.title) { var cq = el('p', 'ask-q-line', 'You asked about'); cq.appendChild(el('span', 'ask-q-chip', d.title)); cpanel.appendChild(cq); }
+        var cul = el('ul', 'ask-list'); var shown = 0;
+        function showMore() {
+          var stop = Math.min(catalog.length, shown + 10);
+          for (; shown < stop; shown++) {
+            cul.appendChild(cardLi(catalog[shown]));
+            if (d.missing && shown === 0) { var ny0 = el('li', 'ask-nyrow'); ny0.appendChild(notYet()); cul.appendChild(ny0); }
           }
-          var body = el('div', 'ask-who');
-          var head = el('div', 'ask-head'); head.appendChild(el('p', 'ask-store', r.name));
-          if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', 'Live price')); head.appendChild(pr); }
-          body.appendChild(head);
-          if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
-          // Buy and Save side by side, so Save shows without scrolling at 375px (6 Oct, item 4).
-          var btnrow = el('div', 'ask-btns');
-          var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' \u2192', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
-          if (r.save) {
-            var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
-            sv.addEventListener('click', function () { tap('save_card', r.host); track('save_tap', { surface: 'home', target: 'ask_card', store: r.host || '' }); });
-            btnrow.appendChild(sv);
-          }
-          li.appendChild(body);
-          li.appendChild(btnrow);
-          ul.appendChild(li);
-          if (d.missing && n === 0) { var nyRow = el('li', 'ask-nyrow'); nyRow.appendChild(notYet()); ul.appendChild(nyRow); }
-        });
-        panel.appendChild(ul);
-        if (rows.length > 4) {
-          var extra = rows.length - 3;
-          var more = el('button', 'ask-more', 'See ' + extra + ' more ' + (extra === 1 ? 'store' : 'stores')); more.type = 'button';
-          more.addEventListener('click', function () { Array.prototype.forEach.call(ul.children, function (x) { x.hidden = false; }); more.remove(); tap('more_stores'); });
-          panel.appendChild(more);
+          if (shown >= catalog.length && cmore) cmore.remove();
+          else if (cmore) cmore.textContent = 'Show ' + Math.min(10, catalog.length - shown) + ' more';
         }
-        if (d.offers && d.offers.length) panel.appendChild(el('p', 'fine', 'Prices from Shopify stores, checked just now. They can change.'));
+        var cmore = null;
+        cpanel.appendChild(cul);
+        if (catalog.length > 10) {
+          cmore = el('button', 'ask-more ask-more-btn', ''); cmore.type = 'button';
+          cmore.addEventListener('click', function () { showMore(); tap('catalog_more'); });
+          cpanel.appendChild(cmore);
+        }
+        showMore();
+        cpanel.appendChild(el('p', 'fine', "Prices are each store's own, checked just now. They can change."));
+        out.appendChild(cpanel);
       }
-      out.appendChild(panel);
+
+      if (rows.length || !catalog.length) {
+        var panel = el('div', 'ask-panel');
+        panel.appendChild(el('h3', 'ask-h', d.missing && rows.length && !catalog.length ? 'Closest we have' : 'Where else to buy'));
+        if (!d.sinclair && d.title && !catalog.length) { var q = el('p', 'ask-q-line', 'You asked about'); q.appendChild(el('span', 'ask-q-chip', d.title)); panel.appendChild(q); }
+        // No dead end (6 Oct 2026, mobile fix plan item 3): never "couldn't find" as the last line.
+        if (!rows.length) { panel.appendChild(notYet()); }
+        else {
+          var ul = el('ul', 'ask-list');
+          rows.forEach(function (r, n) {
+            var li = cardLi(r); if (rows.length > 4 && n >= 3) li.hidden = true;
+            ul.appendChild(li);
+            if (d.missing && !catalog.length && n === 0) { var nyRow = el('li', 'ask-nyrow'); nyRow.appendChild(notYet()); ul.appendChild(nyRow); }
+          });
+          panel.appendChild(ul);
+          if (rows.length > 4) {
+            var extra = rows.length - 3;
+            var more = el('button', 'ask-more', 'See ' + extra + ' more ' + (extra === 1 ? 'store' : 'stores')); more.type = 'button';
+            more.addEventListener('click', function () { Array.prototype.forEach.call(ul.children, function (x) { x.hidden = false; }); more.remove(); tap('more_stores'); });
+            panel.appendChild(more);
+          }
+          if (d.offers && d.offers.length) panel.appendChild(el('p', 'fine', 'Prices from Shopify stores, checked just now. They can change.'));
+        }
+        out.appendChild(panel);
+      }
       if (d.compareHref) {
         var acts2 = el('div', 'ask-next');
         acts2.appendChild(link(d.compareHref, 'Compare all stores', 'ask-save', false, 'compare'));

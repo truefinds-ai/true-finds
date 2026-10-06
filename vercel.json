@@ -2,6 +2,8 @@
   "redirects": [
     { "source": "/ig", "destination": "/?utm_source=instagram&utm_medium=organic&utm_campaign=bio", "permanent": false },
     { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false },
+    { "source": "/prime", "destination": "/guides/is-that-prime-day-deal-real.html", "permanent": false },
+    { "source": "/gifts-guide", "destination": "/guides/gifts-comfort-hobbies-pets.html", "permanent": false },
     { "source": "/deals", "destination": "/real-deals", "permanent": true },
     { "source": "/deals/", "destination": "/real-deals", "permanent": true },
     { "source": "/deals/:category", "destination": "/real-deals/:category", "permanent": true }
