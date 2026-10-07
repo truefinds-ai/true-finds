@@ -14,7 +14,7 @@
   <!-- Home -->
   <url>
     <loc>https://truefinds.ai/</loc>
-    <lastmod>2026-09-11</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -22,36 +22,43 @@
   <!-- Deals hub. Regenerated weekly, and the most citable thing on the site. -->
   <url>
     <loc>https://truefinds.ai/real-deals</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/baby</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/beauty-and-personal-care</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/electronics</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/home-and-kitchen</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/pet-supplies</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/real-deals/tools-and-home-improvement</loc>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -59,7 +66,7 @@
   <!-- How it works -->
   <url>
     <loc>https://truefinds.ai/how-it-works</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -67,7 +74,7 @@
   <!-- About -->
   <url>
     <loc>https://truefinds.ai/about</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -75,7 +82,7 @@
   <!-- For stores and brands -->
   <url>
     <loc>https://truefinds.ai/for-stores</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -83,75 +90,69 @@
   <!-- Guides index -->
   <url>
     <loc>https://truefinds.ai/guides</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Guides -->
   <url>
-    <loc>https://truefinds.ai/guides/how-the-sinclair-verdict-works.html</loc>
-    <lastmod>2026-08-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://truefinds.ai/guides/the-anchor-price-trick.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/five-things-to-check-before-you-buy-on-amazon.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/are-big-sale-event-deals-real.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/how-free-shopping-tools-make-money.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/online-fraud-over-60-real-shape.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/when-were-the-reviews-written.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/supplement-cabinet-check.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/protein-powder-label-math.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/honey-label-truth.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/olive-oil-extra-virgin-truth.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -159,7 +160,7 @@
   <!-- Muse connector -->
   <url>
     <loc>https://truefinds.ai/muse</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -167,19 +168,19 @@
   <!-- Support and policy -->
   <url>
     <loc>https://truefinds.ai/terms</loc>
-    <lastmod>2026-09-26</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/support</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/privacy</loc>
-    <lastmod>2026-09-01</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -192,13 +193,13 @@
   </url>
   <url>
     <loc>https://truefinds.ai/guides/gifts-comfort-hobbies-pets.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://truefinds.ai/guides/holiday-shipping-cutoffs-2026.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

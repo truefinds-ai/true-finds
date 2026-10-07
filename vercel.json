@@ -1,5 +1,7 @@
 {
+  "trailingSlash": false,
   "redirects": [
+    { "source": "/guides/how-the-sinclair-verdict-works.html", "destination": "/how-it-works", "permanent": true },
     { "source": "/ig", "destination": "/?utm_source=instagram&utm_medium=organic&utm_campaign=bio", "permanent": false },
     { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false },
     { "source": "/gifts-guide", "destination": "/guides/gifts-comfort-hobbies-pets.html", "permanent": false },
