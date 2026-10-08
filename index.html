@@ -60,8 +60,8 @@
     .chip { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .06em; padding: 5px 11px; border-radius: 999px; border: 1.5px solid; }
     .chip.sm { font-size: 13px; padding: 3px 9px; white-space: nowrap; }
     .chip.genuine { color: var(--green-dark); background: var(--green-tint); border-color: #9CD9BF; }
-    .chip.inflated { color: var(--red); background: var(--red-tint); border-color: #F1B4AC; }
-    .chip.typical { color: var(--amber); background: var(--amber-tint); border-color: #E7D08E; }
+    .chip.inflated { color: #92400E; background: #FEF3C7; border-color: #92400E; }
+    .chip.typical { color: #475569; background: #E2E8F0; border-color: #475569; }
     .chip.nodata { color: var(--gray-chip); background: var(--gray-tint); border-color: #C9D3DC; }
     .chip.watching { color: var(--navy); background: #E8EFF6; border-color: #B9CBDD; }
 
@@ -69,8 +69,8 @@
     .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
     .nav-inner { max-width: 1180px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 28px; }
     .nav-logo svg { height: 52px; width: auto; }
-    .nav-links { display: flex; gap: 24px; margin-left: auto; }
-    .nav-links a { text-decoration: none; font-weight: 600; font-size: 16px; color: var(--navy); }
+    .nav-links { display: flex; gap: 32px; margin-left: auto; }
+    .nav-links a { text-decoration: none; font-weight: 600; font-size: 16px; color: var(--navy); white-space: nowrap; }
     .nav-links a:hover { color: var(--green-dark); }
     @media (max-width: 900px) { .nav-links { display: none; } .nav-inner .btn { margin-left: auto; } }
     /* Phone tab bar, 1 Oct 2026 (Jon: no navigation on the phone). NN/g: hidden
@@ -86,34 +86,39 @@
     }
 
 
+    /* Saved strip, 8 Oct 2026 */
+    .saved-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+    .saved-grid img { width: 100%; max-width: 400px; justify-self: center; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(26,60,94,.18); }
+    @media (max-width: 900px) { .saved-grid { grid-template-columns: 1fr; gap: 20px; } }
+
     /* Hero */
     .hero { background: linear-gradient(180deg, #F2F8F5 0%, #FFFFFF 100%); padding: 64px 0 56px; overflow: hidden; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid #BFE6D5; color: var(--green-dark); font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 999px; margin-bottom: 22px; }
     .eyebrow-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(26,158,110,.18); }
     /* 6 Oct 2026: the H1 is now a full sentence (fix plan item 9), so it is sized down to keep the Ask box on a phone's first screen. */
-    .hero h1 { font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; text-wrap: balance; }
     @media (max-width: 480px) { .hero h1 { font-size: 30px; } .hero .lead { font-size: 19px; margin-bottom: 18px; } }
     .lead { font-size: 21px; color: var(--muted); max-width: 560px; margin-bottom: 30px; }
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
     .hero-ticks { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; }
     .hero-ticks li { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; color: var(--navy); }
     .hero-ticks svg, .perks svg, .store-promise svg { width: 20px; height: 20px; color: var(--green); flex: none; }
-    .hero-visual { position: relative; min-height: 560px; }
+    .hero-visual { position: relative; min-height: 600px; }
     .shot { background: var(--white); border-radius: 16px; box-shadow: 0 24px 60px rgba(26,60,94,.18), 0 2px 6px rgba(26,60,94,.08); overflow: hidden; border: 1px solid var(--line); }
     .shot-bar { height: 30px; background: #EEF2F5; display: flex; gap: 7px; align-items: center; padding: 0 12px; border-bottom: 1px solid var(--line); }
     .shot-bar span { width: 10px; height: 10px; border-radius: 50%; background: #C9D3DC; }
-    .shot-main { width: 330px; margin-left: auto; margin-right: 0; }
+    .shot-main { width: 400px; margin-left: auto; margin-right: 0; margin-top: 182px; }
     .float-card { position: absolute; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 14px 36px rgba(26,60,94,.16); padding: 14px 16px; text-decoration: none; }
-    .fc-store { left: 0; bottom: 20px; display: flex; flex-direction: column; gap: 6px; width: 200px; padding: 12px; }
+    .fc-store { left: 0; bottom: 0; display: flex; flex-direction: column; gap: 6px; width: 200px; padding: 12px; }
     .fc-store img { width: 100%; height: 96px; object-fit: contain; background: var(--soft); border-radius: 10px; }
-    .fc-verdict { left: 0; top: 40px; width: 200px; }
+    .fc-verdict { left: 0; top: 16px; width: 200px; }
     .fc-title { font-weight: 700; color: var(--navy); font-size: 16px; margin: 6px 0 4px; line-height: 1.3; }
     .fc-sub { font-size: 14px; color: var(--muted); line-height: 1.45; }
     @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; }
+      .hero-grid { grid-template-columns: minmax(0, 1fr); }
       .hero-visual { min-height: 0; padding-top: 10px; }
-      .shot-main { margin: 0 auto; max-width: 100%; }
+      .shot-main { margin: 0 auto; max-width: 100%; margin-top: 0; }
       .float-card { position: static; margin: 16px auto 0; width: auto; max-width: 320px; }
     }
 
@@ -439,6 +444,8 @@
     .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
     .topbar .tf-menu > summary { width:42px; }
   }
+  /* Homepage, 8 Oct 2026 (Cowork, Jon approved): the full bar shows from 901px, so the menu button does not. */
+  @media (min-width:901px) { .nav .tf-menu { display:none; } }
   /* tf-menu:end */
 </style>
 <link rel="canonical" href="https://truefinds.ai/">
@@ -456,13 +463,11 @@
       <a href="/real-deals">Real Deals</a>
       <a href="/gifts">Gifts</a>
       <a href="/plan">Lists</a>
-      <a href="#brands">Brand stores</a>
-      <a href="/how-it-works">How It Works</a>
+      <a href="#brands">Stores</a>
       <a href="/guides">Guides</a>
-      <a href="#founding">Founding Member</a>
     </div>
     <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
-    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/" aria-current="page">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/" aria-current="page">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/how-it-works">How It Works</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
     
     
   </div>
@@ -511,11 +516,11 @@
     <div class="hero-visual">
       <figure class="shot shot-main">
         <div class="shot-bar"><span></span><span></span><span></span></div>
-        <img src="/img/home/sinclair-genuine-verdict.jpg" alt="Sinclair showing a GENUINE DEAL verdict with the price history of an HP printer on Amazon" width="400" height="515">
+        <img src="/img/home/sinclair-genuine-window.jpg" alt="Sinclair, your free AI shopping companion, showing a GENUINE DEAL verdict on a Vitamix 5200 blender: the lowest price in three months." width="800" height="394">
       </figure>
       <a class="float-card fc-store" href="/store/eydology.com/giselle-tortoise-rectangle-glasses">
         <img src="https://cdn.shopify.com/s/files/1/0951/0076/4233/files/Eydology_Giselle_Tortoise_Rectangle_Glasses_1.webp?width=300" alt="Eydology Giselle tortoise glasses">
-        <div><div class="fc-title">Eydology &middot; Giselle</div><span class="chip watching sm">SINCLAIR IS WATCHING</span></div>
+        <div><div class="fc-title">Eydology &middot; Giselle</div><span class="chip watching sm">SAVED</span></div>
       </a>
       <div class="float-card fc-verdict">
         <span class="chip inflated sm">INFLATED</span>
@@ -525,6 +530,16 @@
     </div>
   </div>
 </header>
+
+<section class="section saved-strip" id="saved" aria-labelledby="saved-h">
+  <div class="wrap saved-grid">
+    <div>
+      <h2 id="saved-h">Save it now. Decide later.</h2>
+      <p class="sub">Hit Save and Sinclair keeps it in your list. No more sticky notes.</p>
+    </div>
+    <img src="/img/home/sinclair-saved-in-browser.jpg" alt="The Sinclair Saved list opened from the browser toolbar, showing saved items with their verdicts." width="764" height="1112" loading="lazy">
+  </div>
+</section>
 
 <section class="proof">
   <div class="wrap proof-grid">
@@ -680,7 +695,7 @@
         <div class="store-body">
           <div class="store-name">Eydology &middot; Eyewear</div>
           <h3>Giselle Tortoise Rectangle Glasses</h3>
-          <span class="chip watching">SINCLAIR IS WATCHING</span>
+          <span class="chip watching">RECORDED DAILY</span>
           <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
         </div>
       </a>
@@ -689,7 +704,7 @@
         <div class="store-body">
           <div class="store-name">Holistic Hair Tribe &middot; Hair care</div>
           <h3>ARET&Eacute; Density Renewal Hair and Scalp Serum</h3>
-          <span class="chip watching">SINCLAIR IS WATCHING</span>
+          <span class="chip watching">RECORDED DAILY</span>
           <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
         </div>
       </a>
@@ -698,7 +713,7 @@
         <div class="store-body">
           <div class="store-name">Spilled Milk &middot; Gifts for grandkids</div>
           <h3>Fl&ouml;ss Fresa Bodysuit in Ditsy Rose</h3>
-          <span class="chip watching">SINCLAIR IS WATCHING</span>
+          <span class="chip watching">RECORDED DAILY</span>
           <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
         </div>
       </a>
@@ -707,7 +722,7 @@
         <div class="store-body">
           <div class="store-name">The Beauty And Skin &middot; Skin care</div>
           <h3>VISO Red Light Therapy Mask</h3>
-          <span class="chip watching">SINCLAIR IS WATCHING</span>
+          <span class="chip watching">RECORDED DAILY</span>
           <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
         </div>
       </a>
