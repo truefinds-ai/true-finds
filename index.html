@@ -1669,7 +1669,13 @@
       (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null }); });
       var catHosts = {}; catalog.forEach(function (c) { catHosts[c.host.replace(/^www\./, '')] = true; });
       (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null }); });
-      (d.stores || []).forEach(function (s) { if (s.earns) earns = true; rows.push({ name: s.name, sub: s.label, link: s.link, host: s.host, target: 'store', save: s.save || null }); });
+      // Our recorded price on each store row, dated (9 Oct 2026, no dead ends); same words as the app's Ask box.
+      function checkedOn(iso) { var t = new Date(iso); return isNaN(t.getTime()) ? 'recently' : t.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' }); }
+      (d.stores || []).forEach(function (s) {
+        if (s.earns) earns = true;
+        var rec = s.price_cents && s.checked_at;
+        rows.push({ name: s.name, sub: s.label, price: rec ? (s.price_from ? 'From ' : '') + usd(s.price_cents) : null, priceLabel: rec ? 'Checked ' + checkedOn(s.checked_at) : null, link: s.link, host: s.host, target: rec ? 'store_recorded' : 'store', save: s.save || null });
+      });
       rows = rows.filter(function (r) { return !catHosts[r.host.replace(/^www\./, '')]; });
 
       if (catalog.length) {
