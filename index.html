@@ -377,6 +377,8 @@
     .ask-who { flex: 1 1 auto; min-width: 0; }
     .ask-list li { flex-wrap: wrap; }
     .ask-btns { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+    .ask-facts { font-size: 15px; font-weight: 600; color: #334155; margin-top: 2px; }
+    .ask-orderby { font-size: 15px; color: var(--navy); margin-top: 2px; }
     .ask-notmeant { min-height: 44px; margin-left: auto; border: 0; background: none; padding: 0 4px; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
     .ask-savecard { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; padding: 0 18px; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
     .ask-savecard:hover { background: #F4F7FA; }
@@ -1536,6 +1538,29 @@
     }
     function tap(target, host, tier) { track('home_compare_click', { target: 'ask_' + target, store: host || '', tier: tier || '' }); }
     // Merchant outreach list (9 Oct 2026, same as the app's Ask box): a tap on a store we do not earn from is counted, nothing about the shopper.
+    // Store facts (9 Oct 2026, same as the app's Ask box): after results show, the store's posted shipping and returns line.
+    var factsAsked = {};
+    function fillFacts(root) {
+      var items = Array.prototype.slice.call(root.querySelectorAll('li[data-host]')).filter(function (li) { return !li.getAttribute('data-facts'); });
+      var stores = [], seen = {};
+      items.forEach(function (li) { var h = li.getAttribute('data-host'); if (!seen[h] && !factsAsked[h]) { seen[h] = 1; stores.push({ host: h, name: li.getAttribute('data-name') || h }); } });
+      stores = stores.slice(0, 12);
+      if (!stores.length) return;
+      stores.forEach(function (s) { factsAsked[s.host] = 1; });
+      fetch('/api/store-facts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ stores: stores }) })
+        .then(function (r) { return r.ok ? r.json() : { facts: {} }; })
+        .then(function (d) {
+          var f = (d && d.facts) || {};
+          items.forEach(function (li) {
+            var x = f[li.getAttribute('data-host')]; if (!x) return;
+            var who = li.querySelector('.ask-who'); if (!who) return;
+            li.setAttribute('data-facts', '1');
+            if (x.short) who.appendChild(el('p', 'ask-facts', x.short));
+            if (x.orderBy) who.appendChild(el('p', 'ask-orderby', x.orderBy));
+          });
+        })
+        .catch(function () {});
+    }
     function outreach(r) {
       if (r.earns || !/^https:\/\//.test(r.link)) return;
       try { fetch('/api/ask/outreach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: r.link }), keepalive: true }); } catch (e) {}
@@ -1635,6 +1660,7 @@
 
     function render(d) {
       clear(out);
+      factsAsked = {};
       if (!d || !d.ok) { out.appendChild(el('p', 'ask-msg', (d && d.message) || "Sinclair couldn't check that right now. Please try again in a minute.")); return; }
       var top = el('div', 'ask-panel');
       top.appendChild(el('p', 'ask-eyebrow', d.title));
@@ -1659,6 +1685,7 @@
       // One result card: photo, store, product, price, then Buy and Save side by side (6 Oct 2026).
       function cardLi(r) {
         var li = el('li');
+        if (r.host) { li.setAttribute('data-host', String(r.host).toLowerCase().replace(/^www\./, '')); li.setAttribute('data-name', r.name || ''); }
         if (r.image && /^https:\/\//.test(r.image)) {
           var img = document.createElement('img'); img.className = 'ask-thumb'; img.src = r.image; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; li.appendChild(img);
         } else {
@@ -1716,6 +1743,7 @@
             cul.appendChild(cardLi(catalog[shown]));
             if (d.missing && shown === 0) { var ny0 = el('li', 'ask-nyrow'); ny0.appendChild(notYet()); cul.appendChild(ny0); }
           }
+          fillFacts(cul);
           if (shown >= catalog.length && cmore) cmore.remove();
           else if (cmore) cmore.textContent = 'Show ' + Math.min(10, catalog.length - shown) + ' more';
         }
@@ -1745,6 +1773,7 @@
             if (d.missing && !catalog.length && n === 0) { var nyRow = el('li', 'ask-nyrow'); nyRow.appendChild(notYet()); ul.appendChild(nyRow); }
           });
           panel.appendChild(ul);
+          fillFacts(ul);
           if (rows.length > 4) {
             var extra = rows.length - 3;
             var more = el('button', 'ask-more', 'See ' + extra + ' more ' + (extra === 1 ? 'store' : 'stores')); more.type = 'button';
