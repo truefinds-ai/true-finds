@@ -79,6 +79,13 @@
   .nav .tf-menu > summary:hover { background:#EEF2F6; }
   @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
   @media (max-width:479px) {
+    /* CODE_INBOX FIX LIST 9 Oct, item 1: in a desktop-mode browser at phone width (Add to Chrome shown) the
+       row ran 19px past 375px. The logo shrinks first, the button tightens, the open panel stays on screen. */
+    .nav-inner { padding:10px 14px; gap:10px; min-width:0; }
+    .nav-inner .nav-logo { flex:0 1 auto; min-width:0; display:flex; }
+    .nav-inner .nav-logo svg { width:100%; height:auto; max-width:128px; max-height:40px; }
+    .nav-inner .btn-sm { flex:0 0 auto; padding:8px 12px; font-size:14px; }
+    .tf-menu nav { max-width:calc(100vw - 24px); }
     .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
     .topbar a.brand svg { height:22px !important; }
     .topbar a.tcta { padding:0 11px; font-size:14px; }
@@ -174,6 +181,5 @@
 </script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
-<script data-tf="skim" type="text/javascript" src="https://s.skimresources.com/js/310588X1799071.skimlinks.js"></script>
 </body>
 </html>
