@@ -377,6 +377,7 @@
     .ask-who { flex: 1 1 auto; min-width: 0; }
     .ask-list li { flex-wrap: wrap; }
     .ask-btns { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+    .ask-notmeant { min-height: 44px; margin-left: auto; border: 0; background: none; padding: 0 4px; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
     .ask-savecard { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; padding: 0 18px; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
     .ask-savecard:hover { background: #F4F7FA; }
     .ask-verified { display: inline-flex; align-items: center; margin-left: 8px; vertical-align: 2px; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; padding: 1px 8px; font-size: 13px; font-weight: 700; }
@@ -1533,13 +1534,18 @@
         if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
       } catch (e) {}
     }
-    function tap(target, host) { track('home_compare_click', { target: 'ask_' + target, store: host || '' }); }
+    function tap(target, host, tier) { track('home_compare_click', { target: 'ask_' + target, store: host || '', tier: tier || '' }); }
+    // Merchant outreach list (9 Oct 2026, same as the app's Ask box): a tap on a store we do not earn from is counted, nothing about the shopper.
+    function outreach(r) {
+      if (r.earns || !/^https:\/\//.test(r.link)) return;
+      try { fetch('/api/ask/outreach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: r.link }), keepalive: true }); } catch (e) {}
+    }
     function say(text) { if (!note) return; note.textContent = text || ''; note.hidden = !text; }
     function setBusy(b) { busy = b; btns.forEach(function (x) { if (x) { x.disabled = b; x.textContent = b ? 'Checking...' : 'Ask Sinclair'; } }); }
-    function link(href, text, cls, external, target, host) {
+    function link(href, text, cls, external, target, host, tier) {
       var a = el('a', cls, text); a.href = href;
       if (external) { a.target = '_blank'; a.rel = 'noopener noreferrer sponsored'; }
-      a.addEventListener('click', function () { tap(target, host); });
+      a.addEventListener('click', function () { tap(target, host, tier); });
       return a;
     }
     function run(q, via) {
@@ -1667,11 +1673,18 @@
         if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
         if (r.options && r.options.length) body.appendChild(el('p', 'ask-opts', r.options.join(', ')));
         var btnrow = el('div', 'ask-btns');
-        var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' →', 'ask-go-store', true, r.target, r.host); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
+        var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' →', 'ask-go-store', true, r.target, r.host, r.tier); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
+        go.addEventListener('click', function () { outreach(r); });
         if (r.save) {
           var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
           sv.addEventListener('click', function () { tap('save_card', r.host); track('save_tap', { surface: 'home', target: r.target === 'catalog' ? 'ask_catalog' : 'ask_card', store: r.host || '' }); });
           btnrow.appendChild(sv);
+        }
+        // Vetting gate measure (4 Oct LOCK): the shopper says a catalog result missed, and it goes away.
+        if (r.target === 'catalog') {
+          var nm2 = el('button', 'ask-notmeant', 'Not what I meant'); nm2.type = 'button';
+          nm2.addEventListener('click', function () { track('ask_not_meant', { surface: 'home', store: r.host || '', tier: r.tier || '', query: (asked || '').slice(0, 120) }); li.remove(); });
+          btnrow.appendChild(nm2);
         }
         li.appendChild(body);
         li.appendChild(btnrow);
@@ -1680,15 +1693,15 @@
 
       var rows = [], earns = false, catalog = [];
       // Every matching product from Shopify's catalog at US stores (6 Oct 2026, item 11), 10 at a time.
-      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null }); });
+      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null, tier: c.tier || (c.verified ? 'vetted' : 'live'), earns: !!c.earns }); });
       var catHosts = {}; catalog.forEach(function (c) { catHosts[c.host.replace(/^www\./, '')] = true; });
-      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null }); });
+      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null, earns: !!o.earns }); });
       // Our recorded price on each store row, dated (9 Oct 2026, no dead ends); same words as the app's Ask box.
       function checkedOn(iso) { var t = new Date(iso); return isNaN(t.getTime()) ? 'recently' : t.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' }); }
       (d.stores || []).forEach(function (s) {
         if (s.earns) earns = true;
         var rec = s.price_cents && s.checked_at;
-        rows.push({ name: s.name, sub: s.label, price: rec ? (s.price_from ? 'From ' : '') + usd(s.price_cents) : null, priceLabel: rec ? 'Checked ' + checkedOn(s.checked_at) : null, link: s.link, host: s.host, target: rec ? 'store_recorded' : 'store', save: s.save || null });
+        rows.push({ name: s.name, sub: s.label, price: rec ? (s.price_from ? 'From ' : '') + usd(s.price_cents) : null, priceLabel: rec ? 'Checked ' + checkedOn(s.checked_at) : null, link: s.link, host: s.host, target: rec ? 'store_recorded' : 'store', save: s.save || null, earns: !!s.earns });
       });
       rows = rows.filter(function (r) { return !catHosts[r.host.replace(/^www\./, '')]; });
 
@@ -1793,7 +1806,7 @@
     });
   });
 </script>
-<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
+<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
 <script data-tf="skim" type="text/javascript" src="https://s.skimresources.com/js/310588X1799071.skimlinks.js"></script>
 </body>
 </html>
