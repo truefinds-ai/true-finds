@@ -87,17 +87,19 @@
 
 
     /* Saved strip, 8 Oct 2026 */
-    .saved-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
-    .saved-grid img { width: 100%; max-width: 400px; justify-self: center; height: auto; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(26,60,94,.18); }
-    @media (max-width: 900px) { .saved-grid { grid-template-columns: 1fr; gap: 20px; } }
+    .saved-strip { padding-top: 32px; }
+    .saved-grid { display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
+    .saved-grid h2 { white-space: nowrap; }
+    .saved-grid img { width: 100%; max-width: 760px; height: auto; border-radius: 16px; }
+    @media (max-width: 700px) { .saved-grid h2 { white-space: normal; text-wrap: balance; } .saved-grid { gap: 20px; } }
 
     /* Hero */
-    .hero { background: linear-gradient(180deg, #F2F8F5 0%, #FFFFFF 100%); padding: 64px 0 56px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .hero { background: linear-gradient(180deg, #F2F8F5 0%, #FFFFFF 100%); padding: 64px 0 24px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 48px; align-items: center; }
     .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid #BFE6D5; color: var(--green-dark); font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 999px; margin-bottom: 22px; }
     .eyebrow-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(26,158,110,.18); }
     /* 6 Oct 2026: the H1 is now a full sentence (fix plan item 9), so it is sized down to keep the Ask box on a phone's first screen. */
-    .hero h1 { font-size: clamp(30px, 4.4vw, 54px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; text-wrap: balance; }
+    .hero h1 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; text-wrap: balance; }
     @media (max-width: 480px) { .hero h1 { font-size: 30px; } .hero .lead { font-size: 19px; margin-bottom: 18px; } }
     .lead { font-size: 21px; color: var(--muted); max-width: 560px; margin-bottom: 30px; }
     .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
@@ -108,7 +110,7 @@
     .shot { background: var(--white); border-radius: 16px; box-shadow: 0 24px 60px rgba(26,60,94,.18), 0 2px 6px rgba(26,60,94,.08); overflow: hidden; border: 1px solid var(--line); }
     .shot-bar { height: 30px; background: #EEF2F5; display: flex; gap: 7px; align-items: center; padding: 0 12px; border-bottom: 1px solid var(--line); }
     .shot-bar span { width: 10px; height: 10px; border-radius: 50%; background: #C9D3DC; }
-    .shot-main { width: 400px; margin-left: auto; margin-right: 0; margin-top: 182px; }
+    .shot-main { width: 400px; max-width: 100%; margin-left: auto; margin-right: 0; margin-top: 182px; }
     .float-card { position: absolute; background: var(--white); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 14px 36px rgba(26,60,94,.16); padding: 14px 16px; text-decoration: none; }
     .fc-store { left: 0; bottom: 0; display: flex; flex-direction: column; gap: 6px; width: 200px; padding: 12px; }
     .fc-store img { width: 100%; height: 96px; object-fit: contain; background: var(--soft); border-radius: 10px; }
@@ -445,8 +447,8 @@
     .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
     .topbar .tf-menu > summary { width:42px; }
   }
-  /* Homepage, 8 Oct 2026 (Cowork, Jon approved): the full bar shows from 901px, so the menu button does not. */
-  @media (min-width:901px) { .nav .tf-menu { display:none; } }
+  /* Homepage, 8 Oct 2026, round 2 (Cowork, Jon approved): the menu button stays on desktop, after Add to Chrome, for How It Works and Be a Founding Member. */
+  @media (min-width:901px) { .nav .tf-menu { margin-left:-12px; } }
   /* tf-menu:end */
 </style>
 <link rel="canonical" href="https://truefinds.ai/">
@@ -538,18 +540,18 @@
       <h2 id="saved-h">Save it now. Decide later.</h2>
       <p class="sub">Hit Save and Sinclair keeps it in your list. No more sticky notes.</p>
     </div>
-    <img src="/img/home/sinclair-saved-in-browser.jpg" alt="The Sinclair Saved list opened from the browser toolbar, showing saved items with their verdicts." width="764" height="1112" loading="lazy">
+    <img src="/img/home/sinclair-saved-in-browser.jpg" alt="Three steps: click the Sinclair icon in your browser toolbar, open Saved to see everything you saved with Sinclair's verdict, then see the verdict to check the price again before you buy." width="1500" height="1338" loading="lazy">
   </div>
 </section>
 
 <section class="proof">
   <div class="wrap proof-grid">
-    <div class="proof-item"><span class="proof-num">46</span><span class="proof-label">bestselling Amazon products checked this week</span></div>
+    <div class="proof-item"><span class="proof-num">46</span><span class="proof-label">bestselling Amazon products checked on September 21</span></div>
     <div class="proof-item"><span class="proof-num">35%</span><span class="proof-label">of the &ldquo;discounts&rdquo; were measured against a price the product does not sell at</span></div>
     <div class="proof-item"><span class="proof-num">12 months</span><span class="proof-label">of a product&rsquo;s own price record behind each verdict</span></div>
     <div class="proof-item"><span class="proof-num">$0</span><span class="proof-label">to install and use. No account.</span></div>
   </div>
-  <p class="wrap proof-asof">Measured September 21, 2026. Nothing on True Finds is sponsored.</p>
+  <p class="wrap proof-asof">Measured September 21, 2026. Sponsors never change a verdict.</p>
 </section>
 
 <section class="section" id="ask">
