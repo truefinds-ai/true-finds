@@ -46,6 +46,8 @@
     { "source": "/plan", "destination": "https://true-finds-app.vercel.app/plan" },
     { "source": "/pricing", "destination": "https://true-finds-app.vercel.app/pricing" },
     { "source": "/subscription-terms", "destination": "https://true-finds-app.vercel.app/subscription-terms" },
+    { "source": "/api/welcome", "destination": "https://true-finds-app.vercel.app/api/welcome" },
+    { "source": "/welcome/member", "destination": "https://true-finds-app.vercel.app/welcome/member" },
     { "source": "/gifts/plan", "destination": "https://true-finds-app.vercel.app/gifts/plan" },
     { "source": "/api/gift-plan", "destination": "https://true-finds-app.vercel.app/api/gift-plan" },
     { "source": "/api/shipby", "destination": "https://true-finds-app.vercel.app/api/shipby" },
