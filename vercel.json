@@ -62,6 +62,7 @@
     { "source": "/api/ext/config", "destination": "https://true-finds-app.vercel.app/api/ext/config" },
     { "source": "/api/plan/save", "destination": "https://true-finds-app.vercel.app/api/plan/save" },
     { "source": "/api/plan/stop", "destination": "https://true-finds-app.vercel.app/api/plan/stop" },
+    { "source": "/api/plan/notify", "destination": "https://true-finds-app.vercel.app/api/plan/notify" },
     { "source": "/_next/:path*", "destination": "https://true-finds-app.vercel.app/_next/:path*" },
     { "source": "/goodbye", "destination": "/goodbye/index.html" },
     { "source": "/welcome", "destination": "/welcome/index.html" },
