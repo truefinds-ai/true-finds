@@ -351,6 +351,9 @@
     .ask-wait { display: flex; align-items: center; gap: 12px; background: #F4F7FA; border-radius: 16px; padding: 16px 20px; font-size: 18px; color: var(--navy); }
     .ask-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--green); animation: askPulse 1s ease-in-out infinite; flex: 0 0 auto; }
     .ask-panel { background: #F7F9FB; border-radius: 18px; padding: 20px 22px; box-shadow: 0 0 0 1px #E1E7EE; }
+    .ask-tip { background: #ECFDF5; border: 2px solid #1A9E6E; border-radius: 18px; padding: 18px 20px; }
+    .ask-tip-label { font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #14734F; }
+    .ask-tip-text { font-size: 18px; line-height: 1.4; color: var(--navy); margin-top: 4px; }
     .ask-eyebrow { font-size: 14px; font-weight: 800; color: #334155; }
     .ask-why { margin-top: 8px; }
     .ask-why summary { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; list-style: none; }
@@ -1533,7 +1536,7 @@
     var note = document.getElementById('ask-note');
     var mic = document.getElementById('ask-mic');
     if (!form || !input || !out) return;
-    var busy = false, asked = '';
+    var busy = false, asked = '', tipRun = 0;
     function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
     function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
     function usd(c) { return '$' + (c / 100).toFixed(2); }
@@ -1670,6 +1673,32 @@
       clear(out);
       factsAsked = {};
       if (!d || !d.ok) { out.appendChild(el('p', 'ask-msg', (d && d.message) || "Sinclair couldn't check that right now. Please try again in a minute.")); return; }
+      // Sinclair's tip first (tip-first answers, 14 Oct 2026; same as the app's Ask box). The library tip shows at once;
+      // a written tip from /api/ask/tip replaces its text when it arrives and passed every check.
+      if (d.tip) {
+        var tp = el('div', 'ask-tip');
+        tp.appendChild(el('p', 'ask-tip-label', "Sinclair's tip"));
+        var tt = el('p', 'ask-tip-text', d.tip.text); tp.appendChild(tt);
+        var tl = el('div', 'ask-links');
+        // Same map as src/lib/ask/tip-help.ts: save offers open Compare at Save, lists open /plan, the gift plan opens /gifts/plan.
+        var hh = d.tip.help === 'gift_plan' ? '/gifts/plan' : ((d.tip.help === 'save' || d.tip.help === 'save_price') && d.compareHref ? d.compareHref + '#save' : '/plan');
+        tl.appendChild(link(hh, d.tip.helpText, null, false, 'tip_help_' + d.tip.help));
+        if (d.tip.guide) tl.appendChild(link(d.tip.guide, 'Read our guide →', null, false, 'tip_guide'));
+        tp.appendChild(tl);
+        out.appendChild(tp);
+        track('ask_tip_shown', { surface: 'home', tip: d.tip.id, understood: d.understood || 'off' });
+        if (d.tipToken) {
+          var mine = ++tipRun;
+          fetch('/api/ask/tip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.tipToken }) })
+            .then(function (r) { return r.ok ? r.json() : { tip: null, reason: 'http' }; })
+            .then(function (t) {
+              if (mine !== tipRun) return;
+              if (t && t.tip) { tt.textContent = t.tip; track('ask_tip_written', { surface: 'home' }); }
+              else track('ask_tip_fallback', { surface: 'home', reason: (t && t.reason) || 'unknown' });
+            })
+            .catch(function () { track('ask_tip_fallback', { surface: 'home', reason: 'network' }); });
+        }
+      }
       var top = el('div', 'ask-panel');
       top.appendChild(el('p', 'ask-eyebrow', d.title));
       if (!d.sinclair) top = null;
