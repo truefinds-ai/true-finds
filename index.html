@@ -1699,6 +1699,11 @@
             .catch(function () { track('ask_tip_fallback', { surface: 'home', reason: 'network' }); });
         }
       }
+      // A stated budget (15 Oct 2026; same words as src/lib/ask/parse.ts ASK_COPY.budgetApplied and budgetNone).
+      if (d.budget && d.budget.maxUsd) {
+        var bm = Number.isInteger(d.budget.maxUsd) ? String(d.budget.maxUsd) : d.budget.maxUsd.toFixed(2);
+        out.appendChild(el('p', 'ask-msg ask-budget', d.budget.applied ? 'Showing options at $' + bm + ' or less.' : 'Nothing we found is $' + bm + ' or less, so here is everything we found.'));
+      }
       var top = el('div', 'ask-panel');
       top.appendChild(el('p', 'ask-eyebrow', d.title));
       if (!d.sinclair) top = null;
