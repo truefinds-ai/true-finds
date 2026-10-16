@@ -388,6 +388,11 @@
     .ask-savecard:hover { background: #F4F7FA; }
     .ask-verified { display: inline-flex; align-items: center; margin-left: 8px; vertical-align: 2px; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; padding: 1px 8px; font-size: 13px; font-weight: 700; }
     .ask-opts { font-size: 15px; color: #334155; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Search rebuild (16 Oct 2026): the reason line, the idea chips, and larger photos on phones. */
+    .ask-reason { font-size: 16px; font-weight: 600; line-height: 1.35; color: #14734F; margin-top: 4px; }
+    .ask-ideas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .ask-ideas .ask-idea { display: inline-block; padding: 4px 12px; border: 0; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; font-size: 16px; font-weight: 700; }
+    @media (max-width: 639px) { .ask-thumb, .ask-badge { width: 88px; height: 88px; } }
     .ask-more-btn { display: block; width: 100%; min-height: 48px; margin-top: 4px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; text-decoration: none; }
     .ask-list li.ask-nyrow { display: block; }
     .ask-notyet { background: #E8F5EF; border-radius: 16px; padding: 16px; box-shadow: 0 0 0 1px #BFE3D2; margin-top: 8px; }
@@ -1597,6 +1602,8 @@
       fetch('/api/ask?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(function (d) { asked = q; render(d);
+          // On a phone the answer starts below the fold: bring it into view (search rebuild, 16 Oct 2026).
+          try { if (window.matchMedia && window.matchMedia('(max-width: 639px)').matches) out.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
           if (/(?:a\.co|amzn\.to|amzn\.com)\/[A-Za-z0-9]/i.test(q)) track('amazon_share_paste', { surface: 'home', via: via, resolved: (d && d.shared) || (d && d.ok ? 'asin' : 'none') });
           if (d && d.ok && (d.missing || !((d.offers || []).length + (d.stores || []).length + (d.catalog || []).length))) track('ask_no_result', { surface: 'home', via: via, kind: d.kind || '', closest: (d.offers || []).length + (d.stores || []).length + (d.catalog || []).length }); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
         .catch(function () { clear(out); out.appendChild(el('p', 'ask-msg', "Sinclair couldn't check that right now. Please try again in a minute.")); })
@@ -1740,6 +1747,8 @@
         if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', r.priceLabel || 'Live price')); head.appendChild(pr); }
         body.appendChild(head);
         if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
+        // Search rebuild (16 Oct 2026): why Sinclair picked it for this person, one line, same as the app's Ask box.
+        if (r.reason) body.appendChild(el('p', 'ask-reason', r.reason));
         if (r.options && r.options.length) body.appendChild(el('p', 'ask-opts', r.options.join(', ')));
         var btnrow = el('div', 'ask-btns');
         var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' →', 'ask-go-store', true, r.target, r.host, r.tier); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
@@ -1762,7 +1771,7 @@
 
       var rows = [], earns = false, catalog = [];
       // Every matching product from Shopify's catalog at US stores (6 Oct 2026, item 11), 10 at a time.
-      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null, tier: c.tier || (c.verified ? 'vetted' : 'live'), earns: !!c.earns }); });
+      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null, tier: c.tier || (c.verified ? 'vetted' : 'live'), earns: !!c.earns, reason: c.reason || null }); });
       var catHosts = {}; catalog.forEach(function (c) { catHosts[c.host.replace(/^www\./, '')] = true; });
       (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null, earns: !!o.earns }); });
       // Our recorded price on each store row, dated (9 Oct 2026, no dead ends); same words as the app's Ask box.
@@ -1777,7 +1786,11 @@
       if (catalog.length) {
         var cpanel = el('div', 'ask-panel');
         cpanel.appendChild(el('h3', 'ask-h', d.missing ? 'Closest we have' : 'At stores across the US'));
-        if (d.title) { var cq = el('p', 'ask-q-line', 'You asked about'); cq.appendChild(el('span', 'ask-q-chip', d.title)); cpanel.appendChild(cq); }
+        if (d.ideas && d.ideas.length) {
+          var chips = el('ul', 'ask-ideas'); chips.setAttribute('aria-label', 'Ideas Sinclair looked for');
+          d.ideas.forEach(function (idea) { chips.appendChild(el('li', 'ask-idea', idea)); });
+          cpanel.appendChild(chips);
+        } else if (d.title) { var cq = el('p', 'ask-q-line', 'You asked about'); cq.appendChild(el('span', 'ask-q-chip', d.title)); cpanel.appendChild(cq); }
         var cul = el('ul', 'ask-list'); var shown = 0;
         function showMore() {
           var stop = Math.min(catalog.length, shown + 10);
