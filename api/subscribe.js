@@ -1,4 +1,4 @@
-// Vercel serverless function: subscribes an email to the True Finds Beehiiv publication.
+// Vercel serverless function: subscribes an email to the TrueFinds Beehiiv publication.
 // The API key lives ONLY in Vercel environment variables (BEEHIIV_API_KEY), never in this file.
 // Publication ID is not a secret; env var overrides the fallback below.
 

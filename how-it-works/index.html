@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How It Works: The Sinclair Verdict | True Finds</title>
-<meta name="description" content="Sinclair, the free AI shopping companion from True Finds, reads 12 months of real Amazon price history and gives one of four plain verdicts. No login, no charts to interpret.">
+<title>How It Works: The Sinclair Verdict | TrueFinds</title>
+<meta name="description" content="Sinclair, the free AI shopping companion from TrueFinds, reads 12 months of real Amazon price history and gives one of four plain verdicts. No login, no charts to interpret.">
 <style>
   :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -109,7 +109,7 @@
 </head>
 <body>
 <div class="topbar">
-  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> True Finds</a>
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
   <div class="links">
     <a class="tl" href="/real-deals">Real Deals</a>
     <a class="tl" href="/how-it-works">How It Works</a>
@@ -203,7 +203,7 @@
     .tf-join .tf-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   </style>
   <div class="tf-join-inner">
-    <h2 id="tf-join-title">Join True Finds, free</h2>
+    <h2 id="tf-join-title">Join TrueFinds, free</h2>
     <p class="tf-join-line">Sinclair verified real deals and early access to new features.</p>
     <form class="tf-join-form" novalidate>
       <label class="tf-sr" for="tf-join-email">Your email</label>
@@ -223,14 +223,14 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
       btn.disabled = true; msg.textContent = 'Joining...';
       fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'footer' }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from True Finds.'; })
+        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
         .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
     });
   })();
   </script>
 </section>
 <!-- tf-join:end -->
-<footer>&copy; 2026 True Finds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
 <script>
 /* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
 (function () {

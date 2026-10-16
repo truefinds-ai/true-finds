@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Support | True Finds</title>
-<meta name="description" content="Get help with Sinclair, the free AI shopping companion from True Finds. Write to hello@truefinds.ai and a real person reads every message, usually replying within a day.">
+<title>Support | TrueFinds</title>
+<meta name="description" content="Get help with Sinclair, the free AI shopping companion from TrueFinds. Write to hello@truefinds.ai and a real person reads every message, usually replying within a day.">
 <link rel="canonical" href="https://truefinds.ai/support">
 <style>
   :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-text:#158055; --green-tint:#EAF7F1; }
@@ -100,7 +100,7 @@
 </head>
 <body>
 <div class="topbar">
-  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto;vertical-align:-5px"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> True Finds</a>
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto;vertical-align:-5px"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
   <div class="links">
     <a class="tl" href="/real-deals">Real Deals</a>
     <a class="tl" href="/how-it-works">How It Works</a>
@@ -138,7 +138,7 @@
   <div class="qa">
     <h3>Why don't I see the badge?</h3>
     <p>Sinclair works only on Amazon.com product pages, so search results, category pages, and other websites will not show a badge. If you are on a product page and nothing appears, reload the page and give it a second.</p>
-    <p>If it is still missing, open <code>chrome://extensions</code> and confirm that Sinclair by True Finds is installed and switched on.</p>
+    <p>If it is still missing, open <code>chrome://extensions</code> and confirm that Sinclair by TrueFinds is installed and switched on.</p>
   </div>
 
   <div class="qa">
@@ -155,13 +155,13 @@
 
   <div class="qa">
     <h3>How do I remove it?</h3>
-    <p>Open <code>chrome://extensions</code>, find Sinclair by True Finds, and click Remove. That is the whole process, and you never have to ask us for permission to leave.</p>
+    <p>Open <code>chrome://extensions</code>, find Sinclair by TrueFinds, and click Remove. That is the whole process, and you never have to ask us for permission to leave.</p>
     <p>The small amount Sinclair keeps, a cached verdict and a note of a deal you opened, is stored in your own browser, so clearing your browser data clears it.</p>
   </div>
 
   <div class="qa">
     <h3>Do you get paid if I buy?</h3>
-    <p>Yes. When you press "Get this deal" you go to a True Finds deal page, and from there to Amazon. If you buy, we may earn an Amazon commission at no extra cost to you.</p>
+    <p>Yes. When you press "Get this deal" you go to a TrueFinds deal page, and from there to Amazon. If you buy, we may earn an Amazon commission at no extra cost to you.</p>
     <p>Sinclair&rsquo;s verdicts are always free and independent. A product that earns us nothing gets the same reading as a product that does, and calling an inflated price inflated is the entire point of the tool.</p>
   </div>
 
@@ -192,7 +192,7 @@
     .tf-join .tf-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
   </style>
   <div class="tf-join-inner">
-    <h2 id="tf-join-title">Join True Finds, free</h2>
+    <h2 id="tf-join-title">Join TrueFinds, free</h2>
     <p class="tf-join-line">Sinclair verified real deals and early access to new features.</p>
     <form class="tf-join-form" novalidate>
       <label class="tf-sr" for="tf-join-email">Your email</label>
@@ -212,14 +212,14 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
       btn.disabled = true; msg.textContent = 'Joining...';
       fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'footer' }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from True Finds.'; })
+        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
         .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
     });
   })();
   </script>
 </section>
 <!-- tf-join:end -->
-<footer>&copy; 2026 True Finds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
 <script>
 /* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
 (function () {
