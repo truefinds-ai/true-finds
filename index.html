@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name='impact-site-verification' value='f825d650-f73a-46cb-ac69-169bc152720b'>
-  <title>TrueFinds: Know the truth before you buy</title>
-  <meta name="description" content="Sinclair, your free AI shopping companion, reads the price history behind a product and tells you plainly whether the deal is real. On Amazon and at independent brand stores. Free add-on for Chrome, no account.">
-  <meta property="og:title" content="TrueFinds: Know the truth before you buy.">
-  <meta property="og:description" content="Sinclair tells you whether a deal is real, on Amazon and at independent brand stores. Free add-on for Chrome, no account.">
+  <title>TrueFinds: Sinclair, your free AI shopping agent</title>
+  <meta name="description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
+  <meta property="og:title" content="TrueFinds: Sinclair, your free AI shopping agent">
+  <meta property="og:description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
   <meta property="og:url" content="https://truefinds.ai">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://truefinds.ai/social-card.png">
@@ -480,7 +480,92 @@
   /* Homepage, 8 Oct 2026, round 2 (Cowork, Jon approved): the menu button stays on desktop, after Add to Chrome, for How It Works and Be a Founding Member. */
   @media (min-width:901px) { .nav .tf-menu { margin-left:-12px; } }
   /* tf-menu:end */
-</style>
+    /* Homepage v2 (17 Oct 2026): hero answer, See Sinclair at work, how it works, team, gift row, trust, closing Ask. */
+    .trust-line { font-size: 17px; font-weight: 600; color: var(--navy); margin-top: 4px; }
+    .hero .ask-card.ask-in-hero { margin: 0 0 14px; padding: 22px 24px; }
+    .hero .ask-card.ask-in-hero h2 { font-size: 22px; margin-top: 0 !important; }
+    .ask-also button { min-height: 44px; display: inline-flex; align-items: center; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; }
+    .ask-also button:hover, .ask-also button:focus-visible { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
+    .hero-visual { min-height: 0; }
+    .hero { padding-top: 40px; }
+    .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; }
+    @media (max-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
+    .hero-photo { margin: 0 0 16px; }
+    .sc-skel { min-height: 320px; border-radius: 20px; background: linear-gradient(90deg, #F1F5F9, #E8EEF5, #F1F5F9); background-size: 200% 100%; animation: scShimmer 1.4s linear infinite; }
+    @keyframes scShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+    @media (prefers-reduced-motion: reduce) { .sc-skel { animation: none; } }
+    .sc-answer { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(26,60,94,.08); }
+    .sc-label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--green-dark); }
+    .sc-label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+    .sc-q { margin-top: 10px; display: inline-block; background: #E8EEF5; color: var(--navy); font-weight: 700; font-size: 17px; border-radius: 16px 16px 16px 4px; padding: 8px 14px; }
+    .sc-tip { margin-top: 12px; border-left: 4px solid var(--green); background: #F4FBF7; border-radius: 10px; padding: 10px 14px; }
+    .sc-tip strong { display: block; font-size: 15px; color: var(--green-dark); }
+    .sc-tip p { font-size: 17px; line-height: 1.45; color: var(--navy); margin-top: 2px; }
+    .sc-ideas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .sc-ideas span { font-size: 15px; font-weight: 600; color: var(--green-dark); background: #E8F5EF; border-radius: 999px; padding: 4px 12px; }
+    .sc-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
+    .sc-item { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding-top: 10px; }
+    .sc-thumb { width: 76px; height: 76px; border-radius: 12px; overflow: hidden; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: #94A3B8; }
+    .sc-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .sc-store { font-size: 15px; font-weight: 700; color: var(--navy); }
+    .sc-name { display: block; font-size: 16px; color: var(--navy); line-height: 1.35; text-decoration: none; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .sc-name:hover { text-decoration: underline; }
+    .sc-reason { font-size: 15px; font-weight: 600; color: var(--green-dark); line-height: 1.4; margin-top: 2px; }
+    .sc-price { text-align: right; font-size: 18px; font-weight: 800; color: var(--navy); white-space: nowrap; }
+    .sc-price small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
+    @media (max-width: 559px) { .sc-item { grid-template-columns: 64px minmax(0, 1fr); } .sc-thumb { width: 64px; height: 64px; } .sc-price { grid-column: 2; text-align: left; } .sc-price small { display: inline; margin-left: 6px; } }
+    .sc-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .sc-ask { min-height: 48px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: inherit; font-size: 17px; font-weight: 700; padding: 0 24px; cursor: pointer; }
+    .sc-ask:hover { background: #12304D; }
+    .tf-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
+    .tf-tabs button { min-height: 48px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 20px; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); cursor: pointer; }
+    .tf-tabs button[aria-selected="true"] { background: var(--navy); color: #fff; box-shadow: none; }
+    .work-panel .sc-answer { box-shadow: none; }
+    @media (min-width: 900px) { .work-panel .sc-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } .work-panel .sc-item { grid-template-columns: 1fr; border-top: 0; padding-top: 0; } .work-panel .sc-thumb { width: 100%; height: 180px; } .work-panel .sc-price { text-align: left; } }
+    .how3 { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .how3 li { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+    .how3 strong { display: block; font-size: 19px; color: var(--navy); line-height: 1.3; }
+    .how3 span:not(.step-n) { display: block; font-size: 17px; color: var(--muted); margin-top: 4px; }
+    @media (max-width: 900px) { .how3 { grid-template-columns: 1fr; } }
+    .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+    .team-grid .agent p { margin-top: 10px; font-size: 16px; }
+    .status { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 800; letter-spacing: .02em; border-radius: 999px; padding: 4px 10px; }
+    .status.live { background: var(--green); color: #fff; }
+    .status.members { background: #fff; color: var(--navy); }
+    .status.soon { background: rgba(255,255,255,.14); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.4) inset; }
+    @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
+    .chrome-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+    .chrome-row h3 { font-size: 22px; }
+    .chrome-row p { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 4px; }
+    .gift-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .gift-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; }
+    .gift-card:hover { border-color: var(--navy); }
+    .gift-img { aspect-ratio: 4 / 3; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 40px; color: #94A3B8; }
+    .gift-img img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .gc-art { width: 78%; aspect-ratio: 1.586 / 1; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--green-dark)); color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 14px 16px; box-shadow: 0 10px 24px rgba(26,60,94,.25); text-align: left; }
+    .gc-art-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
+    .gc-art-line { font-size: 15px; font-weight: 600; opacity: .9; }
+    .gift-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .gift-store { font-size: 15px; font-weight: 700; color: var(--green-dark); }
+    .gift-name { font-size: 17px; font-weight: 600; color: var(--navy); line-height: 1.35; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+    .gift-age { align-self: flex-start; font-size: 14px; font-weight: 700; color: var(--navy); background: #E8EEF5; border-radius: 999px; padding: 2px 10px; }
+    .gift-price { margin-top: auto; padding-top: 6px; font-size: 19px; font-weight: 800; color: var(--navy); }
+    .gift-price small { font-size: 14px; font-weight: 600; color: var(--muted); }
+    .gift-go { font-size: 16px; font-weight: 700; color: var(--green-dark); }
+    @media (max-width: 760px) { .gift-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .gift-grid .gift-card:nth-child(n+5) { display: none; } .gift-body { padding: 10px 12px 12px; } .gift-name { font-size: 16px; } }
+    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
+    .trust-grid > div { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+    .trust-grid h3 { font-size: 19px; }
+    .trust-grid p { font-size: 17px; color: var(--muted); margin-top: 8px; }
+    .trust-grid a { color: var(--green-dark); font-weight: 700; }
+    @media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr; } }
+    .final-ask { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 640px; margin: 18px auto 14px; }
+    .final-ask input { flex: 1 1 260px; min-width: 0; min-height: 56px; border: 0; border-radius: 999px; padding: 0 22px; font: inherit; font-size: 18px; color: var(--navy); }
+    .final-ask button { min-height: 56px; border: 0; border-radius: 999px; background: var(--green-dark); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 28px; cursor: pointer; }
+    .final p a { color: #fff; font-weight: 700; }
+    .fine { font-size: 15px; color: var(--muted); margin-top: 14px; }
+  </style>
 <link rel="canonical" href="https://truefinds.ai/">
 </head>
 <body>
@@ -506,55 +591,95 @@
   </div>
 </nav>
 
-<div class="prime-bar" id="prime-bar">
-  <div class="wrap"><span id="prime-text">Know the price is right before you buy.</span> <a href="/real-deals">See this week&rsquo;s best buys</a> <a href="#ask">Check a price</a></div>
-</div>
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow-pill"><span class="dot"></span>Free add-on for Chrome &middot; Live now</div>
-      <h1>Sinclair, your free AI shopping companion, checks the true price before you buy.</h1>
-      <p class="lead">Ask in your own words, paste a link, or share it from the Amazon app.</p>
-      <div class="hero-ctas">
-        <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
-        <div class="tf-inst tf-touch-only">
-        <p class="tf-inst-prompt">Shopping on your phone? Save Sinclair for your computer.</p>
-        <p class="tf-inst-line">Sinclair is a free add-on for Chrome on your computer. It tells you, right on the product page, whether a deal is real.</p>
-        <p class="tf-inst-line">We&rsquo;ll email you the link, plus one weekly list of real deals Sinclair checked.</p>
-        <form class="tf-inst-form" novalidate>
-          <label class="tf-sr" for="tf-inst-email-1">Your email</label>
-          <input id="tf-inst-email-1" type="email" autocomplete="email" placeholder="Your email" required>
-          <button type="submit">Send me the link</button>
+      <div class="eyebrow-pill"><span class="dot"></span>Sinclair, your shopping agent &middot; Free</div>
+      <h1>Tell Sinclair what you need. He&rsquo;ll help you find it.</h1>
+      <p class="lead">Sinclair is your shopping agent. Tell him what you need, and he&rsquo;ll help you choose the right product and find a fair price from a store you can trust.</p>
+      <div class="ask-card ask-in-hero" id="ask">
+        <h2><label for="ask-q">What are you shopping for?</label></h2>
+        <form class="ask-form" id="ask-form">
+          <div class="ask-bar">
+            <input id="ask-q" name="q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
+            <button class="ask-icon" type="button" id="ask-mic" aria-label="Speak your question" title="Speak your question" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+            <button class="ask-go" type="submit" id="ask-btn">Ask Sinclair</button>
+          </div>
+          <div class="ask-mrow">
+            <button class="ask-paste" type="button" id="ask-paste">Paste</button>
+            <button class="ask-go ask-go-mobile" type="submit" id="ask-btn-m">Ask Sinclair</button>
+          </div>
+          <p class="ask-share-help">From the Amazon app: tap Share, Copy, then paste here.</p>
         </form>
-        <p class="tf-inst-msg" role="status" aria-live="polite"></p>
-        <p class="tf-inst-note">Free. No account. Unsubscribe anytime. We will never sell your personal information.</p>
+        <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
+        <div class="ask-also" id="ask-also">
+          <span>Try:</span>
+          <button type="button" data-ask="gift for my grandson, he's 8">A gift for my grandson, he&rsquo;s 8</button>
+          <button type="button" data-ask="a warm gift for my dad, under $50">A warm gift for Dad, under $50</button>
+          <button type="button" data-ask="a toy for my dog that chews everything">A toy for a dog that chews everything</button>
+        </div>
+        <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
       </div>
-      <p class="tf-inst-ask tf-touch-only"><a href="#ask">Or check a price here now.</a></p>
-        <a class="btn btn-ghost btn-lg" href="/real-deals">See this week&rsquo;s real deals</a>
-      </div>
-      <ul class="hero-ticks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>Free forever</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>No account, no card</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>No brand can buy a verdict</li>
-      </ul>
+      <p class="trust-line">Free. No account. Stores across the US. You decide; Sinclair never buys for you.</p>
     </div>
     <div class="hero-visual">
-      <figure class="shot shot-main">
-        <div class="shot-bar"><span></span><span></span><span></span></div>
-        <img src="/img/home/sinclair-genuine-window.jpg" alt="Sinclair, your free AI shopping companion, showing a GENUINE DEAL verdict on a Vitamix 5200 blender: the lowest price in three months." width="800" height="394">
-      </figure>
-      <a class="float-card fc-store" href="/store/eydology.com/giselle-tortoise-rectangle-glasses">
-        <img src="https://cdn.shopify.com/s/files/1/0951/0076/4233/files/Eydology_Giselle_Tortoise_Rectangle_Glasses_1.webp?width=300" alt="Eydology Giselle tortoise glasses">
-        <div><div class="fc-title">Eydology &middot; Giselle</div><span class="chip watching sm">SAVED</span></div>
-      </a>
-      <div class="float-card fc-verdict">
-        <span class="chip inflated sm">INFLATED</span>
-        <div class="fc-title">&ldquo;51% off&rdquo; headphones</div>
-        <div class="fc-sub">Measured against a list price they rarely sell at.</div>
-      </div>
+      <figure class="hero-photo" data-slot="hero-photo" data-note="Hero photo slot, 17 Oct 2026: Jon picks the photo. Until then this column shows a real Sinclair answer." hidden></figure>
+      <div class="hero-answer" id="hero-answer" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
     </div>
   </div>
 </header>
+
+<section class="section soft" id="at-work" aria-labelledby="at-work-h">
+  <div class="wrap">
+    <span class="eyebrow">Real answers from Sinclair</span>
+    <h2 id="at-work-h">See Sinclair at work</h2>
+    <p class="sub">Three things shoppers asked, and what Sinclair answered. Pick one, then ask it yourself.</p>
+    <div class="tf-tabs" role="tablist" aria-label="Example questions" id="work-tabs"></div>
+    <div class="work-panel" id="work-panel" role="tabpanel" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
+    <p class="fine" id="work-fine">Asked on truefinds.ai on October 17, 2026. Prices are each store&rsquo;s own, checked just now. They can change.</p>
+  </div>
+</section>
+
+<section class="section" id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2 id="how-h">Ask, compare, choose</h2>
+    <ol class="how3">
+      <li><span class="step-n" aria-hidden="true">1</span><div><strong>Ask in your own words.</strong><span>Who it&rsquo;s for, what they like, and your budget.</span></div></li>
+      <li><span class="step-n" aria-hidden="true">2</span><div><strong>Sinclair finds the best fits.</strong><span>From stores across the US, each with a short reason.</span></div></li>
+      <li><span class="step-n" aria-hidden="true">3</span><div><strong>You choose with confidence.</strong><span>A fair price, with shipping and returns up front.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section panel" id="team" aria-labelledby="team-h">
+  <div class="wrap">
+    <span class="eyebrow light">Meet the team</span>
+    <h2 id="team-h">One shopping agent, with a whole team behind him</h2>
+    <div class="team-grid">
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.2 7.3 7.3 2.2-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2z"/></svg></div><div class="agent-name">Sinclair</div><span class="status live">Free, live now</span><p>Your shopping agent. Finds the right product, checks the price, and shows each store&rsquo;s shipping and returns.</p></div>
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div><div class="agent-name">Marco</div><span class="status live">In Sinclair&rsquo;s answers</span><p>Compares the same product across stores, side by side.</p></div>
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div><div class="agent-name">Scout</div><span class="status live">Saved list live</span><p>Saved finds and reminders. Keeps what you save in one list, so you can decide later.</p></div>
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg></div><div class="agent-name">Gifted</div><span class="status members">For members</span><p>Remembers the people you shop for, with budgets, order-by dates and birthday reminders.</p></div>
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><div class="agent-name">Sage</div><span class="status soon">Starts Nov 10</span><p>Reads product labels and explains what they mean.</p></div>
+      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.5"/></svg></div><div class="agent-name">Vault</div><span class="status soon">Coming in December</span><p>Shows what you&rsquo;ve saved, all in one place.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section soft" id="verdicts" aria-labelledby="verdicts-h">
+  <div class="wrap">
+    <span class="eyebrow center">Four honest answers</span>
+    <h2 class="center" id="verdicts-h">Know the price is right</h2>
+    <p class="sub center">Sinclair reads each product&rsquo;s own price history and gives you one plain answer, so you can buy with confidence.</p>
+    <div class="verdict-grid">
+      <div class="verdict v-genuine"><span class="chip genuine">GENUINE DEAL</span><h3>A real low</h3><p>Today&rsquo;s price is at or near the lowest in its record. A good time to buy.</p></div>
+      <div class="verdict v-typical"><span class="chip typical">TYPICAL PRICE</span><h3>Fair, not special</h3><p>What this product usually sells for. A fair price if you need it.</p></div>
+      <div class="verdict v-inflated"><span class="chip inflated">INFLATED</span><h3>Check the real price first</h3><p>The &ldquo;was&rdquo; price is not what it actually sells for. The record shows the true price.</p></div>
+      <div class="verdict v-nodata"><span class="chip nodata">NOT ENOUGH DATA</span><h3>We say so</h3><p>When the price history is too short, Sinclair tells you. No guessing.</p></div>
+    </div>
+  </div>
+</section>
 
 <section class="section saved-strip" id="saved" aria-labelledby="saved-h">
   <div class="wrap saved-grid">
@@ -570,217 +695,50 @@
       <li><span class="step-n" aria-hidden="true">3</span><div><strong>See the verdict.</strong><span>Check the price again before you buy.</span></div></li>
     </ol>
   </div>
-</section>
-
-<section class="proof">
-  <div class="wrap proof-grid">
-    <div class="proof-item"><span class="proof-num">12 months</span><span class="proof-label">of each product&rsquo;s own price record behind every verdict</span></div>
-    <div class="proof-item"><span class="proof-num">$0</span><span class="proof-label">to install and use. No account.</span></div>
-    <div class="proof-item"><span class="proof-num">0</span><span class="proof-label">brands that can buy a verdict</span></div>
-  </div>
-  <p class="wrap proof-asof">Sponsors never change a verdict.</p>
-</section>
-
-<section class="section" id="ask">
-  <div class="wrap">
-    <div class="ask-card">
-      <div class="ask-top">
-        <span class="ask-spark" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M12 2.5l2.2 7.3 7.3 2.2-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2z"/></svg></span>
-        <span class="eyebrow" style="margin:0">Ask Sinclair</span>
-        <span class="ask-free">Free</span>
-      </div>
-      <h2 style="margin-top:12px"><label for="ask-q">Check any price before you buy.</label></h2>
-      <form class="ask-form" id="ask-form">
-        <div class="ask-bar">
-          <input id="ask-q" name="q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
-          <button class="ask-icon" type="button" id="ask-mic" aria-label="Speak your question" title="Speak your question" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
-          <button class="ask-go" type="submit" id="ask-btn">Ask Sinclair</button>
-        </div>
-        <div class="ask-mrow">
-          <button class="ask-paste" type="button" id="ask-paste">Paste</button>
-          <button class="ask-go ask-go-mobile" type="submit" id="ask-btn-m">Ask Sinclair</button>
-        </div>
-        <p class="ask-share-help">From the Amazon app: tap Share, Copy, then paste here.</p>
+  <div class="wrap chrome-row">
+    <div>
+      <h3>Sinclair, right where you shop</h3>
+      <p>Add Sinclair to Chrome, free. He shows his price answer right on the Amazon page and keeps your saved finds in one list.</p>
+    </div>
+    <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener" data-chrome="saved"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
+    <div class="tf-inst tf-touch-only">
+      <p class="tf-inst-prompt">Shopping on your phone? Save Sinclair for your computer.</p>
+      <p class="tf-inst-line">Sinclair is a free add-on for Chrome on your computer. It tells you, right on the product page, whether a deal is real.</p>
+      <p class="tf-inst-line">We&rsquo;ll email you the link, plus one weekly list of real deals Sinclair checked.</p>
+      <form class="tf-inst-form" novalidate>
+        <label class="tf-sr" for="tf-inst-email-1">Your email</label>
+        <input id="tf-inst-email-1" type="email" autocomplete="email" placeholder="Your email" required>
+        <button type="submit">Send me the link</button>
       </form>
-      <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
-      <div class="ask-also" id="ask-also">
-        <span>Or start with:</span>
-        <a href="/gifts#gifts-for-her" data-tap="gift for her">A gift for her</a>
-        <a href="/plan?list=new-puppy" data-tap="new puppy">A new puppy</a>
-        <a href="/plan?list=family-trip" data-tap="family trip">A family trip</a>
-      </div>
-      <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
+      <p class="tf-inst-msg" role="status" aria-live="polite"></p>
+      <p class="tf-inst-note">Free. No account. Unsubscribe anytime. We will never sell your personal information.</p>
     </div>
   </div>
 </section>
 
-<script>
-  /* Phones (6 Oct 2026, Jon via Cowork): the Ask box sits right under the hero's sub line,
-     not three screens down. Moved once, before first paint; the Ask script finds it by id. */
-  (function () {
-    if (!window.matchMedia || !window.matchMedia('(max-width: 980px)').matches) return;
-    var sec = document.getElementById('ask'), card = sec && sec.querySelector('.ask-card'), lead = document.querySelector('.hero .lead');
-    if (!card || !lead) return;
-    sec.removeAttribute('id'); sec.hidden = true;
-    card.id = 'ask'; card.classList.add('ask-in-hero');
-    lead.insertAdjacentElement('afterend', card);
-    var link = document.querySelector('.tf-inst-ask'); if (link) link.hidden = true;
-  })();
-</script>
-
-<section class="section" id="deals">
+<section class="section" id="gift-row" aria-labelledby="gift-row-h">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="eyebrow">This week&rsquo;s best buys</span>
-        <h2>Deals checked against their own price record</h2>
-        <p class="sub">Every product on this week&rsquo;s best buys is checked against its own price history.</p>
+        <span class="eyebrow">Gift ideas</span>
+        <h2 id="gift-row-h">Gift ideas Sinclair checked this week</h2>
+        <p class="sub">From stores across the US. Prices are each store&rsquo;s own, checked just now.</p>
       </div>
-      <a class="link-arrow" href="/real-deals">See this week&rsquo;s best buys &rarr;</a>
+      <a class="link-arrow" href="/gifts">More gift ideas &rarr;</a>
     </div>
+    <div class="tf-tabs" role="tablist" aria-label="Gift ideas by kind" id="gift-tabs"></div>
+    <div class="gift-grid" id="gift-grid" role="tabpanel" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
+    <p class="fine" id="gift-fine" hidden>TrueFinds may earn a commission from some of these stores, at no cost to you.</p>
   </div>
 </section>
 
-<section class="section soft" id="compare">
+<section class="section soft" id="trust" aria-labelledby="trust-h">
   <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Meet Marco</span>
-        <h2>Same item, different stores</h2>
-        <p class="sub">Marco is the TrueFinds agent who compares stores. When the same product is sold somewhere else, Marco shows you where, with the price right now, so you choose where to buy.</p>
-      </div>
-    </div>
-    <div id="cmp-live" class="cmp-grid" aria-live="polite">
-      <div class="cmp-skel" aria-hidden="true"></div>
-      <div class="cmp-skel" aria-hidden="true"></div>
-      <div class="cmp-skel" aria-hidden="true"></div>
-    </div>
-    <div id="cmp-marco" class="marco-card">
-      <div>
-        <h3>How Marco helps you shop</h3>
-        <ul class="marco-steps">
-          <li><span class="step-n">1</span><span>You look at a product on a store TrueFinds covers.</span></li>
-          <li><span class="step-n">2</span><span>Marco checks whether other stores sell the very same item, including the brand&rsquo;s own shop.</span></li>
-          <li><span class="step-n">3</span><span>You see the stores side by side and pick the one you like. Partner links are always disclosed.</span></li>
-        </ul>
-      </div>
-      <div class="marco-example" aria-label="Example">
-        <span class="marco-label">Example</span>
-        <div class="cmp-row"><span>The store you are on</span><strong>Sinclair&rsquo;s verdict</strong></div>
-        <div class="cmp-row"><span>Also sold direct by the brand</span><strong>Price right now</strong></div>
-        <div class="cmp-row"><span>Also at another store</span><strong>Price right now</strong></div>
-      </div>
-    </div>
-    <p class="fine" id="cmp-fine" hidden>Prices from Shopify, checked just now. They can change. <span id="cmp-earn" hidden>TrueFinds may earn a commission from stores, no cost to you. Sinclair's verdicts are always free and independent.</span></p>
-  </div>
-</section>
-
-<section class="section tint" id="brands">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Independent brand stores</span>
-        <h2>Shop brands directly, with the same honesty</h2>
-        <p class="sub">TrueFinds now records prices at independent brand stores every morning, so you can buy direct from the people who make the product and still know the price is right.</p>
-      </div>
-    </div>
-    <div class="store-grid">
-      <a class="store-card" href="/store/eydology.com/giselle-tortoise-rectangle-glasses">
-        <div class="store-img"><img src="https://cdn.shopify.com/s/files/1/0951/0076/4233/files/Eydology_Giselle_Tortoise_Rectangle_Glasses_1.webp?width=600" alt="Giselle Tortoise Rectangle Glasses" loading="lazy"></div>
-        <div class="store-body">
-          <div class="store-name">Eydology &middot; Eyewear</div>
-          <h3>Giselle Tortoise Rectangle Glasses</h3>
-          <span class="chip watching">RECORDED DAILY</span>
-          <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
-        </div>
-      </a>
-      <a class="store-card" href="/store/holistichairtribe.com/arete-density-renewal-hair-scalp-serum">
-        <div class="store-img"><img src="https://cdn.shopify.com/s/files/1/0148/9272/8420/files/ARETEDensityRenewalHair_ScalpSerum_Ecom.png?width=600" alt="ARET&Eacute; Density Renewal Hair and Scalp Serum" loading="lazy"></div>
-        <div class="store-body">
-          <div class="store-name">Holistic Hair Tribe &middot; Hair care</div>
-          <h3>ARET&Eacute; Density Renewal Hair and Scalp Serum</h3>
-          <span class="chip watching">RECORDED DAILY</span>
-          <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
-        </div>
-      </a>
-      <a class="store-card" href="/store/getspilledmilk.com/fresa-bodysuit-in-ditsy-rose">
-        <div class="store-img"><img src="https://cdn.shopify.com/s/files/1/0614/9229/7901/files/SpilledMilk-Floss-FRESAO-NBODY_DUSTYROSE-01.jpg?width=600" alt="Fl&ouml;ss Fresa Bodysuit in Ditsy Rose" loading="lazy"></div>
-        <div class="store-body">
-          <div class="store-name">Spilled Milk &middot; Gifts for grandkids</div>
-          <h3>Fl&ouml;ss Fresa Bodysuit in Ditsy Rose</h3>
-          <span class="chip watching">RECORDED DAILY</span>
-          <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
-        </div>
-      </a>
-      <a class="store-card" href="/store/thebeautyandskin.com/viso-red-light-therapy-mask-fda-510-k-cleared">
-        <div class="store-img"><img src="https://cdn.shopify.com/s/files/1/0726/4881/8748/files/Lumara_VSO.png?width=600" alt="VISO Red Light Therapy Mask" loading="lazy"></div>
-        <div class="store-body">
-          <div class="store-name">The Beauty And Skin &middot; Skin care</div>
-          <h3>VISO Red Light Therapy Mask</h3>
-          <span class="chip watching">RECORDED DAILY</span>
-          <p class="store-note">Price recorded every morning. A verdict appears at 14 days.</p>
-        </div>
-      </a>
-    </div>
-    <div class="store-promise">
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span><strong>Good for shoppers.</strong> Every store product gets the same four honest verdicts as Amazon.</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span><strong>Good for brands.</strong> A GENUINE DEAL from TrueFinds sends shoppers to the brand ready to buy.</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg><span><strong>Never for sale.</strong> Partner links are disclosed, and no brand can buy a verdict.</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="how">
-  <div class="wrap how-grid">
-    <div class="how-copy">
-      <span class="eyebrow">How Sinclair works</span>
-      <h2>A plain answer, right next to the price</h2>
-      <ol class="steps">
-        <li><span class="step-n">1</span><div><strong>Add Sinclair to Chrome.</strong> About ten seconds, no account. It wakes up on product pages and nowhere else.</div></li>
-        <li><span class="step-n">2</span><div><strong>See the verdict beside the price.</strong> Sinclair reads that product&rsquo;s own price record and shows one of four answers, with the evidence.</div></li>
-        <li><span class="step-n">3</span><div><strong>Buy with confidence, or wait.</strong> Not ready yet? Save it to your Sinclair list, and Sinclair re-checks the verdict each time you open it.</div></li>
-      </ol>
-      <a class="tf-desktop-only btn btn-green" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Get it on the Chrome Web Store</a>
-    </div>
-    <figure class="shot shot-wide">
-      <div class="shot-bar"><span></span><span></span><span></span></div>
-      <img src="/img/home/sinclair-badge-on-amazon.jpg" alt="The Sinclair badge reading INFLATED next to a limited time deal on Amazon" loading="lazy" width="900" height="415">
-      <figcaption>A &ldquo;limited time deal&rdquo; at 51% off. Sinclair reads it as INFLATED.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section class="section soft" id="verdicts">
-  <div class="wrap">
-    <span class="eyebrow center">Four honest answers</span>
-    <h2 class="center">Sinclair&rsquo;s verdicts</h2>
-    <p class="sub center">Including &ldquo;we don&rsquo;t know yet.&rdquo; A tool that always has an answer is guessing some of the time.</p>
-    <div class="verdict-grid">
-      <div class="verdict v-genuine"><span class="chip genuine">GENUINE DEAL</span><h3>A real low</h3><p>Today&rsquo;s price is at or near the lowest in its record. A good time to buy.</p></div>
-      <div class="verdict v-typical"><span class="chip typical">TYPICAL PRICE</span><h3>Fair, not special</h3><p>What this product usually sells for. A fair price if you need it.</p></div>
-      <div class="verdict v-inflated"><span class="chip inflated">INFLATED</span><h3>Check the real price first</h3><p>The &ldquo;was&rdquo; price is not what it actually sells for. The record shows the true price.</p></div>
-      <div class="verdict v-nodata"><span class="chip nodata">NOT ENOUGH DATA</span><h3>We say so</h3><p>When the price history is too short, Sinclair tells you. No guessing.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="truth">
-  <div class="wrap">
-    <h2>Truth is free.<br>The relationship is paid.</h2>
-    <p>Sinclair&rsquo;s price verdict will always be free. We earn a small commission when we help you find a deal you actually want, which keeps our incentives pointed the same way as yours.</p>
-  </div>
-</section>
-
-<section class="section panel" id="coming">
-  <div class="wrap">
-    <span class="eyebrow light">What&rsquo;s coming</span>
-    <h2>More help from the TrueFinds agent team</h2>
-    <div class="agent-grid">
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><div class="agent-name">Scout</div><h3>Saved finds and reminders</h3><p>Keeps your saved finds and lets you know when it&rsquo;s a good time to buy.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg></div><div class="agent-name">Gifted <span class="agent-members">For members</span></div><h3>Gift finder</h3><p>Tell Gifted who you are shopping for. Real deals on gifts they will love.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="13" rx="2"/><path d="M9 7V4h6v3M9 20v1M15 20v1M9 11v5M15 11v5"/></svg></div><div class="agent-name">Travel</div><h3>Travel deals and verdicts</h3><p>Luggage, outings and trips, checked the same honest way.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.5"/></svg></div><div class="agent-name">Vault</div><h3>Savings tracker</h3><p>Every genuine deal you buy gets logged, so you can see what you have saved.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></div><div class="agent-name">Reviewer</div><h3>Review intelligence</h3><p>Reads the reviews, spots suspicious five-star patterns, and gives you the bottom line on what customers really say.</p></div>
+    <h2 id="trust-h">Why trust TrueFinds</h2>
+    <div class="trust-grid">
+      <div><h3>No brand can buy a verdict.</h3><p>Sinclair&rsquo;s price answers are free and independent. Featured products are always labeled.</p></div>
+      <div><h3>We will never sell your personal information.</h3><p>The free Chrome add-on reads only the product page you are on. Anything more asks for your approval first.</p></div>
+      <div><h3>How we earn.</h3><p>TrueFinds is free for shoppers. We earn from store commissions, featured products that are always labeled, and memberships. As an Amazon Associate, TrueFinds earns from qualifying purchases. <a href="/how-we-earn">How TrueFinds earns money</a></p></div>
     </div>
   </div>
 </section>
@@ -790,7 +748,7 @@
     <div class="founding-copy">
       <span class="eyebrow">Founding Member &middot; optional</span>
       <h2>Lock the founding rate for the premium agents</h2>
-      <p class="sub">Signing up is free and there is nothing to pay today. It reserves <strong>$8.97 a month, locked while your membership stays active</strong>, when the premium agents launch. Premium plans are expected at $18.97 to $29.97 a month. Sinclair&rsquo;s price verdict stays free either way.</p>
+      <p class="sub">Signing up is free and there is nothing to pay today. It reserves <strong>$8.97 a month, locked while your membership stays active</strong>, when the premium agents launch. Premium is $19.97 a month and Premium Plus is $29.97 a month. Sinclair&rsquo;s price verdict stays free either way.</p>
       <ul class="perks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>A weekly email with the real deals and one useful tip</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>First access when each new agent opens</li>
@@ -910,39 +868,18 @@
   </div>
 </section>
 
-<section class="final">
+<section class="final" id="ask-again" aria-labelledby="ask-again-h">
   <div class="wrap">
-    <h2>Sinclair is free. Start using it today.</h2>
-    <p>No account, no card, about ten seconds.</p>
-    <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
-        <div class="tf-inst tf-touch-only">
-        <p class="tf-inst-prompt">Shopping on your phone? Save Sinclair for your computer.</p>
-        <p class="tf-inst-line">Sinclair is a free add-on for Chrome on your computer. It tells you, right on the product page, whether a deal is real.</p>
-        <p class="tf-inst-line">We&rsquo;ll email you the link, plus one weekly list of real deals Sinclair checked.</p>
-        <form class="tf-inst-form" novalidate>
-          <label class="tf-sr" for="tf-inst-email-2">Your email</label>
-          <input id="tf-inst-email-2" type="email" autocomplete="email" placeholder="Your email" required>
-          <button type="submit">Send me the link</button>
-        </form>
-        <p class="tf-inst-msg" role="status" aria-live="polite"></p>
-        <p class="tf-inst-note">Free. No account. Unsubscribe anytime. We will never sell your personal information.</p>
-      </div>
-      <p class="tf-inst-ask tf-touch-only"><a href="#ask">Or check a price here now.</a></p>
+    <h2 id="ask-again-h">What are you shopping for?</h2>
+    <form class="final-ask" id="final-ask">
+      <label class="tf-sr" for="final-q">Tell Sinclair what you need</label>
+      <input id="final-q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
+      <button type="submit">Ask Sinclair</button>
+    </form>
+    <p>Members get reminders before birthdays and holidays. <a href="/pricing">See plans</a></p>
   </div>
 </section>
 
-<section class="privacy">
-  <div class="wrap privacy-grid">
-    <div>
-      <h3>Your privacy is a feature, not fine print.</h3>
-      <p>The free extension reads only the product page you are on. No browsing history, no tracking across sites, and the narrowest permissions Chrome allows. Premium features that learn your preferences ask for your approval first.</p>
-    </div>
-    <div>
-      <h3>How TrueFinds earns.</h3>
-      <p>As an Amazon Associate and an affiliate of partner brand stores, TrueFinds earns from qualifying purchases, no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</p>
-    </div>
-  </div>
-</section>
 
 <!-- tf-join:start (footer Join strip, 4 Oct 2026, Jon: "We need a "Join" or "Sign Up" on the footer, too, so we keep the user engaged." Source of truth: true-finds-app/scripts/guides/join_strip.html) -->
 <section class="tf-join" aria-labelledby="tf-join-title">
@@ -987,7 +924,7 @@
   </script>
 </section>
 <!-- tf-join:end -->
-<section class="tf-home-guides" data-tf="home-guides" style="background:#F4F7FA;padding:40px 0"><div style="max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box"><h2 style="font-size:26px;line-height:1.25;color:#1A3C5E;margin:0 0 6px">Guides from Sinclair</h2><p style="font-size:17px;line-height:1.5;color:#334155;margin:0 0 16px">Plain answers on prices, labels and sales, checked against the record.</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));"><li><a href="/guides/holiday-return-policies.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Gifts that are easy to return: holiday return policies at a glance</a></li><li><a href="/guides/free-shipping-minimums.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Free shipping minimums: when one more item saves you money</a></li><li><a href="/guides/holiday-shipping-cutoffs-2026.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Holiday 2026 shipping: when to order so gifts arrive on time</a></li><li><a href="/guides/gifts-comfort-hobbies-pets.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Thoughtful gifts for comfort, hobbies and the pets they love</a></li><li><a href="/guides/is-that-prime-day-deal-real.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Prime Big Deal Days: a five-minute way to spot the best buys</a></li><li><a href="/guides/five-things-to-check-before-you-buy-on-amazon.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Five quick checks for buying on Amazon with confidence</a></li><li><a href="/guides/when-were-the-reviews-written.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to read reviews you can trust</a></li><li><a href="/guides/olive-oil-extra-virgin-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to pick a great extra virgin olive oil</a></li><li><a href="/guides/supplement-cabinet-check.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Getting the most from your supplements: a simple label checklist</a></li><li><a href="/guides/the-anchor-price-trick.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to tell a genuinely good price in seconds</a></li><li><a href="/guides/are-big-sale-event-deals-real.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to find the best buys during big sale events</a></li><li><a href="/guides/protein-powder-label-math.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a protein powder: reading the label with confidence</a></li><li><a href="/guides/honey-label-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a great honey: the label words that matter</a></li><li><a href="/guides/online-fraud-over-60-real-shape.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Shop online safely: simple habits that protect you</a></li><li><a href="/guides/how-free-shopping-tools-make-money.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How TrueFinds stays free and keeps Sinclair on your side</a></li></ul><p style="margin:16px 0 0"><a href="/guides" style="color:#1A3C5E;font-weight:700">See all guides</a></p></div></section>
+<section class="tf-home-guides" data-tf="home-guides" style="background:#F4F7FA;padding:40px 0"><div style="max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box"><h2 style="font-size:26px;line-height:1.25;color:#1A3C5E;margin:0 0 6px">Guides from Sinclair</h2><p style="font-size:17px;line-height:1.5;color:#334155;margin:0 0 16px">Plain answers on prices, labels and sales, checked against the record.</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));"><li><a href="/guides/holiday-return-policies.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Gifts that are easy to return: holiday return policies at a glance</a></li><li><a href="/guides/free-shipping-minimums.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Free shipping minimums: when one more item saves you money</a></li><li><a href="/guides/holiday-shipping-cutoffs-2026.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Holiday 2026 shipping: when to order so gifts arrive on time</a></li><li><a href="/guides/gifts-comfort-hobbies-pets.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Thoughtful gifts for comfort, hobbies and the pets they love</a></li><li><a href="/guides/five-things-to-check-before-you-buy-on-amazon.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Five quick checks for buying on Amazon with confidence</a></li><li><a href="/guides/when-were-the-reviews-written.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to read reviews you can trust</a></li><li><a href="/guides/olive-oil-extra-virgin-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to pick a great extra virgin olive oil</a></li><li><a href="/guides/supplement-cabinet-check.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Getting the most from your supplements: a simple label checklist</a></li><li><a href="/guides/the-anchor-price-trick.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to tell a genuinely good price in seconds</a></li><li><a href="/guides/are-big-sale-event-deals-real.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to find the best buys during big sale events</a></li><li><a href="/guides/protein-powder-label-math.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a protein powder: reading the label with confidence</a></li><li><a href="/guides/honey-label-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a great honey: the label words that matter</a></li><li><a href="/guides/online-fraud-over-60-real-shape.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Shop online safely: simple habits that protect you</a></li><li><a href="/guides/how-free-shopping-tools-make-money.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How TrueFinds stays free and keeps Sinclair on your side</a></li></ul><p style="margin:16px 0 0"><a href="/guides" style="color:#1A3C5E;font-weight:700">See all guides</a></p></div></section>
 <footer class="footer">
   <div class="wrap footer-inner">
     <a class="nav-logo" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" aria-label="TrueFinds">
@@ -1557,6 +1494,7 @@
       out.hidden = false; clear(out);
       if (!q) { out.appendChild(el('p', 'ask-msg', 'Type a product or paste a link to get started.')); return; }
       setBusy(true);
+      track('home_ask_submitted', { surface: 'home', via: via });
       var wait = el('div', 'ask-wait'); wait.appendChild(el('span', 'ask-dot'));
       wait.appendChild(el('span', null, 'Sinclair is checking the price. Marco is looking at other stores.'));
       out.appendChild(wait);
@@ -1571,6 +1509,8 @@
         .then(function () { setBusy(false); });
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
+    // Homepage v2 (17 Oct 2026): the hero chips, "Ask this" and the closing Ask box ask through here.
+    window.tfAsk = function (q, via) { input.value = q; run(q, via || 'example'); };
     // Paste button on phones (6 Oct 2026): one tap pastes what the Amazon app copied, and asks.
     var pasteBtn = document.getElementById('ask-paste');
     if (pasteBtn) pasteBtn.addEventListener('click', function () {
@@ -1884,5 +1824,147 @@
   });
 </script>
 <script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
+<script data-tf="home-v2">
+  // Homepage v2 (17 Oct 2026, Jon: "build the homepage v2 with the gift row now"). The hero answer, "See Sinclair at
+  // work" and the gift row, all from /api/home/showcase: real Sinclair answers and store products, with each store's
+  // own name, price and photo read live (photos hot-linked, never stored). Built with DOM calls, never innerHTML.
+  (function () {
+    var hero = document.getElementById('hero-answer');
+    var workTabs = document.getElementById('work-tabs'), workPanel = document.getElementById('work-panel');
+    var giftTabs = document.getElementById('gift-tabs'), giftGrid = document.getElementById('gift-grid'), giftFine = document.getElementById('gift-fine');
+    if (!hero || !workPanel || !giftGrid) return;
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+    // Shopify's image service resizes on request; other hosts are left as they are.
+    function sized(src, w) {
+      if (!src || !/cdn\.shopify\.com|\/cdn\/shop\//.test(src)) return src;
+      return src + (src.indexOf('?') > -1 ? '&' : '?') + 'width=' + w;
+    }
+    function photo(box, c, w) {
+      if (c.image) { var im = document.createElement('img'); im.src = sized(c.image, w); im.alt = c.name; im.loading = 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.onerror = function () { box.removeChild(im); box.textContent = (c.store || '?').charAt(0); }; box.appendChild(im); }
+      else if (c.priceCents == null) { var g = el('div', 'gc-art'); g.appendChild(el('span', 'gc-art-name', c.store)); g.appendChild(el('span', 'gc-art-line', 'Gift card')); box.appendChild(g); }
+      else box.textContent = (c.store || '?').charAt(0);
+    }
+    function priceNote(c) {
+      if (c.checked) { try { return 'Checked ' + new Date(c.checked).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) { return 'Recorded price'; } }
+      return 'Store’s price';
+    }
+    function visit(a, c) { a.href = c.link; a.target = '_blank'; a.rel = c.earns ? 'sponsored noopener' : 'noopener'; }
+    function askThis(q, where) {
+      track('example_ask_click', { surface: 'home', target: where, query: q });
+      if (window.tfAsk) window.tfAsk(q, 'example');
+      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function answer(a, where) {
+      var box = el('div', 'sc-answer');
+      box.appendChild(el('span', 'sc-label', 'Real answer from Sinclair'));
+      box.appendChild(el('div', null)).appendChild(el('span', 'sc-q', '“' + a.q + '”'));
+      var tip = el('div', 'sc-tip'); tip.appendChild(el('strong', null, 'Sinclair’s tip')); tip.appendChild(el('p', null, a.tip)); box.appendChild(tip);
+      var ideas = el('div', 'sc-ideas'); a.ideas.forEach(function (i) { ideas.appendChild(el('span', null, i)); }); box.appendChild(ideas);
+      var list = el('ul', 'sc-list');
+      a.cards.forEach(function (c, i) {
+        var li = el('li', 'sc-item');
+        var th = el('div', 'sc-thumb'); photo(th, c, 360); li.appendChild(th);
+        var mid = el('div');
+        mid.appendChild(el('div', 'sc-store', c.store));
+        var name = el('a', 'sc-name', c.name); visit(name, c);
+        name.addEventListener('click', function () { track('showcase_click', { surface: where, store: c.host, position: i + 1, kind: a.id }); });
+        mid.appendChild(name);
+        if (c.reason) mid.appendChild(el('p', 'sc-reason', c.reason));
+        li.appendChild(mid);
+        var pr = el('div', 'sc-price', c.priceCents != null ? usd(c.priceCents) : (c.priceLabel || '')); pr.appendChild(el('small', null, priceNote(c))); li.appendChild(pr);
+        list.appendChild(li);
+      });
+      box.appendChild(list);
+      var act = el('div', 'sc-actions');
+      var b = el('button', 'sc-ask', 'Ask this'); b.type = 'button'; b.addEventListener('click', function () { askThis(a.q, where); }); act.appendChild(b);
+      box.appendChild(act);
+      return box;
+    }
+
+    function tabs(root, items, label, onPick) {
+      clear(root);
+      var btns = items.map(function (it, i) {
+        var b = el('button', null, label(it)); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        b.addEventListener('click', function () { btns.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); }); onPick(it, i); });
+        root.appendChild(b);
+        return b;
+      });
+    }
+
+    function giftCard(c, i, tab) {
+      var a = el('a', 'gift-card'); visit(a, c);
+      a.addEventListener('click', function () { track('gift_row_click', { surface: 'home', target: tab, store: c.host, position: i + 1, tier: c.earns ? 'earning' : 'live' }); });
+      var im = el('div', 'gift-img'); photo(im, c, 480); a.appendChild(im);
+      var body = el('div', 'gift-body');
+      body.appendChild(el('span', 'gift-store', c.store));
+      body.appendChild(el('span', 'gift-name', c.name));
+      if (c.age) body.appendChild(el('span', 'gift-age', c.age));
+      var pr = el('span', 'gift-price', c.priceCents != null ? usd(c.priceCents) + ' ' : (c.priceLabel || '') + ' ');
+      if (c.priceCents != null) pr.appendChild(el('small', null, priceNote(c)));
+      body.appendChild(pr);
+      body.appendChild(el('span', 'gift-go', 'Visit store →'));
+      a.appendChild(body);
+      return a;
+    }
+    function showGifts(t) {
+      clear(giftGrid);
+      t.cards.forEach(function (c, i) { giftGrid.appendChild(giftCard(c, i, t.key)); });
+      giftFine.hidden = !t.cards.some(function (c) { return c.earns; });
+    }
+
+    function fail() {
+      hero.hidden = true;
+      var at = document.getElementById('at-work'); if (at) at.hidden = true;
+      var gr = document.getElementById('gift-row'); if (gr) gr.hidden = true;
+    }
+
+    fetch('/api/home/showcase', { headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d || !d.ok) return fail();
+        var shown = (d.showcase || []).filter(function (a) { return a.cards && a.cards.length; });
+        var h = shown.filter(function (a) { return a.id === d.hero; })[0] || shown[0];
+        clear(hero);
+        if (h) hero.appendChild(answer(h, 'hero')); else hero.hidden = true;
+        // See Sinclair at work: grandson first, then Dad, then the dog (CODE_INBOX 17 Oct).
+        var order = ['g01', 'g04', 'g06'];
+        shown.sort(function (x, y) { return order.indexOf(x.id) - order.indexOf(y.id); });
+        if (shown.length) {
+          tabs(workTabs, shown, function (a) { return a.label; }, function (a) { clear(workPanel); workPanel.appendChild(answer(a, 'showcase')); });
+          clear(workPanel); workPanel.appendChild(answer(shown[0], 'showcase'));
+        } else { var at = document.getElementById('at-work'); if (at) at.hidden = true; }
+        var gt = (d.tabs || []).filter(function (t) { return t.cards && t.cards.length; });
+        if (gt.length) { tabs(giftTabs, gt, function (t) { return t.label; }, showGifts); showGifts(gt[0]); }
+        else { var gr = document.getElementById('gift-row'); if (gr) gr.hidden = true; }
+      })
+      .catch(fail);
+
+    // Hero chips and the closing Ask box send their words to the Ask box above.
+    Array.prototype.forEach.call(document.querySelectorAll('#ask-also button[data-ask]'), function (b) {
+      b.addEventListener('click', function () { askThis(b.getAttribute('data-ask'), 'chip'); });
+    });
+    var fin = document.getElementById('final-ask');
+    if (fin) fin.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var q = (document.getElementById('final-q').value || '').trim();
+      if (!q) { document.getElementById('final-q').focus(); return; }
+      if (window.tfAsk) window.tfAsk(q, 'closing');
+      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('a[data-chrome]'), function (a) {
+      a.addEventListener('click', function () { track('home_compare_click', { target: 'chrome_' + a.getAttribute('data-chrome') }); });
+    });
+  })();
+</script>
 </body>
 </html>
