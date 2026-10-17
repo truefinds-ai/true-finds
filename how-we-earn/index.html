@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How TrueFinds earns money | TrueFinds</title>
+<meta name="description" content="TrueFinds is free for shoppers. We may earn a commission from stores, at no cost to you, and Sinclair's verdicts are always free and independent.">
+<link rel="canonical" href="https://truefinds.ai/how-we-earn">
+<style>  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
+  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; }
+  .topbar .links { display:flex; gap:18px; align-items:center; }
+  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:600; }
+  .topbar a.tl:hover { color:#fff; }
+  .topbar a.tcta { background:#14734F; color:#fff; text-decoration:none; font-size:14px; font-weight:700; padding:9px 18px; border-radius:999px; }
+  @media (max-width:560px) {
+    .topbar { padding:12px 16px; }
+    .topbar .links { gap:12px; }
+    .topbar a.tl { font-size:13px; white-space:nowrap; }
+    .topbar a.tcta { font-size:13px; padding:8px 14px; }
+  }
+  /* tf-topbar-phone:start (5 Oct 2026) */
+  .topbar .tcta-short { display:none; }
+  @media (max-width:479px) {
+    .topbar { justify-content:flex-start; padding:10px 16px; gap:6px 0; }
+    .topbar .links { display:contents; }
+    .topbar a.brand { order:1; margin-right:8px; }
+    .topbar a.tcta { order:2; margin-left:auto; display:inline-flex; align-items:center; min-height:44px; padding:0 14px; font-size:15px; white-space:nowrap; }
+    .topbar::after { content:""; order:3; flex-basis:100%; height:0; }
+    .topbar a.tl { order:4; display:inline-flex; align-items:center; min-height:36px; margin-right:20px; font-size:15px; }
+    .topbar .tcta-full { display:none; }
+    .topbar .tcta-short { display:inline; }
+  }
+  /* tf-topbar-phone:end */
+  .hero { background:var(--navy); color:#fff; text-align:center; padding:64px 24px 72px; }
+  .hero h1 { font-size:clamp(30px,5vw,44px); line-height:1.2; margin-bottom:16px; }
+  .hero p { max-width:640px; margin:0 auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.88); }
+  main { max-width:960px; margin:0 auto; padding:0 22px; }
+  section { padding:56px 0 8px; }
+  h2.sec { color:var(--navy); font-size:clamp(24px,3.5vw,30px); text-align:center; margin-bottom:8px; }
+  p.sec-sub { text-align:center; color:#48586A; font-size:16.5px; max-width:620px; margin:0 auto 36px; line-height:1.6; }
+  .cta { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:18px; padding:36px 28px; text-align:center; margin:56px 0 64px; }
+  .cta p { font-size:16.5px; line-height:1.65; max-width:640px; margin:0 auto 20px; }
+  .cta a.btn { display:inline-block; background:#14734F; color:#fff; text-decoration:none; font-weight:700; font-size:17px; padding:15px 32px; border-radius:999px; }
+  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
+  footer a { color:var(--green); text-decoration:none; font-weight:600; }
+  .prose { max-width:700px; margin:0 auto; }
+  .prose h2 { color:var(--navy); font-size:clamp(22px,3.2vw,27px); margin:40px 0 12px; }
+  .prose p { font-size:17.5px; line-height:1.75; margin-bottom:16px; }
+  .prose ul { margin:0 0 18px 22px; }
+  .prose li { font-size:17.5px; line-height:1.7; margin-bottom:10px; }
+  .team { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:14px; margin:8px 0 10px; }
+  .tcard { border:1px solid #E3E9EF; border-radius:14px; padding:18px 18px; }
+  .tcard b { display:block; color:var(--navy); font-size:18px; margin-bottom:6px; }
+  .tcard span { font-size:15.5px; line-height:1.55; color:#48586A; }
+  .tcard .soon { display:inline-block; margin-top:8px; font-size:13px; font-weight:700; color:#15855C; background:var(--green-tint); border-radius:999px; padding:3px 10px; }
+  .promise { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:14px; padding:18px 20px; font-size:17.5px; line-height:1.6; color:var(--navy); margin:18px 0; }
+  .btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:34px 0 56px; }
+  .btns a { display:inline-block; text-decoration:none; font-weight:700; font-size:17px; padding:15px 30px; border-radius:999px; min-height:48px; }
+  .btns a.primary { background:#14734F; color:#fff; }
+  .btns a.secondary { background:#fff; color:var(--navy); box-shadow:0 0 0 2px var(--navy) inset; }
+  .prose a { color:#14734F; font-weight:600; }
+  /* tf-menu:start (6 Oct 2026) */
+  .tf-menu { position:relative; flex:0 0 auto; }
+  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .tf-menu > summary::-webkit-details-marker { display:none; }
+  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
+  .tf-menu .tf-x { display:none; }
+  .tf-menu[open] .tf-x { display:block; }
+  .tf-menu[open] .tf-bars { display:none; }
+  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; box-shadow:0 10px 30px rgba(26,60,94,0.25), 0 0 0 1px #E1E7EE; }
+  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
+  .tf-menu nav a:hover { background:#F4F7FA; }
+  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#14734F; color:#fff; padding:0 16px; }
+  .tf-menu nav a.tf-menu-cta:hover { background:#0F5C3F; }
+  .nav .tf-menu > summary { color:#1A3C5E; }
+  .nav .tf-menu > summary:hover { background:#EEF2F6; }
+  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
+  @media (max-width:479px) {
+    /* CODE_INBOX FIX LIST 9 Oct, item 1: in a desktop-mode browser at phone width (Add to Chrome shown) the
+       row ran 19px past 375px. The logo shrinks first, the button tightens, the open panel stays on screen. */
+    .nav-inner { padding:10px 14px; gap:10px; min-width:0; }
+    .nav-inner .nav-logo { flex:0 1 auto; min-width:0; display:flex; }
+    .nav-inner .nav-logo svg { width:100%; height:auto; max-width:128px; max-height:40px; }
+    .nav-inner .btn-sm { flex:0 0 auto; padding:8px 12px; font-size:14px; }
+    .tf-menu nav { max-width:calc(100vw - 24px); }
+    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
+    .topbar a.brand svg { height:22px !important; }
+    .topbar a.tcta { padding:0 11px; font-size:14px; }
+    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
+    .topbar .tf-menu > summary { width:42px; }
+  }
+  /* tf-menu:end */
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
+  <div class="links">
+    <a class="tl" href="/real-deals">Real Deals</a>
+    <a class="tl" href="/how-it-works">How It Works</a>
+    <a class="tl" href="/guides">Guides</a>
+    <a class="tcta" href="/#hero"><span class="tcta-full">Become a Founding Member</span><span class="tcta-short">Be a Founding Member</span></a>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>How TrueFinds earns money</h1>
+  <p>TrueFinds is free for shoppers. Here is how we earn, in plain words.</p>
+</div>
+
+<main>
+  <section class="prose">
+    <h2>Commissions from stores</h2>
+    <p>Some links on TrueFinds are affiliate links. If you buy after following one, we may earn a commission from the store or its affiliate network, at no extra cost to you. Sinclair&rsquo;s verdicts are always free and independent: a product that earns us nothing gets the same reading as one that does.</p>
+
+    <h2>Amazon</h2>
+    <p>TrueFinds participates in the Amazon Associates program. As an Amazon Associate I earn from qualifying purchases. When you click &ldquo;Get this deal&rdquo;, you go to a TrueFinds deal page, and from there to the retailer. The extension never changes, rewrites, or adds an affiliate link on Amazon&rsquo;s own pages.</p>
+
+    <h2>Members</h2>
+    <p>Some shoppers choose our paid plans for extra help, like gift plans and reminders. See <a href="/pricing">plans and pricing</a> and the <a href="/subscription-terms">Subscription Terms</a>.</p>
+
+    <h2>Sponsors</h2>
+    <p>Sponsored placements are always labeled. Sponsors never change a verdict. Verdicts are not for sale.</p>
+
+    <div class="promise">And one promise: <strong>we will never sell your personal information.</strong></div>
+
+    <h2>Who we are</h2>
+    <p>TrueFinds is run by TrueFinds Technologies, LLC, 3100 North 29th Court, Hollywood, FL 33020, United States.</p>
+    <p>Questions? Write to us at <a href="mailto:hello@truefinds.ai">hello@truefinds.ai</a>.</p>
+
+    <div class="btns">
+      <a class="primary" href="/#ask">Check a price</a>
+      <a class="secondary" href="/about">About TrueFinds</a>
+    </div>
+  </section>
+</main>
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/support">Support</a></footer>
+<script>
+/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
+(function () {
+  try {
+    var v = localStorage.getItem('tf_visitor_id');
+    if (!v) {
+      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('tf_visitor_id', v);
+    }
+  } catch (e) { v = 'anonymous'; }
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
+  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
+  try {
+    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
+    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
+</body>
+</html>

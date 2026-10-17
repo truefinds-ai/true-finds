@@ -77,6 +77,8 @@
     { "source": "/terms/", "destination": "/terms/index.html" },
     { "source": "/about", "destination": "/about/index.html" },
     { "source": "/about/", "destination": "/about/index.html" },
+    { "source": "/how-we-earn", "destination": "/how-we-earn/index.html" },
+    { "source": "/how-we-earn/", "destination": "/how-we-earn/index.html" },
     { "source": "/for-stores", "destination": "/for-stores/index.html" },
     { "source": "/for-stores/", "destination": "/for-stores/index.html" },
     { "source": "/muse/", "destination": "/muse/index.html" },

@@ -74,9 +74,17 @@
   <!-- About -->
   <url>
     <loc>https://truefinds.ai/about</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- How we earn (disclosure, 17 Oct 2026) -->
+  <url>
+    <loc>https://truefinds.ai/how-we-earn</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- For stores and brands -->
