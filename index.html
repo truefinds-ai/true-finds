@@ -392,6 +392,9 @@
     /* Search rebuild (16 Oct 2026): the reason line, the idea chips, and larger photos on phones. */
     .ask-reason { font-size: 16px; font-weight: 600; line-height: 1.35; color: #14734F; margin-top: 4px; }
     .ask-ideas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .ask-finding { animation: askFinding 1.4s ease-in-out infinite; }
+    @keyframes askFinding { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+    @media (prefers-reduced-motion: reduce) { .ask-finding { animation: none; } }
     .ask-ideas .ask-idea { display: inline-block; padding: 4px 12px; border: 0; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; font-size: 16px; font-weight: 700; }
     @media (max-width: 639px) { .ask-thumb, .ask-badge { width: 88px; height: 88px; } }
     .ask-more-btn { display: block; width: 100%; min-height: 48px; margin-top: 4px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; text-decoration: none; }
@@ -1534,7 +1537,7 @@
     var note = document.getElementById('ask-note');
     var mic = document.getElementById('ask-mic');
     if (!form || !input || !out) return;
-    var busy = false, asked = '', tipRun = 0;
+    var busy = false, asked = '', tipRun = 0, searchRun = 0;
     function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
     function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
     function usd(c) { return '$' + (c / 100).toFixed(2); }
@@ -1592,7 +1595,7 @@
       var wait = el('div', 'ask-wait'); wait.appendChild(el('span', 'ask-dot'));
       wait.appendChild(el('span', null, 'Sinclair is checking the price. Marco is looking at other stores.'));
       out.appendChild(wait);
-      fetch('/api/ask?q=' + encodeURIComponent(q), { headers: { Accept: 'application/json' } })
+      fetch('/api/ask?q=' + encodeURIComponent(q) + '&steps=2', { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
         .then(function (d) { asked = q; render(d);
           // On a phone the answer starts below the fold: bring it into view (search rebuild, 16 Oct 2026).
@@ -1703,6 +1706,38 @@
       if (d.budget && d.budget.maxUsd) {
         var bm = Number.isInteger(d.budget.maxUsd) ? String(d.budget.maxUsd) : d.budget.maxUsd.toFixed(2);
         out.appendChild(el('p', 'ask-msg ask-budget', d.budget.applied ? 'Showing options at $' + bm + ' or less.' : 'Nothing we found is $' + bm + ' or less, so here is everything we found.'));
+      }
+      // Answer timing (c), 17 Oct 2026, same as the app's Ask box: the tip and idea chips first, the cards from
+      // /api/ask/search after; the answer is drawn again with them. If the cards cannot come, it says so.
+      if (d.pending && d.searchToken) {
+        var pp = el('div', 'ask-panel'); pp.setAttribute('aria-busy', 'true');
+        pp.appendChild(el('h3', 'ask-h', 'At stores across the US'));
+        if (d.ideas && d.ideas.length) {
+          var pc = el('ul', 'ask-ideas'); pc.setAttribute('aria-label', 'Ideas Sinclair looked for');
+          d.ideas.forEach(function (idea) { pc.appendChild(el('li', 'ask-idea', idea)); });
+          pp.appendChild(pc);
+        }
+        var hold = el('p', 'ask-msg ask-finding', 'Sinclair is finding the best fits for you.'); pp.appendChild(hold);
+        out.appendChild(pp);
+        var mineSearch = ++searchRun;
+        fetch('/api/ask/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.searchToken }) })
+          .then(function (r) { return r.json(); })
+          .then(function (s) {
+            if (mineSearch !== searchRun) return;
+            if (!s || !s.ok) throw new Error('search');
+            var next = {}; Object.keys(d).forEach(function (k) { next[k] = d[k]; });
+            next.catalog = s.catalog || []; next.ideas = s.ideas || d.ideas; next.missing = !!s.missing; next.budget = s.budget || d.budget;
+            next.tipToken = s.tipToken || null; next.pending = false; next.searchToken = null;
+            track('ask_search_cards', { surface: 'home', shown: next.catalog.length });
+            render(next);
+          })
+          .catch(function () {
+            if (mineSearch !== searchRun) return;
+            pp.setAttribute('aria-busy', 'false');
+            hold.textContent = "Sinclair couldn't finish the search just now. Please ask again in a moment.";
+            hold.classList.remove('ask-finding');
+          });
+        return;
       }
       var top = el('div', 'ask-panel');
       top.appendChild(el('p', 'ask-eyebrow', d.title));
