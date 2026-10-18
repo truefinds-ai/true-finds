@@ -541,8 +541,8 @@
     .gift-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
     .gift-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; }
     .gift-card:hover { border-color: var(--navy); }
-    .gift-img { aspect-ratio: 4 / 3; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 40px; color: #94A3B8; }
-    .gift-img img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+    .gift-img { position: relative; aspect-ratio: 4 / 3; flex: none; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 40px; color: #94A3B8; }
+    .gift-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
     .gc-art { width: 78%; aspect-ratio: 1.586 / 1; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--green-dark)); color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 14px 16px; box-shadow: 0 10px 24px rgba(26,60,94,.25); text-align: left; }
     .gc-art-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
     .gc-art-line { font-size: 15px; font-weight: 600; opacity: .9; }
