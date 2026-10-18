@@ -1,3 +1,8 @@
+// REPLACED 18 Oct 2026 (Jon: "save sign-ups"). Not deployed: Vercel skips /api files whose names start with an
+// underscore. truefinds.ai/api/subscribe now rewrites to the app (true-finds-app src/app/api/subscribe/route.ts),
+// which stores every sign-up in Supabase and sends it to Beehiiv with the same welcome email and referral fields.
+// Kept, renamed rather than deleted, as the record of what the site did before.
+//
 // Vercel serverless function: subscribes an email to the TrueFinds Beehiiv publication.
 // The API key lives ONLY in Vercel environment variables (BEEHIIV_API_KEY), never in this file.
 // Publication ID is not a secret; env var overrides the fallback below.
