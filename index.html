@@ -581,6 +581,25 @@
     .final-ask button { min-height: 56px; border: 0; border-radius: 999px; background: var(--green-dark); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 28px; cursor: pointer; }
     .final p a { color: #fff; font-weight: 700; }
     .fine { font-size: 15px; color: var(--muted); margin-top: 14px; }
+      /* Hero option A (Jon 18 Oct 2026: "Go with A"): one clear focus, the Ask box. */
+    .hero .ask-card.ask-in-hero h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0 !important; }
+    .hero .ask-share-help { display: none !important; }
+    .hero .ask-card.ask-in-hero { padding: 18px 20px; }
+    .hero-copy, .hero .ask-card { min-width: 0; width: 100%; }
+    .hero { padding: 56px 0 40px; }
+    .hero-grid { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; }
+    .hero-copy { max-width: 760px; text-align: center; }
+    .hero .lead { margin-left: auto; margin-right: auto; max-width: 640px; }
+    .hero-visual { display: none; }
+    .hero .ask-also { justify-content: center; }
+    .hero .trust-line { margin-top: 10px; }
+    @media (max-width: 640px) {
+      .hero { padding: 32px 0 28px; }
+      .hero-copy { text-align: left; }
+      .hero .ask-also { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; margin-right: -16px; padding-right: 16px; }
+      .hero .ask-also::-webkit-scrollbar { display: none; }
+      .hero .ask-also span, .hero .ask-also button { flex: 0 0 auto; white-space: nowrap; }
+    }
   </style>
 <link rel="canonical" href="https://truefinds.ai/">
 </head>
