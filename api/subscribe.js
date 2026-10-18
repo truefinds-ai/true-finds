@@ -17,7 +17,8 @@ module.exports = async (req, res) => {
   const { email, referred_by, referral_code, source } = req.body || {};
   // Where the signup came from. Allowlisted so a caller cannot write arbitrary
   // values into Beehiiv; anything unknown is recorded as the homepage.
-  const medium = ['landing', 'welcome', 'footer', 'phone'].includes(source) ? source : 'landing';
+  // home_footer: the homepage footer sign-up (18 Oct 2026).
+  const medium = ['landing', 'welcome', 'footer', 'phone', 'home_footer'].includes(source) ? source : 'landing';
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email))) {
     return res.status(400).json({ error: 'Invalid email' });
   }
