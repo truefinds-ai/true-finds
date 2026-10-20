@@ -433,6 +433,63 @@
     .ask-sub { font-size: 16px; color: #334155; line-height: 1.35; margin-top: 2px; }
     .ask-go-store { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #14734F; padding: 0 18px; font-size: 17px; font-weight: 700; color: #fff; text-decoration: none; }
     .ask-go-store:hover { background: #0F5C3F; }
+    /* Mobile journey, 20 Oct 2026 (CODE_INBOX items 1 to 12). Cards lead with the product: a large photo, the
+       product name as the bold line, the store under it, the price beside. */
+    .ask-list li.ask-photo { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px 16px; align-items: start; }
+    .ask-photo .ask-pic { width: 140px; height: 140px; border-radius: 14px; object-fit: contain; background: #fff; box-shadow: 0 0 0 1px #DCE3EA; }
+    .ask-photo .ask-btns { grid-column: 1 / -1; }
+    .ask-pname { font-size: 19px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+    .ask-storeline { font-size: 16px; font-weight: 600; color: #334155; margin-top: 2px; }
+    @media (max-width: 639px) {
+      .ask-list li.ask-photo { display: block; }
+      .ask-photo .ask-pic { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; max-height: 340px; margin-bottom: 12px; }
+      .ask-photo .ask-btns { margin-top: 10px; }
+    }
+    .ask-savecard.is-saved { background: #DCFCE7; box-shadow: 0 0 0 2px #1A9E6E inset; color: #14532D; cursor: default; }
+    .ask-saved-line { flex-basis: 100%; margin: 4px 0 0; font-size: 16px; font-weight: 700; color: #14532D; background: #DCFCE7; border-radius: 12px; padding: 10px 14px; }
+    .tf-sheet-back { position: fixed; inset: 0; z-index: 90; background: rgba(15, 23, 42, 0.45); display: flex; align-items: flex-end; justify-content: center; }
+    .tf-sheet { width: 100%; max-width: 520px; background: #fff; border-radius: 20px 20px 0 0; padding: 22px 20px calc(22px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.2); }
+    @media (min-width: 640px) { .tf-sheet-back { align-items: center; } .tf-sheet { border-radius: 20px; } }
+    .tf-sheet-h { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+    .tf-sheet-line { font-size: 16px; color: #334155; margin-top: 6px; }
+    .tf-sheet form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .tf-sheet input { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 0 16px; font: inherit; font-size: 17px; color: var(--navy); border: 2px solid #C9D3DD; border-radius: 999px; }
+    .tf-sheet .tf-sheet-go { min-height: 48px; padding: 0 22px; font: inherit; font-size: 17px; font-weight: 700; color: #fff; background: #14734F; border: 0; border-radius: 999px; cursor: pointer; }
+    .tf-sheet .tf-sheet-go:disabled { opacity: .7; }
+    .tf-sheet-msg { font-size: 16px; font-weight: 600; margin-top: 8px; color: #B91C1C; }
+    .tf-sheet-fine { font-size: 15px; color: #475569; margin-top: 10px; }
+    .tf-sheet-no { min-height: 44px; margin-top: 6px; border: 0; background: none; padding: 0; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .ask-tip-more { font-size: 17px; line-height: 1.4; color: var(--navy); margin-top: 8px; }
+    .ask-tip-q { font-size: 18px; font-weight: 700; line-height: 1.4; color: #14734F; margin-top: 12px; }
+    .ask-tip-yes { min-height: 48px; display: inline-flex; align-items: center; border-radius: 999px; background: #14734F; padding: 0 20px; font-size: 17px; font-weight: 700; color: #fff !important; text-decoration: none !important; }
+    .ask-tip-yes:hover { background: #0F5C3F; }
+    .ask-also-asked { margin-top: 18px; }
+    .ask-also-asked h3 { font-size: 19px; font-weight: 800; color: var(--navy); }
+    .ask-also-asked .ex-row { margin-top: 10px; }
+    .ask-member-line { font-size: 16px; color: #334155; margin-top: 14px; }
+    .ask-member-line a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: #14734F; }
+    .ex-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ex-row button { min-height: 44px; display: inline-flex; align-items: center; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; }
+    .ex-row button:hover, .ex-row button:focus-visible { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
+    .pop-row h2, .pop-row h3 { color: var(--navy); }
+    .pop-row h3 { font-size: 19px; font-weight: 800; margin-top: 22px; }
+    .pop-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
+    @media (max-width: 980px) { .pop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .pop-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px #DCE3EA; overflow: hidden; }
+    .pop-img { display: block; aspect-ratio: 1 / 1; background: #fff; }
+    .pop-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .pop-body { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px 12px; flex: 1 1 auto; }
+    .pop-name { font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.3; text-decoration: none; }
+    .pop-store { font-size: 15px; font-weight: 600; color: #334155; }
+    .pop-price { font-size: 18px; font-weight: 800; color: var(--navy); margin-top: 2px; }
+    .pop-price small { display: block; font-size: 15px; font-weight: 600; color: #475569; }
+    .pop-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+    .pop-acts .ask-go-store, .pop-acts .ask-savecard { font-size: 16px; padding: 0 14px; }
+    .tf-phone-ask { display: none; }
+    @media (hover: none) and (pointer: coarse), (max-width: 639px) {
+      .nav .tf-phone-ask { display: inline-flex; }
+      .nav a.tf-desktop-only.btn { display: none !important; }
+    }
     .ask-more { min-height: 44px; border: 0; background: none; padding: 0; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
     .ask-save { align-self: flex-start; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--navy); color: #fff; padding: 0 26px; font-size: 18px; font-weight: 700; text-decoration: none; }
     @media (max-width: 640px) {
@@ -602,6 +659,17 @@
       .hero .ask-also::-webkit-scrollbar { display: none; }
       .hero .ask-also span, .hero .ask-also button { flex: 0 0 auto; white-space: nowrap; }
     }
+    /* Readable on phones (mobile journey item 9, 20 Oct 2026): 15 px text at least, 44 px taps. Last in the
+       stylesheet on purpose, so it wins over the rules above it. */
+    @media (max-width: 639px) {
+      .eyebrow, .chip, .chip.sm, .tabbar a, .eyebrow-pill, .fc-sub, .proof-asof, .deal-meta, .deal-sub, .store-name, .store-note,
+      .agent-name, .agent-members, .ref-eyebrow, .q-eyebrow, .btn-share, .footer-news-note, .footer-bottom, .cmp-brand, .marco-label,
+      .ask-tip-label, .ask-eyebrow, .ask-live, .ask-verified, .tf-inst .tf-inst-note, .sc-label, .sc-price small, .status,
+      .gift-age, .gift-price small, .nav-inner .btn-sm, .pop-price small { font-size: 15px; }
+      .footer-links a, .footer-bottom a, .ask-facts a, .ask-orderby a, .fine a, .link-arrow, a[href="/pricing"], .tf-home-guides p > a,
+      .pop-name, .sc-name, .nav-inner .btn-sm { display: inline-flex; align-items: center; min-height: 44px; }
+      .nav-logo { min-height: 44px; }
+    }
   </style>
 <link rel="canonical" href="https://truefinds.ai/">
 </head>
@@ -622,6 +690,7 @@
       <a href="/guides">Guides</a>
     </div>
     <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
+    <a class="tf-phone-ask btn btn-green btn-sm" href="#ask" id="nav-ask">Ask Sinclair</a>
     <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/" aria-current="page">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/how-it-works">How It Works</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
     
     
@@ -665,6 +734,14 @@
     </div>
   </div>
 </header>
+
+<section class="section pop-row" id="popular" aria-labelledby="popular-h" hidden>
+  <div class="wrap">
+    <h2 id="popular-h">Popular in Sinclair&rsquo;s answers this week</h2>
+    <div class="pop-grid" id="popular-grid"></div>
+    <p class="fine" id="popular-fine" hidden>TrueFinds may earn a commission from stores, no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</p>
+  </div>
+</section>
 
 <section class="section soft" id="at-work" aria-labelledby="at-work-h">
   <div class="wrap">
@@ -1443,7 +1520,7 @@
     var note = document.getElementById('ask-note');
     var mic = document.getElementById('ask-mic');
     if (!form || !input || !out) return;
-    var busy = false, asked = '', tipRun = 0, searchRun = 0;
+    var busy = false, asked = '', tipRun = 0, searchRun = 0, tipMore = null;
     function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
     function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
     function usd(c) { return '$' + (c / 100).toFixed(2); }
@@ -1500,7 +1577,10 @@
       setBusy(true);
       track('home_ask_submitted', { surface: 'home', via: via });
       var wait = el('div', 'ask-wait'); wait.appendChild(el('span', 'ask-dot'));
-      wait.appendChild(el('span', null, 'Sinclair is checking the price. Marco is looking at other stores.'));
+      // Mobile journey item 3 (20 Oct 2026): a pasted product or link keeps the price line; anything typed is ideas.
+      var isLink = /(https?:\/\/|www\.|amzn\.|a\.co\/|\.com\/)/i.test(q) || /^B0[A-Z0-9]{8}$/i.test(q);
+      tipMore = null;
+      wait.appendChild(el('span', null, isLink ? 'Sinclair is checking the price. Marco is looking at other stores.' : 'Sinclair is finding ideas for you...'));
       out.appendChild(wait);
       fetch('/api/ask?q=' + encodeURIComponent(q) + '&steps=2', { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
@@ -1591,21 +1671,35 @@
         var tp = el('div', 'ask-tip');
         tp.appendChild(el('p', 'ask-tip-label', "Sinclair's tip"));
         var tt = el('p', 'ask-tip-text', d.tip.text); tp.appendChild(tt);
+        // Mobile journey item 4 (20 Oct 2026): the tip never changes words while it is read. The written tip from
+        // /api/ask/tip shows under it as a second line, once per ask, and is kept when the cards redraw the answer.
+        var more = el('p', 'ask-tip-more'); more.hidden = true; tp.appendChild(more);
+        if (tipMore && tipMore !== d.tip.text) { more.textContent = tipMore; more.hidden = false; }
         var tl = el('div', 'ask-links');
         // Same map as src/lib/ask/tip-help.ts: save offers open Compare at Save, lists open /plan, the gift plan opens /gifts/plan.
         var hh = d.tip.help === 'gift_plan' ? '/gifts/plan' : ((d.tip.help === 'save' || d.tip.help === 'save_price') && d.compareHref ? d.compareHref + '#save' : '/plan');
-        tl.appendChild(link(hh, d.tip.helpText, null, false, 'tip_help_' + d.tip.help));
+        if (d.tip.help === 'gift_plan') {
+          // Item 5: the gift plan question gets a Yes button; the guide stays a quiet link.
+          tp.appendChild(el('p', 'ask-tip-q', d.tip.helpText));
+          tl.appendChild(link(hh, 'Yes, start my gift plan', 'ask-tip-yes', false, 'tip_help_gift_plan'));
+        } else tl.appendChild(link(hh, d.tip.helpText, null, false, 'tip_help_' + d.tip.help));
         if (d.tip.guide) tl.appendChild(link(d.tip.guide, 'Read our guide →', null, false, 'tip_guide'));
         tp.appendChild(tl);
         out.appendChild(tp);
         track('ask_tip_shown', { surface: 'home', tip: d.tip.id, understood: d.understood || 'off' });
-        if (d.tipToken) {
+        if (d.tipToken && tipMore === null) {
           var mine = ++tipRun;
+          tipMore = '';
           fetch('/api/ask/tip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.tipToken }) })
             .then(function (r) { return r.ok ? r.json() : { tip: null, reason: 'http' }; })
             .then(function (t) {
               if (mine !== tipRun) return;
-              if (t && t.tip) { tt.textContent = t.tip; track('ask_tip_written', { surface: 'home' }); }
+              if (t && t.tip) {
+                tipMore = t.tip;
+                var live = out.querySelector('.ask-tip-more');
+                if (live && t.tip !== d.tip.text) { live.textContent = t.tip; live.hidden = false; }
+                track('ask_tip_written', { surface: 'home' });
+              }
               else track('ask_tip_fallback', { surface: 'home', reason: (t && t.reason) || 'unknown' });
             })
             .catch(function () { track('ask_tip_fallback', { surface: 'home', reason: 'network' }); });
@@ -1626,7 +1720,8 @@
           d.ideas.forEach(function (idea) { pc.appendChild(el('li', 'ask-idea', idea)); });
           pp.appendChild(pc);
         }
-        var hold = el('p', 'ask-msg ask-finding', 'Sinclair is finding the best fits for you.'); pp.appendChild(hold);
+        var findLine = d.finding || 'Sinclair is finding the best fits for you.';
+        var hold = el('p', 'ask-msg ask-finding', findLine); pp.appendChild(hold);
         out.appendChild(pp);
         var mineSearch = ++searchRun;
         // Jon 20 Oct: never an empty answer with no next step. Empty cards (a slow search) or a failed call keep the
@@ -1640,7 +1735,7 @@
             again.addEventListener('click', function () {
               track('ask_try_again', { surface: 'home' });
               again.remove(); pp.setAttribute('aria-busy', 'true');
-              hold.textContent = 'Sinclair is finding the best fits for you.'; hold.classList.add('ask-finding');
+              hold.textContent = findLine; hold.classList.add('ask-finding');
               loadCards(2);
             });
             pp.appendChild(again);
@@ -1691,18 +1786,31 @@
       function cardLi(r) {
         var li = el('li');
         if (r.host) { li.setAttribute('data-host', String(r.host).toLowerCase().replace(/^www\./, '')); li.setAttribute('data-name', r.name || ''); }
-        if (r.image && /^https:\/\//.test(r.image)) {
+        // Mobile journey item 1 (20 Oct 2026): a card with a photo leads with the product, a large photo, the product
+        // name as the bold line and the store under it. A store row without a photo keeps its badge.
+        var photoFirst = !!(r.image && /^https:\/\//.test(r.image) && r.sub);
+        if (photoFirst) {
+          li.className = 'ask-photo';
+          var pic = document.createElement('img'); pic.className = 'ask-pic'; pic.src = r.image; pic.alt = r.sub; pic.loading = 'lazy'; pic.decoding = 'async'; pic.referrerPolicy = 'no-referrer'; li.appendChild(pic);
+        } else if (r.image && /^https:\/\//.test(r.image)) {
           var img = document.createElement('img'); img.className = 'ask-thumb'; img.src = r.image; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; li.appendChild(img);
         } else {
           var badge = el('span', 'ask-badge', ((r.name.match(/[A-Za-z0-9]/) || ['?'])[0]).toUpperCase()); badge.setAttribute('aria-hidden', 'true'); li.appendChild(badge);
         }
         var body = el('div', 'ask-who');
-        var head = el('div', 'ask-head'); var nm = el('p', 'ask-store', r.name);
-        if (r.verified) nm.appendChild(el('span', 'ask-verified', 'Verified'));
-        head.appendChild(nm);
+        var head = el('div', 'ask-head');
+        if (photoFirst) {
+          var who = el('div'); who.appendChild(el('p', 'ask-pname', r.sub));
+          var sl = el('p', 'ask-storeline', r.name); if (r.verified) sl.appendChild(el('span', 'ask-verified', 'Verified'));
+          who.appendChild(sl); head.appendChild(who);
+        } else {
+          var nm = el('p', 'ask-store', r.name);
+          if (r.verified) nm.appendChild(el('span', 'ask-verified', 'Verified'));
+          head.appendChild(nm);
+        }
         if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', r.priceLabel || 'Live price')); head.appendChild(pr); }
         body.appendChild(head);
-        if (r.sub) body.appendChild(el('p', 'ask-sub', r.sub));
+        if (r.sub && !photoFirst) body.appendChild(el('p', 'ask-sub', r.sub));
         // Search rebuild (16 Oct 2026): why Sinclair picked it for this person, one line, same as the app's Ask box.
         if (r.reason) body.appendChild(el('p', 'ask-reason', r.reason));
         if (r.options && r.options.length) body.appendChild(el('p', 'ask-opts', r.options.join(', ')));
@@ -1711,7 +1819,14 @@
         go.addEventListener('click', function () { outreach(r); });
         if (r.save) {
           var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
-          sv.addEventListener('click', function () { tap('save_card', r.host); track('save_tap', { surface: 'home', target: r.target === 'catalog' ? 'ask_catalog' : 'ask_card', store: r.host || '' }); });
+          sv.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (sv.getAttribute('data-saved')) return;
+            tap('save_card', r.host); track('save_tap', { surface: 'home', target: r.target === 'catalog' ? 'ask_catalog' : 'ask_card', store: r.host || '' });
+            // Mobile journey item 2 (20 Oct 2026): Save keeps the shopper in the answer.
+            if (window.tfSaveInPlace) window.tfSaveInPlace({ save: r.save, name: r.sub || r.name, host: r.host }, sv, btnrow, 'home');
+            else location.href = r.save;
+          });
           btnrow.appendChild(sv);
         }
         // Vetting gate measure (4 Oct LOCK): the shopper says a catalog result missed, and it goes away.
@@ -1802,6 +1917,12 @@
         out.appendChild(acts2);
       }
       if (earns) out.appendChild(el('p', 'fine', "TrueFinds may earn a commission from stores, no cost to you. Sinclair's verdicts are always free and independent."));
+      // Mobile journey items 10 and 12 (20 Oct 2026): after the cards, three example asks, the members line, and
+      // the Popular row.
+      if (catalog.length || rows.length) {
+        var after = el('div', 'ask-after'); out.appendChild(after);
+        if (window.tfAfterAnswer) window.tfAfterAnswer(after, asked, 'home');
+      }
     }
   })();
 </script>
@@ -1988,6 +2109,232 @@
     });
     Array.prototype.forEach.call(document.querySelectorAll('a[data-chrome]'), function (a) {
       a.addEventListener('click', function () { track('home_compare_click', { target: 'chrome_' + a.getAttribute('data-chrome') }); });
+    });
+  })();
+</script>
+<script data-tf="popular">
+  // Mobile journey (CODE_INBOX 20 Oct 4:58 AM): Popular in Sinclair's answers this week, Sinclair's example asks,
+  // Save in place with a one-time email sheet. Same words as the app's Ask box (src/lib/popular, src/lib/ask/examples).
+  (function () {
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+    function sized(src, w) {
+      if (!src || !/cdn\.shopify\.com|\/cdn\/shop\//.test(src)) return src;
+      return src + (src.indexOf('?') > -1 ? '&' : '?') + 'width=' + w;
+    }
+    function knownEmail() { try { return localStorage.getItem('tf_email') || ''; } catch (e) { return ''; } }
+    function goodEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+    // The item a Save link carries (/compare?url=... or ?asin=... or ?title=..., &title=...).
+    function itemFrom(save, name) {
+      var u; try { u = new URL(save, location.origin); } catch (e) { return null; }
+      var q = u.searchParams, title = (q.get('title') || name || '').slice(0, 200);
+      if (!title) return null;
+      if (q.get('asin')) return { source: 'amazon', asin: q.get('asin'), title: title };
+      if (q.get('url')) return { source: 'store', productUrl: q.get('url'), title: title };
+      return { source: 'search', title: title, brand: q.get('brand') || null };
+    }
+    function postSave(email, item) {
+      var body = { email: email }; Object.keys(item).forEach(function (k) { body[k] = item[k]; });
+      return fetch('/api/compare/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok, j: j || {} }; }); });
+    }
+    function markSaved(btn, row, line) {
+      btn.textContent = '✓ Saved'; btn.classList.add('is-saved'); btn.setAttribute('data-saved', '1');
+      btn.removeAttribute('href'); btn.setAttribute('role', 'status'); btn.setAttribute('aria-label', 'Saved');
+      var old = row.querySelector('.ask-saved-line'); if (old) old.remove();
+      row.appendChild(el('p', 'ask-saved-line', line || 'Saved. Sinclair will let you know.'));
+    }
+
+    // The email, asked once in a small sheet over the answer, then remembered on this device.
+    function sheet(onEmail, back) {
+      var bg = el('div', 'tf-sheet-back'), box = el('div', 'tf-sheet');
+      box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-labelledby', 'tf-sheet-h');
+      var h = el('p', 'tf-sheet-h', 'Save it, and Sinclair will remind you.'); h.id = 'tf-sheet-h'; box.appendChild(h);
+      box.appendChild(el('p', 'tf-sheet-line', 'Where should the reminder go? Asked once; this device remembers it.'));
+      var f = el('form'); f.noValidate = true;
+      var lab = el('label', 'tf-sr', 'Your email'); lab.htmlFor = 'tf-sheet-email'; f.appendChild(lab);
+      var inp = el('input'); inp.id = 'tf-sheet-email'; inp.type = 'email'; inp.inputMode = 'email'; inp.autocomplete = 'email'; inp.placeholder = 'Your email'; f.appendChild(inp);
+      var go = el('button', 'tf-sheet-go', 'Save'); go.type = 'submit'; f.appendChild(go);
+      box.appendChild(f);
+      var msg = el('p', 'tf-sheet-msg'); msg.hidden = true; msg.setAttribute('aria-live', 'polite'); box.appendChild(msg);
+      box.appendChild(el('p', 'tf-sheet-fine', 'We use your email only for this. Unsubscribe any time.'));
+      var no = el('button', 'tf-sheet-no', 'Not now'); no.type = 'button'; box.appendChild(no);
+      bg.appendChild(box); document.body.appendChild(bg);
+      function close() { document.removeEventListener('keydown', esc); bg.remove(); if (back) try { back.focus(); } catch (e) {} }
+      function esc(e) { if (e.key === 'Escape') close(); }
+      document.addEventListener('keydown', esc);
+      bg.addEventListener('click', function (e) { if (e.target === bg) close(); });
+      no.addEventListener('click', close);
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = (inp.value || '').trim();
+        if (!goodEmail(v)) { msg.textContent = 'That email does not look right.'; msg.hidden = false; inp.focus(); return; }
+        go.disabled = true; go.textContent = 'Saving...';
+        onEmail(v).then(function (res) {
+          if (res.ok) { close(); return; }
+          go.disabled = false; go.textContent = 'Save'; msg.textContent = (res.j && res.j.error) || "That didn't save. Please try again in a minute."; msg.hidden = false;
+        }).catch(function () { go.disabled = false; go.textContent = 'Save'; msg.textContent = "That didn't save. Please try again in a minute."; msg.hidden = false; });
+      });
+      setTimeout(function () { try { inp.focus(); } catch (e) {} }, 30);
+    }
+
+    window.tfSaveInPlace = function (card, btn, row, surface, eventName) {
+      var item = itemFrom(card.save, card.name);
+      if (!item) { location.href = card.save; return; }
+      var done = function (state) { return function (res) {
+        if (res.ok) { markSaved(btn, row, res.j.line); track(eventName || 'save_in_place', { surface: surface, store: card.host || '', state: state }); }
+        return res;
+      }; };
+      var email = knownEmail();
+      if (email) {
+        btn.textContent = 'Saving...';
+        postSave(email, item).then(done('remembered')).then(function (res) { if (!res.ok) { btn.textContent = 'Save'; row.appendChild(el('p', 'ask-saved-line', "That didn't save. Please try again in a minute.")); } })
+          .catch(function () { btn.textContent = 'Save'; });
+        return;
+      }
+      sheet(function (v) {
+        return postSave(v, item).then(function (res) {
+          if (res.ok) { try { localStorage.setItem('tf_email', v); } catch (e) {} track('save_email_sheet_submit', { surface: surface }); }
+          return done('typed')(res);
+        });
+      }, btn);
+    };
+
+    // Sinclair's example asks, from the list Cowork rotates (src/content/sinclair-examples.json).
+    var examples = null;
+    function loadExamples() {
+      if (examples) return examples;
+      examples = fetch('/api/ask/examples', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { return d && d.ok && d.examples && d.examples.length ? d : null; })
+        .catch(function () { return null; });
+      return examples;
+    }
+    // Same rule as src/lib/ask/examples.ts: small words (my, a, for) do not make a different ask.
+    var SMALL = { a: 1, an: 1, the: 1, my: 1, our: 1, for: 1, to: 1, of: 1, who: 1, that: 1, some: 1 };
+    function norm(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(function (w) { return w && !SMALL[w]; }).join(' '); }
+    function askIt(q, where, surface) {
+      track('example_ask_click', { surface: surface, target: where, query: q });
+      if (window.tfAsk) window.tfAsk(q, 'example');
+      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function exampleRow(list, where, surface) {
+      var row = el('div', 'ex-row');
+      list.forEach(function (q) { var b = el('button', null, q); b.type = 'button'; b.setAttribute('data-ask', q); b.addEventListener('click', function () { askIt(q, where, surface); }); row.appendChild(b); });
+      return row;
+    }
+    // The Ask box's empty state: the "Try" chips come from the same list.
+    var also = document.getElementById('ask-also');
+    if (also) loadExamples().then(function (d) {
+      if (!d) return;
+      Array.prototype.forEach.call(also.querySelectorAll('button[data-ask]'), function (b) { b.remove(); });
+      d.examples.forEach(function (q) { var b = el('button', null, q); b.type = 'button'; b.setAttribute('data-ask', q); b.addEventListener('click', function () { askIt(q, 'chip', 'home'); }); also.appendChild(b); });
+    });
+
+    // Popular in Sinclair's answers this week: up to 8 products, each live from its store at this visit.
+    var popular = null;
+    function loadPopular() {
+      if (popular) return popular;
+      popular = fetch('/api/popular', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { return d && d.ok && d.cards && d.cards.length ? d : null; })
+        .catch(function () { return null; });
+      return popular;
+    }
+    function popCard(c, i, surface) {
+      var card = el('div', 'pop-card');
+      var ia = el('a', 'pop-img'); ia.href = c.link; ia.target = '_blank'; ia.rel = c.earns ? 'sponsored noopener' : 'noopener';
+      var im = document.createElement('img'); im.src = sized(c.image, 480); im.alt = c.name; im.loading = 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer';
+      im.onerror = function () { card.remove(); };
+      ia.appendChild(im); card.appendChild(ia);
+      var body = el('div', 'pop-body');
+      var nm = el('a', 'pop-name', c.name); nm.href = c.link; nm.target = '_blank'; nm.rel = ia.rel; body.appendChild(nm);
+      body.appendChild(el('span', 'pop-store', c.store));
+      var pr = el('span', 'pop-price', usd(c.priceCents));
+      var note = 'Store’s price';
+      if (c.checked) { try { note = 'Checked ' + new Date(c.checked).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) {} }
+      pr.appendChild(el('small', null, note)); body.appendChild(pr);
+      var acts = el('div', 'pop-acts');
+      var go = el('a', 'ask-go-store', 'Visit store →'); go.href = c.link; go.target = '_blank'; go.rel = ia.rel; acts.appendChild(go);
+      [ia, nm, go].forEach(function (a) { a.addEventListener('click', function () { track('popular_click', { surface: surface, store: c.host, position: i + 1, kind: c.from }); }); });
+      if (c.save) {
+        var sv = el('a', 'ask-savecard', 'Save'); sv.href = c.save; sv.setAttribute('aria-label', 'Save: ' + c.name);
+        sv.addEventListener('click', function (e) {
+          e.preventDefault(); if (sv.getAttribute('data-saved')) return;
+          window.tfSaveInPlace({ save: c.save, name: c.name, host: c.host }, sv, acts, surface, 'popular_save');
+        });
+        acts.appendChild(sv);
+      }
+      body.appendChild(acts); card.appendChild(body);
+      return card;
+    }
+    function popularInto(grid, fine, surface, onShown) {
+      return loadPopular().then(function (d) {
+        if (!d) return false;
+        clear(grid);
+        d.cards.forEach(function (c, i) { grid.appendChild(popCard(c, i, surface)); });
+        if (fine) fine.hidden = !d.cards.some(function (c) { return c.earns; });
+        if (onShown) onShown();
+        track('popular_view', { surface: surface, shown: d.cards.length, kind: d.cards.filter(function (c) { return c.from === 'week'; }).length ? 'week' : 'pick' });
+        return true;
+      });
+    }
+    var sec = document.getElementById('popular');
+    if (sec && 'IntersectionObserver' in window) {
+      var seen = false;
+      sec.hidden = false; sec.style.display = 'none';
+      loadPopular().then(function (d) {
+        if (!d) { sec.hidden = true; return; }
+        sec.style.display = '';
+        var io = new IntersectionObserver(function (es) {
+          if (seen || !es.some(function (e) { return e.isIntersecting; })) return;
+          seen = true; io.disconnect();
+          popularInto(document.getElementById('popular-grid'), document.getElementById('popular-fine'), 'home');
+        }, { rootMargin: '200px' });
+        io.observe(sec);
+      });
+    }
+
+    // Under every answer: three example asks, the members line, then the Popular row.
+    window.tfAfterAnswer = function (root, asked, surface) {
+      loadExamples().then(function (d) {
+        if (!d) return;
+        var picks = d.examples.filter(function (q) { return norm(q) !== norm(asked); });
+        var start = new Date().getMinutes() % Math.max(1, picks.length);
+        picks = picks.slice(start).concat(picks.slice(0, start)).slice(0, d.alsoCount || 3);
+        if (!picks.length) return;
+        var box = el('div', 'ask-also-asked');
+        box.appendChild(el('h3', null, d.alsoLabel || 'People also asked Sinclair'));
+        box.appendChild(exampleRow(picks, 'also_asked', surface));
+        var ml = el('p', 'ask-member-line', 'Members get reminders before birthdays and holidays. ');
+        var ma = el('a', null, 'See membership →'); ma.href = '/pricing'; ml.appendChild(ma);
+        box.appendChild(ml);
+        root.insertBefore(box, root.firstChild);
+      });
+      var wrap = el('div', 'pop-row');
+      wrap.appendChild(el('h3', null, "Popular in Sinclair's answers this week"));
+      var grid = el('div', 'pop-grid'); wrap.appendChild(grid);
+      var fine = el('p', 'fine'); fine.textContent = "TrueFinds may earn a commission from stores, no cost to you. Sinclair's verdicts are always free and independent."; fine.hidden = true; wrap.appendChild(fine);
+      wrap.hidden = true; root.appendChild(wrap);
+      popularInto(grid, fine, surface + '_answer', function () { wrap.hidden = false; });
+    };
+
+    // Phones: the header's Ask Sinclair goes to the Ask box and opens the keyboard.
+    var navAsk = document.getElementById('nav-ask');
+    if (navAsk) navAsk.addEventListener('click', function (e) {
+      var box = document.getElementById('ask'), q = document.getElementById('ask-q');
+      if (!box) return;
+      e.preventDefault(); box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (q) setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (x) {} }, 350);
     });
   })();
 </script>
