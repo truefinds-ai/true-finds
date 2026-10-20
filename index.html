@@ -407,6 +407,8 @@
     .ask-reason { font-size: 16px; font-weight: 600; line-height: 1.35; color: #14734F; margin-top: 4px; }
     .ask-ideas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
     .ask-finding { animation: askFinding 1.4s ease-in-out infinite; }
+    .ask-retry { margin-top: 12px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: #1A9E6E; color: #fff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .ask-retry:hover { background: #148259; }
     @keyframes askFinding { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
     @media (prefers-reduced-motion: reduce) { .ask-finding { animation: none; } }
     .ask-ideas .ask-idea { display: inline-block; padding: 4px 12px; border: 0; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; font-size: 16px; font-weight: 700; }
@@ -1627,23 +1629,42 @@
         var hold = el('p', 'ask-msg ask-finding', 'Sinclair is finding the best fits for you.'); pp.appendChild(hold);
         out.appendChild(pp);
         var mineSearch = ++searchRun;
-        fetch('/api/ask/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.searchToken }) })
-          .then(function (r) { return r.json(); })
-          .then(function (s) {
-            if (mineSearch !== searchRun) return;
-            if (!s || !s.ok) throw new Error('search');
-            var next = {}; Object.keys(d).forEach(function (k) { next[k] = d[k]; });
-            next.catalog = s.catalog || []; next.ideas = s.ideas || d.ideas; next.missing = !!s.missing; next.budget = s.budget || d.budget;
-            next.tipToken = s.tipToken || null; next.pending = false; next.searchToken = null;
-            track('ask_search_cards', { surface: 'home', shown: next.catalog.length });
-            render(next);
-          })
-          .catch(function () {
-            if (mineSearch !== searchRun) return;
-            pp.setAttribute('aria-busy', 'false');
-            hold.textContent = "Sinclair couldn't finish the search just now. Please ask again in a moment.";
-            hold.classList.remove('ask-finding');
-          });
+        // Jon 20 Oct: never an empty answer with no next step. Empty cards (a slow search) or a failed call keep the
+        // idea chips, say Sinclair is still looking, and offer Try again with the same signed token (10 minutes).
+        var stillLooking = function () {
+          pp.setAttribute('aria-busy', 'false');
+          hold.textContent = 'Sinclair is still looking. The stores are slow to answer right now.';
+          hold.classList.remove('ask-finding');
+          if (!pp.querySelector('.ask-retry')) {
+            var again = el('button', 'ask-retry', 'Try again'); again.type = 'button';
+            again.addEventListener('click', function () {
+              track('ask_try_again', { surface: 'home' });
+              again.remove(); pp.setAttribute('aria-busy', 'true');
+              hold.textContent = 'Sinclair is finding the best fits for you.'; hold.classList.add('ask-finding');
+              loadCards(2);
+            });
+            pp.appendChild(again);
+          }
+        };
+        var loadCards = function (attempt) {
+          fetch('/api/ask/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.searchToken }) })
+            .then(function (r) { return r.json(); })
+            .then(function (s) {
+              if (mineSearch !== searchRun) return;
+              if (!s || !s.ok) throw new Error('search');
+              track('ask_search_cards', { surface: 'home', shown: (s.catalog || []).length, attempt: attempt });
+              if (!(s.catalog || []).length) { stillLooking(); return; }
+              var next = {}; Object.keys(d).forEach(function (k) { next[k] = d[k]; });
+              next.catalog = s.catalog || []; next.ideas = s.ideas || d.ideas; next.missing = !!s.missing; next.budget = s.budget || d.budget;
+              next.tipToken = s.tipToken || null; next.pending = false; next.searchToken = null;
+              render(next);
+            })
+            .catch(function () {
+              if (mineSearch !== searchRun) return;
+              stillLooking();
+            });
+        };
+        loadCards(1);
         return;
       }
       var top = el('div', 'ask-panel');
