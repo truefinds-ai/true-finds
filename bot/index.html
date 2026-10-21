@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrueFindsBot, Sinclair's agent | TrueFinds</title>
+<meta name="description" content="What TrueFindsBot reads from online stores, when, how it identifies itself with Web Bot Auth, and how to reach us.">
+<link rel="canonical" href="https://truefinds.ai/bot">
+<style>  :root { --navy:#1A3C5E; --green:#1A9E6E; --green-tint:#EAF7F1; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
+  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; min-height:44px; }
+  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:15px; font-weight:600; display:inline-flex; align-items:center; min-height:44px; }
+  .hero { background:var(--navy); color:#fff; text-align:center; padding:56px 24px 64px; }
+  .hero h1 { font-size:clamp(30px,5vw,42px); line-height:1.2; margin-bottom:14px; }
+  .hero p { max-width:640px; margin:0 auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.88); }
+  main { max-width:960px; margin:0 auto; padding:0 22px; }
+  .prose { max-width:700px; margin:0 auto; padding:40px 0 56px; }
+  .prose h2 { color:var(--navy); font-size:clamp(22px,3.2vw,27px); margin:36px 0 12px; }
+  .prose p { font-size:17.5px; line-height:1.75; margin-bottom:16px; }
+  .prose ul { margin:0 0 18px 22px; }
+  .prose li { font-size:17.5px; line-height:1.7; margin-bottom:10px; }
+  .prose a { color:#14734F; font-weight:600; }
+  .prose code { font-family:ui-monospace, SFMono-Regular, Menlo, monospace; font-size:15px; background:#F4F7FA; border-radius:6px; padding:2px 6px; word-break:break-all; }
+  .promise { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:14px; padding:18px 20px; font-size:17.5px; line-height:1.6; color:var(--navy); margin:18px 0; }
+  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:15px; color:#6B7A88; line-height:2; }
+  footer a { color:#14734F; text-decoration:none; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto" aria-hidden="true"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
+  <a class="tl" href="/for-stores">For stores and brands</a>
+</div>
+
+<div class="hero">
+  <h1>TrueFindsBot, Sinclair&rsquo;s agent</h1>
+  <p>Sinclair, your shopping agent, helps shoppers find the right product at a fair price from a store they can trust. This page says what our agent reads from online stores, when, and how to reach us.</p>
+</div>
+
+<main>
+  <section class="prose">
+    <h2>How to recognize it</h2>
+    <ul>
+      <li>User agent: <code>TrueFindsBot/1.0 (+https://truefinds.ai/bot)</code></li>
+      <li>Requests are signed with Web Bot Auth (HTTP Message Signatures). The <code>Signature-Agent</code> header is <code>"https://truefinds.ai"</code>, and our public key is at <code>https://truefinds.ai/.well-known/http-message-signatures-directory</code>.</li>
+      <li>Requests come from our servers on Vercel, in the United States.</li>
+    </ul>
+
+    <h2>What it reads, and when</h2>
+    <ul>
+      <li><strong>AI Readiness by Sinclair.</strong> When a store asks for an AI Readiness check, and in a weekly recheck for those stores, the agent reads that store&rsquo;s public pages (home page, product pages, the public product list, policy pages, robots.txt, sitemap and agents.md) and asks the store&rsquo;s own agent endpoints a few shopping questions, the way an AI shopping assistant would.</li>
+      <li><strong>The agent test cart.</strong> As part of that check, the agent puts one product in a checkout to see shipping options, the total and the payment methods offered, then cancels it. It never completes a purchase and never sends payment details, a name, an email or a street address.</li>
+      <li><strong>Price history.</strong> For stores in our price record, a recorder reads the public product list about once a day, one page at a time with short pauses, to keep the price history behind Sinclair&rsquo;s verdicts.</li>
+      <li><strong>Store facts.</strong> For the same stores, once a week, we read the return and shipping policy pages, so Sinclair&rsquo;s answers quote the store&rsquo;s own words.</li>
+    </ul>
+    <p>An AI Readiness check makes a few dozen requests to one store over about a minute. The other jobs make far fewer.</p>
+
+    <h2>What it never does</h2>
+    <ul>
+      <li>It never buys anything, logs in, fills in forms or posts reviews.</li>
+      <li>It never collects shopper data from a store.</li>
+      <li>It never reads pages behind a login.</li>
+    </ul>
+    <div class="promise">And one promise: <strong>we will never sell your personal information.</strong></div>
+
+    <h2>Questions, or to ask us to stop</h2>
+    <p>Write to <a href="mailto:hello@truefinds.ai">hello@truefinds.ai</a> with your store&rsquo;s web address, and we will answer within two business days. If you want our agent to stop reading your store, say so and we will stop.</p>
+    <p>TrueFinds is run by TrueFinds Technologies, LLC, 3100 North 29th Court, Hollywood, FL 33020, United States.</p>
+  </section>
+</main>
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/about">About</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/support">Support</a></footer>
+</body>
+</html>
