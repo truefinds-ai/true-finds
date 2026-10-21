@@ -57,6 +57,9 @@
     </ul>
     <p>An AI Readiness check makes a few dozen requests to one store over about a minute. The other jobs make far fewer.</p>
 
+    <h2>robots.txt and crawl delay</h2>
+    <p>Before reading a page, the agent checks the store&rsquo;s robots.txt and skips any path disallowed for <code>TrueFindsBot</code> or for all agents. If the store sets a <code>Crawl-delay</code>, the agent waits that long between requests. If robots.txt cannot be read because of a server error, the agent reads nothing from that store until it can.</p>
+
     <h2>What it never does</h2>
     <ul>
       <li>It never buys anything, logs in, fills in forms or posts reviews.</li>
