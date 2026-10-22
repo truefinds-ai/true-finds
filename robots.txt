@@ -16,6 +16,16 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+# 22 October 2026 (Jon): ClaudeBot sent about 1,000 store page requests an
+# hour, and each one runs a live price lookup. Access stays the same; these
+# two crawlers are asked to wait 10 seconds between requests. A crawler with
+# its own group ignores the * group, so the same rules are repeated here.
+User-agent: ClaudeBot
+User-agent: PetalBot
+Crawl-delay: 10
+Allow: /
+Disallow: /api/
+
 Sitemap: https://truefinds.ai/sitemap.xml
 Sitemap: https://truefinds.ai/sitemap-deals.xml
 Sitemap: https://truefinds.ai/sitemap-stores.xml
