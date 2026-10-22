@@ -45,6 +45,7 @@
     { "source": "/deal/:asin", "destination": "https://true-finds-app.vercel.app/deal/:asin" },
     { "source": "/sitemap-deals.xml", "destination": "https://true-finds-app.vercel.app/sitemap.xml" },
     { "source": "/sitemap-stores.xml", "destination": "https://true-finds-app.vercel.app/sitemap-stores.xml" },
+    { "source": "/llms.txt", "destination": "https://true-finds-app.vercel.app/llms.txt" },
     { "source": "/prime", "destination": "https://true-finds-app.vercel.app/prime" },
     { "source": "/prime/", "destination": "https://true-finds-app.vercel.app/prime" },
     { "source": "/real-deals", "destination": "https://true-finds-app.vercel.app/real-deals" },
