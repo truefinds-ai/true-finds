@@ -701,7 +701,38 @@
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="eyebrow-pill"><span class="dot"></span>Sinclair, your shopping agent &middot; Free</div>
-      <h1>Tell Sinclair what you need. He&rsquo;ll help you find it.</h1>
+      <h1 id="hero-h1">Tell Sinclair what you need. He&rsquo;ll help you find it.</h1>
+      <script data-tf="headline-test">
+        /* Homepage headline experiment, PREP ONLY (inbox 25 Oct, hx1). OFF: while on is false this does nothing and
+           makes no call. To start: Cowork sends the winning headline, Code sets test.h1 and on: true, and the PostHog
+           experiment uses the feature flag "home-headline-test" (variants control and test, 50/50). The app route
+           /api/home/headline asks PostHog which side a visitor is on and records the exposure; no flag, no answer or
+           any error keeps the current hero. Details: true-finds-app src/lib/home/headline-test.ts. */
+        (function () {
+          var HEADLINE_TEST = { on: false, test: { h1: '' } };
+          if (!HEADLINE_TEST.on || !HEADLINE_TEST.test.h1) return;
+          var h = document.getElementById('hero-h1');
+          if (!h || !window.fetch) return;
+          var v;
+          try {
+            v = localStorage.getItem('tf_visitor_id');
+            if (!v) {
+              v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+              localStorage.setItem('tf_visitor_id', v);
+            }
+          } catch (e) { return; }
+          /* Hide the headline briefly so a test visitor does not see one line swap for another; never longer than 800 ms. */
+          h.style.visibility = 'hidden';
+          var shown = false;
+          function show() { if (!shown) { shown = true; h.style.visibility = ''; } }
+          setTimeout(show, 800);
+          fetch('/api/home/headline?d=' + encodeURIComponent(v), { headers: { Accept: 'application/json' } })
+            .then(function (r) { return r.json(); })
+            /* A late answer still applies: the route has already counted this visitor on that side. */
+            .then(function (d) { if (d && d.variant === 'test') h.textContent = HEADLINE_TEST.test.h1; show(); })
+            .catch(show);
+        })();
+      </script>
       <p class="lead">Sinclair is your shopping agent. Tell him what you need, and he&rsquo;ll help you choose the right product and find a fair price from a store you can trust.</p>
       <div class="ask-card ask-in-hero" id="ask">
         <h2><label for="ask-q">What are you shopping for?</label></h2>

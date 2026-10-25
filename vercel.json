@@ -29,6 +29,7 @@
     { "source": "/api/ask/examples", "destination": "https://true-finds-app.vercel.app/api/ask/examples" },
     { "source": "/api/popular", "destination": "https://true-finds-app.vercel.app/api/popular" },
     { "source": "/api/home/showcase", "destination": "https://true-finds-app.vercel.app/api/home/showcase" },
+    { "source": "/api/home/headline", "destination": "https://true-finds-app.vercel.app/api/home/headline" },
     { "source": "/api/store-facts", "destination": "https://true-finds-app.vercel.app/api/store-facts" },
     { "source": "/api/install-link", "destination": "https://true-finds-app.vercel.app/api/install-link" },
     { "source": "/api/compare/save", "destination": "https://true-finds-app.vercel.app/api/compare/save" },
