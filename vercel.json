@@ -52,6 +52,7 @@
     { "source": "/llms.txt", "destination": "https://true-finds-app.vercel.app/llms.txt" },
     { "source": "/api/creator/:path*", "destination": "https://true-finds-app.vercel.app/api/creator/:path*" },
     { "source": "/mayas-kitchen", "destination": "https://true-finds-app.vercel.app/creator/mayas-kitchen" },
+    { "source": "/c/:handle", "destination": "https://true-finds-app.vercel.app/creator/:handle" },
     { "source": "/preview/home", "destination": "/preview/home/index.html" },
     { "source": "/prime", "destination": "https://true-finds-app.vercel.app/prime" },
     { "source": "/prime/", "destination": "https://true-finds-app.vercel.app/prime" },
