@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>TrueFinds homepage preview</title>
+<!-- Private homepage preview for friends (CODE_INBOX 25 Oct 2026, pv1; Jon: "Yes, also make sure it's not indexed, since it
+     will only be up for a little bit Anyway."). TEMPORARY: removed when Cowork says the test is over.
+     Copy: true-finds-app docs/content/pages/HOMEPAGE_TEST_COPY_2026-10-25.md, plus the promise and short line from the inbox.
+     Headline by link: ?v=a, ?v=b, ?v=c (default a). Not indexed: this meta tag and an X-Robots-Tag header (site vercel.json);
+     not in the sitemap, llms.txt, any nav or footer link, and no robots.txt Disallow (so crawlers can see the noindex).
+     Counts: preview_home_view and preview_home_tap through /api/compare/event, with the preview's own address and a
+     test_page flag, so they stay out of homepage reports. No $pageview is sent from this page. -->
+<style>
+:root{--navy:#1A3C5E;--green:#14734F;--green-2:#1A9E6E;--line:#E2E8F0;--soft:#F1F5F9;--text:#1E293B;--muted:#334155}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:28px}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.bar{background:#FEF3C7;border-bottom:2px solid #92400E;color:#78350F;font-size:15px;line-height:22px;font-weight:700;text-align:center;padding:8px 16px}
+header.top{display:flex;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;color:var(--navy);font-size:20px;text-decoration:none}
+.hero{padding:28px 0 8px}
+.eyebrow{display:inline-block;font-size:15px;font-weight:700;color:var(--green);background:#ECFDF5;border:1px solid #5CBF94;border-radius:9999px;padding:2px 12px}
+h1{font-size:34px;line-height:40px;color:var(--navy);margin:14px 0 10px;font-weight:800}
+.promise{font-size:22px;line-height:30px;font-weight:800;color:var(--green);margin:0 0 4px}
+.short{font-size:18px;font-weight:700;color:var(--navy);margin:0 0 12px}
+.sub{color:var(--muted);margin:0 0 16px}
+form.make{display:flex;flex-direction:column;gap:10px}
+form.make input{min-height:54px;border-radius:12px;border:2px solid #94A3B8;padding:0 14px;font-size:18px;font-family:inherit}
+.btn{display:flex;align-items:center;justify-content:center;min-height:54px;border-radius:9999px;border:0;font-size:18px;font-weight:700;cursor:pointer;text-decoration:none;font-family:inherit;padding:0 22px}
+.main{background:var(--green);color:#fff}
+.ghost{background:#fff;color:var(--navy);border:2px solid #64748B}
+.note{margin:4px 0 0;font-size:16px;color:var(--muted);font-weight:700}
+.trust{font-size:15px;color:var(--muted);margin:10px 0 0}
+section{padding:26px 0;border-top:1px solid var(--line)}
+h2{font-size:26px;line-height:32px;color:var(--navy);margin:0 0 12px;font-weight:800}
+ol.how{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ol.how li{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+ol.how b{color:var(--navy)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tile{border:2px solid var(--line);border-radius:14px;padding:16px;font-weight:700;color:var(--navy);min-height:72px;display:flex;align-items:center}
+ul.side{padding-left:22px;margin:0}
+ul.side li{margin:0 0 8px}
+.band{background:var(--navy);color:#fff;border-radius:16px;padding:22px}
+.band h2{color:#fff}
+.band p{margin:0 0 14px}
+.feedback{text-align:center}
+footer{padding:20px 0 40px;font-size:14px;color:var(--muted);text-align:center}
+@media (min-width:700px){h1{font-size:42px;line-height:48px}.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}form.make{flex-direction:row}form.make input{flex:1}}
+</style>
+</head>
+<body>
+<div class="bar">Preview for friends. This page is not the live TrueFinds site.</div>
+<div class="wrap">
+  <header class="top"><span class="brand">TrueFinds</span></header>
+
+  <div class="hero">
+    <span class="eyebrow">For the moments you'll remember</span>
+    <h1 id="pv-h1">Saw it on social? Get everything you need, from a store you can trust.</h1>
+    <p class="promise">See it. Love it. Get it. Enjoy the moment.</p>
+    <p class="short">One list. Fair prices. Stores you can trust.</p>
+    <p class="sub">Tell us about the recipe, gift or room you saw. We turn it into one list, find the right product at a fair price from a store you can trust, and let you skip what you already have.</p>
+    <form class="make" data-pv="make_list_hero">
+      <label for="pv-q1" class="sr" style="position:absolute;left:-10000px">What did you see?</label>
+      <input id="pv-q1" type="text" placeholder="Paste the link, or tell us what you saw" autocomplete="off">
+      <button class="btn main" type="submit">Make my list</button>
+    </form>
+    <p class="note" hidden>Preview only.</p>
+    <p class="trust">Free. No account needed. Sinclair helps you choose. You decide what to buy.</p>
+  </div>
+
+  <section>
+    <h2>How it works</h2>
+    <ol class="how">
+      <li><b>Saw it.</b> Paste the link from the video or post, or just describe it.</li>
+      <li><b>List it.</b> We list everything you need. Tap "I have this" to skip what's already in your kitchen or closet.</li>
+      <li><b>Shop it.</b> See the right product at a fair price, from a store you can trust. Not ready? Save the list for later.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Every good memory starts with a list.</h2>
+    <div class="tiles">
+      <div class="tile">Hosting the holidays</div>
+      <div class="tile">The grandkids' birthdays</div>
+      <div class="tile">Tonight's dinner, from a video</div>
+      <div class="tile">A new home, or a smaller one</div>
+      <div class="tile">Camp and back to school</div>
+      <div class="tile">A new pet</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Meet Sinclair, your shopping agent</h2>
+    <p style="margin:0">Sinclair builds your list, finds the right product at a fair price from a store you can trust, and saves it for later. Members get reminders before birthdays and holidays.</p>
+  </section>
+
+  <section>
+    <h2>On your side</h2>
+    <ul class="side">
+      <li>Sponsors do not influence recommendations.</li>
+      <li>How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools.</li>
+      <li>We will never sell your personal information.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="band">
+      <h2>For creators</h2>
+      <p>Make videos people shop from? Your followers want what you use. Give them the full list, on your own links.</p>
+      <a class="btn ghost" href="/mayas-kitchen" data-pv-tap="creators" style="display:inline-flex">For creators</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>What are you planning next?</h2>
+    <form class="make" data-pv="make_list_close">
+      <label for="pv-q2" style="position:absolute;left:-10000px">What are you planning next?</label>
+      <input id="pv-q2" type="text" placeholder="Paste the link, or tell us what you saw" autocomplete="off">
+      <button class="btn main" type="submit">Make my list</button>
+    </form>
+    <p class="note" hidden>Preview only.</p>
+  </section>
+
+  <section class="feedback">
+    <a class="btn main" style="display:inline-flex" href="https://docs.google.com/forms/d/e/1FAIpQLScfZ0_06stdmvcC5TSZIQgTY8aMcb_aY4pQy1seDvt-CV5iOQ/viewform" target="_blank" rel="noopener" data-pv-tap="feedback">Tell us what you think</a>
+  </section>
+
+  <footer>TrueFinds Technologies, LLC. Preview page, not the live site.</footer>
+</div>
+<script>
+(function () {
+  var HEADLINES = {
+    a: "Saw it on social? Get everything you need, from a store you can trust.",
+    b: "Saw it. Love it. Get the list, and the right store to buy it.",
+    c: "The dinners, birthdays and holidays you'll remember start with the right list."
+  };
+  var v = (new URLSearchParams(location.search).get('v') || 'a').toLowerCase();
+  if (!HEADLINES[v]) v = 'a';
+  document.getElementById('pv-h1').textContent = HEADLINES[v];
+
+  function vid() {
+    try {
+      var id = localStorage.getItem('tf_visitor_id');
+      if (!id) {
+        id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+        localStorage.setItem('tf_visitor_id', id);
+      }
+      return id;
+    } catch (e) { return 'anonymous'; }
+  }
+  function track(event, props) {
+    try {
+      props = props || {};
+      props.variant = v;
+      var body = JSON.stringify({ event: event, distinct_id: vid(), props: props });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      else fetch('/api/compare/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+    } catch (e) {}
+  }
+  track('preview_home_view', {});
+
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-pv]'), function (f) {
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      track('preview_home_tap', { target: f.getAttribute('data-pv') });
+      var note = f.nextElementSibling;
+      if (note && note.classList.contains('note')) note.hidden = false;
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-pv-tap]'), function (a) {
+    a.addEventListener('click', function () { track('preview_home_tap', { target: a.getAttribute('data-pv-tap') }); });
+  });
+})();
+</script>
+</body>
+</html>

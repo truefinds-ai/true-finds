@@ -1,5 +1,8 @@
 {
   "trailingSlash": false,
+  "headers": [
+    { "source": "/preview/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ],
   "redirects": [
     { "source": "/guides/how-the-sinclair-verdict-works.html", "destination": "/how-it-works", "permanent": true },
     { "source": "/ig", "destination": "/?utm_source=instagram&utm_medium=organic&utm_campaign=bio", "permanent": false },
@@ -49,6 +52,7 @@
     { "source": "/llms.txt", "destination": "https://true-finds-app.vercel.app/llms.txt" },
     { "source": "/api/creator/:path*", "destination": "https://true-finds-app.vercel.app/api/creator/:path*" },
     { "source": "/mayas-kitchen", "destination": "https://true-finds-app.vercel.app/creator/mayas-kitchen" },
+    { "source": "/preview/home", "destination": "/preview/home/index.html" },
     { "source": "/prime", "destination": "https://true-finds-app.vercel.app/prime" },
     { "source": "/prime/", "destination": "https://true-finds-app.vercel.app/prime" },
     { "source": "/real-deals", "destination": "https://true-finds-app.vercel.app/real-deals" },
