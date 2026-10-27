@@ -659,6 +659,36 @@
       .hero .ask-also::-webkit-scrollbar { display: none; }
       .hero .ask-also span, .hero .ask-also button { flex: 0 0 auto; white-space: nowrap; }
     }
+    /* Homepage v3 (27 Oct 2026). */
+    .hero-video-link { margin-top: 6px; font-size: 17px; }
+    .hero-video-link a { color: var(--green-dark); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+    .hero-video-link a:hover { text-decoration: underline; }
+    .v3-new { display: flex; align-items: center; gap: 10px; font-size: 17px; color: var(--muted); margin-top: 10px; }
+    .v3-new-chip { background: var(--green); color: #fff; font-size: 14px; font-weight: 800; border-radius: 999px; padding: 3px 10px; }
+    .v3-steps { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .v3-steps li { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+    .v3-art { display: block; width: 120px; height: 80px; margin-bottom: 12px; }
+    .v3-steps strong { display: block; font-size: 20px; color: var(--navy); }
+    .v3-steps span { display: block; font-size: 17px; color: var(--muted); margin-top: 4px; }
+    .v3-under { margin-top: 18px; font-size: 17px; font-weight: 600; color: var(--navy); }
+    @media (max-width: 900px) { .v3-steps { grid-template-columns: 1fr; } }
+    .v3-team { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .v3-team li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 17px; color: var(--navy); }
+    @media (max-width: 700px) { .v3-team { grid-template-columns: 1fr; } }
+    .v3-status { display: inline-block; font-size: 14px; font-weight: 800; border-radius: 999px; padding: 3px 10px; }
+    .v3-status.live { background: var(--green); color: #fff; }
+    .v3-status.members { background: #E8EEF5; color: var(--navy); }
+    .v3-status.soon { background: #F1F5F9; color: #475569; box-shadow: 0 0 0 1px #CBD5E1 inset; }
+    .v3-chips { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .v3-chips li { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 17px; color: var(--navy); line-height: 1.45; }
+    .v3-chips .chip { margin-right: 6px; }
+    @media (max-width: 760px) { .v3-chips { grid-template-columns: 1fr; } }
+    .v3-more { margin-top: 16px; }
+    .v3-h3 { font-size: 22px; color: var(--navy); margin-top: 8px; }
+    .v3-biz > div { display: flex; flex-direction: column; gap: 10px; }
+    .v3-biz .btn { align-self: flex-start; margin-top: auto; color: #fff; }
+    .v3-earn { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.8); padding-top: 18px; }
+    .v3-earn a { color: #fff; font-weight: 700; }
     /* Readable on phones (mobile journey item 9, 20 Oct 2026): 15 px text at least, 44 px taps. Last in the
        stylesheet on purpose, so it wins over the rules above it. */
     @media (max-width: 639px) {
@@ -686,12 +716,12 @@
       <a href="/real-deals">Real Deals</a>
       <a href="/gifts">Gifts</a>
       <a href="/plan">Lists</a>
-      <a href="#brands">Stores</a>
       <a href="/guides">Guides</a>
+      <a href="#business">For business</a>
     </div>
     <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
     <a class="tf-phone-ask btn btn-green btn-sm" href="#ask" id="nav-ask">Ask Sinclair</a>
-    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/" aria-current="page">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/how-it-works">How It Works</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/#ask" aria-current="page">Ask Sinclair</a><a href="/plan">Lists</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="/real-deals">Real Deals</a><a href="/#business">For business</a><a href="/how-it-works">How It Works</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
     
     
   </div>
@@ -700,8 +730,8 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <div class="eyebrow-pill"><span class="dot"></span>Sinclair, your shopping agent &middot; Free</div>
-      <h1 id="hero-h1">Tell Sinclair what you need. He&rsquo;ll help you find it.</h1>
+      <div class="eyebrow-pill"><span class="dot"></span>See it. Love it. Get it. Enjoy the moment.</div>
+      <h1 id="hero-h1">See it in a video. Get it from a store you can trust.</h1>
       <script data-tf="headline-test">
         /* Homepage headline experiment, PREP ONLY (inbox 25 Oct, hx1). OFF: while on is false this does nothing and
            makes no call. To start: Cowork sends the winning headline, Code sets test.h1 and on: true, and the PostHog
@@ -733,9 +763,9 @@
             .catch(show);
         })();
       </script>
-      <p class="lead">Sinclair is your shopping agent. Tell him what you need, and he&rsquo;ll help you choose the right product and find a fair price from a store you can trust.</p>
+      <p class="lead">One list. Fair prices. Stores you can trust.</p>
       <div class="ask-card ask-in-hero" id="ask">
-        <h2><label for="ask-q">What are you shopping for?</label></h2>
+        <h2><label for="ask-q">Ask Sinclair, your shopping agent, what you need</label></h2>
         <form class="ask-form" id="ask-form">
           <div class="ask-bar">
             <input id="ask-q" name="q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
@@ -757,7 +787,8 @@
         </div>
         <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
       </div>
-      <p class="trust-line">Free. No account needed. Sinclair helps you choose. You decide what to buy.</p>
+      <p class="trust-line">Free to ask. Free to save. Free to buy.</p>
+      <p class="hero-video-link"><a href="#video-list">See how a video becomes a list &darr;</a></p>
     </div>
     <div class="hero-visual">
       <figure class="hero-photo" data-slot="hero-photo" data-note="Hero photo slot, 17 Oct 2026: Jon picks the photo. Until then this column shows a real Sinclair answer." hidden></figure>
@@ -766,11 +797,41 @@
   </div>
 </header>
 
-<section class="section pop-row" id="popular" aria-labelledby="popular-h" hidden>
+<!-- Homepage v3 (27 Oct 2026, Jon: "Go with your picks"; outline docs/content/pages/HOMEPAGE_v3_OUTLINE_2026-10-26.md in true-finds-app). -->
+<section class="section soft" id="video-list" aria-labelledby="video-list-h">
   <div class="wrap">
-    <h2 id="popular-h">Popular in Sinclair&rsquo;s answers this week</h2>
-    <div class="pop-grid" id="popular-grid"></div>
-    <p class="fine" id="popular-fine" hidden>TrueFinds may earn a commission from stores, no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</p>
+    <span class="eyebrow">How a video becomes a list</span>
+    <h2 id="video-list-h">From the video to your door, in three steps</h2>
+    <p class="v3-new"><span class="v3-new-chip">New</span> Rolling out now with our first creators.</p>
+    <ol class="v3-steps">
+      <li>
+        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><rect x="8" y="8" width="104" height="64" rx="12" fill="#1A3C5E"/><path d="M52 28v24l20-12z" fill="#fff"/><circle cx="96" cy="20" r="6" fill="#1A9E6E"/></svg>
+        <div><strong>See it.</strong><span>A creator you follow shares a recipe, a routine or a room.</span></div>
+      </li>
+      <li>
+        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><rect x="24" y="6" width="72" height="68" rx="10" fill="#fff" stroke="#1A3C5E" stroke-width="3"/><path d="M36 24l5 5 9-9M36 42l5 5 9-9" fill="none" stroke="#1A9E6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 25h26M58 43h26M38 60h46" stroke="#1A3C5E" stroke-width="4" stroke-linecap="round"/></svg>
+        <div><strong>List it.</strong><span>Everything you need lands on one list. Tap &ldquo;I have this&rdquo; to skip what&rsquo;s already at home.</span></div>
+      </li>
+      <li>
+        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><path d="M30 28h60l-6 44H36z" fill="#1A9E6E"/><path d="M46 28v-6a14 14 0 0 1 28 0v6" fill="none" stroke="#1A3C5E" stroke-width="4" stroke-linecap="round"/><path d="M50 50l7 7 14-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><strong>Get it.</strong><span>Each item comes from a store you can trust, at a fair price. Save the list and shop when you&rsquo;re ready.</span></div>
+      </li>
+    </ol>
+    <p class="v3-under">Creators get credit, and they earn when you buy from their list.</p>
+  </div>
+</section>
+
+<section class="section" id="meet-sinclair" aria-labelledby="meet-sinclair-h">
+  <div class="wrap">
+    <span class="eyebrow">Meet Sinclair</span>
+    <h2 id="meet-sinclair-h">Meet Sinclair, your shopping agent</h2>
+    <p class="sub">Sinclair is your shopping agent. Tell him what you need, and he&rsquo;ll help you choose the right product and find a fair price from a store you can trust.</p>
+    <ul class="v3-team">
+      <li><strong>Marco</strong> compares stores for you.<span class="v3-status live">Live</span></li>
+      <li><strong>Scout</strong> keeps your saved finds and reminds you.<span class="v3-status live">Live</span></li>
+      <li><strong>Gifted</strong> plans gifts and birthdays.<span class="v3-status members">For members</span></li>
+      <li><strong>Sage</strong> reads labels.<span class="v3-status soon">Coming Nov 10</span></li>
+    </ul>
   </div>
 </section>
 
@@ -785,44 +846,39 @@
   </div>
 </section>
 
-<section class="section" id="how" aria-labelledby="how-h">
+<section class="section pop-row" id="popular" aria-labelledby="popular-h" hidden>
   <div class="wrap">
-    <span class="eyebrow">How it works</span>
-    <h2 id="how-h">Ask, compare, choose</h2>
-    <ol class="how3">
-      <li><span class="step-n" aria-hidden="true">1</span><div><strong>Ask in your own words.</strong><span>Who it&rsquo;s for, what they like, and your budget.</span></div></li>
-      <li><span class="step-n" aria-hidden="true">2</span><div><strong>Sinclair finds the best fits.</strong><span>From stores across the US, each with a short reason.</span></div></li>
-      <li><span class="step-n" aria-hidden="true">3</span><div><strong>You choose with confidence.</strong><span>A fair price, with shipping and returns up front.</span></div></li>
-    </ol>
+    <h2 id="popular-h">Popular in Sinclair&rsquo;s answers this week</h2>
+    <div class="pop-grid" id="popular-grid"></div>
+    <p class="fine" id="popular-fine" hidden>TrueFinds may earn a commission from stores, no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</p>
   </div>
 </section>
 
-<section class="section panel" id="team" aria-labelledby="team-h">
+<section class="section" id="stores-trust" aria-labelledby="stores-trust-h">
   <div class="wrap">
-    <span class="eyebrow light">Meet the team</span>
-    <h2 id="team-h">One shopping agent, with a whole team behind him</h2>
-    <div class="team-grid">
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.2 7.3 7.3 2.2-7.3 2.2L12 21.5l-2.2-7.3L2.5 12l7.3-2.2z"/></svg></div><div class="agent-name">Sinclair</div><span class="status live">Free, live now</span><p>Your shopping agent. Finds the right product, checks the price, and shows each store&rsquo;s shipping and returns.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg></div><div class="agent-name">Marco</div><span class="status live">In Sinclair&rsquo;s answers</span><p>Compares the same product across stores, side by side.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div><div class="agent-name">Scout</div><span class="status live">Saved list live</span><p>Saved finds and reminders. Keeps what you save in one list, so you can decide later.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg></div><div class="agent-name">Gifted</div><span class="status members">For members</span><p>Remembers the people you shop for, with budgets, order-by dates and birthday reminders.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div><div class="agent-name">Sage</div><span class="status soon">Starts Nov 10</span><p>Reads product labels and explains what they mean.</p></div>
-      <div class="agent"><div class="agent-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="15" rx="2"/><circle cx="12" cy="12.5" r="3.5"/></svg></div><div class="agent-name">Vault</div><span class="status soon">Coming in December</span><p>Shows what you&rsquo;ve saved, all in one place.</p></div>
+    <span class="eyebrow">Stores you can trust</span>
+    <h2 id="stores-trust-h">Stores you can trust, before you buy</h2>
+    <div class="trust-grid">
+      <div><h3>Returns and shipping up front.</h3><p>See the return policy, shipping and the order-by date before you click.</p></div>
+      <div><h3>Vetted stores.</h3><p>Sinclair shows stores that pass our checks.</p></div>
+      <div><h3>What buyers really say.</h3><p><span class="v3-status soon">Coming soon</span> Sinclair&rsquo;s reviewer reads the reviews for you.</p></div>
     </div>
+    <p class="fine">Sponsors do not influence recommendations.</p>
   </div>
 </section>
 
 <section class="section soft" id="verdicts" aria-labelledby="verdicts-h">
   <div class="wrap">
-    <span class="eyebrow center">Four honest answers</span>
-    <h2 class="center" id="verdicts-h">Know the price is right</h2>
-    <p class="sub center">Sinclair reads each product&rsquo;s own price history and gives you one plain answer, so you can buy with confidence.</p>
-    <div class="verdict-grid">
-      <div class="verdict v-genuine"><span class="chip genuine">GENUINE DEAL</span><h3>A real low</h3><p>Today&rsquo;s price is at or near the lowest in its record. A good time to buy.</p></div>
-      <div class="verdict v-typical"><span class="chip typical">TYPICAL PRICE</span><h3>Fair, not special</h3><p>What this product usually sells for. A fair price if you need it.</p></div>
-      <div class="verdict v-inflated"><span class="chip inflated">COMPARE FIRST</span><h3>See the best option</h3><p>Sinclair shows where today&rsquo;s price sits and the best option he found. Compare other stores, or save it for later.</p></div>
-      <div class="verdict v-nodata"><span class="chip nodata">NOT ENOUGH DATA</span><h3>We say so</h3><p>When the price history is too short, Sinclair tells you. No guessing.</p></div>
-    </div>
+    <span class="eyebrow">Price proof</span>
+    <h2 id="verdicts-h">A fair price, with the proof</h2>
+    <p class="sub">Sinclair records prices at our stores every day, so he knows when a sale is real.</p>
+    <ul class="v3-chips">
+      <li><span class="chip genuine">GENUINE DEAL</span> A real low. Good time to buy.</li>
+      <li><span class="chip typical">TYPICAL PRICE</span> Normal price. Fine to buy if you need it.</li>
+      <li><span class="chip inflated">COMPARE FIRST</span> Today&rsquo;s price is a little above what this usually costs. Compare other stores, or save it for later.</li>
+      <li><span class="chip nodata">NOT ENOUGH DATA</span> When the record is too short, Sinclair says so.</li>
+    </ul>
+    <p class="v3-more"><a class="link-arrow" href="/how-it-works">How Sinclair reads a price &rarr;</a></p>
   </div>
 </section>
 
@@ -830,7 +886,7 @@
   <div class="wrap saved-grid">
     <div>
       <h2 id="saved-h">Save it now. Decide later.</h2>
-      <p class="sub">Hit Save and Sinclair keeps it in your list. No more sticky notes.</p>
+      <p class="sub">Hit Save on any find and Sinclair keeps it in your list, with a reminder by email. No more sticky notes.</p>
     </div>
     <img class="saved-desk" src="/img/home/sinclair-saved-in-browser-2026-10-09.jpg" alt="Three steps: click the Sinclair icon in your browser toolbar, click Saved to see everything you saved with Sinclair's verdict, then see the verdict to check the price again before you buy." width="1500" height="1338" loading="lazy">
     <img class="saved-phone" src="/img/home/sinclair-saved-in-browser-phone.jpg" alt="The Sinclair Saved list opened from the browser toolbar, showing saved items with their verdicts." width="792" height="890" loading="lazy">
@@ -865,25 +921,28 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="eyebrow">Gift ideas</span>
-        <h2 id="gift-row-h">Gift ideas Sinclair checked this week</h2>
-        <p class="sub">From stores across the US. Prices are each store&rsquo;s own, checked just now.</p>
+        <span class="eyebrow">Reminders and gifts</span>
+        <h2 id="gift-row-h">Never miss a birthday or a holiday</h2>
+        <p class="sub">Coming soon for members: reminders before birthdays and holidays.</p>
       </div>
-      <a class="link-arrow" href="/gifts">More gift ideas &rarr;</a>
+      <a class="btn btn-green" href="/gifts">See gift plans</a>
     </div>
+    <h3 class="v3-h3">Gift ideas people love this week</h3>
+    <p class="sub">From stores across the US. Prices are each store&rsquo;s own, checked just now. <a class="link-arrow" href="/gifts">More gift ideas &rarr;</a></p>
     <div class="tf-tabs" role="tablist" aria-label="Gift ideas by kind" id="gift-tabs"></div>
     <div class="gift-grid" id="gift-grid" role="tabpanel" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
     <p class="fine" id="gift-fine" hidden>TrueFinds may earn a commission from some of these stores, at no cost to you.</p>
   </div>
 </section>
 
-<section class="section soft" id="trust" aria-labelledby="trust-h">
+<section class="section soft" id="business" aria-labelledby="business-h">
   <div class="wrap">
-    <h2 id="trust-h">Why trust TrueFinds</h2>
-    <div class="trust-grid">
-      <div><h3>No brand can buy a verdict.</h3><p>Sinclair&rsquo;s price answers are free and independent. Featured products are always labeled.</p></div>
-      <div><h3>We will never sell your personal information.</h3><p>The free Chrome add-on reads only the product page you are on. Anything more asks for your approval first.</p></div>
-      <div><h3>How we earn.</h3><p>TrueFinds is free for shoppers. We earn from store commissions, featured products that are always labeled, and memberships. As an Amazon Associate, TrueFinds earns from qualifying purchases. <a href="/how-we-earn">How TrueFinds earns money</a></p></div>
+    <span class="eyebrow">For your business or store</span>
+    <h2 id="business-h">Grow with TrueFinds</h2>
+    <div class="trust-grid v3-biz">
+      <div><h3>Creators</h3><p>Your video becomes a list your viewers can shop. Your picks stay on your links, and you get paid on the rest.</p><a class="btn btn-green" href="mailto:hello@truefinds.ai?subject=Join%20the%20first%20creators&amp;body=My%20channel%20link%3A%20">Join the first creators</a></div>
+      <div><h3>Shopify stores</h3><p>Sinclair sends AI shoppers to your store. You pay only when they buy. First 3 orders free. Coming to the Shopify App Store.</p><a class="btn btn-green" href="/for-stores">For stores</a></div>
+      <div><h3>Partners</h3><p>Ready lists for camps, schools and realtors, shopped by your families and clients.</p><a class="btn btn-green" href="/for-stores#partners">For partners</a></div>
     </div>
   </div>
 </section>
@@ -1014,18 +1073,17 @@
   </div>
 </section>
 
+<section class="tf-home-guides" data-tf="home-guides" style="background:#F4F7FA;padding:40px 0"><div style="max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box"><h2 style="font-size:26px;line-height:1.25;color:#1A3C5E;margin:0 0 6px">Guides from Sinclair</h2><p style="font-size:17px;line-height:1.5;color:#334155;margin:0 0 16px">Plain answers on prices, labels and sales, checked against the record.</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));"><li><a href="/guides/holiday-return-policies.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Gifts that are easy to return: holiday return policies at a glance</a></li><li><a href="/guides/free-shipping-minimums.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Free shipping minimums: when one more item saves you money</a></li><li><a href="/guides/holiday-shipping-cutoffs-2026.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Holiday 2026 shipping: when to order so gifts arrive on time</a></li></ul><p style="margin:16px 0 0"><a href="/guides" style="color:#1A3C5E;font-weight:700">All guides</a></p></div></section>
 <section class="final" id="ask-again" aria-labelledby="ask-again-h">
   <div class="wrap">
-    <h2 id="ask-again-h">What are you shopping for?</h2>
+    <h2 id="ask-again-h">What are you planning next?</h2>
     <form class="final-ask" id="final-ask">
       <label class="tf-sr" for="final-q">Tell Sinclair what you need</label>
       <input id="final-q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
       <button type="submit">Ask Sinclair</button>
     </form>
-    <p>Coming soon for members: reminders before birthdays and holidays. <a href="/pricing">See plans</a></p>
   </div>
 </section>
-<section class="tf-home-guides" data-tf="home-guides" style="background:#F4F7FA;padding:40px 0"><div style="max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box"><h2 style="font-size:26px;line-height:1.25;color:#1A3C5E;margin:0 0 6px">Guides from Sinclair</h2><p style="font-size:17px;line-height:1.5;color:#334155;margin:0 0 16px">Plain answers on prices, labels and sales, checked against the record.</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));"><li><a href="/guides/holiday-return-policies.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Gifts that are easy to return: holiday return policies at a glance</a></li><li><a href="/guides/free-shipping-minimums.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Free shipping minimums: when one more item saves you money</a></li><li><a href="/guides/holiday-shipping-cutoffs-2026.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Holiday 2026 shipping: when to order so gifts arrive on time</a></li><li><a href="/guides/gifts-comfort-hobbies-pets.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Thoughtful gifts for comfort, hobbies and the pets they love</a></li><li><a href="/guides/is-that-prime-day-deal-real.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Prime Big Deal Days: a five-minute way to spot the best buys</a></li><li><a href="/guides/five-things-to-check-before-you-buy-on-amazon.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Five quick checks for buying on Amazon with confidence</a></li><li><a href="/guides/when-were-the-reviews-written.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to read reviews you can trust</a></li><li><a href="/guides/olive-oil-extra-virgin-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to pick a great extra virgin olive oil</a></li><li><a href="/guides/supplement-cabinet-check.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Getting the most from your supplements: a simple label checklist</a></li><li><a href="/guides/the-anchor-price-trick.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to tell a genuinely good price in seconds</a></li><li><a href="/guides/are-big-sale-event-deals-real.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to find the best buys during big sale events</a></li><li><a href="/guides/protein-powder-label-math.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a protein powder: reading the label with confidence</a></li><li><a href="/guides/honey-label-truth.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How to choose a great honey: the label words that matter</a></li><li><a href="/guides/online-fraud-over-60-real-shape.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Shop online safely: simple habits that protect you</a></li><li><a href="/guides/how-free-shopping-tools-make-money.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">How TrueFinds stays free and keeps Sinclair on your side</a></li></ul><p style="margin:16px 0 0"><a href="/guides" style="color:#1A3C5E;font-weight:700">See all guides</a></p></div></section>
 <footer class="footer">
   <div class="wrap footer-inner">
     <a class="nav-logo" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" aria-label="TrueFinds">
@@ -1062,6 +1120,7 @@
       <a href="/list-your-store">List your store</a>
     </div>
   </div>
+  <p class="wrap v3-earn">How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools. We will never sell your personal information. Sponsors do not influence recommendations. As an Amazon Associate, TrueFinds earns from qualifying purchases. <a href="/how-we-earn">How we earn</a></p>
   <div class="wrap footer-bottom">&copy; 2026 TrueFinds Technologies, LLC. Built for shoppers who deserve the truth.</div>
 </footer>
 
