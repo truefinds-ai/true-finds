@@ -308,14 +308,10 @@
     <label for="vid" style="display:block;font-size:17px;font-weight:800;color:#1A3C5E;margin:2px 6px 10px">Paste a YouTube video link</label>
     <div class="inputrow">
      <input class="grow" id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="youtube.com/watch?v=..." style="flex:1;min-width:0;height:56px;border:2px solid #64748B;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E;background:#FFFFFF">
-     <button type="button" id="vid-photo" aria-label="Add a photo instead" style="width:56px;height:56px;flex:0 0 auto;border:2px solid #64748B;border-radius:9999px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3C5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
-     </button>
-     <input id="vid-file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
      <button class="go" type="submit" id="vid-go" style="height:56px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 28px;white-space:nowrap;cursor:pointer">Make my list</button>
     </div>
     <p id="vid-msg" role="status" aria-live="polite" hidden style="margin:12px 6px 0;font-size:17px;line-height:25px;font-weight:700;color:#1A3C5E"></p>
-    <p style="margin:10px 6px 2px;font-size:15px;line-height:22px;font-weight:600;color:#334155">Works with YouTube videos and photos.<br>TikTok, Instagram and recipe links coming soon.</p>
+    <p style="margin:10px 6px 2px;font-size:15px;line-height:22px;font-weight:600;color:#334155">Works with YouTube videos.<br>Photos, TikTok, Instagram and recipe links coming soon.</p>
    </form>
    <p style="margin:16px 4px 0;font-size:18px;font-weight:700;color:#1A3C5E">Not from a video? <a href="#ask">Ask Sinclair, your shopping agent</a></p>
    <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:16px;font-weight:700;color:#1A3C5E">
@@ -497,7 +493,7 @@
   <h2 class="h2" style="margin:0 0 24px;font-size:38px;line-height:44px;font-weight:800;text-align:center">Questions people ask</h2>
   <div style="display:flex;flex-direction:column;gap:12px">
    <details open class="v4-faq"><summary>Is TrueFinds free?</summary><p>Yes. Asking, saving and buying are free. We earn a small commission from stores when you buy, and it never changes your price.</p></details>
-   <details class="v4-faq"><summary>Which videos work?</summary><p>YouTube videos and photos today. TikTok, Instagram and recipe links are coming soon.</p></details>
+   <details class="v4-faq"><summary>Which videos work?</summary><p>YouTube videos today. Photos, TikTok, Instagram and recipe links are coming soon.</p></details>
    <details class="v4-faq"><summary>Do creators get credit?</summary><p>Yes. The creator's name stays on the list, their own picks keep their links, and they earn when you buy.</p></details>
    <details class="v4-faq"><summary>How does TrueFinds earn money?</summary><p>A small commission from the store when you buy through us. It never changes your price, and sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></p></details>
    <details class="v4-faq"><summary>Do I need an account?</summary><p>Only to save a list. It's free, with no password: we email you a code.</p></details>
@@ -1227,7 +1223,8 @@
       if (link) { msg.appendChild(document.createTextNode(' ')); var a = document.createElement('a'); a.href = link.href; a.textContent = link.text; msg.appendChild(a); }
     }
     function setBusy(b, label) { busy = b; if (go) { go.disabled = b; go.textContent = b ? (label || 'Reading...') : 'Make my list'; } if (photoBtn) photoBtn.disabled = b; }
-    function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()); }
+    // A YouTube video, or a public photo's web address (Jon 27 Oct 2026: "Use public or approved ohots for now").
+    function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()) || /^https:\/\/[^\s]+\.(jpe?g|png|webp)(\?[^\s]*)?$/i.test(v.trim()); }
     function poll(id, tries) {
       fetch('/api/list/import?id=' + encodeURIComponent(id), { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.json(); })
@@ -1251,7 +1248,7 @@
       if (busy) return;
       url = (url || '').trim();
       if (!url) { say('Paste a YouTube video link to get started.'); if (input) input.focus(); return; }
-      if (!isYouTube(url)) { say('That does not look like a YouTube video link. TikTok, Instagram and recipe links are coming soon.'); return; }
+      if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
       setBusy(true, 'Reading...');
       say('Sinclair is reading the video for things to buy. A new video takes about a minute.');
       track('home_video_submitted', { via: via });

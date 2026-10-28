@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://truefinds.ai">
   <style>
     :root {
       --navy: #1A3C5E; --navy-2: #1A3C5E; --green: #1A9E6E; --green-dark: #14734F;
@@ -26,304 +27,68 @@
       --soft: #F1F5F9; --red: #991B1B; --red-tint: #FEF2F2; --amber: #92400E; --amber-tint: #FEF3C7;
       --gray-chip: #1A3C5E; --gray-tint: #F1F5F9; --white: #FFFFFF;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--ink); background: var(--white); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    img { max-width: 100%; height: auto; display: block; }
-    a { color: inherit; }
-    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-    h1, h2, h3 { color: var(--navy); letter-spacing: -0.02em; line-height: 1.15; }
-    h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 800; margin-bottom: 14px; }
-    h3 { font-size: 20px; font-weight: 700; }
-    .center { text-align: center; margin-left: auto; margin-right: auto; }
-    .eyebrow { display: inline-block; font-size: 14px; font-weight: 800; color: var(--green-dark); margin-bottom: 12px; }
-    .eyebrow.center { display: block; }
-    .eyebrow.light { color: #2DC98D; }
-    .sub { font-size: 19px; color: var(--muted); max-width: 720px; }
-    .fine { font-size: 15px; color: var(--muted); margin-top: 22px; }
-
-    /* Buttons */
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; text-decoration: none; border-radius: 999px; padding: 14px 24px; font-size: 17px; border: 2px solid transparent; cursor: pointer; font-family: inherit; transition: background .2s, transform .15s, box-shadow .2s; }
-    .btn svg { width: 22px; height: 22px; }
-    .btn-green { background: #14734F; color: var(--white); }
-    .btn-green:hover { background: #0F5C3F; }
-    .btn-ghost { background: var(--white); color: var(--navy); border-color: var(--line); }
-    .btn-ghost:hover { border-color: var(--navy); }
-    .btn-lg { padding: 17px 28px; font-size: 18px; }
-    .btn-sm { padding: 10px 18px; font-size: 15px; box-shadow: none; white-space: nowrap; }
-    .btn-block { width: 100%; }
-    .btn.loading { opacity: .7; pointer-events: none; }
-    .link-arrow { font-weight: 700; color: var(--green-dark); text-decoration: none; font-size: 17px; white-space: nowrap; }
-    .link-arrow:hover { text-decoration: underline; }
-
-    /* Chips */
-    .chip { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: .06em; padding: 5px 11px; border-radius: 999px; border: 1.5px solid; }
-    .chip.sm { font-size: 13px; padding: 3px 9px; white-space: nowrap; }
-    .chip.genuine { color: #14532D; background: #DCFCE7; border-color: #1A9E6E; border-width: 2px; }
-    .chip.inflated { color: #92400E; background: #FEF3C7; border-color: #92400E; border-width: 2px; }
-    .chip.typical { color: #334155; background: #CBD5E1; border-color: #475569; border-width: 2px; }
-    .chip.nodata { color: #1A3C5E; background: #F1F5F9; border-color: #1A3C5E; border-width: 2px; }
-    .chip.watching { color: var(--navy); background: #E8EFF6; border-color: #B9CBDD; }
-
-    /* Nav */
-    .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-    .nav-inner { max-width: 1180px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 28px; }
-    .nav-logo svg { height: 52px; width: auto; }
-    .nav-links { display: flex; gap: 32px; margin-left: auto; }
-    .nav-links a { text-decoration: none; font-weight: 600; font-size: 16px; color: var(--navy); white-space: nowrap; }
-    .nav-links a:hover { color: var(--green-dark); }
-    @media (max-width: 900px) { .nav-links { display: none; } .nav-inner .btn { margin-left: auto; } }
-    /* Phone tab bar, 1 Oct 2026 (Jon: no navigation on the phone). NN/g: hidden
-       navigation cuts mobile discoverability by more than 20 percent; with four or
-       fewer links, show them. Same four tabs as the app pages. */
-    .tabbar { display: none; }
-    @media (max-width: 900px) {
-      body { padding-bottom: 76px; }
-      .tabbar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; background: #fff; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); }
-      .tabbar a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 0; font-size: 13px; font-weight: 700; color: var(--navy); text-decoration: none; }
-      .tabbar a[aria-current="page"] { color: var(--green-dark); }
-      .tabbar svg { width: 22px; height: 22px; }
+    *{box-sizing:border-box}
+    /* Homepage v4 (Build Board BB-4, approved by Jon 27 Oct 2026, 8:52 PM ET): video first. Layout and type from
+       docs/content/pages/mockups/HOMEPAGE_APPROVED_2026-10-27.html; the Ask answer styles below are carried from v3. */
+    body{margin:0;background:#FFFFFF;color:#1A3C5E;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:#14734F}a:hover{color:#0F5C3F}
+    h1,h2,h3{color:#1A3C5E}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+    .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+    .team2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .navlinks{display:flex;gap:28px;align-items:center}
+    .inputrow{display:flex;gap:10px}
+    .pair{align-items:stretch}
+    .pcard{display:flex;flex-direction:column}
+    .pcard .pbtn{margin-top:auto;align-self:flex-start}
+    .v4-menu{display:none;position:relative}
+    .v4-menu summary::-webkit-details-marker{display:none}
+    .v4-menu nav{position:absolute;right:0;top:54px;z-index:50;background:#FFFFFF;border-radius:16px;box-shadow:0 12px 32px rgba(15,23,42,.22);padding:8px;min-width:220px;display:flex;flex-direction:column}
+    .v4-menu nav a{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:10px;color:#1A3C5E;font-size:17px;font-weight:700;text-decoration:none}
+    .v4-menu nav a:hover{background:#F3F8F5}
+    .v4-tick{width:22px;height:22px;flex:0 0 auto;border-radius:6px;background:#14734F;display:flex;align-items:center;justify-content:center}
+    .v4-num{width:56px;height:56px;border-radius:16px;background:#1A3C5E;color:#FFFFFF;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .v4-badge{font-size:12px;font-weight:700;background:#DCFCE7;color:#14532D;border-radius:9999px;padding:2px 8px;margin-left:4px}
+    .v4-row{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px}
+    .v4-pill{font-size:13px;font-weight:700;background:#DCFCE7;color:#14532D;border-radius:9999px;padding:3px 10px;white-space:nowrap}
+    .v4-date{width:46px;flex:0 0 auto;border-radius:10px;background:#1A3C5E;color:#FFFFFF;text-align:center;padding:4px 0}
+    .v4-faq{border:1px solid #E2E8F0;border-radius:16px;padding:18px 22px}
+    .v4-faq summary{font-size:19px;font-weight:800;cursor:pointer;min-height:28px}
+    .v4-faq p{margin:10px 0 0;font-size:18px;line-height:27px;color:#334155}
+    .v4-sr{position:absolute;left:-9999px}
+    .footlinks a{display:inline-flex;align-items:center;min-height:44px}
+    #ask .ask-out{margin-top:40px}
+    #ask .ask-note{margin:14px 4px 0}
+    #vid-msg a{font-weight:800}
+    button:disabled{opacity:.65;cursor:default}
+    @media (max-width:820px){
+     .wrap{padding:0 16px}
+     .hero-grid,.two{grid-template-columns:minmax(0,1fr);gap:32px}
+     .three{grid-template-columns:minmax(0,1fr)}
+     .navlinks{display:none}
+     .v4-menu{display:block}
+     .h1{font-size:40px !important;line-height:46px !important}
+     .h2{font-size:30px !important;line-height:36px !important}
+     .h2s{font-size:28px !important;line-height:34px !important}
+     .inputrow{flex-wrap:wrap}
+     .inputrow .grow{flex:1 1 100% !important}
+     .inputrow .go{flex:1 1 auto !important}
+     .newsinput{flex-wrap:nowrap}
+     .newsinput .grow{flex:1 1 auto !important}
+     .newsinput .go{flex:0 0 auto !important}
+     .v4-closing{border-radius:28px !important}
+     .stat{border-left:none !important;padding-left:0 !important}
+     .sect{padding:56px 0 !important}
+     .herosect{padding:32px 0 48px !important}
+     .listcard{position:relative !important;left:auto !important;top:auto !important;width:auto !important;min-width:0 !important;margin:-40px 12px 0}
+     .vidcard{width:100% !important}
+     .newsrow{flex-direction:column;align-items:stretch !important}
+     .pcard{padding:24px !important}
     }
-
-
-    /* Saved strip, 8 Oct 2026. ".section.saved-strip" (9 Oct, CODE_INBOX FIX LIST item 2): the plain
-       ".saved-strip" sat above ".section { padding: 84px 0 }", which won, so the 32px never applied. */
-    .section.saved-strip { padding-top: 32px; }
-    .saved-grid { display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
-    .saved-grid h2 { white-space: nowrap; }
-    .saved-grid img { width: 100%; max-width: 760px; height: auto; border-radius: 16px; }
-    @media (max-width: 700px) { .saved-grid h2 { white-space: normal; text-wrap: balance; } .saved-grid { gap: 20px; } }
-    /* Save steps (9 Oct 2026): captioned image from 901px; under it, the caption-free image and the steps as text. */
-    .saved-phone, .saved-steps { display: none; }
-    .saved-steps { list-style: none; width: 100%; text-align: left; flex-direction: column; gap: 16px; }
-    .saved-steps li { display: flex; gap: 12px; align-items: flex-start; }
-    .saved-steps .step-n { flex: 0 0 30px; width: 30px; height: 30px; border-radius: 50%; background: #14734F; color: #FFFFFF; font-size: 16px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .saved-steps strong { display: block; font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.3; }
-    .saved-steps span:not(.step-n) { display: block; font-size: 16px; color: var(--navy); line-height: 1.4; }
-    @media (max-width: 900px) { .saved-desk { display: none; } .saved-phone { display: block; } .saved-steps { display: flex; } }
-
-    /* Hero */
-    .hero { background: var(--white); padding: 64px 0 24px; overflow: hidden; }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 48px; align-items: center; }
-    .eyebrow-pill { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid #BFE6D5; color: var(--green-dark); font-weight: 700; font-size: 14px; padding: 7px 14px; border-radius: 999px; margin-bottom: 22px; }
-    .eyebrow-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(26,158,110,.18); }
-    /* 6 Oct 2026: the H1 is now a full sentence (fix plan item 9), so it is sized down to keep the Ask box on a phone's first screen. */
-    .hero h1 { font-size: clamp(30px, 3.4vw, 44px); line-height: 1.12; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 16px; text-wrap: balance; }
-    @media (max-width: 480px) { .hero h1 { font-size: 30px; } .hero .lead { font-size: 19px; margin-bottom: 18px; } }
-    .lead { font-size: 21px; color: var(--muted); max-width: 560px; margin-bottom: 30px; }
-    .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
-    .hero-ticks { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; }
-    .hero-ticks li { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; color: var(--navy); }
-    .hero-ticks svg, .perks svg, .store-promise svg { width: 20px; height: 20px; color: var(--green); flex: none; }
-    .hero-visual { position: relative; min-height: 600px; }
-    .shot { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); }
-    .shot-bar { height: 30px; background: #EEF2F5; display: flex; gap: 7px; align-items: center; padding: 0 12px; border-bottom: 1px solid var(--line); }
-    .shot-bar span { width: 10px; height: 10px; border-radius: 50%; background: #C9D3DC; }
-    .shot-main { width: 400px; max-width: 100%; margin-left: auto; margin-right: 0; margin-top: 182px; }
-    .float-card { position: absolute; background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; text-decoration: none; }
-    .fc-store { left: 0; bottom: 0; display: flex; flex-direction: column; gap: 6px; width: 200px; padding: 12px; }
-    .fc-store img { width: 100%; height: 96px; object-fit: contain; background: var(--soft); border-radius: 10px; }
-    .fc-verdict { left: 0; top: 16px; width: 200px; }
-    .fc-title { font-weight: 700; color: var(--navy); font-size: 16px; margin: 6px 0 4px; line-height: 1.3; }
-    .fc-sub { font-size: 14px; color: var(--muted); line-height: 1.45; }
-    @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: minmax(0, 1fr); }
-      .hero-visual { min-height: 0; padding-top: 10px; }
-      .shot-main { margin: 0 auto; max-width: 100%; margin-top: 0; }
-      .float-card { position: static; margin: 16px auto 0; width: auto; max-width: 320px; }
-    }
-
-    /* Proof band */
-    .proof { background: var(--navy); color: var(--white); padding: 40px 0 26px; }
-    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .proof-num { display: block; font-size: 38px; font-weight: 900; color: #7FE0B8; letter-spacing: -0.02em; }
-    .proof-label { display: block; font-size: 16px; font-weight: 600; color: var(--white); line-height: 1.45; }
-    .proof-asof { font-size: 14px; font-weight: 600; color: #D5E1EC; margin-top: 18px; }
-    @media (max-width: 800px) { .proof-grid { grid-template-columns: 1fr; gap: 18px; } .proof-num { font-size: 30px; } }
-
-    /* Sections */
-    .section { padding: 84px 0; }
-    .section.tint { background: var(--green-tint); }
-    .section.soft { background: var(--soft); }
-    .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 34px; flex-wrap: wrap; }
-
-    /* Deal cards */
-    .deal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .deal-card { display: flex; flex-direction: column; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-decoration: none; transition: box-shadow .2s, transform .15s; }
-    .deal-card:hover { border-color: var(--navy); }
-    .deal-card .chip { align-self: flex-start; }
-    .deal-meta { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .deal-card h3 { font-size: 18px; line-height: 1.3; }
-    .deal-headline { font-size: 15px; font-weight: 600; color: var(--navy); }
-    .spark { width: 100%; height: 58px; margin: 6px 0 2px; }
-    .deal-foot { margin-top: auto; display: flex; flex-direction: column; gap: 2px; }
-    .deal-metric { font-weight: 800; font-size: 16px; }
-    .deal-metric.genuine { color: var(--green-dark); }
-    .deal-metric.inflated { color: #92400E; }
-    .deal-sub { font-size: 14px; color: var(--muted); }
-    @media (max-width: 1000px) { .deal-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .deal-grid { grid-template-columns: 1fr; } }
-
-    /* Store cards */
-    .store-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    .store-card { background: var(--white); border-radius: 16px; overflow: hidden; text-decoration: none; border: 1px solid #CFE9DC; display: flex; flex-direction: column; transition: box-shadow .2s, transform .15s; }
-    .store-card:hover { border-color: var(--navy); }
-    .store-img { background: #FAFBFC; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .store-img img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
-    .store-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
-    .store-name { font-size: 14px; font-weight: 700; color: var(--green-dark); }
-    .store-card h3 { font-size: 18px; line-height: 1.3; }
-    .store-card .chip { align-self: flex-start; }
-    .store-note { font-size: 14px; color: var(--muted); line-height: 1.45; }
-    .store-promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; }
-    .store-promise div { display: flex; gap: 10px; align-items: flex-start; font-size: 16px; color: var(--ink); background: var(--white); border-radius: 12px; padding: 16px 18px; border: 1px solid #CFE9DC; }
-    .store-promise svg { margin-top: 3px; }
-    @media (max-width: 1000px) { .store-grid { grid-template-columns: 1fr 1fr; } .store-promise { grid-template-columns: 1fr; } }
-
-    /* How */
-    .how-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
-    .steps { list-style: none; margin: 22px 0 30px; display: flex; flex-direction: column; gap: 18px; }
-    .steps li { display: flex; gap: 16px; align-items: flex-start; font-size: 18px; color: var(--ink); }
-    .steps strong { color: var(--navy); }
-    .step-n { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--navy); color: var(--white); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 17px; }
-    .shot-wide figcaption { font-size: 15px; font-weight: 600; color: var(--navy); padding: 12px 16px; border-top: 1px solid var(--line); background: var(--soft); }
-    @media (max-width: 980px) { .how-grid { grid-template-columns: 1fr; } }
-
-    /* Verdicts */
-    .verdict-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 34px; }
-    .verdict { background: var(--white); border-radius: 16px; padding: 24px 22px; border: 1px solid var(--line); border-top: 5px solid; }
-    .verdict h3 { margin: 14px 0 8px; }
-    .verdict p { font-size: 16px; color: var(--muted); }
-    .v-genuine { border-top-color: #1A9E6E; } .v-typical { border-top-color: #475569; }
-    .v-inflated { border-top-color: #92400E; } .v-nodata { border-top-color: #1A3C5E; }
-    @media (max-width: 1000px) { .verdict-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .verdict-grid { grid-template-columns: 1fr; } }
-
-    /* Truth band */
-    .truth { background: #14734F; color: var(--white); text-align: center; padding: 72px 0; }
-    .truth h2 { color: var(--white); font-size: clamp(32px, 4.5vw, 48px); }
-    .truth p { font-size: 19px; font-weight: 600; max-width: 680px; margin: 0 auto; }
-
-    /* Coming panel (mild dark gray-blue, bold white text) */
-    .section.panel { background: var(--navy-2); }
-    .panel h2 { color: var(--white); }
-    .agent-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-top: 30px; }
-    .agent { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 16px; padding: 22px 18px; }
-    .agent-ic { width: 44px; height: 44px; border-radius: 12px; background: var(--green); color: var(--white); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
-    .agent-ic svg { width: 24px; height: 24px; }
-    .agent-name { font-size: 13px; font-weight: 800; letter-spacing: .08em; color: #2DC98D; margin-bottom: 4px; }
-    .agent-members { display: inline-block; margin-left: 6px; padding: 1px 8px; border-radius: 999px; background: #E8F5EF; color: #14734F; font-size: 12px; font-weight: 700; letter-spacing: 0; }
-    .agent h3 { color: var(--white); font-size: 18px; margin-bottom: 8px; }
-    .agent p { color: var(--white); font-weight: 600; font-size: 15px; line-height: 1.5; }
-    @media (max-width: 1000px) { .agent-grid { grid-template-columns: 1fr 1fr; } }
-
-    /* Founding */
-    .founding-card { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: start; }
-    .founding-card > div { min-width: 0; }
-    .perks { list-style: none; margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
-    .perks li { display: flex; gap: 10px; align-items: center; font-weight: 600; color: var(--navy); }
-    .founding-form { background: var(--soft); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
-    .form-label { display: block; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-    #email-input { width: 100%; font-size: 18px; padding: 15px 16px; border: 2px solid var(--line); border-radius: 12px; margin-bottom: 14px; font-family: inherit; background: var(--white); }
-    #email-input:focus { outline: none; border-color: var(--green); }
-    .form-micro { font-size: 15px; color: var(--muted); margin-top: 12px; }
-    .signup-problem { margin-top: 12px; font-size: 15px; color: var(--red); font-weight: 600; }
-    @media (max-width: 900px) { .founding-card { grid-template-columns: 1fr; } }
-
-    /* Post sign-up state (existing markup, light theme) */
-    #hero-post { display: none; }
-    #hero-post .success-row { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
-    .success-check { width: 30px; height: 30px; border-radius: 50%; background: var(--green); display: flex; align-items: center; justify-content: center; flex: none; }
-    .success-title { font-weight: 800; color: var(--navy); font-size: 19px; }
-    .founder-num-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 18px; font-size: 15px; color: var(--muted); }
-    .founder-num { font-weight: 800; color: var(--green-dark); }
-    .next-steps { display: flex; flex-direction: column; gap: 12px; margin-bottom: 14px; }
-    .next-step { display: flex; gap: 12px; }
-    .ns-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--green); margin-top: 7px; flex: none; }
-    .ns-dot.done { background: var(--green); }
-    .ns-title { font-weight: 700; color: var(--navy); }
-    .ns-desc { font-size: 16px; color: var(--ink); }
-    .install-link { color: var(--green-dark); font-weight: 700; }
-    .ref-card, .q-card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-top: 14px; }
-    .ref-eyebrow, .q-eyebrow { font-size: 13px; font-weight: 800; color: var(--green-dark); }
-    .ref-title, .q-text { font-weight: 800; color: var(--navy); margin: 4px 0; }
-    .ref-desc, .q-sub { font-size: 15px; color: var(--muted); }
-    .ref-link-row { display: flex; gap: 8px; margin: 12px 0; }
-    .ref-url { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; background: var(--soft); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 15px; }
-    .btn-copy, .q-save, .q-skip { border: none; border-radius: 10px; padding: 10px 16px; font-weight: 700; font-family: inherit; font-size: 15px; cursor: pointer; }
-    .btn-copy, .q-save { background: var(--navy); color: var(--white); }
-    .q-save:disabled { opacity: .5; cursor: default; }
-    .q-skip { background: transparent; color: var(--muted); }
-    .share-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .btn-share { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font-size: 14px; font-weight: 600; text-decoration: none; color: var(--navy); cursor: pointer; }
-    .cat-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-    .cat-pill { border: 1.5px solid var(--line); background: var(--white); border-radius: 999px; padding: 8px 14px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; color: var(--navy); }
-    .cat-pill.selected { background: #14734F; border-color: #14734F; color: var(--white); }
-    .fade-in { animation: fade .4s ease; }
-    @keyframes fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-    /* Final CTA */
-    .final { background: var(--navy); text-align: center; padding: 80px 0; }
-    .final h2 { color: var(--white); }
-    .final p { color: var(--white); font-weight: 600; font-size: 19px; margin-bottom: 26px; }
-
-    /* Privacy + disclosure */
-    .privacy { background: var(--soft); padding: 48px 0; border-top: 1px solid var(--line); }
-    .privacy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-    .privacy h3 { font-size: 18px; margin-bottom: 8px; }
-    .privacy p { font-size: 16px; color: var(--muted); }
-    @media (max-width: 800px) { .privacy-grid { grid-template-columns: 1fr; } }
-
-    /* Footer */
-    .footer { background: var(--navy); padding: 36px 0 24px; }
-    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-    .footer .nav-logo svg { height: 44px; }
-    .footer-links { display: flex; flex-wrap: wrap; gap: 20px; }
-    .footer-links a { color: var(--white); font-weight: 600; font-size: 15px; text-decoration: none; }
-    .footer-links a:hover { text-decoration: underline; }
-    .footer-news { margin-left: auto; text-align: right; }
-    .footer-news-row { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
-    .footer-news-label { color: #fff; font-weight: 700; font-size: 16px; }
-    .footer-news-row input { width: 230px; min-height: 44px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--navy); border: 0; border-radius: 999px; background: #fff; }
-    .footer-news-row button { min-height: 44px; min-width: 64px; padding: 0 20px; font: inherit; font-size: 16px; font-weight: 700; color: #fff; background: var(--green-dark); border: 0; border-radius: 999px; cursor: pointer; }
-    .footer-news-row button:disabled { opacity: .7; cursor: default; }
-    .footer-news-note { color: #D5E1EC; font-size: 13px; margin-top: 6px; }
-    .footer-linkrow { margin-top: 20px; }
-    @media (max-width: 760px) {
-      .footer-news { margin-left: 0; width: 100%; text-align: left; }
-      .footer-news-row { justify-content: flex-start; }
-      .footer-news-label { width: 100%; }
-      .footer-news-row input { flex: 1 1 160px; width: auto; min-width: 0; }
-    }
-    .footer-bottom { color: #D5E1EC; font-size: 14px; margin-top: 22px; }
-
-  
-    /* Marco on the homepage: "Same item, different stores" (added 2026-09-30) */
-    #compare [hidden] { display: none !important; }
-    .cmp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .cmp-card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
-    .cmp-img { background: #FAFBFC; height: 220px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-    .cmp-img img { width: 100%; height: 100%; object-fit: contain; padding: 14px; }
-    .cmp-body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-    .cmp-brand { font-size: 14px; font-weight: 700; color: var(--green-dark); }
-    .cmp-card h3 { font-size: 18px; line-height: 1.3; }
-    .cmp-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 16px; color: var(--ink); border-top: 1px solid var(--line); padding-top: 10px; }
-    .cmp-row strong { color: var(--navy); font-size: 18px; white-space: nowrap; }
-    .cmp-row a { color: var(--green-dark); font-weight: 700; text-decoration: none; white-space: nowrap; }
-    .cmp-row a:hover { text-decoration: underline; }
-    .cmp-actions { margin-top: auto; padding-top: 6px; }
-    .cmp-skel { background: var(--white); border: 1px solid var(--line); border-radius: 16px; height: 420px; animation: cmpPulse 1.4s ease-in-out infinite; }
-    @keyframes cmpPulse { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
-    .marco-card { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; margin-top: 24px; background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
-    .marco-card h3 { font-size: 22px; margin-bottom: 8px; }
-    .marco-card p { font-size: 17px; color: var(--ink); }
-    .marco-steps { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .marco-steps li { display: flex; gap: 12px; align-items: flex-start; font-size: 17px; color: var(--ink); }
-    .marco-example { background: var(--soft); border: 1px solid var(--line); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 10px; }
-    .marco-example .cmp-row:first-of-type { border-top: 0; padding-top: 0; }
-    .marco-label { font-size: 14px; font-weight: 800; color: var(--navy); }
-    @media (max-width: 1000px) { .cmp-grid { grid-template-columns: 1fr; } .marco-card { grid-template-columns: 1fr; padding: 22px; } }
-
+    @media (max-width:359px){.team2{grid-template-columns:minmax(0,1fr)}}
+    /* Ask Sinclair answer styles, carried unchanged from homepage v3. */
     /* Ask Sinclair (added 2026-09-30; soft bar, examples, microphone, one thing at a time; Paste removed for simplicity) */
     .ask-card { background: #fff; border: 2px solid var(--green); border-radius: 28px; padding: 32px; }
     .ask-top { display: flex; align-items: center; gap: 12px; }
@@ -505,1098 +270,270 @@
       .ask-next .ask-save { align-self: stretch; }
       .ask-later { justify-content: center; text-align: center; }
     }
-    /* Touch screens cannot add a Chrome extension (Android and iOS Chrome support none, 4 Oct 2026): they get the link by email instead. */
-    .tf-touch-only { display: none; }
-    @media (hover: none) and (pointer: coarse) { .tf-desktop-only { display: none !important; } .tf-touch-only { display: block; } }
-    .tf-inst { background: #fff; border: 2px solid #D6DEE6; border-radius: 16px; padding: 16px; margin-top: 14px; text-align: left; width: 100%; flex-basis: 100%; }
-    .tf-inst p { margin: 0; }
-    .tf-inst .tf-inst-prompt { font-size: 18px; font-weight: 700; color: var(--navy); }
-    .tf-inst .tf-inst-line { font-size: 16px; line-height: 1.45; color: #334155; margin-top: 4px; }
-    .tf-inst form { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .tf-inst input { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 0 16px; font-size: 17px; border-radius: 999px; border: 2px solid #C9D3DD; color: var(--navy); font-family: inherit; }
-    .tf-inst button { min-height: 48px; padding: 0 20px; font-size: 17px; font-weight: 700; border: 0; border-radius: 999px; background: #14734F; color: #fff; font-family: inherit; }
-    .tf-inst .tf-inst-msg { font-size: 16px; font-weight: 600; color: var(--navy); margin-top: 8px; min-height: 1px; }
-    .tf-inst .tf-inst-note { font-size: 13px; color: #5B6B7B; margin-top: 4px; }
-    .tf-inst-ask { margin: 10px 0 0; font-size: 17px; font-weight: 600; flex-basis: 100%; }
-    .tf-inst-ask a { color: #14734F; text-decoration: underline; text-underline-offset: 3px; }
-    .tf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  /* tf-menu:start (6 Oct 2026) */
-  .tf-menu { position:relative; flex:0 0 auto; }
-  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
-  .tf-menu > summary::-webkit-details-marker { display:none; }
-  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
-  .tf-menu .tf-x { display:none; }
-  .tf-menu[open] .tf-x { display:block; }
-  .tf-menu[open] .tf-bars { display:none; }
-  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; border:2px solid #1A3C5E; }
-  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
-  .tf-menu nav a:hover { background:#F4F7FA; }
-  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#14734F; color:#fff; padding:0 16px; }
-  .tf-menu nav a.tf-menu-cta:hover { background:#0F5C3F; }
-  .nav .tf-menu > summary { color:#1A3C5E; }
-  .nav .tf-menu > summary:hover { background:#EEF2F6; }
-  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
-  @media (max-width:479px) {
-    /* CODE_INBOX FIX LIST 9 Oct, item 1: in a desktop-mode browser at phone width (Add to Chrome shown) the
-       row ran 19px past 375px. The logo shrinks first, the button tightens, the open panel stays on screen. */
-    .nav-inner { gap:10px; padding:12px 14px; min-width:0; }
-    .nav-inner .nav-logo { flex:0 1 auto; min-width:0; display:flex; }
-    .nav-inner .nav-logo svg { width:100%; height:auto; max-width:128px; max-height:40px; }
-    .nav-inner .btn-sm { flex:0 0 auto; padding:8px 12px; font-size:14px; }
-    .tf-menu nav { max-width:calc(100vw - 24px); }
-    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
-    .topbar a.brand svg { height:22px !important; }
-    .topbar a.tcta { padding:0 11px; font-size:14px; }
-    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
-    .topbar .tf-menu > summary { width:42px; }
-  }
-  /* Homepage, 8 Oct 2026, round 2 (Cowork, Jon approved): the menu button stays on desktop, after Add to Chrome, for How It Works and Be a Founding Member. */
-  @media (min-width:901px) { .nav .tf-menu { margin-left:-12px; } }
-  /* tf-menu:end */
-    /* Homepage v2 (17 Oct 2026): hero answer, See Sinclair at work, how it works, team, gift row, trust, closing Ask. */
-    .trust-line { font-size: 17px; font-weight: 600; color: var(--navy); margin-top: 4px; }
-    .hero .ask-card.ask-in-hero { margin: 0 0 14px; padding: 22px 24px; }
-    .hero .ask-card.ask-in-hero h2 { font-size: 22px; margin-top: 0 !important; }
-    .ask-also button { min-height: 44px; display: inline-flex; align-items: center; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; }
-    .ask-also button:hover, .ask-also button:focus-visible { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
-    .hero-visual { min-height: 0; }
-    .hero { padding-top: 40px; }
-    .hero-grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: start; }
-    @media (max-width: 980px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
-    .hero-photo { margin: 0 0 16px; }
-    .sc-skel { min-height: 320px; border-radius: 20px; background: linear-gradient(90deg, #F1F5F9, #E8EEF5, #F1F5F9); background-size: 200% 100%; animation: scShimmer 1.4s linear infinite; }
-    @keyframes scShimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
-    @media (prefers-reduced-motion: reduce) { .sc-skel { animation: none; } }
-    .sc-answer { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(26,60,94,.08); }
-    .sc-label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--green-dark); }
-    .sc-label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-    .sc-q { margin-top: 10px; display: inline-block; background: #E8EEF5; color: var(--navy); font-weight: 700; font-size: 17px; border-radius: 16px 16px 16px 4px; padding: 8px 14px; }
-    .sc-tip { margin-top: 12px; border-left: 4px solid var(--green); background: #F4FBF7; border-radius: 10px; padding: 10px 14px; }
-    .sc-tip strong { display: block; font-size: 15px; color: var(--green-dark); }
-    .sc-tip p { font-size: 17px; line-height: 1.45; color: var(--navy); margin-top: 2px; }
-    .sc-ideas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
-    .sc-ideas span { font-size: 15px; font-weight: 600; color: var(--green-dark); background: #E8F5EF; border-radius: 999px; padding: 4px 12px; }
-    .sc-list { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 10px; }
-    .sc-item { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: 12px; align-items: start; border-top: 1px solid var(--line); padding-top: 10px; }
-    .sc-thumb { width: 76px; height: 76px; border-radius: 12px; overflow: hidden; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: #94A3B8; }
-    .sc-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .sc-store { font-size: 15px; font-weight: 700; color: var(--navy); }
-    .sc-name { display: block; font-size: 16px; color: var(--navy); line-height: 1.35; text-decoration: none; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-    .sc-name:hover { text-decoration: underline; }
-    .sc-reason { font-size: 15px; font-weight: 600; color: var(--green-dark); line-height: 1.4; margin-top: 2px; }
-    .sc-price { text-align: right; font-size: 18px; font-weight: 800; color: var(--navy); white-space: nowrap; }
-    .sc-price small { display: block; font-size: 13px; font-weight: 600; color: var(--muted); }
-    @media (max-width: 559px) { .sc-item { grid-template-columns: 64px minmax(0, 1fr); } .sc-thumb { width: 64px; height: 64px; } .sc-price { grid-column: 2; text-align: left; } .sc-price small { display: inline; margin-left: 6px; } }
-    .sc-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .sc-ask { min-height: 48px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: inherit; font-size: 17px; font-weight: 700; padding: 0 24px; cursor: pointer; }
-    .sc-ask:hover { background: #12304D; }
-    .tf-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
-    .tf-tabs button { min-height: 48px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 20px; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); cursor: pointer; }
-    .tf-tabs button[aria-selected="true"] { background: var(--navy); color: #fff; box-shadow: none; }
-    .work-panel .sc-answer { box-shadow: none; }
-    @media (min-width: 900px) { .work-panel .sc-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } .work-panel .sc-item { grid-template-columns: 1fr; border-top: 0; padding-top: 0; } .work-panel .sc-thumb { width: 100%; height: 180px; } .work-panel .sc-price { text-align: left; } }
-    .how3 { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-    .how3 li { display: flex; gap: 14px; align-items: flex-start; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
-    .how3 strong { display: block; font-size: 19px; color: var(--navy); line-height: 1.3; }
-    .how3 span:not(.step-n) { display: block; font-size: 17px; color: var(--muted); margin-top: 4px; }
-    @media (max-width: 900px) { .how3 { grid-template-columns: 1fr; } }
-    .team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
-    .team-grid .agent p { margin-top: 10px; font-size: 16px; }
-    .status { display: inline-block; margin-top: 6px; font-size: 13px; font-weight: 800; letter-spacing: .02em; border-radius: 999px; padding: 4px 10px; }
-    .status.live { background: var(--green); color: #fff; }
-    .status.members { background: #fff; color: var(--navy); }
-    .status.soon { background: rgba(255,255,255,.14); color: #fff; box-shadow: 0 0 0 1px rgba(255,255,255,.4) inset; }
-    @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
-    .chrome-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
-    .chrome-row h3 { font-size: 22px; }
-    .chrome-row p { font-size: 17px; color: var(--muted); max-width: 640px; margin-top: 4px; }
-    .gift-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .gift-card { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; }
-    .gift-card:hover { border-color: var(--navy); }
-    .gift-img { position: relative; aspect-ratio: 4 / 3; flex: none; background: #F1F5F9; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 40px; color: #94A3B8; }
-    .gift-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
-    .gc-art { width: 78%; aspect-ratio: 1.586 / 1; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--green-dark)); color: #fff; display: flex; flex-direction: column; justify-content: space-between; padding: 14px 16px; box-shadow: 0 10px 24px rgba(26,60,94,.25); text-align: left; }
-    .gc-art-name { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; }
-    .gc-art-line { font-size: 15px; font-weight: 600; opacity: .9; }
-    .gift-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
-    .gift-store { font-size: 15px; font-weight: 700; color: var(--green-dark); }
-    .gift-name { font-size: 17px; font-weight: 600; color: var(--navy); line-height: 1.35; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-    .founding-limit { margin-top: 12px; }
-    .gift-blurb { font-size: 16px; font-weight: 600; color: #475569; line-height: 1.35; }
-    .gift-age { align-self: flex-start; font-size: 14px; font-weight: 700; color: var(--navy); background: #E8EEF5; border-radius: 999px; padding: 2px 10px; }
-    .gift-price { margin-top: auto; padding-top: 6px; font-size: 19px; font-weight: 800; color: var(--navy); }
-    .gift-price small { font-size: 14px; font-weight: 600; color: var(--muted); }
-    .gift-go { font-size: 16px; font-weight: 700; color: var(--green-dark); }
-    @media (max-width: 760px) { .gift-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .gift-grid .gift-card:nth-child(n+5) { display: none; } .gift-body { padding: 10px 12px 12px; } .gift-name { font-size: 16px; } .gift-price small { display: block; line-height: 1.3; } }
-    .trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 24px; }
-    .trust-grid > div { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
-    .trust-grid h3 { font-size: 19px; }
-    .trust-grid p { font-size: 17px; color: var(--muted); margin-top: 8px; }
-    .trust-grid a { color: var(--green-dark); font-weight: 700; }
-    @media (max-width: 900px) { .trust-grid { grid-template-columns: 1fr; } }
-    .final-ask { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 640px; margin: 18px auto 14px; }
-    .final-ask input { flex: 1 1 260px; min-width: 0; min-height: 56px; border: 0; border-radius: 999px; padding: 0 22px; font: inherit; font-size: 18px; color: var(--navy); }
-    .final-ask button { min-height: 56px; border: 0; border-radius: 999px; background: var(--green-dark); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 28px; cursor: pointer; }
-    .final p a { color: #fff; font-weight: 700; }
-    .fine { font-size: 15px; color: var(--muted); margin-top: 14px; }
-      /* Hero option A (Jon 18 Oct 2026: "Go with A"): one clear focus, the Ask box. */
-    .hero .ask-card.ask-in-hero h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0 !important; }
-    .hero .ask-share-help { display: none !important; }
-    .hero .ask-card.ask-in-hero { padding: 18px 20px; }
-    .hero-copy, .hero .ask-card { min-width: 0; width: 100%; }
-    .hero { padding: 56px 0 40px; }
-    .hero-grid { grid-template-columns: minmax(0, 1fr) !important; justify-items: center; }
-    .hero-copy { max-width: 760px; text-align: center; }
-    .hero .lead { margin-left: auto; margin-right: auto; max-width: 640px; }
-    .hero-visual { display: none; }
-    .hero .ask-also { justify-content: center; }
-    .hero .trust-line { margin-top: 10px; }
-    @media (max-width: 640px) {
-      .hero { padding: 32px 0 28px; }
-      .hero-copy { text-align: left; }
-      .hero .ask-also { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; margin-right: -16px; padding-right: 16px; }
-      .hero .ask-also::-webkit-scrollbar { display: none; }
-      .hero .ask-also span, .hero .ask-also button { flex: 0 0 auto; white-space: nowrap; }
-    }
-    /* Homepage v3 (27 Oct 2026). */
-    .hero-video-link { margin-top: 6px; font-size: 17px; }
-    .hero-video-link a { color: var(--green-dark); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
-    .hero-video-link a:hover { text-decoration: underline; }
-    .v3-new { display: flex; align-items: center; gap: 10px; font-size: 17px; color: var(--muted); margin-top: 10px; }
-    .v3-new-chip { background: var(--green); color: #fff; font-size: 14px; font-weight: 800; border-radius: 999px; padding: 3px 10px; }
-    .v3-steps { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-    .v3-steps li { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
-    .v3-art { display: block; width: 120px; height: 80px; margin-bottom: 12px; }
-    .v3-steps strong { display: block; font-size: 20px; color: var(--navy); }
-    .v3-steps span { display: block; font-size: 17px; color: var(--muted); margin-top: 4px; }
-    .v3-under { margin-top: 18px; font-size: 17px; font-weight: 600; color: var(--navy); }
-    @media (max-width: 900px) { .v3-steps { grid-template-columns: 1fr; } }
-    .v3-team { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .v3-team li { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 17px; color: var(--navy); }
-    @media (max-width: 700px) { .v3-team { grid-template-columns: 1fr; } }
-    .v3-status { display: inline-block; font-size: 14px; font-weight: 800; border-radius: 999px; padding: 3px 10px; }
-    .v3-status.live { background: var(--green); color: #fff; }
-    .v3-status.members { background: #E8EEF5; color: var(--navy); }
-    .v3-status.soon { background: #F1F5F9; color: #475569; box-shadow: 0 0 0 1px #CBD5E1 inset; }
-    .v3-chips { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-    .v3-chips li { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; font-size: 17px; color: var(--navy); line-height: 1.45; }
-    .v3-chips .chip { margin-right: 6px; }
-    @media (max-width: 760px) { .v3-chips { grid-template-columns: 1fr; } }
-    .v3-more { margin-top: 16px; }
-    .v3-h3 { font-size: 22px; color: var(--navy); margin-top: 8px; }
-    .v3-biz > div { display: flex; flex-direction: column; gap: 10px; }
-    .v3-biz .btn { align-self: flex-start; margin-top: auto; color: #fff; }
-    .v3-earn { font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.8); padding-top: 18px; }
-    .v3-earn a { color: #fff; font-weight: 700; }
-    /* Readable on phones (mobile journey item 9, 20 Oct 2026): 15 px text at least, 44 px taps. Last in the
-       stylesheet on purpose, so it wins over the rules above it. */
-    @media (max-width: 639px) {
-      .eyebrow, .chip, .chip.sm, .tabbar a, .eyebrow-pill, .fc-sub, .proof-asof, .deal-meta, .deal-sub, .store-name, .store-note,
-      .agent-name, .agent-members, .ref-eyebrow, .q-eyebrow, .btn-share, .footer-news-note, .footer-bottom, .cmp-brand, .marco-label,
-      .ask-tip-label, .ask-eyebrow, .ask-live, .ask-verified, .tf-inst .tf-inst-note, .sc-label, .sc-price small, .status,
-      .gift-age, .gift-price small, .nav-inner .btn-sm, .pop-price small { font-size: 15px; }
-      .footer-links a, .footer-bottom a, .ask-facts a, .ask-orderby a, .fine a, .link-arrow, a[href="/pricing"], .tf-home-guides p > a,
-      .pop-name, .sc-name, .nav-inner .btn-sm { display: inline-flex; align-items: center; min-height: 44px; }
-      .nav-logo { min-height: 44px; }
-    }
   </style>
-<link rel="canonical" href="https://truefinds.ai/">
 </head>
 <body>
-
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" aria-label="TrueFinds">
-      <path d="M 50,18 L 56.5,43.5 L 82,50 L 56.5,56.5 L 50,82 L 43.5,56.5 L 18,50 L 43.5,43.5 Z" fill="#1A9E6E"/>
-      <path d="M 90,12 L 92.2,18.8 L 99,21 L 92.2,23.2 L 90,30 L 87.8,23.2 L 81,21 L 87.8,18.8 Z" fill="#1A9E6E" opacity="0.65"/>
-      <text x="120" y="64" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="38" font-weight="700" letter-spacing="-1" fill="#1A3C5E">TrueFinds</text>
-    </svg></a>
-    <div class="nav-links">
-      <a href="/real-deals">Real Deals</a>
-      <a href="/gifts">Gifts</a>
-      <a href="/plan">Lists</a>
-      <a href="/guides">Guides</a>
-      <a href="#business">For business</a>
-    </div>
-    <a class="tf-desktop-only btn btn-green btn-sm" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add to Chrome</a>
-    <a class="tf-phone-ask btn btn-green btn-sm" href="#ask" id="nav-ask">Ask Sinclair</a>
-    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/#ask" aria-current="page">Ask Sinclair</a><a href="/plan">Lists</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="/real-deals">Real Deals</a><a href="/#business">For business</a><a href="/how-it-works">How It Works</a><a href="/about">About</a><a class="tf-menu-cta" href="/#founding">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
-    
-    
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow-pill"><span class="dot"></span>See it. Love it. Get it. Enjoy the moment.</div>
-      <h1 id="hero-h1">See it in a video. Get it from a store you can trust.</h1>
-      <script data-tf="headline-test">
-        /* Homepage headline experiment, PREP ONLY (inbox 25 Oct, hx1). OFF: while on is false this does nothing and
-           makes no call. To start: Cowork sends the winning headline, Code sets test.h1 and on: true, and the PostHog
-           experiment uses the feature flag "home-headline-test" (variants control and test, 50/50). The app route
-           /api/home/headline asks PostHog which side a visitor is on and records the exposure; no flag, no answer or
-           any error keeps the current hero. Details: true-finds-app src/lib/home/headline-test.ts. */
-        (function () {
-          var HEADLINE_TEST = { on: false, test: { h1: '' } };
-          if (!HEADLINE_TEST.on || !HEADLINE_TEST.test.h1) return;
-          var h = document.getElementById('hero-h1');
-          if (!h || !window.fetch) return;
-          var v;
-          try {
-            v = localStorage.getItem('tf_visitor_id');
-            if (!v) {
-              v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
-              localStorage.setItem('tf_visitor_id', v);
-            }
-          } catch (e) { return; }
-          /* Hide the headline briefly so a test visitor does not see one line swap for another; never longer than 800 ms. */
-          h.style.visibility = 'hidden';
-          var shown = false;
-          function show() { if (!shown) { shown = true; h.style.visibility = ''; } }
-          setTimeout(show, 800);
-          fetch('/api/home/headline?d=' + encodeURIComponent(v), { headers: { Accept: 'application/json' } })
-            .then(function (r) { return r.json(); })
-            /* A late answer still applies: the route has already counted this visitor on that side. */
-            .then(function (d) { if (d && d.variant === 'test') h.textContent = HEADLINE_TEST.test.h1; show(); })
-            .catch(show);
-        })();
-      </script>
-      <p class="lead">One list. Fair prices. Stores you can trust.</p>
-      <div class="ask-card ask-in-hero" id="ask">
-        <h2><label for="ask-q">Ask Sinclair, your shopping agent, what you need</label></h2>
-        <form class="ask-form" id="ask-form">
-          <div class="ask-bar">
-            <input id="ask-q" name="q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
-            <button class="ask-icon" type="button" id="ask-mic" aria-label="Speak your question" title="Speak your question" aria-pressed="false" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
-            <button class="ask-go" type="submit" id="ask-btn">Ask Sinclair</button>
-          </div>
-          <div class="ask-mrow">
-            <button class="ask-paste" type="button" id="ask-paste">Paste</button>
-            <button class="ask-go ask-go-mobile" type="submit" id="ask-btn-m">Ask Sinclair</button>
-          </div>
-          <p class="ask-share-help">From the Amazon app: tap Share, Copy, then paste here.</p>
-        </form>
-        <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
-        <div class="ask-also" id="ask-also">
-          <span>Try:</span>
-          <button type="button" data-ask="gift for my grandson, he's 8">A gift for my grandson, he&rsquo;s 8</button>
-          <button type="button" data-ask="a warm gift for my dad, under $50">A warm gift for Dad, under $50</button>
-          <button type="button" data-ask="a toy for my dog that chews everything">A toy for a dog that chews everything</button>
-        </div>
-        <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
-      </div>
-      <p class="trust-line">Free to ask. Free to save. Free to buy.</p>
-      <p class="hero-video-link"><a href="#video-list">See how a video becomes a list &darr;</a></p>
-    </div>
-    <div class="hero-visual">
-      <figure class="hero-photo" data-slot="hero-photo" data-note="Hero photo slot, 17 Oct 2026: Jon picks the photo. Until then this column shows a real Sinclair answer." hidden></figure>
-      <div class="hero-answer" id="hero-answer" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
-    </div>
-  </div>
+<header style="background:#1A3C5E;color:#FFFFFF">
+ <div class="wrap" style="height:68px;display:flex;align-items:center;justify-content:space-between">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:#FFFFFF;text-decoration:none;min-height:44px">
+   <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="#2DC98D"></path></svg>
+   <span style="font-size:22px;font-weight:800;letter-spacing:-0.3px">TrueFinds</span>
+  </a>
+  <nav class="navlinks" aria-label="Main">
+   <a href="#how" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Video to list</a>
+   <a href="#ask" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Ask Sinclair</a>
+   <a href="/real-deals" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Real Deals</a>
+   <a href="/gifts" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Gifts</a>
+   <a href="/for-stores" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">For business</a>
+   <a href="/signin" style="color:#1A3C5E;background:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none;border-radius:9999px;padding:10px 18px;min-height:44px;display:inline-flex;align-items:center">Sign in</a>
+  </nav>
+  <details class="v4-menu">
+   <summary aria-label="Open menu" style="background:transparent;border:2px solid #FFFFFF;border-radius:9999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;cursor:pointer;list-style:none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+   </summary>
+   <nav aria-label="Menu"><a href="#how">Video to list</a><a href="#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/for-stores">For business</a><a href="/signin">Sign in</a></nav>
+  </details>
+ </div>
 </header>
+<div style="border-bottom:1px solid #E2E8F0;padding:8px 16px;text-align:center;font-size:13px;line-height:18px;font-weight:600;color:#334155">TrueFinds may earn a commission when you buy, at no cost to you. Sponsors do not influence recommendations. <a href="/how-we-earn" style="font-weight:700">How we earn</a></div>
 
-<!-- Homepage v3 (27 Oct 2026, Jon: "Go with your picks"; outline docs/content/pages/HOMEPAGE_v3_OUTLINE_2026-10-26.md in true-finds-app). -->
-<section class="section soft" id="video-list" aria-labelledby="video-list-h">
-  <div class="wrap">
-    <span class="eyebrow">How a video becomes a list</span>
-    <h2 id="video-list-h">From the video to your door, in three steps</h2>
-    <p class="v3-new"><span class="v3-new-chip">New</span> Rolling out now with our first creators.</p>
-    <ol class="v3-steps">
-      <li>
-        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><rect x="8" y="8" width="104" height="64" rx="12" fill="#1A3C5E"/><path d="M52 28v24l20-12z" fill="#fff"/><circle cx="96" cy="20" r="6" fill="#1A9E6E"/></svg>
-        <div><strong>See it.</strong><span>A creator you follow shares a recipe, a routine or a room.</span></div>
-      </li>
-      <li>
-        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><rect x="24" y="6" width="72" height="68" rx="10" fill="#fff" stroke="#1A3C5E" stroke-width="3"/><path d="M36 24l5 5 9-9M36 42l5 5 9-9" fill="none" stroke="#1A9E6E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 25h26M58 43h26M38 60h46" stroke="#1A3C5E" stroke-width="4" stroke-linecap="round"/></svg>
-        <div><strong>List it.</strong><span>Everything you need lands on one list. Tap &ldquo;I have this&rdquo; to skip what&rsquo;s already at home.</span></div>
-      </li>
-      <li>
-        <svg class="v3-art" viewBox="0 0 120 80" aria-hidden="true"><path d="M30 28h60l-6 44H36z" fill="#1A9E6E"/><path d="M46 28v-6a14 14 0 0 1 28 0v6" fill="none" stroke="#1A3C5E" stroke-width="4" stroke-linecap="round"/><path d="M50 50l7 7 14-14" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <div><strong>Get it.</strong><span>Each item comes from a store you can trust, at a fair price. Save the list and shop when you&rsquo;re ready.</span></div>
-      </li>
-    </ol>
-    <p class="v3-under">Creators get credit, and they earn when you buy from their list.</p>
-  </div>
-</section>
-
-<section class="section" id="meet-sinclair" aria-labelledby="meet-sinclair-h">
-  <div class="wrap">
-    <span class="eyebrow">Meet Sinclair</span>
-    <h2 id="meet-sinclair-h">Meet Sinclair, your shopping agent</h2>
-    <p class="sub">Sinclair is your shopping agent. Tell him what you need, and he&rsquo;ll help you choose the right product and find a fair price from a store you can trust.</p>
-    <ul class="v3-team">
-      <li><strong>Marco</strong> compares stores for you.<span class="v3-status live">Live</span></li>
-      <li><strong>Scout</strong> keeps your saved finds and reminds you.<span class="v3-status live">Live</span></li>
-      <li><strong>Gifted</strong> plans gifts and birthdays.<span class="v3-status members">For members</span></li>
-      <li><strong>Sage</strong> reads labels.<span class="v3-status soon">Coming Nov 10</span></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section soft" id="at-work" aria-labelledby="at-work-h">
-  <div class="wrap">
-    <span class="eyebrow">Real answers from Sinclair</span>
-    <h2 id="at-work-h">See Sinclair at work</h2>
-    <p class="sub">Three things shoppers asked, and what Sinclair answered. Pick one, then ask it yourself.</p>
-    <div class="tf-tabs" role="tablist" aria-label="Example questions" id="work-tabs"></div>
-    <div class="work-panel" id="work-panel" role="tabpanel" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
-    <p class="fine" id="work-fine">Asked on truefinds.ai on October 17, 2026. Prices are each store&rsquo;s own, checked just now. They can change.</p>
-  </div>
-</section>
-
-<section class="section pop-row" id="popular" aria-labelledby="popular-h" hidden>
-  <div class="wrap">
-    <h2 id="popular-h">Popular in Sinclair&rsquo;s answers this week</h2>
-    <div class="pop-grid" id="popular-grid"></div>
-    <p class="fine" id="popular-fine" hidden>TrueFinds may earn a commission from stores, no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</p>
-  </div>
-</section>
-
-<section class="section" id="stores-trust" aria-labelledby="stores-trust-h">
-  <div class="wrap">
-    <span class="eyebrow">Stores you can trust</span>
-    <h2 id="stores-trust-h">Stores you can trust, before you buy</h2>
-    <div class="trust-grid">
-      <div><h3>Returns and shipping up front.</h3><p>See the return policy, shipping and the order-by date before you click.</p></div>
-      <div><h3>Vetted stores.</h3><p>Sinclair shows stores that pass our checks.</p></div>
-      <div><h3>What buyers really say.</h3><p><span class="v3-status soon">Coming soon</span> Sinclair&rsquo;s reviewer reads the reviews for you.</p></div>
+<main>
+<section class="herosect" style="background:#F3F8F5;padding:72px 0 88px">
+ <div class="wrap hero-grid">
+  <div>
+   <div style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:14px;font-weight:700;color:#14734F">See it. Love it. Get it. Enjoy the moment.</div>
+   <h1 class="h1" style="margin:22px 0 18px;font-size:60px;line-height:64px;font-weight:800;letter-spacing:-1.2px;color:#1A3C5E">See it in a video.<br>Get it from a store you can trust.</h1>
+   <p style="margin:0 0 28px;font-size:21px;line-height:31px;color:#334155;max-width:560px">Paste a cooking, home or holiday video. TrueFinds turns everything in it into one shopping list, with fair prices from stores you can trust.</p>
+   <form id="vid-form" novalidate style="background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:12px;max-width:600px">
+    <label for="vid" style="display:block;font-size:17px;font-weight:800;color:#1A3C5E;margin:2px 6px 10px">Paste a YouTube video link</label>
+    <div class="inputrow">
+     <input class="grow" id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="youtube.com/watch?v=..." style="flex:1;min-width:0;height:56px;border:2px solid #64748B;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E;background:#FFFFFF">
+     <button class="go" type="submit" id="vid-go" style="height:56px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 28px;white-space:nowrap;cursor:pointer">Make my list</button>
     </div>
-    <p class="fine">Sponsors do not influence recommendations.</p>
+    <p id="vid-msg" role="status" aria-live="polite" hidden style="margin:12px 6px 0;font-size:17px;line-height:25px;font-weight:700;color:#1A3C5E"></p>
+    <p style="margin:10px 6px 2px;font-size:15px;line-height:22px;font-weight:600;color:#334155">Works with YouTube videos.<br>Photos, TikTok, Instagram and recipe links coming soon.</p>
+   </form>
+   <p style="margin:16px 4px 0;font-size:18px;font-weight:700;color:#1A3C5E">Not from a video? <a href="#ask">Ask Sinclair, your shopping agent</a></p>
+   <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:16px;font-weight:700;color:#1A3C5E">
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to ask</span>
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to save</span>
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to buy</span>
+   </div>
   </div>
+
+  <div aria-hidden="true" style="position:relative;padding:8px 0 24px">
+   <div class="vidcard" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;width:86%">
+    <div style="position:relative;height:250px;background:#C9724B;display:flex;align-items:flex-end">
+     <div style="position:absolute;left:28px;top:34px;width:150px;height:150px;border-radius:50%;background:#E8A26F"></div>
+     <div style="position:absolute;left:74px;top:70px;width:96px;height:96px;border-radius:50%;background:#F3D3A2"></div>
+     <div style="position:absolute;right:40px;top:44px;width:120px;height:60px;border-radius:30px;background:#8E3F23"></div>
+     <div style="position:absolute;right:70px;top:120px;width:70px;height:70px;border-radius:50%;background:#F7E6A6"></div>
+     <div style="position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1A3C5E"></path></svg>
+     </div>
+     <div style="position:relative;margin:14px;background:#1A3C5E;color:#FFFFFF;border-radius:10px;padding:6px 12px;font-size:14px;font-weight:700">Example: one-pan lemon chicken, 12 min</div>
+    </div>
+   </div>
+   <div class="listcard" style="position:absolute;left:44%;top:150px;width:58%;min-width:300px;background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+     <span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">YOUR LIST</span>
+     <span style="font-size:13px;font-weight:600;color:#334155">9 items · 3 stores</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Chicken thighs, 2 lb</span><span style="font-size:13px;font-weight:600;color:#334155">Hudson Grocery</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Smoked paprika</span><span style="font-size:13px;font-weight:600;color:#334155">Savory Spice</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span style="width:22px;height:22px;flex:0 0 auto;border-radius:6px;border:2px solid #64748B"></span><span style="flex:1;font-size:16px;font-weight:700;color:#475569;text-decoration:line-through">Lemons, 3</span><span style="font-size:13px;font-weight:700;color:#1A3C5E;background:#F1F5F9;border-radius:9999px;padding:3px 10px">I have this</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">12-inch skillet</span><span style="font-size:13px;font-weight:600;color:#334155">Martie</span></div>
+    </div>
+    <div style="margin-top:14px;background:#14734F;color:#FFFFFF;border-radius:9999px;text-align:center;font-size:17px;font-weight:700;padding:12px">Buy your list · 3 stores</div>
+   </div>
+  </div>
+ </div>
 </section>
 
-<section class="section soft" id="verdicts" aria-labelledby="verdicts-h">
-  <div class="wrap">
-    <span class="eyebrow">Price proof</span>
-    <h2 id="verdicts-h">A fair price, with the proof</h2>
-    <p class="sub">Sinclair records prices at our stores every day, so he knows when a sale is real.</p>
-    <ul class="v3-chips">
-      <li><span class="chip genuine">GENUINE DEAL</span> A real low. Good time to buy.</li>
-      <li><span class="chip typical">TYPICAL PRICE</span> Normal price. Fine to buy if you need it.</li>
-      <li><span class="chip inflated">COMPARE FIRST</span> Today&rsquo;s price is a little above what this usually costs. Compare other stores, or save it for later.</li>
-      <li><span class="chip nodata">NOT ENOUGH DATA</span> When the record is too short, Sinclair says so.</li>
-    </ul>
-    <p class="v3-more"><a class="link-arrow" href="/how-it-works">How Sinclair reads a price &rarr;</a></p>
-  </div>
+<section style="background:#1A3C5E;color:#FFFFFF;padding:36px 0">
+ <div class="wrap three">
+  <div class="stat"><div id="stat-prices" style="font-size:38px;font-weight:800;color:#2DC98D;min-height:46px"></div><div style="font-size:17px;font-weight:700;margin-top:4px"><span id="stat-prices-label">store prices recorded, so Sinclair knows a real sale.</span> <a href="/how-it-works" style="color:#FFFFFF">How we measure</a></div></div>
+  <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Billions</div><div style="font-size:17px;font-weight:700;margin-top:4px">of products Sinclair searches, from millions of independent stores in Shopify's catalog</div></div>
+  <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Free</div><div style="font-size:17px;font-weight:700;margin-top:4px">to ask, save and buy. Nothing to install. <a href="/how-we-earn" style="color:#FFFFFF">How we earn</a></div></div>
+ </div>
 </section>
 
-<section class="section saved-strip" id="saved" aria-labelledby="saved-h">
-  <div class="wrap saved-grid">
-    <div>
-      <h2 id="saved-h">Save it now. Decide later.</h2>
-      <p class="sub">Hit Save on any find and Sinclair keeps it in your list, with a reminder by email. No more sticky notes.</p>
-    </div>
-    <img class="saved-desk" src="/img/home/sinclair-saved-in-browser-2026-10-09.jpg" alt="Three steps: click the Sinclair icon in your browser toolbar, click Saved to see everything you saved with Sinclair's verdict, then see the verdict to check the price again before you buy." width="1500" height="1338" loading="lazy">
-    <img class="saved-phone" src="/img/home/sinclair-saved-in-browser-phone.jpg" alt="The Sinclair Saved list opened from the browser toolbar, showing saved items with their verdicts." width="792" height="890" loading="lazy">
-    <ol class="saved-steps">
-      <li><span class="step-n" aria-hidden="true">1</span><div><strong>Click the Sinclair icon</strong><span>in your browser toolbar.</span></div></li>
-      <li><span class="step-n" aria-hidden="true">2</span><div><strong>Click Saved.</strong><span>Everything you saved, with Sinclair's verdict.</span></div></li>
-      <li><span class="step-n" aria-hidden="true">3</span><div><strong>See the verdict.</strong><span>Check the price again before you buy.</span></div></li>
-    </ol>
+<section id="how" class="sect" style="padding:96px 0">
+ <div class="wrap">
+  <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">HOW IT WORKS</div>
+  <h2 class="h2" style="margin:8px 0 12px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">From the video to your door, in three steps</h2>
+  <p style="margin:0 0 40px;font-size:19px;line-height:28px;color:#334155;max-width:640px">No more pausing, screenshotting and writing it all down.</p>
+  <div class="three">
+   <div style="border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <div class="v4-num">1</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">See it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">A creator you follow shares a recipe, a room or a holiday table you love. Paste the link.</p>
+   </div>
+   <div style="border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <div class="v4-num">2</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">List it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Every ingredient and tool lands on one list. Tap "I have this" to skip what's already at home.</p>
+   </div>
+   <div style="border:2px solid #5CBF94;border-radius:20px;padding:28px;background:#F3F8F5">
+    <div class="v4-num" style="background:#14734F">3</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">Get it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Each item comes from a store you can trust, at a fair price. Buy your whole list in one window, store by store.</p>
+   </div>
   </div>
-  <div class="wrap chrome-row">
-    <div>
-      <h3>Sinclair, right where you shop</h3>
-      <p>Add Sinclair to Chrome, free. He shows his price answer right on the Amazon page, with more stores coming soon, and keeps your saved finds in one list.</p>
-    </div>
-    <a class="tf-desktop-only btn btn-green btn-lg" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener" data-chrome="saved"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.6" stroke="currentColor" stroke-width="2"/><path d="M12 8.4H21.2M8.9 13.8L4.3 5.9M15.1 13.8L10.5 21.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Add Sinclair to Chrome, free</a>
-    <div class="tf-inst tf-touch-only">
-      <p class="tf-inst-prompt">Shopping on your phone? Save Sinclair for your computer.</p>
-      <p class="tf-inst-line">Sinclair is a free add-on for Chrome on your computer. It tells you, right on the product page, whether a deal is real.</p>
-      <p class="tf-inst-line">We&rsquo;ll email you the link, plus one weekly list of real deals Sinclair checked.</p>
-      <form class="tf-inst-form" novalidate>
-        <label class="tf-sr" for="tf-inst-email-1">Your email</label>
-        <input id="tf-inst-email-1" type="email" autocomplete="email" placeholder="Your email" required>
-        <button type="submit">Send me the link</button>
-      </form>
-      <p class="tf-inst-msg" role="status" aria-live="polite"></p>
-      <p class="tf-inst-note">Free. No account. Unsubscribe anytime. We will never sell your personal information.</p>
-    </div>
-  </div>
+ </div>
 </section>
 
-<section class="section" id="gift-row" aria-labelledby="gift-row-h">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Reminders and gifts</span>
-        <h2 id="gift-row-h">Never miss a birthday or a holiday</h2>
-        <p class="sub">Coming soon for members: reminders before birthdays and holidays.</p>
-      </div>
-      <a class="btn btn-green" href="/gifts">See gift plans</a>
-    </div>
-    <h3 class="v3-h3">Gift ideas people love this week</h3>
-    <p class="sub">From stores across the US. Prices are each store&rsquo;s own, checked just now. <a class="link-arrow" href="/gifts">More gift ideas &rarr;</a></p>
-    <div class="tf-tabs" role="tablist" aria-label="Gift ideas by kind" id="gift-tabs"></div>
-    <div class="gift-grid" id="gift-grid" role="tabpanel" aria-live="polite"><div class="sc-skel" aria-hidden="true"></div></div>
-    <p class="fine" id="gift-fine" hidden>TrueFinds may earn a commission from some of these stores, at no cost to you.</p>
-  </div>
-</section>
-
-<section class="section soft" id="business" aria-labelledby="business-h">
-  <div class="wrap">
-    <span class="eyebrow">For your business or store</span>
-    <h2 id="business-h">Grow with TrueFinds</h2>
-    <div class="trust-grid v3-biz">
-      <div><h3>Creators</h3><p>Your video becomes a list your viewers can shop. Your picks stay on your links, and you get paid on the rest.</p><a class="btn btn-green" href="mailto:hello@truefinds.ai?subject=Join%20the%20first%20creators&amp;body=My%20channel%20link%3A%20">Join the first creators</a></div>
-      <div><h3>Shopify stores</h3><p>Sinclair sends AI shoppers to your store. You pay only when they buy. First 3 orders free. Coming to the Shopify App Store.</p><a class="btn btn-green" href="/for-stores">For stores</a></div>
-      <div><h3>Partners</h3><p>Ready lists for camps, schools and realtors, shopped by your families and clients.</p><a class="btn btn-green" href="/for-stores#partners">For partners</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="founding">
-  <div class="wrap founding-card">
-    <div class="founding-copy">
-      <span class="eyebrow">Founding Member &middot; optional</span>
-      <h2>Lock the founding rate for the premium agents</h2>
-      <p class="sub">Signing up is free and there is nothing to pay today. It reserves <strong>$8.97 a month, locked while your membership stays active</strong>, when the premium agents launch. Premium is $19.97 a month and Premium Plus is $29.97 a month. Sinclair&rsquo;s price verdict stays free either way.</p>
-      <p class="sub founding-limit"><strong>Limited to the first 500 members.</strong> Members who join later pay the higher public rate.</p>
-      <ul class="perks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>A weekly email with the real deals and one useful tip</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>First access when each new agent opens</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>A direct line to shape what we build next</li>
-      </ul>
-    </div>
-    <div class="founding-form">
-      <div id="hero-capture">
-        <form id="signup-form" novalidate>
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <label class="form-label" for="email-input">Your email</label>
-          <input type="email" id="email-input" placeholder="you@email.com" autocomplete="email" required>
-          <button type="submit" class="btn btn-green btn-block btn-primary" id="submit-btn">Become a Founding Member</button>
-        </form>
-        <p class="form-micro">No payment, no card. Unsubscribe anytime.</p>
-      </div>
-      <div id="hero-post">
-
-      <div class="success-row">
-        <div class="success-check">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8l3.5 3.5L13 5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="success-title">You&rsquo;re in. Your founding spot is locked.</div>
-      </div>
-
-      <div class="founder-num-row">
-        <span class="founder-label">Founding member list</span>
-        <span class="founder-num">Locked</span>
-        <span class="founder-of">your welcome email is on its way</span>
-      </div>
-
-      <div class="next-steps">
-        <div class="next-step">
-          <div class="ns-dot done"></div>
-          <div>
-            <div class="ns-title">Today</div>
-            <div class="ns-desc">Sinclair is free and live now. <a class="tf-desktop-only install-link on-dark" href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add it to Chrome</a> and get your first verdict on any Amazon product page.</div>
-          </div>
-        </div>
-        <div class="next-step">
-          <div class="ns-dot"></div>
-          <div>
-            <div class="ns-title">Every week</div>
-            <div class="ns-desc">A short email with the real deals, new features, and one useful tip. Unsubscribe anytime.</div>
-          </div>
-        </div>
-        <div class="next-step">
-          <div class="ns-dot"></div>
-          <div>
-            <div class="ns-title">When premium tools launch</div>
-            <div class="ns-desc">You hear first. Your rate is $8.97 a month, locked while your membership stays active, and you pay nothing until then. The choice is yours.</div>
-          </div>
-        </div>
-      </div>
-
-      <p class="ns-desc" style="margin:4px 0 20px;"><a class="install-link on-dark" href="/real-deals">See this week&rsquo;s real deals</a> &nbsp;&middot;&nbsp; <a class="install-link on-dark" href="/how-it-works">How Sinclair works</a></p>
-
-      <div class="ref-card">
-        <div class="ref-eyebrow">Share Sinclair</div>
-        <div class="ref-title">Know someone who shops on Amazon?</div>
-        <p class="ref-desc">Send them your link. Every friend who joins through it moves you up the list for first access when premium tools open.</p>
-        <div class="ref-link-row">
-          <div class="ref-url" id="ref-url-display">truefinds.ai?ref=&hellip;</div>
-          <button class="btn-copy" id="copy-btn">Copy link</button>
-        </div>
-        <div class="share-row">
-          <a id="share-x" class="btn-share" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.629-8.718L1.525 2.25h5.444l4.252 5.626L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
-            </svg>
-            Share on X
-          </a>
-          <a id="share-wa" class="btn-share" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            WhatsApp
-          </a>
-          <a id="share-fb" class="btn-share" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-            </svg>
-            Facebook
-          </a>
-          <a id="share-email-link" class="btn-share">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2"/>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-            </svg>
-            Email a friend
-          </a>
-        </div>
-      </div>
-
-      <div class="q-card" id="q-card">
-        <div class="q-eyebrow">Optional: one click</div>
-        <div class="q-text">What do you shop for most on Amazon?</div>
-        <div class="q-sub">Pick up to three. Sinclair uses them to decide what to show you, never who gets your click.</div>
-        <div class="cat-grid" id="cat-grid">
-          <button class="cat-pill" data-cat="Electronics & Tech">Electronics &amp; Tech</button>
-          <button class="cat-pill" data-cat="Home & Kitchen">Home &amp; Kitchen</button>
-          <button class="cat-pill" data-cat="Beauty & Personal Care">Beauty &amp; Care</button>
-          <button class="cat-pill" data-cat="Fashion & Clothing">Fashion</button>
-          <button class="cat-pill" data-cat="Sports & Outdoors">Sports &amp; Outdoors</button>
-          <button class="cat-pill" data-cat="Books & Media">Books &amp; Media</button>
-          <button class="cat-pill" data-cat="Baby & Kids">Baby &amp; Kids</button>
-          <button class="cat-pill" data-cat="Tools & Home Improvement">Tools &amp; DIY</button>
-        </div>
-        <button class="q-save" id="q-save" disabled>Save</button>
-        <button class="q-skip" id="q-skip">Skip</button>
-      </div>
-
-    </div><!-- /hero-post -->
-    </div>
-  </div>
-</section>
-
-<section class="tf-home-guides" data-tf="home-guides" style="background:#F4F7FA;padding:40px 0"><div style="max-width:1080px;margin:0 auto;padding:0 16px;box-sizing:border-box"><h2 style="font-size:26px;line-height:1.25;color:#1A3C5E;margin:0 0 6px">Guides from Sinclair</h2><p style="font-size:17px;line-height:1.5;color:#334155;margin:0 0 16px">Plain answers on prices, labels and sales, checked against the record.</p><ul style="list-style:none;margin:0;padding:0;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));"><li><a href="/guides/holiday-return-policies.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Gifts that are easy to return: holiday return policies at a glance</a></li><li><a href="/guides/free-shipping-minimums.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Free shipping minimums: when one more item saves you money</a></li><li><a href="/guides/holiday-shipping-cutoffs-2026.html" style="display:flex;align-items:center;min-height:44px;box-sizing:border-box;padding:12px 14px;border:1px solid #D9E2EC;border-radius:12px;background:#fff;color:#1A3C5E;font-weight:600;font-size:16px;line-height:1.4;text-decoration:none;overflow-wrap:anywhere">Holiday 2026 shipping: when to order so gifts arrive on time</a></li></ul><p style="margin:16px 0 0"><a href="/guides" style="color:#1A3C5E;font-weight:700">All guides</a></p></div></section>
-<section class="final" id="ask-again" aria-labelledby="ask-again-h">
-  <div class="wrap">
-    <h2 id="ask-again-h">What are you planning next?</h2>
-    <form class="final-ask" id="final-ask">
-      <label class="tf-sr" for="final-q">Tell Sinclair what you need</label>
-      <input id="final-q" type="text" placeholder="Paste product name or link" autocomplete="off" enterkeyhint="search">
-      <button type="submit">Ask Sinclair</button>
+<section id="ask" class="sect" style="padding:96px 0">
+ <div class="wrap">
+  <div class="two">
+   <div>
+    <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">MEET SINCLAIR</div>
+    <h2 class="h2" style="margin:8px 0 14px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">Not from a video? Ask Sinclair to get it.</h2>
+    <p style="margin:0 0 24px;font-size:19px;line-height:28px;color:#334155">Sinclair is your shopping agent. Tell him what you need, and he'll help you choose the right product and find a fair price from a store you can trust.</p>
+    <form id="ask-form" class="ask-form" novalidate>
+     <label for="ask-q" style="display:block;font-size:14px;font-weight:700;margin:0 4px 8px">What do you need?</label>
+     <div class="inputrow">
+      <input class="grow" id="ask-q" name="q" type="text" placeholder="A warm gift for Dad under $50" autocomplete="off" enterkeyhint="search" style="flex:1;min-width:0;height:56px;border:2px solid #64748B;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E">
+      <button class="go" type="submit" id="ask-btn" style="height:56px;border:none;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 26px;white-space:nowrap;cursor:pointer">Ask Sinclair</button>
+     </div>
     </form>
-  </div>
-</section>
-<footer class="footer">
-  <div class="wrap footer-inner">
-    <a class="nav-logo" href="/"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" aria-label="TrueFinds">
-      <path d="M 50,18 L 56.5,43.5 L 82,50 L 56.5,56.5 L 50,82 L 43.5,56.5 L 18,50 L 43.5,43.5 Z" fill="#1A9E6E"/>
-      <path d="M 90,12 L 92.2,18.8 L 99,21 L 92.2,23.2 L 90,30 L 87.8,23.2 L 81,21 L 87.8,18.8 Z" fill="#1A9E6E" opacity="0.65"/>
-      <text x="120" y="64" font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="38" font-weight="700" letter-spacing="-1" fill="#FFFFFF">TrueFinds</text>
-    </svg></a>
-    <form class="footer-news" id="footer-news" novalidate>
-      <div class="footer-news-row">
-        <label class="footer-news-label" for="footer-news-email">Weekly real deals email</label>
-        <input id="footer-news-email" type="email" autocomplete="email" placeholder="Enter email" required>
-        <button type="submit">Go</button>
-      </div>
-      <p class="footer-news-note" id="footer-news-msg" role="status" aria-live="polite">Unsubscribe anytime.</p>
-    </form>
-  </div>
-  <div class="wrap footer-linkrow">
-    <div class="footer-links">
-      <a href="/real-deals">Real Deals</a>
-      <a href="/gifts">Gifts</a>
-      <a href="/plan">Lists</a>
-      <a href="/guides">Guides</a>
-      <a href="/how-it-works">How It Works</a>
-      <a href="https://www.facebook.com/gotruefinds" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/gotruefinds" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://x.com/gotruefinds" target="_blank" rel="noopener">X</a>
-      <a href="/about">About</a>
-      <a href="/how-we-earn">How we earn</a>
-      <a href="/for-stores">For stores and brands</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/subscription-terms">Subscription Terms</a>
-      <a href="/support">Support</a>
-      <a href="/list-your-store">List your store</a>
+    <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
+    <h3 style="margin:32px 0 12px;font-size:22px;font-weight:800;color:#1A3C5E">Meet the Team</h3>
+    <div class="team2">
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Marco</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">compares stores for you</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Scout</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">keeps your saved finds</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge">Members</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Nov 10</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
     </div>
+   </div>
+   <div style="background:#1A3C5E;color:#FFFFFF;border-radius:24px;padding:28px">
+    <div style="font-size:13px;font-weight:700;color:#2DC98D;letter-spacing:0.5px">A REAL ANSWER FROM SINCLAIR</div>
+    <div style="margin-top:14px;background:#FFFFFF;color:#1A3C5E;border-radius:9999px;padding:12px 18px;font-size:17px;font-weight:700;display:inline-block">"gift for my grandson, he's 8"</div>
+    <p style="margin:18px 0 16px;font-size:17px;line-height:26px;font-weight:700">A hands-on kit or a building set he can work on with you is often the gift an 8-year-old remembers.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+     <div style="background:#FFFFFF;color:#1A3C5E;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div style="font-size:16px;font-weight:800">Ooze Labs: Big Box of Science</div><div style="font-size:13px;font-weight:600;color:#334155">Scott Family Amazeum Museum Store</div></div><div style="font-size:19px;font-weight:800">$28.99</div></div>
+     <div style="background:#FFFFFF;color:#1A3C5E;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div style="font-size:16px;font-weight:800">Science Kit, 100 Experiments</div><div style="font-size:13px;font-weight:600;color:#334155">Science4you</div></div><div style="font-size:19px;font-weight:800">$29.99</div></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:13px;line-height:18px;font-weight:600;color:#FFFFFF">Asked on truefinds.ai on October 17, 2026. Prices are each store's own and can change.</p>
+   </div>
   </div>
-  <p class="wrap v3-earn">How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools. We will never sell your personal information. Sponsors do not influence recommendations. As an Amazon Associate, TrueFinds earns from qualifying purchases. <a href="/how-we-earn">How we earn</a></p>
-  <div class="wrap footer-bottom">&copy; 2026 TrueFinds Technologies, LLC. Built for shoppers who deserve the truth.</div>
+  <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
+ </div>
+</section>
+
+<section class="sect" style="background:#F3F8F5;padding:96px 0">
+ <div class="wrap">
+  <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">WHY TRUEFINDS</div>
+  <h2 class="h2" style="margin:8px 0 36px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">A fair price, from a store you can trust</h2>
+  <div class="three">
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Returns and shipping up front</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">See the return policy, shipping and the order-by date before you click.</p>
+   </div>
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Stores that pass our checks</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Sinclair shows stores that pass our checks. Sponsors do not influence recommendations.</p>
+   </div>
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8M14 8h6v6"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Know when a sale is real</h3>
+    <p style="margin:0 0 14px;font-size:18px;line-height:27px;color:#334155">Sinclair records prices every day, so he can tell a real low from a normal price.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+     <span style="font-size:14px;font-weight:700;background:#DCFCE7;color:#14532D;border:2px solid #1A9E6E;border-radius:9999px;padding:4px 12px">GENUINE DEAL</span>
+     <span style="font-size:14px;font-weight:700;background:#E2E8F0;color:#334155;border:2px solid #475569;border-radius:9999px;padding:4px 12px">TYPICAL PRICE</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sect" style="padding:96px 0">
+ <div class="wrap two pair">
+  <div class="pcard" style="border:2px solid #5CBF94;border-radius:24px;padding:32px">
+   <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">SAVE</div>
+   <h2 class="h2s" style="margin:8px 0 12px;font-size:34px;line-height:40px;font-weight:800">Save it now. Decide later.</h2>
+   <p style="margin:0 0 22px;font-size:18px;line-height:27px;color:#334155">Keep every list and find with a free account, on your phone and your computer.</p>
+   <div aria-hidden="true" style="background:#F3F8F5;border-radius:18px;padding:16px;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">MY SAVED LISTS</span><span style="font-size:13px;font-weight:700;color:#1A3C5E">3 lists</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">One-pan lemon chicken</div><div style="font-size:13px;font-weight:600;color:#334155">9 items · 3 stores</div></div><span class="v4-pill">Saved</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">Fall porch refresh</div><div style="font-size:13px;font-weight:600;color:#334155">6 items · 2 stores</div></div><span class="v4-pill">Price dropped</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">Holiday table</div><div style="font-size:13px;font-weight:600;color:#334155">12 items · 4 stores</div></div><span class="v4-pill" style="background:#F1F5F9;color:#1A3C5E">Saved</span></div>
+   </div>
+   <a class="pbtn" href="/signin" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">Save with a free account</a>
+  </div>
+  <div class="pcard" style="border:2px solid #5CBF94;border-radius:24px;padding:32px">
+   <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">REMINDERS AND GIFTS</div>
+   <h2 class="h2s" style="margin:8px 0 12px;font-size:34px;line-height:40px;font-weight:800">Never miss a birthday or a holiday</h2>
+   <p style="margin:0 0 22px;font-size:18px;line-height:27px;color:#334155">A reminder before the dates that matter, with gift ideas people love this week.</p>
+   <div aria-hidden="true" style="background:#F3F8F5;border-radius:18px;padding:16px;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">COMING UP</span><span style="font-size:13px;font-weight:700;color:#1A3C5E">Reminders on</span></div>
+    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">14</div></div><div><div style="font-size:16px;font-weight:800">Mom's birthday</div><div style="font-size:13px;font-weight:600;color:#334155">Reminder 2 weeks before</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
+    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">26</div></div><div><div style="font-size:16px;font-weight:800">Thanksgiving</div><div style="font-size:13px;font-weight:600;color:#334155">Hosting list ready</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
+    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700">Gift ideas for Mom: 3 picks people love this week</div>
+   </div>
+   <a class="pbtn" href="/plan" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">See gift plans</a>
+  </div>
+ </div>
+</section>
+
+<section id="business" style="background:#F3F8F5;padding:48px 0">
+ <div class="wrap">
+  <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between">
+   <div><div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">FOR CREATORS, STORES AND PARTNERS</div><div style="font-size:24px;font-weight:800;margin-top:6px">Your video, your store or your families' lists, shopped through TrueFinds.</div></div>
+   <a href="/for-stores" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">Grow with TrueFinds</a>
+  </div>
+ </div>
+</section>
+
+<section class="sect" style="padding:88px 0">
+ <div class="wrap" style="max-width:880px">
+  <h2 class="h2" style="margin:0 0 24px;font-size:38px;line-height:44px;font-weight:800;text-align:center">Questions people ask</h2>
+  <div style="display:flex;flex-direction:column;gap:12px">
+   <details open class="v4-faq"><summary>Is TrueFinds free?</summary><p>Yes. Asking, saving and buying are free. We earn a small commission from stores when you buy, and it never changes your price.</p></details>
+   <details class="v4-faq"><summary>Which videos work?</summary><p>YouTube videos today. Photos, TikTok, Instagram and recipe links are coming soon.</p></details>
+   <details class="v4-faq"><summary>Do creators get credit?</summary><p>Yes. The creator's name stays on the list, their own picks keep their links, and they earn when you buy.</p></details>
+   <details class="v4-faq"><summary>How does TrueFinds earn money?</summary><p>A small commission from the store when you buy through us. It never changes your price, and sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></p></details>
+   <details class="v4-faq"><summary>Do I need an account?</summary><p>Only to save a list. It's free, with no password: we email you a code.</p></details>
+   <details class="v4-faq"><summary>How do you pick the stores?</summary><p>Sinclair shows stores that pass our checks, with the return policy and shipping up front. Sponsors do not influence recommendations.</p></details>
+  </div>
+ </div>
+</section>
+
+<section style="background:#1A3C5E;color:#FFFFFF;padding:88px 0">
+ <div class="wrap" style="text-align:center;max-width:820px">
+  <h2 class="h2" style="margin:0 0 12px;font-size:44px;line-height:50px;font-weight:800;letter-spacing:-0.6px;color:#FFFFFF">What did you watch today?</h2>
+  <p style="margin:0 0 28px;font-size:19px;line-height:28px;font-weight:700;color:#FFFFFF">Paste it. Get the list. Enjoy the moment.</p>
+  <form id="vid2-form" novalidate style="background:#FFFFFF;border-radius:9999px;padding:8px;max-width:640px;margin:0 auto" class="v4-closing">
+   <div class="inputrow">
+    <label for="vid2" class="v4-sr">Your video link</label>
+    <input class="grow" id="vid2" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link" style="flex:1;min-width:0;height:56px;border:none;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E">
+    <button class="go" type="submit" style="height:56px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 28px;white-space:nowrap;cursor:pointer">Get the list</button>
+   </div>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer style="background:#FFFFFF;border-top:1px solid #E2E8F0;padding:40px 0">
+ <div class="wrap" style="display:flex;flex-direction:column;gap:14px">
+  <div class="newsrow" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #E2E8F0;margin-bottom:6px">
+   <div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="#1A9E6E"></path></svg><span style="font-size:20px;font-weight:800;color:#1A3C5E">TrueFinds</span></div>
+   <form id="news-form" novalidate style="display:flex;flex-direction:column;gap:8px;max-width:440px;width:100%">
+    <label for="news" style="font-size:16px;font-weight:800;color:#1A3C5E">Real deals and gift ideas, once a week</label>
+    <div class="inputrow newsinput">
+     <input class="grow" id="news" type="email" autocomplete="email" placeholder="Your email" style="flex:1;min-width:0;height:40px;border:2px solid #64748B;border-radius:9999px;padding:0 18px;font-size:16px;color:#1A3C5E">
+     <button class="go" type="submit" id="news-go" style="height:40px;min-height:40px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:16px;font-weight:700;padding:0 24px;white-space:nowrap;cursor:pointer">Send</button>
+    </div>
+    <span id="news-msg" role="status" aria-live="polite" style="font-size:13px;font-weight:600;color:#334155">Free. Unsubscribe anytime.</span>
+   </form>
+  </div>
+  <div class="footlinks" style="display:flex;flex-wrap:wrap;gap:4px 22px;font-size:16px;font-weight:700"><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add Sinclair to Chrome</a><a href="/how-we-earn">How we earn</a><a href="/about">About</a><a href="/for-stores">For stores and brands</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  <p style="margin:0;font-size:14px;line-height:21px;font-weight:600;color:#334155;max-width:900px">How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools. We will never sell your personal information. Sponsors do not influence recommendations. As an Amazon Associate, TrueFinds earns from qualifying purchases.</p>
+ </div>
 </footer>
-
-<script>
-  // CONFIGURATION
-  // Beehiiv: fill in your credentials and uncomment the block in submitEmail() to activate.
-  const BEEHIIV_PUB_ID  = 'YOUR_PUB_ID';
-  const BEEHIIV_API_KEY = 'YOUR_API_KEY';
-  const SITE_URL        = 'https://truefinds.ai';
-
-  let submittedEmail = '';
-
-  // Referral param capture
-  const urlParams  = new URLSearchParams(window.location.search);
-  const referredBy = urlParams.get('ref') || sessionStorage.getItem('tf_referred_by') || '';
-  if (referredBy) sessionStorage.setItem('tf_referred_by', referredBy);
-
-  // Unique referral code from email (client-side, no backend needed)
-  function makeCode(email) {
-    let h = 5381;
-    const s = email.toLowerCase().trim();
-    for (let i = 0; i < s.length; i++) {
-      h = Math.imul(h, 31) ^ s.charCodeAt(i);
-    }
-    return Math.abs(h).toString(36).toUpperCase().padStart(7, '0');
-  }
-
-  // The founding-spots counter was removed on 2026-09-10. A countdown sitting at
-  // 99 percent remaining reads as "nobody signed up", not as scarcity. The hero
-  // now leads with observed evidence instead. The 500 cap is still stated as a
-  // limit in the founding offer section; it is just no longer counted down.
-  function initCounters() { /* intentionally empty */ }
-
-  // HERO FORM
-  const heroForm  = document.getElementById('signup-form');
-  const emailEl   = document.getElementById('email-input');
-  const submitBtn = document.getElementById('submit-btn');
-
-  heroForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = emailEl.value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      emailEl.style.borderColor = '#E07820';
-      emailEl.focus();
-      setTimeout(() => emailEl.style.borderColor = '', 1400);
-      return;
-    }
-
-    submitBtn.classList.add('loading');
-    submitBtn.disabled = true;
-    submittedEmail     = email;
-
-    const refCode  = makeCode(email);
-    const referrer = sessionStorage.getItem('tf_referred_by') || '';
-
-    const result = await submitEmail(email, refCode, referrer);
-
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
-
-    if (result.ok) {
-      showHeroSuccess(email, refCode);
-    } else {
-      showSignupProblem(heroForm, result);
-    }
-  });
-
-  async function submitEmail(email, refCode, referrer) {
-    const payload = {
-      email,
-      referral_code: refCode,
-      referred_by:   referrer || 'direct',
-      source:        'landing',
-    };
-
-    // formsubmit.co: notification to Jon. Best effort. A failure here must not block
-    // the signup, but it is reported back so it stops being invisible.
-    // First submission triggers a one-time verification email to Jon@digitaljag.com.
-    let notified = false;
-    try {
-      const r = await fetch('https://formsubmit.co/ajax/Jon@digitaljag.com', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(Object.assign({
-          _subject: 'New TrueFinds founding access signup: ' + email,
-        }, payload)),
-      });
-      notified = r.ok;
-    } catch (err) {
-      console.warn('signup: notification failed', err);
-    }
-
-    // Beehiiv, through the serverless route. This call decides whether the signup
-    // actually happened, so its outcome is returned rather than discarded.
-    //
-    // fetch() rejects only on a network failure. A 500 or a 502 resolves normally,
-    // so res.ok must be checked explicitly or a Bad Gateway reads as a success.
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        console.warn('signup: /api/subscribe returned ' + res.status);
-        return { ok: false, reason: 'http_' + res.status, notified };
-      }
-
-      let data = null;
-      try { data = await res.json(); } catch (e) { /* an empty 2xx body still counts */ }
-      if (data && data.ok === false) {
-        return { ok: false, reason: 'api_rejected', notified };
-      }
-
-      return { ok: true, notified };
-    } catch (err) {
-      console.warn('signup: /api/subscribe unreachable', err);
-      return { ok: false, reason: 'network', notified };
-    }
-
-    // Beehiiv API (uncomment when BEEHIIV_PUB_ID + BEEHIIV_API_KEY are set)
-    // try {
-    //   await fetch(`https://api.beehiiv.com/v2/publications/${BEEHIIV_PUB_ID}/subscriptions`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Authorization': `Bearer ${BEEHIIV_API_KEY}`
-    //     },
-    //     body: JSON.stringify({
-    //       email,
-    //       utm_source:   referrer ? 'referral' : 'organic',
-    //       utm_medium:   'landing_page',
-    //       utm_campaign: 'founding_access',
-    //       custom_fields: [
-    //         { name: 'referral_code', value: refCode },
-    //         { name: 'referred_by',   value: referrer || 'direct' },
-    //       ]
-    //     })
-    //   });
-    // } catch (err) { /* silent */ }
-  }
-
-  // Three outcomes, and the middle one matters most: if the notification reached
-  // Jon but Beehiiv did not, the person is not lost. Their address is in his inbox
-  // and he can finish it by hand, so telling them they failed would be untrue.
-  function showSignupProblem(formEl, result) {
-    let box = formEl.parentNode.querySelector('.signup-problem');
-    if (!box) {
-      box = document.createElement('p');
-      box.className = 'signup-problem';
-      box.setAttribute('role', 'alert');
-      box.style.cssText =
-        'margin-top:14px;font-size:1.05rem;line-height:1.5;font-weight:600;color:#E07820;';
-      formEl.parentNode.insertBefore(box, formEl.nextSibling);
-    }
-
-    if (result.notified) {
-      box.textContent =
-        'We have your address, but we could not finish setting up your account just now. ' +
-        'We will complete it by hand and email you shortly. Nothing more to do.';
-    } else {
-      box.innerHTML =
-        'Something went wrong on our end and we could not save your address. ' +
-        'Please try again in a moment. If it keeps happening, ' +
-        '<a href="/support" style="color:inherit;text-decoration:underline;">let us know here</a> ' +
-        'and we will add you personally.';
-    }
-  }
-
-  function showHeroSuccess(email, refCode) {
-    const refUrl     = SITE_URL + '?ref=' + refCode;
-
-    
-    document.getElementById('ref-url-display').textContent = refUrl;
-
-    // Share links
-    const tweet = encodeURIComponent(
-      'I just reserved a founding spot on TrueFinds (@gotruefinds)\n\n' +
-      'Sinclair is a free AI that tells you if an Amazon deal is real before you buy. ' +
-      '500 spots only. No payment to reserve.\n\n' +
-      'Grab yours: ' + refUrl
-    );
-
-    const wa = encodeURIComponent(
-      'Hey, I just reserved an early spot on TrueFinds. ' +
-      'It\'s a free Chrome extension called Sinclair that tells you if an Amazon deal is actually real. ' +
-      'No login, no payment to reserve. Only 500 founding spots. Use my link: ' + refUrl
-    );
-
-    const mailSub  = encodeURIComponent('Reserved my spot on TrueFinds, thought you should know');
-    const mailBody = encodeURIComponent(
-      'Hey,\n\n' +
-      'I just reserved a founding spot on TrueFinds. It\'s a free Chrome extension called Sinclair ' +
-      'that tells you instantly if an Amazon deal is real. No account, no login, no payment to get on the list.\n\n' +
-      'There are only 500 founding spots. When they launch, founding members get a private email first ' +
-      'and the option to lock in a price that never changes.\n\n' +
-      'Reserve your spot here (no payment, just your email): ' + refUrl + '\n\n'
-    );
-
-    document.getElementById('share-x').href          = 'https://twitter.com/intent/tweet?text=' + tweet;
-    document.getElementById('share-wa').href          = 'https://wa.me/?text=' + wa;
-    document.getElementById('share-fb').href          = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(refUrl);
-    document.getElementById('share-email-link').href  = 'mailto:?subject=' + mailSub + '&body=' + mailBody;
-
-    // Copy button
-    document.getElementById('copy-btn').addEventListener('click', () => {
-      navigator.clipboard.writeText(refUrl).then(() => {
-        const btn  = document.getElementById('copy-btn');
-        const prev = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = prev; }, 2000);
-      });
-    });
-
-    // Store for reload persistence
-    localStorage.setItem('tf_email',    email);
-    localStorage.setItem('tf_ref_code', refCode);
-
-    // Swap form for post-signup
-    document.getElementById('hero-capture').style.display = 'none';
-    const post = document.getElementById('hero-post');
-    post.style.display = 'block';
-    post.classList.add('fade-in');
-
-    submitBtn.classList.remove('loading');
-    submitBtn.disabled = false;
-  }
-
-  // FOOTER FORM
-  const footerForm   = document.getElementById('footer-form');
-  const footerEmail  = document.getElementById('footer-email');
-  const footerSubmit = document.getElementById('footer-submit');
-
-  if (footerForm) footerForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const email = footerEmail.value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      footerEmail.style.borderColor = '#E07820';
-      footerEmail.focus();
-      setTimeout(() => footerEmail.style.borderColor = '', 1400);
-      return;
-    }
-
-    footerSubmit.classList.add('loading');
-    footerSubmit.disabled = true;
-    submittedEmail        = email;
-
-    const refCode  = makeCode(email);
-    const referrer = sessionStorage.getItem('tf_referred_by') || '';
-
-    const result = await submitEmail(email, refCode, referrer);
-
-    footerSubmit.classList.remove('loading');
-    footerSubmit.disabled = false;
-
-    if (!result.ok) {
-      showSignupProblem(footerForm, result);
-      return;
-    }
-
-    localStorage.setItem('tf_email',    email);
-    localStorage.setItem('tf_ref_code', refCode);
-
-    // Reveal the hero success state too (referral link + interests question)
-    showHeroSuccess(email, refCode);
-
-    document.getElementById('footer-capture').style.display = 'none';
-    const footerPost = document.getElementById('footer-post');
-    footerPost.style.display = 'block';
-    footerPost.classList.add('fade-in');
-    footerPost.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-    footerSubmit.classList.remove('loading');
-    footerSubmit.disabled = false;
-  });
-
-  // Footer success CTA: scroll up to the revealed referral/interests content
-  const gotoPerks = document.getElementById('footer-goto-perks');
-  if (gotoPerks) gotoPerks.addEventListener('click', () => {
-    const post = document.getElementById('hero-post');
-    if (post) post.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // CATEGORY QUESTION
-  //
-  // Up to three, saved to our own database through /api/profile.
-  //
-  // What this replaces, on 2026-09-16: a single pill posted straight to a
-  // third-party form relay, which emailed the answer to a personal inbox and
-  // stored nothing. The cleanest opted-in data the product collects was
-  // arriving as unqueryable mail, joined to nothing, and failing silently.
-  const MAX_CATS = 3;
-  let chosenCats = [];
-  const saveBtn = document.getElementById('q-save');
-
-  document.getElementById('cat-grid').addEventListener('click', (e) => {
-    if (!e.target.classList.contains('cat-pill')) return;
-    const cat = e.target.dataset.cat;
-    const at = chosenCats.indexOf(cat);
-
-    if (at > -1) {
-      chosenCats.splice(at, 1);
-      e.target.classList.remove('selected');
-    } else {
-      // A fourth click is refused rather than silently swapping one out, which
-      // would leave someone looking at a pill they just pressed, unselected.
-      if (chosenCats.length >= MAX_CATS) return;
-      chosenCats.push(cat);
-      e.target.classList.add('selected');
-    }
-
-    saveBtn.disabled = chosenCats.length === 0;
-  });
-
-  saveBtn.addEventListener('click', async () => {
-    if (!chosenCats.length) return;
-    saveBtn.disabled = true;
-    saveBtn.textContent = 'Saving';
-
-    try {
-      await fetch('/api/profile', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: submittedEmail,
-          categories: chosenCats,
-          source: 'landing'
-        })
-      });
-    } catch (err) {
-      // Nothing to hand back to someone who just did us a favor on an optional
-      // question. The card closes either way and the log is where we find out.
-    }
-
-    saveBtn.textContent = 'Saved';
-    setTimeout(() => {
-      const card = document.getElementById('q-card');
-      card.style.opacity       = '0.4';
-      card.style.pointerEvents = 'none';
-    }, 700);
-  });
-
-  document.getElementById('q-skip').addEventListener('click', () => {
-    const card = document.getElementById('q-card');
-    card.style.opacity       = '0.35';
-    card.style.pointerEvents = 'none';
-  });
-
-  // RESTORE STATE ON RELOAD
-  window.addEventListener('load', () => {
-    initCounters();
-    const e = localStorage.getItem('tf_email');
-    const c = localStorage.getItem('tf_ref_code');
-    if (e && c) {
-      showHeroSuccess(e, c);
-      // Hide footer form too if already signed up
-      const fc = document.getElementById('footer-capture');
-      const fp = document.getElementById('footer-post');
-      if (fc) fc.style.display = 'none';
-      if (fp) fp.style.display = 'block';
-    }
-  });
-</script>
-<script>
-  // Marco on the homepage, added 2026-09-30. Loads live when the section is
-  // near the screen, so the page itself never waits. Shows up to three items
-  // sold at another store right now above the Meet Marco card; with none, the
-  // Meet Marco card alone.
-  (function () {
-    var box = document.getElementById('cmp-live');
-    var marco = document.getElementById('cmp-marco');
-    var fine = document.getElementById('cmp-fine');
-    var earn = document.getElementById('cmp-earn');
-    if (!box || !marco) return;
-
-    function vid() {
-      try {
-        var v = localStorage.getItem('tf_visitor_id');
-        if (!v) {
-          v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
-          localStorage.setItem('tf_visitor_id', v);
-        }
-        return v;
-      } catch (e) { return 'anonymous'; }
-    }
-    function track(event, props) {
-      try {
-        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
-        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
-        else fetch('/api/compare/event', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
-      } catch (e) {}
-    }
-    function usd(c) { return '$' + (c / 100).toFixed(2); }
-    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
-
-    function explainer() {
-      box.hidden = true;
-      track('home_compare_view', { state: 'explainer', shown: 0 });
-    }
-
-    function render(items) {
-      box.innerHTML = '';
-      var anyEarn = false;
-      items.forEach(function (it, i) {
-        var card = el('article', 'cmp-card');
-        var img = el('div', 'cmp-img');
-        if (it.image) { var im = document.createElement('img'); im.src = it.image; im.alt = it.title; im.loading = 'lazy'; img.appendChild(im); }
-        card.appendChild(img);
-        var body = el('div', 'cmp-body');
-        body.appendChild(el('div', 'cmp-brand', it.brand));
-        body.appendChild(el('h3', null, it.title));
-
-        var r1 = el('div', 'cmp-row');
-        r1.appendChild(el('span', null, 'At ' + it.store.name));
-        if (it.store.price_cents != null) r1.appendChild(el('strong', null, usd(it.store.price_cents)));
-        else {
-          var a1 = el('a', null, 'Sinclair\u2019s check \u2192');
-          a1.href = it.store.page;
-          a1.addEventListener('click', function () { track('home_compare_click', { target: 'sinclair', store: it.store.name, brand: it.brand, position: i + 1 }); });
-          r1.appendChild(a1);
-        }
-        body.appendChild(r1);
-
-        var r2 = el('div', 'cmp-row');
-        r2.appendChild(el('span', null, 'Also at ' + it.other.name));
-        r2.appendChild(el('strong', null, usd(it.other.price_cents)));
-        body.appendChild(r2);
-
-        var act = el('div', 'cmp-actions');
-        var go = el('a', 'btn btn-ghost btn-block', 'Go to ' + it.other.name);
-        go.href = it.other.link;
-        go.rel = 'sponsored noopener';
-        go.addEventListener('click', function () { track('home_compare_click', { target: 'other_store', store: it.other.host, brand: it.brand, position: i + 1 }); });
-        act.appendChild(go);
-        if (it.store.price_cents != null) {
-          var a2 = el('a', 'link-arrow', 'See Sinclair\u2019s check \u2192');
-          a2.href = it.store.page;
-          a2.style.display = 'inline-block';
-          a2.style.marginTop = '12px';
-          a2.addEventListener('click', function () { track('home_compare_click', { target: 'sinclair', store: it.store.name, brand: it.brand, position: i + 1 }); });
-          act.appendChild(a2);
-        }
-        body.appendChild(act);
-        card.appendChild(body);
-        box.appendChild(card);
-        if (it.other.earns) anyEarn = true;
-      });
-      fine.hidden = false;
-      earn.hidden = !anyEarn;
-      track('home_compare_view', { state: 'live', shown: items.length });
-    }
-
-    var started = false;
-    function load() {
-      if (started) return;
-      started = true;
-      var done = false;
-      var timer = setTimeout(function () { if (!done) { done = true; explainer(); } }, 8000);
-      fetch('/api/compare/featured', { headers: { Accept: 'application/json' } })
-        .then(function (r) { return r.json(); })
-        .then(function (d) {
-          if (done) return;
-          done = true; clearTimeout(timer);
-          if (d && d.ok && d.items && d.items.length) render(d.items); else explainer();
-        })
-        .catch(function () { if (!done) { done = true; clearTimeout(timer); explainer(); } });
-    }
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
-      }, { rootMargin: '400px 0px' });
-      io.observe(box);
-    } else { load(); }
-  })();
-</script>
 <script>
   // Ask Sinclair, added 2026-09-30, redesigned the same day: soft bar, visible
   // label, tap-to-try examples, microphone where the browser supports speech,
@@ -2016,192 +953,6 @@
     }
   })();
 </script>
-<nav class="tabbar" aria-label="TrueFinds">
-  <a href="/" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Check a price</a>
-  <a href="/real-deals"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg>Real Deals</a>
-  <a href="/gifts"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M3 12h18M12 8c-2-4-6-4-6-1s6 1 6 1zm0 0c2-4 6-4 6-1s-6 1-6 1z"/></svg>Gifts</a>
-  <a href="/plan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3 6 1.5 1.5L7 5M3 12l1.5 1.5L7 11M3 18l1.5 1.5L7 17"/></svg>Lists</a>
-</nav>
-<script>
-/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
-(function () {
-  try {
-    var v = localStorage.getItem('tf_visitor_id');
-    if (!v) {
-      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
-      localStorage.setItem('tf_visitor_id', v);
-    }
-  } catch (e) { v = 'anonymous'; }
-  var q = new URLSearchParams(location.search), utm = {};
-  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
-  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
-  try {
-    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
-    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
-  } catch (e) {}
-})();
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<script>
-  // Touch-screen Join box (4 Oct 2026): joins the list (source phone); the welcome email carries the Add to Chrome link.
-  document.querySelectorAll('.tf-inst-form').forEach(function (form) {
-    var box = form.closest('.tf-inst'), input = form.querySelector('input'), btn = form.querySelector('button'), msg = box.querySelector('.tf-inst-msg');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = (input.value || '').trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
-      btn.disabled = true; msg.textContent = 'Joining...';
-      fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'phone' }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You\u2019re in. Open our welcome email on your computer to add Sinclair.'; })
-        .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
-    });
-  });
-</script>
-<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
-<script data-tf="home-v2">
-  // Homepage v2 (17 Oct 2026, Jon: "build the homepage v2 with the gift row now"). The hero answer, "See Sinclair at
-  // work" and the gift row, all from /api/home/showcase: real Sinclair answers and store products, with each store's
-  // own name, price and photo read live (photos hot-linked, never stored). Built with DOM calls, never innerHTML.
-  (function () {
-    var hero = document.getElementById('hero-answer');
-    var workTabs = document.getElementById('work-tabs'), workPanel = document.getElementById('work-panel');
-    var giftTabs = document.getElementById('gift-tabs'), giftGrid = document.getElementById('gift-grid'), giftFine = document.getElementById('gift-fine');
-    if (!hero || !workPanel || !giftGrid) return;
-    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
-    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
-    function usd(c) { return '$' + (c / 100).toFixed(2); }
-    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
-    function track(event, props) {
-      try {
-        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
-        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
-      } catch (e) {}
-    }
-    // Shopify's image service resizes on request; other hosts are left as they are.
-    function sized(src, w) {
-      if (!src || !/cdn\.shopify\.com|\/cdn\/shop\//.test(src)) return src;
-      return src + (src.indexOf('?') > -1 ? '&' : '?') + 'width=' + w;
-    }
-    function photo(box, c, w) {
-      if (c.image) { var im = document.createElement('img'); im.src = sized(c.image, w); im.alt = c.name; im.loading = 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer'; im.onerror = function () { box.removeChild(im); box.textContent = (c.store || '?').charAt(0); }; box.appendChild(im); }
-      else if (c.priceCents == null) { var g = el('div', 'gc-art'); g.appendChild(el('span', 'gc-art-name', c.store)); g.appendChild(el('span', 'gc-art-line', 'Gift card')); box.appendChild(g); }
-      else box.textContent = (c.store || '?').charAt(0);
-    }
-    function priceNote(c) {
-      if (c.checked) { try { return 'Checked ' + new Date(c.checked).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) { return 'Recorded price'; } }
-      return 'Store’s price';
-    }
-    function visit(a, c) { a.href = c.link; a.target = '_blank'; a.rel = c.earns ? 'sponsored noopener' : 'noopener'; }
-    function askThis(q, where) {
-      track('example_ask_click', { surface: 'home', target: where, query: q });
-      if (window.tfAsk) window.tfAsk(q, 'example');
-      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function answer(a, where) {
-      var box = el('div', 'sc-answer');
-      box.appendChild(el('span', 'sc-label', 'Real answer from Sinclair'));
-      box.appendChild(el('div', null)).appendChild(el('span', 'sc-q', '“' + a.q + '”'));
-      var tip = el('div', 'sc-tip'); tip.appendChild(el('strong', null, 'Sinclair’s tip')); tip.appendChild(el('p', null, a.tip)); box.appendChild(tip);
-      var ideas = el('div', 'sc-ideas'); a.ideas.forEach(function (i) { ideas.appendChild(el('span', null, i)); }); box.appendChild(ideas);
-      var list = el('ul', 'sc-list');
-      a.cards.forEach(function (c, i) {
-        var li = el('li', 'sc-item');
-        var th = el('div', 'sc-thumb'); photo(th, c, 360); li.appendChild(th);
-        var mid = el('div');
-        mid.appendChild(el('div', 'sc-store', c.store));
-        var name = el('a', 'sc-name', c.name); visit(name, c);
-        name.addEventListener('click', function () { track('showcase_click', { surface: where, store: c.host, position: i + 1, kind: a.id }); });
-        mid.appendChild(name);
-        if (c.reason) mid.appendChild(el('p', 'sc-reason', c.reason));
-        li.appendChild(mid);
-        var pr = el('div', 'sc-price', c.priceCents != null ? usd(c.priceCents) : (c.priceLabel || '')); pr.appendChild(el('small', null, priceNote(c))); li.appendChild(pr);
-        list.appendChild(li);
-      });
-      box.appendChild(list);
-      var act = el('div', 'sc-actions');
-      var b = el('button', 'sc-ask', 'Ask this'); b.type = 'button'; b.addEventListener('click', function () { askThis(a.q, where); }); act.appendChild(b);
-      box.appendChild(act);
-      return box;
-    }
-
-    function tabs(root, items, label, onPick) {
-      clear(root);
-      var btns = items.map(function (it, i) {
-        var b = el('button', null, label(it)); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-        b.addEventListener('click', function () { btns.forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); }); onPick(it, i); });
-        root.appendChild(b);
-        return b;
-      });
-    }
-
-    function giftCard(c, i, tab) {
-      var a = el('a', 'gift-card'); visit(a, c);
-      a.addEventListener('click', function () { track('gift_row_click', { surface: 'home', target: tab, store: c.host, position: i + 1, tier: c.earns ? 'earning' : 'live' }); });
-      var im = el('div', 'gift-img'); photo(im, c, 480); a.appendChild(im);
-      var body = el('div', 'gift-body');
-      body.appendChild(el('span', 'gift-store', c.store));
-      body.appendChild(el('span', 'gift-name', c.name));
-      // What the product is, in a few words (Jon 18 Oct: "Self-heating smart mug").
-      if (c.blurb) body.appendChild(el('span', 'gift-blurb', c.blurb));
-      if (c.age) body.appendChild(el('span', 'gift-age', c.age));
-      var pr = el('span', 'gift-price', c.priceCents != null ? usd(c.priceCents) + ' ' : (c.priceLabel || '') + ' ');
-      if (c.priceCents != null) pr.appendChild(el('small', null, priceNote(c)));
-      body.appendChild(pr);
-      body.appendChild(el('span', 'gift-go', 'Visit store →'));
-      a.appendChild(body);
-      return a;
-    }
-    function showGifts(t) {
-      clear(giftGrid);
-      t.cards.forEach(function (c, i) { giftGrid.appendChild(giftCard(c, i, t.key)); });
-      giftFine.hidden = !t.cards.some(function (c) { return c.earns; });
-    }
-
-    function fail() {
-      hero.hidden = true;
-      var at = document.getElementById('at-work'); if (at) at.hidden = true;
-      var gr = document.getElementById('gift-row'); if (gr) gr.hidden = true;
-    }
-
-    fetch('/api/home/showcase', { headers: { Accept: 'application/json' } })
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        if (!d || !d.ok) return fail();
-        var shown = (d.showcase || []).filter(function (a) { return a.cards && a.cards.length; });
-        var h = shown.filter(function (a) { return a.id === d.hero; })[0] || shown[0];
-        clear(hero);
-        if (h) hero.appendChild(answer(h, 'hero')); else hero.hidden = true;
-        // See Sinclair at work: grandson first, then Dad, then the dog (CODE_INBOX 17 Oct).
-        var order = ['g01', 'g04', 'g06'];
-        shown.sort(function (x, y) { return order.indexOf(x.id) - order.indexOf(y.id); });
-        if (shown.length) {
-          tabs(workTabs, shown, function (a) { return a.label; }, function (a) { clear(workPanel); workPanel.appendChild(answer(a, 'showcase')); });
-          clear(workPanel); workPanel.appendChild(answer(shown[0], 'showcase'));
-        } else { var at = document.getElementById('at-work'); if (at) at.hidden = true; }
-        var gt = (d.tabs || []).filter(function (t) { return t.cards && t.cards.length; });
-        if (gt.length) { tabs(giftTabs, gt, function (t) { return t.label; }, showGifts); showGifts(gt[0]); }
-        else { var gr = document.getElementById('gift-row'); if (gr) gr.hidden = true; }
-      })
-      .catch(fail);
-
-    // Hero chips and the closing Ask box send their words to the Ask box above.
-    Array.prototype.forEach.call(document.querySelectorAll('#ask-also button[data-ask]'), function (b) {
-      b.addEventListener('click', function () { askThis(b.getAttribute('data-ask'), 'chip'); });
-    });
-    var fin = document.getElementById('final-ask');
-    if (fin) fin.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var q = (document.getElementById('final-q').value || '').trim();
-      if (!q) { document.getElementById('final-q').focus(); return; }
-      if (window.tfAsk) window.tfAsk(q, 'closing');
-      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-    Array.prototype.forEach.call(document.querySelectorAll('a[data-chrome]'), function (a) {
-      a.addEventListener('click', function () { track('home_compare_click', { target: 'chrome_' + a.getAttribute('data-chrome') }); });
-    });
-  })();
-</script>
 <script data-tf="popular">
   // Mobile journey (CODE_INBOX 20 Oct 4:58 AM): Popular in Sinclair's answers this week, Sinclair's example asks,
   // Save in place with a one-time email sheet. Same words as the app's Ask box (src/lib/popular, src/lib/ask/examples).
@@ -2428,21 +1179,142 @@
     });
   })();
 </script>
-<script data-tf="footer-news">
-  // Homepage footer newsletter line (Jon 18 Oct 2026, option B): the weekly real deals email, same list as every sign-up.
+<script data-tf="home-v4">
+  // Homepage v4 (Build Board BB-4, 27 Oct 2026): the video box, the live price count and the footer email.
   (function () {
-    var form = document.getElementById('footer-news'); if (!form) return;
-    var input = document.getElementById('footer-news-email'), btn = form.querySelector('button'), msg = document.getElementById('footer-news-msg');
-    form.addEventListener('submit', function (e) {
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+
+    // The menu on phones closes when a link in it is tapped or the page is tapped elsewhere.
+    var menu = document.querySelector('details.v4-menu');
+    if (menu) {
+      document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+      Array.prototype.forEach.call(menu.querySelectorAll('nav a'), function (a) { a.addEventListener('click', function () { menu.open = false; }); });
+    }
+
+    // Live count: rows in merchant_price_history, read by the app and refreshed once a day (/api/home/stats).
+    var num = document.getElementById('stat-prices');
+    if (num) {
+      fetch('/api/home/stats', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && d.ok && typeof d.price_records === 'number' && d.price_records > 0) num.textContent = d.price_records.toLocaleString('en-US');
+          else num.textContent = 'Daily';
+        })
+        .catch(function () { num.textContent = 'Daily'; });
+    }
+
+    // Video to list: a YouTube link (or a photo) becomes the shopper's own private list.
+    var form = document.getElementById('vid-form'), input = document.getElementById('vid');
+    var go = document.getElementById('vid-go'), msg = document.getElementById('vid-msg');
+    var photoBtn = document.getElementById('vid-photo'), file = document.getElementById('vid-file');
+    var busy = false;
+    function say(text, link) {
+      if (!msg) return;
+      while (msg.firstChild) msg.removeChild(msg.firstChild);
+      msg.hidden = !text;
+      if (!text) return;
+      msg.appendChild(document.createTextNode(text));
+      if (link) { msg.appendChild(document.createTextNode(' ')); var a = document.createElement('a'); a.href = link.href; a.textContent = link.text; msg.appendChild(a); }
+    }
+    function setBusy(b, label) { busy = b; if (go) { go.disabled = b; go.textContent = b ? (label || 'Reading...') : 'Make my list'; } if (photoBtn) photoBtn.disabled = b; }
+    // A YouTube video, or a public photo's web address (Jon 27 Oct 2026: "Use public or approved ohots for now").
+    function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()) || /^https:\/\/[^\s]+\.(jpe?g|png|webp)(\?[^\s]*)?$/i.test(v.trim()); }
+    function poll(id, tries) {
+      fetch('/api/list/import?id=' + encodeURIComponent(id), { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { handle(d, tries); })
+        .catch(function () { if (tries > 0) setTimeout(function () { poll(id, tries - 1); }, 4000); else fail(); });
+    }
+    function fail(text) { setBusy(false); say(text || "We couldn't read that one just now. Please try again in a minute."); }
+    function handle(d, tries) {
+      if (!d || !d.ok) {
+        if (d && d.error === 'limit') { setBusy(false); say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); track('home_video_limit', {}); return; }
+        if (d && d.error === 'not_a_list') { setBusy(false); say(d.message || "We didn't find things to buy in that one. Try a recipe, a room or a holiday table."); return; }
+        return fail(d && d.message);
+      }
+      if (d.status === 'done' && d.list_url) { say('Your list is ready.'); track('home_video_list_ready', { cached: !!d.cached }); location.href = d.list_url; return; }
+      if (d.status === 'failed') return fail(d.message);
+      say(d.message || 'Sinclair is reading the video for things to buy. This takes about a minute.');
+      if (tries <= 0) return fail('This is taking longer than usual. Please try again in a few minutes.');
+      setTimeout(function () { poll(d.id, tries - 1); }, 4000);
+    }
+    function start(url, via) {
+      if (busy) return;
+      url = (url || '').trim();
+      if (!url) { say('Paste a YouTube video link to get started.'); if (input) input.focus(); return; }
+      if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
+      setBusy(true, 'Reading...');
+      say('Sinclair is reading the video for things to buy. A new video takes about a minute.');
+      track('home_video_submitted', { via: via });
+      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid() }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { handle(d, 45); })
+        .catch(function () { fail(); });
+    }
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value, 'hero'); });
+    var form2 = document.getElementById('vid2-form'), input2 = document.getElementById('vid2');
+    if (form2) form2.addEventListener('submit', function (e) {
       e.preventDefault();
-      var email = (input.value || '').trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
-      btn.disabled = true; msg.textContent = 'Joining...';
+      if (input && input2) input.value = input2.value;
+      var top = document.getElementById('vid-form'); if (top) top.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      start(input2 ? input2.value : '', 'closing');
+    });
+    if (photoBtn && file) {
+      photoBtn.addEventListener('click', function () { if (!busy) file.click(); });
+      file.addEventListener('change', function () {
+        var f = file.files && file.files[0]; if (!f) return;
+        if (f.size > 8 * 1024 * 1024) { say('That photo is over 8 MB. Please pick a smaller one.'); file.value = ''; return; }
+        setBusy(true, 'Reading...');
+        say('Sinclair is reading the photo for things to buy.');
+        track('home_photo_submitted', {});
+        var data = new FormData(); data.append('photo', f); data.append('visitor', vid());
+        fetch('/api/list/import', { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) { file.value = ''; handle(d, 30); })
+          .catch(function () { file.value = ''; fail(); });
+      });
+    }
+
+    // Footer email: the weekly real deals and gift ideas, the same list as every sign-up (Beehiiv, via /api/subscribe).
+    var news = document.getElementById('news-form');
+    if (news) news.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var box = document.getElementById('news'), btn = document.getElementById('news-go'), out = document.getElementById('news-msg');
+      var email = (box.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { out.textContent = 'Please enter a full email address.'; box.focus(); return; }
+      btn.disabled = true; out.textContent = 'Sending...';
       fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'home_footer' }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.querySelector('.footer-news-row').style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
-        .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
+        .then(function (r) { if (!r.ok) throw new Error(); news.querySelector('.inputrow').style.display = 'none'; out.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
+        .catch(function () { btn.disabled = false; out.textContent = 'That did not go through. Please try again in a moment.'; });
     });
   })();
 </script>
+<script>
+/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
+(function () {
+  try {
+    var v = localStorage.getItem('tf_visitor_id');
+    if (!v) {
+      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('tf_visitor_id', v);
+    }
+  } catch (e) { v = 'anonymous'; }
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
+  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
+  try {
+    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
+    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
 </body>
 </html>
