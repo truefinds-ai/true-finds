@@ -331,7 +331,7 @@
      <div style="position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center">
       <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1A3C5E"></path></svg>
      </div>
-     <div style="position:relative;margin:14px;background:#1A3C5E;color:#FFFFFF;border-radius:10px;padding:6px 12px;font-size:14px;font-weight:700">Example: one-pan lemon chicken, 12 min</div>
+     <div style="position:absolute;left:14px;top:14px;background:#1A3C5E;color:#FFFFFF;border-radius:10px;padding:6px 12px;font-size:14px;font-weight:700">Example: one-pan lemon chicken, 12 min</div>
     </div>
    </div>
    <div class="listcard" style="position:absolute;left:44%;top:150px;width:58%;min-width:300px;background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:18px">
@@ -1180,6 +1180,19 @@
   })();
 </script>
 <script data-tf="home-v4">
+  // "Find it" (Build Board BB-11, 28 Oct 2026): a list item with no clean store match links to /?find=<item>, which
+  // asks Sinclair here. The words go into the Ask box as text, never into the page as markup.
+  (function () {
+    try {
+      var f = new URLSearchParams(location.search).get('find');
+      if (!f || !window.tfAsk) return;
+      f = f.replace(/\s+/g, ' ').trim().slice(0, 80);
+      if (!f) return;
+      var box = document.getElementById('ask');
+      if (box) box.scrollIntoView({ block: 'start' });
+      window.tfAsk(f, 'findit');
+    } catch (e) {}
+  })();
   // Homepage v4 (Build Board BB-4, 27 Oct 2026): the video box, the live price count and the footer email.
   (function () {
     function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
