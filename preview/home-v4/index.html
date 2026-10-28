@@ -1253,7 +1253,7 @@
       if (!url) { say('Paste a YouTube video link to get started.'); if (input) input.focus(); return; }
       if (!isYouTube(url)) { say('That does not look like a YouTube video link. TikTok, Instagram and recipe links are coming soon.'); return; }
       setBusy(true, 'Reading...');
-      say('Sinclair is reading the video for things to buy.');
+      say('Sinclair is reading the video for things to buy. A new video takes about a minute.');
       track('home_video_submitted', { via: via });
       fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid() }) })
         .then(function (r) { return r.json(); })
