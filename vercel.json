@@ -41,6 +41,7 @@
     { "source": "/api/compare/alternative", "destination": "https://true-finds-app.vercel.app/api/compare/alternative" },
     { "source": "/api/pv", "destination": "https://true-finds-app.vercel.app/api/pv" },
     { "source": "/api/compare", "destination": "https://true-finds-app.vercel.app/api/compare" },
+    { "source": "/api/deals/catalog-photos", "destination": "https://true-finds-app.vercel.app/api/deals/catalog-photos" },
     { "source": "/api/ucp/agent-profile", "destination": "https://true-finds-app.vercel.app/api/ucp/agent-profile" },
     { "source": "/.well-known/http-message-signatures-directory", "destination": "https://true-finds-app.vercel.app/.well-known/http-message-signatures-directory" },
     { "source": "/bot", "destination": "/bot/index.html" },
