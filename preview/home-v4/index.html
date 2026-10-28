@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name='impact-site-verification' value='f825d650-f73a-46cb-ac69-169bc152720b'>
+  <title>TrueFinds: Sinclair, your shopping agent</title>
+  <meta name="description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
+  <meta property="og:title" content="TrueFinds: Sinclair, your shopping agent">
+  <meta property="og:description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
+  <meta property="og:url" content="https://truefinds.ai">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://truefinds.ai/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@gotruefinds">
+  <meta name="twitter:image" content="https://truefinds.ai/social-card.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --navy: #1A3C5E; --navy-2: #1A3C5E; --green: #1A9E6E; --green-dark: #14734F;
+      --green-tint: #DCFCE7; --ink: #1A3C5E; --muted: #334155; --line: #E2E8F0;
+      --soft: #F1F5F9; --red: #991B1B; --red-tint: #FEF2F2; --amber: #92400E; --amber-tint: #FEF3C7;
+      --gray-chip: #1A3C5E; --gray-tint: #F1F5F9; --white: #FFFFFF;
+    }
+    *{box-sizing:border-box}
+    /* Homepage v4 (Build Board BB-4, approved by Jon 27 Oct 2026, 8:52 PM ET): video first. Layout and type from
+       docs/content/pages/mockups/HOMEPAGE_APPROVED_2026-10-27.html; the Ask answer styles below are carried from v3. */
+    body{margin:0;background:#FFFFFF;color:#1A3C5E;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:18px;line-height:1.5;-webkit-font-smoothing:antialiased}
+    a{color:#14734F}a:hover{color:#0F5C3F}
+    h1,h2,h3{color:#1A3C5E}
+    .wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:56px;align-items:center}
+    .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+    .two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+    .team2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .navlinks{display:flex;gap:28px;align-items:center}
+    .inputrow{display:flex;gap:10px}
+    .pair{align-items:stretch}
+    .pcard{display:flex;flex-direction:column}
+    .pcard .pbtn{margin-top:auto;align-self:flex-start}
+    .v4-menu{display:none;position:relative}
+    .v4-menu summary::-webkit-details-marker{display:none}
+    .v4-menu nav{position:absolute;right:0;top:54px;z-index:50;background:#FFFFFF;border-radius:16px;box-shadow:0 12px 32px rgba(15,23,42,.22);padding:8px;min-width:220px;display:flex;flex-direction:column}
+    .v4-menu nav a{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:10px;color:#1A3C5E;font-size:17px;font-weight:700;text-decoration:none}
+    .v4-menu nav a:hover{background:#F3F8F5}
+    .v4-tick{width:22px;height:22px;flex:0 0 auto;border-radius:6px;background:#14734F;display:flex;align-items:center;justify-content:center}
+    .v4-num{width:56px;height:56px;border-radius:16px;background:#1A3C5E;color:#FFFFFF;font-size:24px;font-weight:800;display:flex;align-items:center;justify-content:center}
+    .v4-badge{font-size:12px;font-weight:700;background:#DCFCE7;color:#14532D;border-radius:9999px;padding:2px 8px;margin-left:4px}
+    .v4-row{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px}
+    .v4-pill{font-size:13px;font-weight:700;background:#DCFCE7;color:#14532D;border-radius:9999px;padding:3px 10px;white-space:nowrap}
+    .v4-date{width:46px;flex:0 0 auto;border-radius:10px;background:#1A3C5E;color:#FFFFFF;text-align:center;padding:4px 0}
+    .v4-faq{border:1px solid #E2E8F0;border-radius:16px;padding:18px 22px}
+    .v4-faq summary{font-size:19px;font-weight:800;cursor:pointer;min-height:28px}
+    .v4-faq p{margin:10px 0 0;font-size:18px;line-height:27px;color:#334155}
+    .v4-sr{position:absolute;left:-9999px}
+    .footlinks a{display:inline-flex;align-items:center;min-height:44px}
+    #ask .ask-out{margin-top:40px}
+    #ask .ask-note{margin:14px 4px 0}
+    #vid-msg a{font-weight:800}
+    button:disabled{opacity:.65;cursor:default}
+    @media (max-width:820px){
+     .wrap{padding:0 16px}
+     .hero-grid,.two{grid-template-columns:minmax(0,1fr);gap:32px}
+     .three{grid-template-columns:minmax(0,1fr)}
+     .navlinks{display:none}
+     .v4-menu{display:block}
+     .h1{font-size:40px !important;line-height:46px !important}
+     .h2{font-size:30px !important;line-height:36px !important}
+     .h2s{font-size:28px !important;line-height:34px !important}
+     .inputrow{flex-wrap:wrap}
+     .inputrow .grow{flex:1 1 100% !important}
+     .inputrow .go{flex:1 1 auto !important}
+     .newsinput{flex-wrap:nowrap}
+     .newsinput .grow{flex:1 1 auto !important}
+     .newsinput .go{flex:0 0 auto !important}
+     .v4-closing{border-radius:28px !important}
+     .stat{border-left:none !important;padding-left:0 !important}
+     .sect{padding:56px 0 !important}
+     .herosect{padding:32px 0 48px !important}
+     .listcard{position:relative !important;left:auto !important;top:auto !important;width:auto !important;min-width:0 !important;margin:-40px 12px 0}
+     .vidcard{width:100% !important}
+     .newsrow{flex-direction:column;align-items:stretch !important}
+     .pcard{padding:24px !important}
+    }
+    @media (max-width:420px){.team2{grid-template-columns:minmax(0,1fr)}}
+    /* Ask Sinclair answer styles, carried unchanged from homepage v3. */
+    /* Ask Sinclair (added 2026-09-30; soft bar, examples, microphone, one thing at a time; Paste removed for simplicity) */
+    .ask-card { background: #fff; border: 2px solid var(--green); border-radius: 28px; padding: 32px; }
+    .ask-top { display: flex; align-items: center; gap: 12px; }
+    .ask-spark { width: 44px; height: 44px; border-radius: 50%; background: var(--green); color: #fff; display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+    .ask-free { margin-left: auto; background: #E8F5EF; color: #14734F; font-weight: 700; font-size: 15px; border-radius: 999px; padding: 4px 12px; }
+    .ask-label { display: block; font-size: 19px; color: var(--ink); margin-top: 6px; }
+    .ask-form { margin-top: 18px; }
+    .ask-bar { display: flex; align-items: center; gap: 4px; background: #F4F7FA; border-radius: 999px; padding: 6px 6px 6px 22px; box-shadow: 0 0 0 1px #C9D3DD; transition: box-shadow .15s, background .15s; }
+    .ask-bar:focus-within { background: #fff; box-shadow: 0 0 0 2px var(--green); }
+    .ask-bar input { flex: 1 1 auto; min-width: 0; height: 50px; border: 0; background: transparent; font-size: 19px; color: var(--navy); font-family: inherit; }
+    .ask-bar input:focus { outline: none; }
+    .ask-bar input::placeholder { color: #5B6B7B; }
+    .ask-icon { flex: 0 0 auto; height: 46px; min-width: 46px; border: 0; background: transparent; border-radius: 999px; color: var(--navy); font: inherit; font-size: 17px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; }
+    .ask-icon:hover { background: #EEF2F6; }
+    .ask-icon[hidden] { display: none; }
+    .ask-icon.on { background: var(--green); color: #fff; animation: askPulse 1.2s ease-in-out infinite; }
+    @keyframes askPulse { 0%, 100% { opacity: 1; } 50% { opacity: .7; } }
+    .ask-go { flex: 0 0 auto; height: 50px; border: 0; border-radius: 999px; background: #14734F; color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 26px; cursor: pointer; }
+    .ask-go:hover { background: #0F5C3F; }
+    .ask-go:disabled { opacity: .6; }
+    .ask-go-mobile { display: none; width: 100%; height: 56px; }
+    .ask-mrow { display: none; }
+    .ask-paste { display: none; flex: 0 0 auto; height: 56px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; color: var(--navy); font: inherit; font-size: 18px; font-weight: 700; padding: 0 22px; cursor: pointer; }
+    .ask-share-help { display: none; margin-top: 10px; font-size: 16px; color: #334155; }
+    .ask-card.ask-in-hero { margin: 0 0 24px; padding-top: 16px; }
+    .ask-card.ask-in-hero h2 { font-size: 21px; line-height: 1.25; margin-top: 8px !important; }
+    .ask-card.ask-in-hero .ask-form { margin-top: 12px; }
+    .ask-also { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+    .ask-also span { font-size: 17px; font-weight: 600; color: var(--ink); }
+    .ask-also a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: none; }
+    .ask-also a:hover { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
+    .prime-bar { background: var(--navy); color: #fff; }
+    .prime-bar .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 16px; padding-top: 12px; padding-bottom: 12px; text-align: center; font-size: 17px; font-weight: 600; line-height: 1.4; }
+    .prime-bar a { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; color: var(--navy); padding: 0 18px; font-weight: 700; text-decoration: none; }
+    .prime-bar a:hover { background: #E8F5EF; }
+    .ask-note { margin-top: 14px; font-size: 17px; font-weight: 600; color: #14734F; }
+    .ask-out { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .ask-out[hidden] { display: none; }
+    .ask-msg { background: #F4F7FA; border-radius: 16px; padding: 14px 18px; font-size: 17px; color: var(--ink); }
+    .ask-wait { display: flex; align-items: center; gap: 12px; background: #F4F7FA; border-radius: 16px; padding: 16px 20px; font-size: 18px; color: var(--navy); }
+    .ask-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--green); animation: askPulse 1s ease-in-out infinite; flex: 0 0 auto; }
+    .ask-panel { background: #F7F9FB; border-radius: 18px; padding: 20px 22px; box-shadow: 0 0 0 1px #E1E7EE; }
+    .ask-tip { background: #ECFDF5; border: 2px solid #1A9E6E; border-radius: 18px; padding: 18px 20px; }
+    .ask-tip-label { font-size: 14px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: #14734F; }
+    .ask-tip-text { font-size: 18px; line-height: 1.4; color: var(--navy); margin-top: 4px; }
+    .ask-eyebrow { font-size: 14px; font-weight: 800; color: #334155; }
+    .ask-why { margin-top: 8px; }
+    .ask-why summary { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; list-style: none; }
+    .ask-why summary::-webkit-details-marker { display: none; }
+    .ask-i { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--navy); background: #fff; color: var(--navy); font-family: Georgia, serif; font-style: italic; font-weight: 700; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; }
+    .ask-why[open] .ask-i { background: var(--navy); color: #fff; }
+    .ask-why p { margin-top: 4px; border-left: 4px solid var(--navy); background: #E8EEF5; border-radius: 8px; padding: 8px 12px; font-size: 17px; color: var(--ink); }
+    .ask-lead { font-size: 21px; font-weight: 600; line-height: 1.35; color: var(--navy); margin-top: 8px; }
+    .ask-line { font-size: 17px; color: var(--ink); margin-top: 4px; }
+    .ask-links { display: flex; flex-wrap: wrap; gap: 4px 24px; margin-top: 10px; }
+    .ask-links a { min-height: 44px; display: inline-flex; align-items: center; font-size: 18px; font-weight: 700; color: #14734F; text-decoration: none; }
+    .ask-links a:hover { text-decoration: underline; }
+    .ask-h { font-size: 21px; color: var(--navy); }
+    .ask-list { list-style: none; margin-top: 6px; }
+    .ask-list li { display: flex; align-items: flex-start; gap: 12px; padding: 16px 0; border-top: 1px solid #E3E8EE; }
+    .ask-thumb { width: 56px; height: 56px; border-radius: 12px; object-fit: contain; background: #fff; box-shadow: 0 0 0 1px #DCE3EA; flex: 0 0 auto; }
+    .ask-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .ask-pricebox { text-align: right; flex: 0 0 auto; }
+    .ask-live { font-size: 14px; font-weight: 600; color: #334155; }
+    .ask-q-line { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; font-size: 16px; color: #334155; }
+    .ask-q-chip { background: #E8EEF5; color: var(--navy); font-weight: 700; border-radius: 999px; padding: 4px 12px; }
+    .ask-next { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+    .ask-later { min-height: 44px; display: inline-flex; align-items: center; font-size: 17px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; }
+    .ask-badge { width: 56px; height: 56px; border-radius: 12px; background: #E8F5EF; color: #14734F; font-weight: 800; font-size: 18px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px #BFE3D2; flex: 0 0 auto; }
+    .ask-who { flex: 1 1 auto; min-width: 0; }
+    .ask-list li { flex-wrap: wrap; }
+    .ask-btns { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 2px; }
+    .ask-facts { font-size: 15px; font-weight: 600; color: #334155; margin-top: 2px; }
+    .ask-orderby { font-size: 15px; color: var(--navy); margin-top: 2px; }
+    .ask-notmeant { min-height: 44px; margin-left: auto; border: 0; background: none; padding: 0 4px; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .ask-savecard { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; padding: 0 18px; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: none; }
+    .ask-savecard:hover { background: #F4F7FA; }
+    .ask-verified { display: inline-flex; align-items: center; margin-left: 8px; vertical-align: 2px; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; padding: 1px 8px; font-size: 13px; font-weight: 700; }
+    .ask-opts { font-size: 15px; color: #334155; margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    /* Search rebuild (16 Oct 2026): the reason line, the idea chips, and larger photos on phones. */
+    .ask-reason { font-size: 16px; font-weight: 600; line-height: 1.35; color: #14734F; margin-top: 4px; }
+    .ask-ideas { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .ask-finding { animation: askFinding 1.4s ease-in-out infinite; }
+    .ask-retry { margin-top: 12px; min-height: 48px; padding: 0 24px; border: 0; border-radius: 999px; background: #1A9E6E; color: #fff; font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+    .ask-retry:hover { background: #148259; }
+    @keyframes askFinding { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+    @media (prefers-reduced-motion: reduce) { .ask-finding { animation: none; } }
+    .ask-ideas .ask-idea { display: inline-block; padding: 4px 12px; border: 0; border-radius: 999px; background: #E8F5EF; color: #14734F; box-shadow: 0 0 0 1px #BFE3D2; font-size: 16px; font-weight: 700; }
+    @media (max-width: 639px) { .ask-thumb, .ask-badge { width: 88px; height: 88px; } }
+    .ask-more-btn { display: block; width: 100%; min-height: 48px; margin-top: 4px; border-radius: 999px; background: #fff; box-shadow: 0 0 0 2px var(--navy) inset; text-decoration: none; }
+    .ask-list li.ask-nyrow { display: block; }
+    .ask-notyet { background: #E8F5EF; border-radius: 16px; padding: 16px; box-shadow: 0 0 0 1px #BFE3D2; margin-top: 8px; }
+    .ask-ny-line { font-size: 19px; font-weight: 600; line-height: 1.35; color: var(--navy); }
+    .ask-ny-form { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .ask-ny-form input { flex: 1 1 200px; min-width: 0; height: 48px; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 18px; font: inherit; font-size: 17px; color: var(--navy); }
+    .ask-ny-form input:focus { outline: none; box-shadow: 0 0 0 2px var(--green); }
+    .ask-ny-btn { flex: 0 0 auto; min-height: 48px; border: 0; border-radius: 999px; background: var(--navy); color: #fff; font: inherit; font-size: 18px; font-weight: 700; padding: 0 24px; cursor: pointer; }
+    .ask-ny-btn:disabled { opacity: .6; }
+    .ask-ny-msg { margin-top: 10px; font-size: 17px; font-weight: 700; }
+    .ask-ny-msg.done { color: #14734F; }
+    .ask-ny-msg.bad { color: #B91C1C; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .ask-list li:first-child { border-top: 0; }
+    .ask-list li[hidden] { display: none; }
+    .ask-store { font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+    .ask-price { font-size: 21px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+    .ask-sub { font-size: 16px; color: #334155; line-height: 1.35; margin-top: 2px; }
+    .ask-go-store { min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: #14734F; padding: 0 18px; font-size: 17px; font-weight: 700; color: #fff; text-decoration: none; }
+    .ask-go-store:hover { background: #0F5C3F; }
+    /* Mobile journey, 20 Oct 2026 (CODE_INBOX items 1 to 12). Cards lead with the product: a large photo, the
+       product name as the bold line, the store under it, the price beside. */
+    .ask-list li.ask-photo { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px 16px; align-items: start; }
+    .ask-photo .ask-pic { width: 140px; height: 140px; border-radius: 14px; object-fit: contain; background: #fff; box-shadow: 0 0 0 1px #DCE3EA; }
+    .ask-photo .ask-btns { grid-column: 1 / -1; }
+    .ask-pname { font-size: 19px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+    .ask-storeline { font-size: 16px; font-weight: 600; color: #334155; margin-top: 2px; }
+    @media (max-width: 639px) {
+      .ask-list li.ask-photo { display: block; }
+      .ask-photo .ask-pic { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; max-height: 340px; margin-bottom: 12px; }
+      .ask-photo .ask-btns { margin-top: 10px; }
+    }
+    .ask-savecard.is-saved { background: #DCFCE7; box-shadow: 0 0 0 2px #1A9E6E inset; color: #14532D; cursor: default; }
+    .ask-saved-line { flex-basis: 100%; margin: 4px 0 0; font-size: 16px; font-weight: 700; color: #14532D; background: #DCFCE7; border-radius: 12px; padding: 10px 14px; }
+    .tf-sheet-back { position: fixed; inset: 0; z-index: 90; background: rgba(15, 23, 42, 0.45); display: flex; align-items: flex-end; justify-content: center; }
+    .tf-sheet { width: 100%; max-width: 520px; background: #fff; border-radius: 20px 20px 0 0; padding: 22px 20px calc(22px + env(safe-area-inset-bottom)); box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.2); }
+    @media (min-width: 640px) { .tf-sheet-back { align-items: center; } .tf-sheet { border-radius: 20px; } }
+    .tf-sheet-h { font-size: 20px; font-weight: 800; color: var(--navy); line-height: 1.3; }
+    .tf-sheet-line { font-size: 16px; color: #334155; margin-top: 6px; }
+    .tf-sheet form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .tf-sheet input { flex: 1 1 200px; min-width: 0; min-height: 48px; padding: 0 16px; font: inherit; font-size: 17px; color: var(--navy); border: 2px solid #C9D3DD; border-radius: 999px; }
+    .tf-sheet .tf-sheet-go { min-height: 48px; padding: 0 22px; font: inherit; font-size: 17px; font-weight: 700; color: #fff; background: #14734F; border: 0; border-radius: 999px; cursor: pointer; }
+    .tf-sheet .tf-sheet-go:disabled { opacity: .7; }
+    .tf-sheet-msg { font-size: 16px; font-weight: 600; margin-top: 8px; color: #B91C1C; }
+    .tf-sheet-fine { font-size: 15px; color: #475569; margin-top: 10px; }
+    .tf-sheet-no { min-height: 44px; margin-top: 6px; border: 0; background: none; padding: 0; font: inherit; font-size: 16px; font-weight: 600; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .ask-tip-more { font-size: 17px; line-height: 1.4; color: var(--navy); margin-top: 8px; }
+    .ask-tip-q { font-size: 18px; font-weight: 700; line-height: 1.4; color: #14734F; margin-top: 12px; }
+    .ask-tip-yes { min-height: 48px; display: inline-flex; align-items: center; border-radius: 999px; background: #14734F; padding: 0 20px; font-size: 17px; font-weight: 700; color: #fff !important; text-decoration: none !important; }
+    .ask-tip-yes:hover { background: #0F5C3F; }
+    .ask-also-asked { margin-top: 18px; }
+    .ask-also-asked h3 { font-size: 19px; font-weight: 800; color: var(--navy); }
+    .ask-also-asked .ex-row { margin-top: 10px; }
+    .ask-member-line { font-size: 16px; color: #334155; margin-top: 14px; }
+    .ask-member-line a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: #14734F; }
+    .ex-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ex-row button { min-height: 44px; display: inline-flex; align-items: center; border: 0; border-radius: 999px; background: #fff; box-shadow: 0 0 0 1px #C9D3DD; padding: 0 16px; font: inherit; font-size: 17px; font-weight: 600; color: var(--navy); cursor: pointer; text-align: left; }
+    .ex-row button:hover, .ex-row button:focus-visible { background: #E8F5EF; box-shadow: 0 0 0 2px var(--green); }
+    .pop-row h2, .pop-row h3 { color: var(--navy); }
+    .pop-row h3 { font-size: 19px; font-weight: 800; margin-top: 22px; }
+    .pop-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 12px; }
+    @media (max-width: 980px) { .pop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .pop-card { display: flex; flex-direction: column; background: #fff; border-radius: 16px; box-shadow: 0 0 0 1px #DCE3EA; overflow: hidden; }
+    .pop-img { display: block; aspect-ratio: 1 / 1; background: #fff; }
+    .pop-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .pop-body { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px 12px; flex: 1 1 auto; }
+    .pop-name { font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.3; text-decoration: none; }
+    .pop-store { font-size: 15px; font-weight: 600; color: #334155; }
+    .pop-price { font-size: 18px; font-weight: 800; color: var(--navy); margin-top: 2px; }
+    .pop-price small { display: block; font-size: 15px; font-weight: 600; color: #475569; }
+    .pop-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 8px; }
+    .pop-acts .ask-go-store, .pop-acts .ask-savecard { font-size: 16px; padding: 0 14px; }
+    .tf-phone-ask { display: none; }
+    @media (hover: none) and (pointer: coarse), (max-width: 639px) {
+      .nav .tf-phone-ask { display: inline-flex; }
+      .nav a.tf-desktop-only.btn { display: none !important; }
+    }
+    .ask-more { min-height: 44px; border: 0; background: none; padding: 0; font: inherit; font-size: 17px; font-weight: 700; color: var(--navy); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .ask-save { align-self: flex-start; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; background: var(--navy); color: #fff; padding: 0 26px; font-size: 18px; font-weight: 700; text-decoration: none; }
+    @media (max-width: 640px) {
+      .ask-card { padding: 22px 16px; border-radius: 22px; }
+      .ask-bar { padding-left: 16px; }
+      .ask-bar input { font-size: 17px; }
+      .ask-bar .ask-go { display: none; }
+      .ask-mrow { display: flex; gap: 10px; margin-top: 12px; }
+      .ask-go-mobile { display: block; flex: 1; }
+      .ask-paste { display: block; }
+      .ask-share-help { display: block; }
+      .ask-next { align-items: stretch; }
+      .ask-next .ask-save { align-self: stretch; }
+      .ask-later { justify-content: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+<header style="background:#1A3C5E;color:#FFFFFF">
+ <div class="wrap" style="height:68px;display:flex;align-items:center;justify-content:space-between">
+  <a href="/" style="display:flex;align-items:center;gap:10px;color:#FFFFFF;text-decoration:none;min-height:44px">
+   <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="#2DC98D"></path></svg>
+   <span style="font-size:22px;font-weight:800;letter-spacing:-0.3px">TrueFinds</span>
+  </a>
+  <nav class="navlinks" aria-label="Main">
+   <a href="#how" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Video to list</a>
+   <a href="#ask" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Ask Sinclair</a>
+   <a href="/real-deals" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Real Deals</a>
+   <a href="/gifts" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Gifts</a>
+   <a href="/for-stores" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">For business</a>
+   <a href="/signin" style="color:#1A3C5E;background:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none;border-radius:9999px;padding:10px 18px;min-height:44px;display:inline-flex;align-items:center">Sign in</a>
+  </nav>
+  <details class="v4-menu">
+   <summary aria-label="Open menu" style="background:transparent;border:2px solid #FFFFFF;border-radius:9999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;cursor:pointer;list-style:none">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+   </summary>
+   <nav aria-label="Menu"><a href="#how">Video to list</a><a href="#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/for-stores">For business</a><a href="/signin">Sign in</a></nav>
+  </details>
+ </div>
+</header>
+<div style="border-bottom:1px solid #E2E8F0;padding:8px 16px;text-align:center;font-size:13px;line-height:18px;font-weight:600;color:#334155">TrueFinds may earn a commission when you buy, at no cost to you. Sponsors do not influence recommendations. <a href="/how-we-earn" style="font-weight:700">How we earn</a></div>
+
+<main>
+<section class="herosect" style="background:#F3F8F5;padding:72px 0 88px">
+ <div class="wrap hero-grid">
+  <div>
+   <div style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:14px;font-weight:700;color:#14734F">See it. Love it. Get it. Enjoy the moment.</div>
+   <h1 class="h1" style="margin:22px 0 18px;font-size:60px;line-height:64px;font-weight:800;letter-spacing:-1.2px;color:#1A3C5E">See it in a video.<br>Get it from a store you can trust.</h1>
+   <p style="margin:0 0 28px;font-size:21px;line-height:31px;color:#334155;max-width:560px">Paste a cooking, home or holiday video. TrueFinds turns everything in it into one shopping list, with fair prices from stores you can trust.</p>
+   <form id="vid-form" novalidate style="background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:12px;max-width:600px">
+    <label for="vid" style="display:block;font-size:17px;font-weight:800;color:#1A3C5E;margin:2px 6px 10px">Paste a YouTube video link</label>
+    <div class="inputrow">
+     <input class="grow" id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="youtube.com/watch?v=..." style="flex:1;min-width:0;height:56px;border:2px solid #64748B;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E;background:#FFFFFF">
+     <button type="button" id="vid-photo" aria-label="Add a photo instead" style="width:56px;height:56px;flex:0 0 auto;border:2px solid #64748B;border-radius:9999px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1A3C5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg>
+     </button>
+     <input id="vid-file" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+     <button class="go" type="submit" id="vid-go" style="height:56px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 28px;white-space:nowrap;cursor:pointer">Make my list</button>
+    </div>
+    <p id="vid-msg" role="status" aria-live="polite" hidden style="margin:12px 6px 0;font-size:17px;line-height:25px;font-weight:700;color:#1A3C5E"></p>
+    <p style="margin:10px 6px 2px;font-size:15px;line-height:22px;font-weight:600;color:#334155">Works with YouTube videos and photos.<br>TikTok, Instagram and recipe links coming soon.</p>
+   </form>
+   <p style="margin:16px 4px 0;font-size:18px;font-weight:700;color:#1A3C5E">Not from a video? <a href="#ask">Ask Sinclair, your shopping agent</a></p>
+   <div style="display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:16px;font-weight:700;color:#1A3C5E">
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to ask</span>
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to save</span>
+    <span style="display:inline-flex;gap:8px;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Free to buy</span>
+   </div>
+  </div>
+
+  <div aria-hidden="true" style="position:relative;padding:8px 0 24px">
+   <div class="vidcard" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;width:86%">
+    <div style="position:relative;height:250px;background:#C9724B;display:flex;align-items:flex-end">
+     <div style="position:absolute;left:28px;top:34px;width:150px;height:150px;border-radius:50%;background:#E8A26F"></div>
+     <div style="position:absolute;left:74px;top:70px;width:96px;height:96px;border-radius:50%;background:#F3D3A2"></div>
+     <div style="position:absolute;right:40px;top:44px;width:120px;height:60px;border-radius:30px;background:#8E3F23"></div>
+     <div style="position:absolute;right:70px;top:120px;width:70px;height:70px;border-radius:50%;background:#F7E6A6"></div>
+     <div style="position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1A3C5E"></path></svg>
+     </div>
+     <div style="position:relative;margin:14px;background:#1A3C5E;color:#FFFFFF;border-radius:10px;padding:6px 12px;font-size:14px;font-weight:700">Example: one-pan lemon chicken, 12 min</div>
+    </div>
+   </div>
+   <div class="listcard" style="position:absolute;left:44%;top:150px;width:58%;min-width:300px;background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:18px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+     <span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">YOUR LIST</span>
+     <span style="font-size:13px;font-weight:600;color:#334155">9 items · 3 stores</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Chicken thighs, 2 lb</span><span style="font-size:13px;font-weight:600;color:#334155">Hudson Grocery</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Smoked paprika</span><span style="font-size:13px;font-weight:600;color:#334155">Savory Spice</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span style="width:22px;height:22px;flex:0 0 auto;border-radius:6px;border:2px solid #64748B"></span><span style="flex:1;font-size:16px;font-weight:700;color:#475569;text-decoration:line-through">Lemons, 3</span><span style="font-size:13px;font-weight:700;color:#1A3C5E;background:#F1F5F9;border-radius:9999px;padding:3px 10px">I have this</span></div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">12-inch skillet</span><span style="font-size:13px;font-weight:600;color:#334155">Martie</span></div>
+    </div>
+    <div style="margin-top:14px;background:#14734F;color:#FFFFFF;border-radius:9999px;text-align:center;font-size:17px;font-weight:700;padding:12px">Buy your list · 3 stores</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section style="background:#1A3C5E;color:#FFFFFF;padding:36px 0">
+ <div class="wrap three">
+  <div class="stat"><div id="stat-prices" style="font-size:38px;font-weight:800;color:#2DC98D;min-height:46px"></div><div style="font-size:17px;font-weight:700;margin-top:4px"><span id="stat-prices-label">store prices recorded, so Sinclair knows a real sale.</span> <a href="/how-it-works" style="color:#FFFFFF">How we measure</a></div></div>
+  <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Billions</div><div style="font-size:17px;font-weight:700;margin-top:4px">of products Sinclair searches, from millions of independent stores in Shopify's catalog</div></div>
+  <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Free</div><div style="font-size:17px;font-weight:700;margin-top:4px">to ask, save and buy. Nothing to install. <a href="/how-we-earn" style="color:#FFFFFF">How we earn</a></div></div>
+ </div>
+</section>
+
+<section id="how" class="sect" style="padding:96px 0">
+ <div class="wrap">
+  <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">HOW IT WORKS</div>
+  <h2 class="h2" style="margin:8px 0 12px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">From the video to your door, in three steps</h2>
+  <p style="margin:0 0 40px;font-size:19px;line-height:28px;color:#334155;max-width:640px">No more pausing, screenshotting and writing it all down.</p>
+  <div class="three">
+   <div style="border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <div class="v4-num">1</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">See it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">A creator you follow shares a recipe, a room or a holiday table you love. Paste the link.</p>
+   </div>
+   <div style="border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <div class="v4-num">2</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">List it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Every ingredient and tool lands on one list. Tap "I have this" to skip what's already at home.</p>
+   </div>
+   <div style="border:2px solid #5CBF94;border-radius:20px;padding:28px;background:#F3F8F5">
+    <div class="v4-num" style="background:#14734F">3</div>
+    <h3 style="margin:20px 0 8px;font-size:24px;font-weight:800">Get it</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Each item comes from a store you can trust, at a fair price. Buy your whole list in one window, store by store.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="ask" class="sect" style="padding:96px 0">
+ <div class="wrap">
+  <div class="two">
+   <div>
+    <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">MEET SINCLAIR</div>
+    <h2 class="h2" style="margin:8px 0 14px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">Not from a video? Ask Sinclair to get it.</h2>
+    <p style="margin:0 0 24px;font-size:19px;line-height:28px;color:#334155">Sinclair is your shopping agent. Tell him what you need, and he'll help you choose the right product and find a fair price from a store you can trust.</p>
+    <form id="ask-form" class="ask-form" novalidate>
+     <label for="ask-q" style="display:block;font-size:14px;font-weight:700;margin:0 4px 8px">What do you need?</label>
+     <div class="inputrow">
+      <input class="grow" id="ask-q" name="q" type="text" placeholder="A warm gift for Dad under $50" autocomplete="off" enterkeyhint="search" style="flex:1;min-width:0;height:56px;border:2px solid #64748B;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E">
+      <button class="go" type="submit" id="ask-btn" style="height:56px;border:none;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 26px;white-space:nowrap;cursor:pointer">Ask Sinclair</button>
+     </div>
+    </form>
+    <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
+    <h3 style="margin:32px 0 12px;font-size:22px;font-weight:800;color:#1A3C5E">Meet the Team</h3>
+    <div class="team2">
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Marco</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">compares stores for you</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Scout</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">keeps your saved finds</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge">Members</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Nov 10</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
+    </div>
+   </div>
+   <div style="background:#1A3C5E;color:#FFFFFF;border-radius:24px;padding:28px">
+    <div style="font-size:13px;font-weight:700;color:#2DC98D;letter-spacing:0.5px">A REAL ANSWER FROM SINCLAIR</div>
+    <div style="margin-top:14px;background:#FFFFFF;color:#1A3C5E;border-radius:9999px;padding:12px 18px;font-size:17px;font-weight:700;display:inline-block">"gift for my grandson, he's 8"</div>
+    <p style="margin:18px 0 16px;font-size:17px;line-height:26px;font-weight:700">A hands-on kit or a building set he can work on with you is often the gift an 8-year-old remembers.</p>
+    <div style="display:flex;flex-direction:column;gap:10px">
+     <div style="background:#FFFFFF;color:#1A3C5E;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div style="font-size:16px;font-weight:800">Ooze Labs: Big Box of Science</div><div style="font-size:13px;font-weight:600;color:#334155">Scott Family Amazeum Museum Store</div></div><div style="font-size:19px;font-weight:800">$28.99</div></div>
+     <div style="background:#FFFFFF;color:#1A3C5E;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center"><div><div style="font-size:16px;font-weight:800">Science Kit, 100 Experiments</div><div style="font-size:13px;font-weight:600;color:#334155">Science4you</div></div><div style="font-size:19px;font-weight:800">$29.99</div></div>
+    </div>
+    <p style="margin:14px 0 0;font-size:13px;line-height:18px;font-weight:600;color:#FFFFFF">Asked on truefinds.ai on October 17, 2026. Prices are each store's own and can change.</p>
+   </div>
+  </div>
+  <div class="ask-out" id="ask-out" hidden aria-live="polite"></div>
+ </div>
+</section>
+
+<section class="sect" style="background:#F3F8F5;padding:96px 0">
+ <div class="wrap">
+  <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">WHY TRUEFINDS</div>
+  <h2 class="h2" style="margin:8px 0 36px;font-size:42px;line-height:48px;font-weight:800;letter-spacing:-0.6px">A fair price, from a store you can trust</h2>
+  <div class="three">
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5M7 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Returns and shipping up front</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">See the return policy, shipping and the order-by date before you click.</p>
+   </div>
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Stores that pass our checks</h3>
+    <p style="margin:0;font-size:18px;line-height:27px;color:#334155">Sinclair shows stores that pass our checks. Sponsors do not influence recommendations.</p>
+   </div>
+   <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px">
+    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#14734F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8M14 8h6v6"></path></svg>
+    <h3 style="margin:16px 0 8px;font-size:22px;font-weight:800">Know when a sale is real</h3>
+    <p style="margin:0 0 14px;font-size:18px;line-height:27px;color:#334155">Sinclair records prices every day, so he can tell a real low from a normal price.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+     <span style="font-size:14px;font-weight:700;background:#DCFCE7;color:#14532D;border:2px solid #1A9E6E;border-radius:9999px;padding:4px 12px">GENUINE DEAL</span>
+     <span style="font-size:14px;font-weight:700;background:#E2E8F0;color:#334155;border:2px solid #475569;border-radius:9999px;padding:4px 12px">TYPICAL PRICE</span>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sect" style="padding:96px 0">
+ <div class="wrap two pair">
+  <div class="pcard" style="border:2px solid #5CBF94;border-radius:24px;padding:32px">
+   <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">SAVE</div>
+   <h2 class="h2s" style="margin:8px 0 12px;font-size:34px;line-height:40px;font-weight:800">Save it now. Decide later.</h2>
+   <p style="margin:0 0 22px;font-size:18px;line-height:27px;color:#334155">Keep every list and find with a free account, on your phone and your computer.</p>
+   <div aria-hidden="true" style="background:#F3F8F5;border-radius:18px;padding:16px;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">MY SAVED LISTS</span><span style="font-size:13px;font-weight:700;color:#1A3C5E">3 lists</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">One-pan lemon chicken</div><div style="font-size:13px;font-weight:600;color:#334155">9 items · 3 stores</div></div><span class="v4-pill">Saved</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">Fall porch refresh</div><div style="font-size:13px;font-weight:600;color:#334155">6 items · 2 stores</div></div><span class="v4-pill">Price dropped</span></div>
+    <div class="v4-row"><div><div style="font-size:16px;font-weight:800">Holiday table</div><div style="font-size:13px;font-weight:600;color:#334155">12 items · 4 stores</div></div><span class="v4-pill" style="background:#F1F5F9;color:#1A3C5E">Saved</span></div>
+   </div>
+   <a class="pbtn" href="/signin" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">Save with a free account</a>
+  </div>
+  <div class="pcard" style="border:2px solid #5CBF94;border-radius:24px;padding:32px">
+   <div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">REMINDERS AND GIFTS</div>
+   <h2 class="h2s" style="margin:8px 0 12px;font-size:34px;line-height:40px;font-weight:800">Never miss a birthday or a holiday</h2>
+   <p style="margin:0 0 22px;font-size:18px;line-height:27px;color:#334155">A reminder before the dates that matter, with gift ideas people love this week.</p>
+   <div aria-hidden="true" style="background:#F3F8F5;border-radius:18px;padding:16px;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
+    <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">COMING UP</span><span style="font-size:13px;font-weight:700;color:#1A3C5E">Reminders on</span></div>
+    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">14</div></div><div><div style="font-size:16px;font-weight:800">Mom's birthday</div><div style="font-size:13px;font-weight:600;color:#334155">Reminder 2 weeks before</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
+    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">26</div></div><div><div style="font-size:16px;font-weight:800">Thanksgiving</div><div style="font-size:13px;font-weight:600;color:#334155">Hosting list ready</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
+    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700">Gift ideas for Mom: 3 picks people love this week</div>
+   </div>
+   <a class="pbtn" href="/plan" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">See gift plans</a>
+  </div>
+ </div>
+</section>
+
+<section id="business" style="background:#F3F8F5;padding:48px 0">
+ <div class="wrap">
+  <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between">
+   <div><div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">FOR CREATORS, STORES AND PARTNERS</div><div style="font-size:24px;font-weight:800;margin-top:6px">Your video, your store or your families' lists, shopped through TrueFinds.</div></div>
+   <a href="/for-stores" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">Grow with TrueFinds</a>
+  </div>
+ </div>
+</section>
+
+<section class="sect" style="padding:88px 0">
+ <div class="wrap" style="max-width:880px">
+  <h2 class="h2" style="margin:0 0 24px;font-size:38px;line-height:44px;font-weight:800;text-align:center">Questions people ask</h2>
+  <div style="display:flex;flex-direction:column;gap:12px">
+   <details open class="v4-faq"><summary>Is TrueFinds free?</summary><p>Yes. Asking, saving and buying are free. We earn a small commission from stores when you buy, and it never changes your price.</p></details>
+   <details class="v4-faq"><summary>Which videos work?</summary><p>YouTube videos and photos today. TikTok, Instagram and recipe links are coming soon.</p></details>
+   <details class="v4-faq"><summary>Do creators get credit?</summary><p>Yes. The creator's name stays on the list, their own picks keep their links, and they earn when you buy.</p></details>
+   <details class="v4-faq"><summary>How does TrueFinds earn money?</summary><p>A small commission from the store when you buy through us. It never changes your price, and sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></p></details>
+   <details class="v4-faq"><summary>Do I need an account?</summary><p>Only to save a list. It's free, with no password: we email you a code.</p></details>
+   <details class="v4-faq"><summary>How do you pick the stores?</summary><p>Sinclair shows stores that pass our checks, with the return policy and shipping up front. Sponsors do not influence recommendations.</p></details>
+  </div>
+ </div>
+</section>
+
+<section style="background:#1A3C5E;color:#FFFFFF;padding:88px 0">
+ <div class="wrap" style="text-align:center;max-width:820px">
+  <h2 class="h2" style="margin:0 0 12px;font-size:44px;line-height:50px;font-weight:800;letter-spacing:-0.6px;color:#FFFFFF">What did you watch today?</h2>
+  <p style="margin:0 0 28px;font-size:19px;line-height:28px;font-weight:700;color:#FFFFFF">Paste it. Get the list. Enjoy the moment.</p>
+  <form id="vid2-form" novalidate style="background:#FFFFFF;border-radius:9999px;padding:8px;max-width:640px;margin:0 auto" class="v4-closing">
+   <div class="inputrow">
+    <label for="vid2" class="v4-sr">Your video link</label>
+    <input class="grow" id="vid2" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link" style="flex:1;min-width:0;height:56px;border:none;border-radius:9999px;padding:0 20px;font-size:18px;color:#1A3C5E">
+    <button class="go" type="submit" style="height:56px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:19px;font-weight:700;padding:0 28px;white-space:nowrap;cursor:pointer">Get the list</button>
+   </div>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer style="background:#FFFFFF;border-top:1px solid #E2E8F0;padding:40px 0">
+ <div class="wrap" style="display:flex;flex-direction:column;gap:14px">
+  <div class="newsrow" style="display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid #E2E8F0;margin-bottom:6px">
+   <div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="#1A9E6E"></path></svg><span style="font-size:20px;font-weight:800;color:#1A3C5E">TrueFinds</span></div>
+   <form id="news-form" novalidate style="display:flex;flex-direction:column;gap:8px;max-width:440px;width:100%">
+    <label for="news" style="font-size:16px;font-weight:800;color:#1A3C5E">Real deals and gift ideas, once a week</label>
+    <div class="inputrow newsinput">
+     <input class="grow" id="news" type="email" autocomplete="email" placeholder="Your email" style="flex:1;min-width:0;height:40px;border:2px solid #64748B;border-radius:9999px;padding:0 18px;font-size:16px;color:#1A3C5E">
+     <button class="go" type="submit" id="news-go" style="height:40px;min-height:40px;border:none;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:16px;font-weight:700;padding:0 24px;white-space:nowrap;cursor:pointer">Send</button>
+    </div>
+    <span id="news-msg" role="status" aria-live="polite" style="font-size:13px;font-weight:600;color:#334155">Free. Unsubscribe anytime.</span>
+   </form>
+  </div>
+  <div class="footlinks" style="display:flex;flex-wrap:wrap;gap:4px 22px;font-size:16px;font-weight:700"><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add Sinclair to Chrome</a><a href="/how-we-earn">How we earn</a><a href="/about">About</a><a href="/for-stores">For stores and brands</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  <p style="margin:0;font-size:14px;line-height:21px;font-weight:600;color:#334155;max-width:900px">How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools. We will never sell your personal information. Sponsors do not influence recommendations. As an Amazon Associate, TrueFinds earns from qualifying purchases.</p>
+ </div>
+</footer>
+<script>
+  // Ask Sinclair, added 2026-09-30, redesigned the same day: soft bar, visible
+  // label, tap-to-try examples, microphone where the browser supports speech,
+  // and an answer that shows one thing at a time. Built with
+  // DOM calls, never innerHTML, because part of the answer echoes the shopper.
+  (function () {
+    var form = document.getElementById('ask-form');
+    var input = document.getElementById('ask-q');
+    var btns = [document.getElementById('ask-btn'), document.getElementById('ask-btn-m')];
+    var out = document.getElementById('ask-out');
+    var note = document.getElementById('ask-note');
+    var mic = document.getElementById('ask-mic');
+    if (!form || !input || !out) return;
+    var busy = false, asked = '', tipRun = 0, searchRun = 0, tipMore = null;
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+    function tap(target, host, tier) { track('home_compare_click', { target: 'ask_' + target, store: host || '', tier: tier || '' }); }
+    // Merchant outreach list (9 Oct 2026, same as the app's Ask box): a tap on a store we do not earn from is counted, nothing about the shopper.
+    // Store facts (9 Oct 2026, same as the app's Ask box): after results show, the store's posted shipping and returns line.
+    var factsAsked = {};
+    function fillFacts(root) {
+      var items = Array.prototype.slice.call(root.querySelectorAll('li[data-host]')).filter(function (li) { return !li.getAttribute('data-facts'); });
+      var stores = [], seen = {};
+      items.forEach(function (li) { var h = li.getAttribute('data-host'); if (!seen[h] && !factsAsked[h]) { seen[h] = 1; stores.push({ host: h, name: li.getAttribute('data-name') || h }); } });
+      stores = stores.slice(0, 12);
+      if (!stores.length) return;
+      stores.forEach(function (s) { factsAsked[s.host] = 1; });
+      fetch('/api/store-facts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ stores: stores }) })
+        .then(function (r) { return r.ok ? r.json() : { facts: {} }; })
+        .then(function (d) {
+          var f = (d && d.facts) || {};
+          items.forEach(function (li) {
+            var x = f[li.getAttribute('data-host')]; if (!x) return;
+            var who = li.querySelector('.ask-who'); if (!who) return;
+            li.setAttribute('data-facts', '1');
+            if (x.short) who.appendChild(el('p', 'ask-facts', x.short));
+            if (x.orderBy) who.appendChild(el('p', 'ask-orderby', x.orderBy));
+          });
+        })
+        .catch(function () {});
+    }
+    function outreach(r) {
+      if (r.earns || !/^https:\/\//.test(r.link)) return;
+      try { fetch('/api/ask/outreach', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: r.link }), keepalive: true }); } catch (e) {}
+    }
+    function say(text) { if (!note) return; note.textContent = text || ''; note.hidden = !text; }
+    function setBusy(b) { busy = b; btns.forEach(function (x) { if (x) { x.disabled = b; x.textContent = b ? 'Checking...' : 'Ask Sinclair'; } }); }
+    function link(href, text, cls, external, target, host, tier) {
+      var a = el('a', cls, text); a.href = href;
+      if (external) { a.target = '_blank'; a.rel = 'noopener noreferrer sponsored'; }
+      a.addEventListener('click', function () { tap(target, host, tier); });
+      return a;
+    }
+    function run(q, via) {
+      q = (q || '').trim();
+      if (busy) return;
+      say('');
+      out.hidden = false; clear(out);
+      if (!q) { out.appendChild(el('p', 'ask-msg', 'Type a product or paste a link to get started.')); return; }
+      setBusy(true);
+      track('home_ask_submitted', { surface: 'home', via: via });
+      var wait = el('div', 'ask-wait'); wait.appendChild(el('span', 'ask-dot'));
+      // Mobile journey item 3 (20 Oct 2026): a pasted product or link keeps the price line; anything typed is ideas.
+      var isLink = /(https?:\/\/|www\.|amzn\.|a\.co\/|\.com\/)/i.test(q) || /^B0[A-Z0-9]{8}$/i.test(q);
+      tipMore = null;
+      wait.appendChild(el('span', null, isLink ? 'Sinclair is checking the price. Marco is looking at other stores.' : 'Sinclair is finding ideas for you...'));
+      out.appendChild(wait);
+      fetch('/api/ask?q=' + encodeURIComponent(q) + '&steps=2', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { asked = q; render(d);
+          // On a phone the answer starts below the fold: bring it into view (search rebuild, 16 Oct 2026).
+          try { if (window.matchMedia && window.matchMedia('(max-width: 639px)').matches) out.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+          if (/(?:a\.co|amzn\.to|amzn\.com)\/[A-Za-z0-9]/i.test(q)) track('amazon_share_paste', { surface: 'home', via: via, resolved: (d && d.shared) || (d && d.ok ? 'asin' : 'none') });
+          if (d && d.ok && (d.missing || !((d.offers || []).length + (d.stores || []).length + (d.catalog || []).length))) track('ask_no_result', { surface: 'home', via: via, kind: d.kind || '', closest: (d.offers || []).length + (d.stores || []).length + (d.catalog || []).length }); track('home_compare_view', { state: 'ask_' + via + '_' + (d && d.ok ? (d.kind || 'ok') : 'none'), shown: d && d.offers ? d.offers.length : 0 }); })
+        .catch(function () { clear(out); out.appendChild(el('p', 'ask-msg', "Sinclair couldn't check that right now. Please try again in a minute.")); })
+        .then(function () { setBusy(false); });
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); run(input.value, 'typed'); });
+    // Homepage v2 (17 Oct 2026): the hero chips, "Ask this" and the closing Ask box ask through here.
+    window.tfAsk = function (q, via) { input.value = q; run(q, via || 'example'); };
+    // Paste button on phones (6 Oct 2026): one tap pastes what the Amazon app copied, and asks.
+    var pasteBtn = document.getElementById('ask-paste');
+    if (pasteBtn) pasteBtn.addEventListener('click', function () {
+      if (!navigator.clipboard || !navigator.clipboard.readText) { say('From the Amazon app: tap Share, Copy, then paste here.'); return; }
+      navigator.clipboard.readText().then(function (t) { t = (t || '').trim(); if (t) { input.value = t; run(t, 'paste'); } })
+        .catch(function () { say('From the Amazon app: tap Share, Copy, then paste here.'); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#ask-also a'), function (a) {
+      a.addEventListener('click', function () { tap('starter', a.getAttribute('data-tap')); });
+    });
+
+    // Microphone: only where the browser can turn speech into text.
+    var Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var rec = null;
+    if (mic && Speech) {
+      mic.hidden = false;
+      mic.addEventListener('click', function () {
+        if (rec) { rec.stop(); return; }
+        var heard = '';
+        rec = new Speech(); rec.lang = 'en-US'; rec.interimResults = true; rec.maxAlternatives = 1;
+        rec.onresult = function (e) { var t = []; for (var i = 0; i < e.results.length; i++) t.push(e.results[i][0].transcript); heard = t.join(' ').trim(); input.value = heard; };
+        rec.onerror = function (e) {
+          say(e.error === 'not-allowed' || e.error === 'service-not-allowed' ? 'To speak your question, allow the microphone for truefinds.ai, or type it instead.' : "Sinclair didn't catch that. Tap the microphone and try again, or type it.");
+          tap('mic_' + e.error);
+        };
+        rec.onend = function () { rec = null; mic.classList.remove('on'); mic.setAttribute('aria-pressed', 'false'); if (heard) { tap('mic_heard'); run(heard, 'voice'); } else if (note && note.textContent === 'Listening... say the product name.') { say(''); } };
+        mic.classList.add('on'); mic.setAttribute('aria-pressed', 'true'); say('Listening... say the product name.');
+        try { rec.start(); } catch (err) { rec = null; mic.classList.remove('on'); say("Sinclair didn't catch that. Tap the microphone and try again, or type it."); }
+      });
+    }
+
+    // Sinclair's line (Jon 6 Oct, verbatim), then one email field and "Let me know".
+    // A shopper who left an email here before gets the button alone.
+    function notYet() {
+      var box = el('div', 'ask-notyet');
+      box.appendChild(el('p', 'ask-ny-line', "That's not in TrueFinds yet. I'll add it to Sinclair and let you know when it's in."));
+      box.appendChild(el('p', 'ask-line', 'Your check has been counted, and products shoppers ask about are added first.'));
+      var known = null; try { known = localStorage.getItem('tf_email'); } catch (e) {}
+      var f = el('form', 'ask-ny-form'); f.noValidate = true;
+      var inp = null;
+      if (!known) {
+        var lab = el('label', 'sr-only', 'Your email'); lab.htmlFor = 'ask-ny-email'; f.appendChild(lab);
+        inp = el('input'); inp.id = 'ask-ny-email'; inp.type = 'email'; inp.inputMode = 'email'; inp.autocomplete = 'email'; inp.placeholder = 'Your email'; f.appendChild(inp);
+      }
+      var b = el('button', 'ask-ny-btn', 'Let me know'); b.type = 'submit'; f.appendChild(b);
+      var msg = el('p', 'ask-ny-msg'); msg.hidden = true;
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var to = (known || (inp && inp.value) || '').trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(to)) { msg.textContent = 'That email does not look right.'; msg.className = 'ask-ny-msg bad'; msg.hidden = false; return; }
+        b.disabled = true; b.textContent = 'Saving...';
+        fetch('/api/ask/notify', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: to, q: asked, surface: 'home' }) })
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            if (j && j.ok) {
+              try { localStorage.setItem('tf_email', to); } catch (e2) {}
+              track('ask_notify_submit', { surface: 'home', state: known ? 'remembered' : 'typed' });
+              f.remove(); msg.textContent = "Done. I'll email you."; msg.className = 'ask-ny-msg done'; msg.hidden = false;
+            } else { throw new Error('x'); }
+          })
+          .catch(function () { b.disabled = false; b.textContent = 'Let me know'; msg.textContent = "That didn't save. Please try again in a minute."; msg.className = 'ask-ny-msg bad'; msg.hidden = false; });
+      });
+      box.appendChild(f); box.appendChild(msg);
+      return box;
+    }
+
+    function render(d) {
+      clear(out);
+      factsAsked = {};
+      if (!d || !d.ok) { out.appendChild(el('p', 'ask-msg', (d && d.message) || "Sinclair couldn't check that right now. Please try again in a minute.")); return; }
+      // Sinclair's tip first (tip-first answers, 14 Oct 2026; same as the app's Ask box). The library tip shows at once;
+      // a written tip from /api/ask/tip replaces its text when it arrives and passed every check.
+      if (d.tip) {
+        var tp = el('div', 'ask-tip');
+        tp.appendChild(el('p', 'ask-tip-label', "Sinclair's tip"));
+        var tt = el('p', 'ask-tip-text', d.tip.text); tp.appendChild(tt);
+        // Mobile journey item 4 (20 Oct 2026): the tip never changes words while it is read. The written tip from
+        // /api/ask/tip shows under it as a second line, once per ask, and is kept when the cards redraw the answer.
+        var more = el('p', 'ask-tip-more'); more.hidden = true; tp.appendChild(more);
+        if (tipMore && tipMore !== d.tip.text) { more.textContent = tipMore; more.hidden = false; }
+        var tl = el('div', 'ask-links');
+        // Same map as src/lib/ask/tip-help.ts: save offers open Compare at Save, lists open /plan, the gift plan opens /gifts/plan.
+        var hh = d.tip.help === 'gift_plan' ? '/gifts/plan' : ((d.tip.help === 'save' || d.tip.help === 'save_price') && d.compareHref ? d.compareHref + '#save' : '/plan');
+        if (d.tip.help === 'gift_plan') {
+          // Item 5: the gift plan question gets a Yes button; the guide stays a quiet link.
+          tp.appendChild(el('p', 'ask-tip-q', d.tip.helpText));
+          tl.appendChild(link(hh, 'Yes, start my gift plan', 'ask-tip-yes', false, 'tip_help_gift_plan'));
+        } else tl.appendChild(link(hh, d.tip.helpText, null, false, 'tip_help_' + d.tip.help));
+        if (d.tip.guide) tl.appendChild(link(d.tip.guide, 'Read our guide →', null, false, 'tip_guide'));
+        tp.appendChild(tl);
+        out.appendChild(tp);
+        track('ask_tip_shown', { surface: 'home', tip: d.tip.id, understood: d.understood || 'off' });
+        if (d.tipToken && tipMore === null) {
+          var mine = ++tipRun;
+          tipMore = '';
+          fetch('/api/ask/tip', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.tipToken }) })
+            .then(function (r) { return r.ok ? r.json() : { tip: null, reason: 'http' }; })
+            .then(function (t) {
+              if (mine !== tipRun) return;
+              if (t && t.tip) {
+                tipMore = t.tip;
+                var live = out.querySelector('.ask-tip-more');
+                if (live && t.tip !== d.tip.text) { live.textContent = t.tip; live.hidden = false; }
+                track('ask_tip_written', { surface: 'home' });
+              }
+              else track('ask_tip_fallback', { surface: 'home', reason: (t && t.reason) || 'unknown' });
+            })
+            .catch(function () { track('ask_tip_fallback', { surface: 'home', reason: 'network' }); });
+        }
+      }
+      // A stated budget (15 Oct 2026; same words as src/lib/ask/parse.ts ASK_COPY.budgetApplied and budgetNone).
+      if (d.budget && d.budget.maxUsd) {
+        var bm = Number.isInteger(d.budget.maxUsd) ? String(d.budget.maxUsd) : d.budget.maxUsd.toFixed(2);
+        out.appendChild(el('p', 'ask-msg ask-budget', d.budget.applied ? 'Showing options at $' + bm + ' or less.' : 'Nothing we found is $' + bm + ' or less, so here is everything we found.'));
+      }
+      // Answer timing (c), 17 Oct 2026, same as the app's Ask box: the tip and idea chips first, the cards from
+      // /api/ask/search after; the answer is drawn again with them. If the cards cannot come, it says so.
+      if (d.pending && d.searchToken) {
+        var pp = el('div', 'ask-panel'); pp.setAttribute('aria-busy', 'true');
+        pp.appendChild(el('h3', 'ask-h', 'At stores across the US'));
+        if (d.ideas && d.ideas.length) {
+          var pc = el('ul', 'ask-ideas'); pc.setAttribute('aria-label', 'Ideas Sinclair looked for');
+          d.ideas.forEach(function (idea) { pc.appendChild(el('li', 'ask-idea', idea)); });
+          pp.appendChild(pc);
+        }
+        var findLine = d.finding || 'Sinclair is finding the best fits for you.';
+        var hold = el('p', 'ask-msg ask-finding', findLine); pp.appendChild(hold);
+        out.appendChild(pp);
+        var mineSearch = ++searchRun;
+        // Jon 20 Oct: never an empty answer with no next step. Empty cards (a slow search) or a failed call keep the
+        // idea chips, say Sinclair is still looking, and offer Try again with the same signed token (10 minutes).
+        var stillLooking = function () {
+          pp.setAttribute('aria-busy', 'false');
+          hold.textContent = 'Sinclair is still looking. The stores are slow to answer right now.';
+          hold.classList.remove('ask-finding');
+          if (!pp.querySelector('.ask-retry')) {
+            var again = el('button', 'ask-retry', 'Try again'); again.type = 'button';
+            again.addEventListener('click', function () {
+              track('ask_try_again', { surface: 'home' });
+              again.remove(); pp.setAttribute('aria-busy', 'true');
+              hold.textContent = findLine; hold.classList.add('ask-finding');
+              loadCards(2);
+            });
+            pp.appendChild(again);
+          }
+        };
+        var loadCards = function (attempt) {
+          fetch('/api/ask/search', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: d.searchToken }) })
+            .then(function (r) { return r.json(); })
+            .then(function (s) {
+              if (mineSearch !== searchRun) return;
+              if (!s || !s.ok) throw new Error('search');
+              track('ask_search_cards', { surface: 'home', shown: (s.catalog || []).length, attempt: attempt });
+              if (!(s.catalog || []).length) { stillLooking(); return; }
+              var next = {}; Object.keys(d).forEach(function (k) { next[k] = d[k]; });
+              next.catalog = s.catalog || []; next.ideas = s.ideas || d.ideas; next.missing = !!s.missing; next.budget = s.budget || d.budget;
+              next.tipToken = s.tipToken || null; next.pending = false; next.searchToken = null;
+              render(next);
+            })
+            .catch(function () {
+              if (mineSearch !== searchRun) return;
+              stillLooking();
+            });
+        };
+        loadCards(1);
+        return;
+      }
+      var top = el('div', 'ask-panel');
+      top.appendChild(el('p', 'ask-eyebrow', d.title));
+      if (!d.sinclair) top = null;
+      if (d.sinclair) {
+        var why = el('details', 'ask-why'); var sum = el('summary');
+        sum.setAttribute('aria-label', d.sinclair.label + '. What ' + d.sinclair.label + ' means');
+        var c = el('span', 'chip', d.sinclair.label);
+        c.style.background = d.sinclair.background; c.style.color = d.sinclair.text; c.style.borderColor = d.sinclair.border;
+        sum.appendChild(c); var i = el('span', 'ask-i', 'i'); i.setAttribute('aria-hidden', 'true'); sum.appendChild(i);
+        why.appendChild(sum); why.appendChild(el('p', null, d.sinclair.definition));
+        why.addEventListener('toggle', function () { if (why.open) tap('verdict_info'); });
+        top.appendChild(why);
+        (d.sinclair.lines || []).forEach(function (l, n) { top.appendChild(el('p', n === 0 ? 'ask-lead' : 'ask-line', l)); });
+        var links = el('div', 'ask-links');
+        links.appendChild(link(d.sinclair.href, "See Sinclair's full verdict →", null, false, 'verdict'));
+        if (d.amazonHref) links.appendChild(link(d.amazonHref, 'Check price on Amazon →', null, false, 'amazon'));
+        top.appendChild(links);
+      }
+      if (top) out.appendChild(top);
+
+      // One result card: photo, store, product, price, then Buy and Save side by side (6 Oct 2026).
+      function cardLi(r) {
+        var li = el('li');
+        if (r.host) { li.setAttribute('data-host', String(r.host).toLowerCase().replace(/^www\./, '')); li.setAttribute('data-name', r.name || ''); }
+        // Mobile journey item 1 (20 Oct 2026): a card with a photo leads with the product, a large photo, the product
+        // name as the bold line and the store under it. A store row without a photo keeps its badge.
+        var photoFirst = !!(r.image && /^https:\/\//.test(r.image) && r.sub);
+        if (photoFirst) {
+          li.className = 'ask-photo';
+          var pic = document.createElement('img'); pic.className = 'ask-pic'; pic.src = r.image; pic.alt = r.sub; pic.loading = 'lazy'; pic.decoding = 'async'; pic.referrerPolicy = 'no-referrer'; li.appendChild(pic);
+        } else if (r.image && /^https:\/\//.test(r.image)) {
+          var img = document.createElement('img'); img.className = 'ask-thumb'; img.src = r.image; img.alt = ''; img.loading = 'lazy'; img.referrerPolicy = 'no-referrer'; li.appendChild(img);
+        } else {
+          var badge = el('span', 'ask-badge', ((r.name.match(/[A-Za-z0-9]/) || ['?'])[0]).toUpperCase()); badge.setAttribute('aria-hidden', 'true'); li.appendChild(badge);
+        }
+        var body = el('div', 'ask-who');
+        var head = el('div', 'ask-head');
+        if (photoFirst) {
+          var who = el('div'); who.appendChild(el('p', 'ask-pname', r.sub));
+          var sl = el('p', 'ask-storeline', r.name); if (r.verified) sl.appendChild(el('span', 'ask-verified', 'Verified'));
+          who.appendChild(sl); head.appendChild(who);
+        } else {
+          var nm = el('p', 'ask-store', r.name);
+          if (r.verified) nm.appendChild(el('span', 'ask-verified', 'Verified'));
+          head.appendChild(nm);
+        }
+        if (r.price) { var pr = el('div', 'ask-pricebox'); pr.appendChild(el('p', 'ask-price', r.price)); pr.appendChild(el('p', 'ask-live', r.priceLabel || 'Live price')); head.appendChild(pr); }
+        body.appendChild(head);
+        if (r.sub && !photoFirst) body.appendChild(el('p', 'ask-sub', r.sub));
+        // Search rebuild (16 Oct 2026): why Sinclair picked it for this person, one line, same as the app's Ask box.
+        if (r.reason) body.appendChild(el('p', 'ask-reason', r.reason));
+        if (r.options && r.options.length) body.appendChild(el('p', 'ask-opts', r.options.join(', ')));
+        var btnrow = el('div', 'ask-btns');
+        var go = link(r.link, (r.price ? 'Visit store' : 'See price') + ' →', 'ask-go-store', true, r.target, r.host, r.tier); go.setAttribute('aria-label', 'Go to ' + r.name); btnrow.appendChild(go);
+        go.addEventListener('click', function () { outreach(r); });
+        if (r.save) {
+          var sv = el('a', 'ask-savecard', 'Save'); sv.href = r.save; sv.setAttribute('aria-label', 'Save: ' + (r.sub || r.name));
+          sv.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (sv.getAttribute('data-saved')) return;
+            tap('save_card', r.host); track('save_tap', { surface: 'home', target: r.target === 'catalog' ? 'ask_catalog' : 'ask_card', store: r.host || '' });
+            // Mobile journey item 2 (20 Oct 2026): Save keeps the shopper in the answer.
+            if (window.tfSaveInPlace) window.tfSaveInPlace({ save: r.save, name: r.sub || r.name, host: r.host }, sv, btnrow, 'home');
+            else location.href = r.save;
+          });
+          btnrow.appendChild(sv);
+        }
+        // Vetting gate measure (4 Oct LOCK): the shopper says a catalog result missed, and it goes away.
+        if (r.target === 'catalog') {
+          var nm2 = el('button', 'ask-notmeant', 'Not what I meant'); nm2.type = 'button';
+          nm2.addEventListener('click', function () { track('ask_not_meant', { surface: 'home', store: r.host || '', tier: r.tier || '', query: (asked || '').slice(0, 120) }); li.remove(); });
+          btnrow.appendChild(nm2);
+        }
+        li.appendChild(body);
+        li.appendChild(btnrow);
+        return li;
+      }
+
+      var rows = [], earns = false, catalog = [];
+      // Every matching product from Shopify's catalog at US stores (6 Oct 2026, item 11), 10 at a time.
+      (d.catalog || []).forEach(function (c) { if (c.earns) earns = true; catalog.push({ name: c.store, sub: c.name, image: c.image || null, price: usd(c.price_cents), priceLabel: "Store's price", options: c.options || [], verified: !!c.verified, link: c.link, host: c.host, target: 'catalog', save: c.save || null, tier: c.tier || (c.verified ? 'vetted' : 'live'), earns: !!c.earns, reason: c.reason || null }); });
+      var catHosts = {}; catalog.forEach(function (c) { catHosts[c.host.replace(/^www\./, '')] = true; });
+      (d.offers || []).forEach(function (o) { if (o.earns) earns = true; rows.push({ name: o.store, sub: o.product || '', image: o.image || null, price: usd(o.price_cents), link: o.link, host: o.host, target: 'store_priced', save: o.save || null, earns: !!o.earns }); });
+      // Our recorded price on each store row, dated (9 Oct 2026, no dead ends); same words as the app's Ask box.
+      function checkedOn(iso) { var t = new Date(iso); return isNaN(t.getTime()) ? 'recently' : t.toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'America/New_York' }); }
+      (d.stores || []).forEach(function (s) {
+        if (s.earns) earns = true;
+        var rec = s.price_cents && s.checked_at;
+        rows.push({ name: s.name, sub: s.label, price: rec ? (s.price_from ? 'From ' : '') + usd(s.price_cents) : null, priceLabel: rec ? 'Checked ' + checkedOn(s.checked_at) : null, link: s.link, host: s.host, target: rec ? 'store_recorded' : 'store', save: s.save || null, earns: !!s.earns });
+      });
+      rows = rows.filter(function (r) { return !catHosts[r.host.replace(/^www\./, '')]; });
+
+      if (catalog.length) {
+        var cpanel = el('div', 'ask-panel');
+        cpanel.appendChild(el('h3', 'ask-h', d.missing ? 'Closest we have' : 'At stores across the US'));
+        if (d.ideas && d.ideas.length) {
+          var chips = el('ul', 'ask-ideas'); chips.setAttribute('aria-label', 'Ideas Sinclair looked for');
+          d.ideas.forEach(function (idea) { chips.appendChild(el('li', 'ask-idea', idea)); });
+          cpanel.appendChild(chips);
+        } else if (d.title) { var cq = el('p', 'ask-q-line', 'You asked about'); cq.appendChild(el('span', 'ask-q-chip', d.title)); cpanel.appendChild(cq); }
+        var cul = el('ul', 'ask-list'); var shown = 0;
+        function showMore() {
+          var stop = Math.min(catalog.length, shown + 10);
+          for (; shown < stop; shown++) {
+            cul.appendChild(cardLi(catalog[shown]));
+            if (d.missing && shown === 0) { var ny0 = el('li', 'ask-nyrow'); ny0.appendChild(notYet()); cul.appendChild(ny0); }
+          }
+          fillFacts(cul);
+          if (shown >= catalog.length && cmore) cmore.remove();
+          else if (cmore) cmore.textContent = 'Show ' + Math.min(10, catalog.length - shown) + ' more';
+        }
+        var cmore = null;
+        cpanel.appendChild(cul);
+        if (catalog.length > 10) {
+          cmore = el('button', 'ask-more ask-more-btn', ''); cmore.type = 'button';
+          cmore.addEventListener('click', function () { showMore(); tap('catalog_more'); });
+          cpanel.appendChild(cmore);
+        }
+        showMore();
+        cpanel.appendChild(el('p', 'fine', "Prices are each store's own, checked just now. They can change."));
+        out.appendChild(cpanel);
+      }
+
+      if (rows.length || !catalog.length) {
+        var panel = el('div', 'ask-panel');
+        panel.appendChild(el('h3', 'ask-h', d.missing && rows.length && !catalog.length ? 'Closest we have' : 'Where else to buy'));
+        if (!d.sinclair && d.title && !catalog.length) { var q = el('p', 'ask-q-line', 'You asked about'); q.appendChild(el('span', 'ask-q-chip', d.title)); panel.appendChild(q); }
+        // No dead end (6 Oct 2026, mobile fix plan item 3): never "couldn't find" as the last line.
+        if (!rows.length) { panel.appendChild(notYet()); }
+        else {
+          var ul = el('ul', 'ask-list');
+          rows.forEach(function (r, n) {
+            var li = cardLi(r); if (rows.length > 4 && n >= 3) li.hidden = true;
+            ul.appendChild(li);
+            if (d.missing && !catalog.length && n === 0) { var nyRow = el('li', 'ask-nyrow'); nyRow.appendChild(notYet()); ul.appendChild(nyRow); }
+          });
+          panel.appendChild(ul);
+          fillFacts(ul);
+          if (rows.length > 4) {
+            var extra = rows.length - 3;
+            var more = el('button', 'ask-more', 'See ' + extra + ' more ' + (extra === 1 ? 'store' : 'stores')); more.type = 'button';
+            more.addEventListener('click', function () { Array.prototype.forEach.call(ul.children, function (x) { x.hidden = false; }); more.remove(); tap('more_stores'); });
+            panel.appendChild(more);
+          }
+          if (d.offers && d.offers.length) panel.appendChild(el('p', 'fine', 'Prices from Shopify stores, checked just now. They can change.'));
+        }
+        out.appendChild(panel);
+      }
+      if (d.compareHref) {
+        var acts2 = el('div', 'ask-next');
+        acts2.appendChild(link(d.compareHref, 'Compare all stores', 'ask-save', false, 'compare'));
+        acts2.appendChild(link(d.compareHref + '#save', 'Not ready to buy the product yet? Save it for later', 'ask-later', false, 'save_later'));
+        out.appendChild(acts2);
+      }
+      if (earns) out.appendChild(el('p', 'fine', "TrueFinds may earn a commission from stores, no cost to you. Sinclair's verdicts are always free and independent."));
+      // Mobile journey items 10 and 12 (20 Oct 2026): after the cards, three example asks, the members line, and
+      // the Popular row.
+      if (catalog.length || rows.length) {
+        var after = el('div', 'ask-after'); out.appendChild(after);
+        if (window.tfAfterAnswer) window.tfAfterAnswer(after, asked, 'home');
+      }
+    }
+  })();
+</script>
+<script data-tf="popular">
+  // Mobile journey (CODE_INBOX 20 Oct 4:58 AM): Popular in Sinclair's answers this week, Sinclair's example asks,
+  // Save in place with a one-time email sheet. Same words as the app's Ask box (src/lib/popular, src/lib/ask/examples).
+  (function () {
+    function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+    function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+    function usd(c) { return '$' + (c / 100).toFixed(2); }
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+    function sized(src, w) {
+      if (!src || !/cdn\.shopify\.com|\/cdn\/shop\//.test(src)) return src;
+      return src + (src.indexOf('?') > -1 ? '&' : '?') + 'width=' + w;
+    }
+    function knownEmail() { try { return localStorage.getItem('tf_email') || ''; } catch (e) { return ''; } }
+    function goodEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+
+    // The item a Save link carries (/compare?url=... or ?asin=... or ?title=..., &title=...).
+    function itemFrom(save, name) {
+      var u; try { u = new URL(save, location.origin); } catch (e) { return null; }
+      var q = u.searchParams, title = (q.get('title') || name || '').slice(0, 200);
+      if (!title) return null;
+      if (q.get('asin')) return { source: 'amazon', asin: q.get('asin'), title: title };
+      if (q.get('url')) return { source: 'store', productUrl: q.get('url'), title: title };
+      return { source: 'search', title: title, brand: q.get('brand') || null };
+    }
+    function postSave(email, item) {
+      var body = { email: email }; Object.keys(item).forEach(function (k) { body[k] = item[k]; });
+      return fetch('/api/compare/save', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok && j && j.ok, j: j || {} }; }); });
+    }
+    function markSaved(btn, row, line) {
+      btn.textContent = '✓ Saved'; btn.classList.add('is-saved'); btn.setAttribute('data-saved', '1');
+      btn.removeAttribute('href'); btn.setAttribute('role', 'status'); btn.setAttribute('aria-label', 'Saved');
+      var old = row.querySelector('.ask-saved-line'); if (old) old.remove();
+      row.appendChild(el('p', 'ask-saved-line', line || 'Saved. Sinclair will let you know.'));
+    }
+
+    // The email, asked once in a small sheet over the answer, then remembered on this device.
+    function sheet(onEmail, back) {
+      var bg = el('div', 'tf-sheet-back'), box = el('div', 'tf-sheet');
+      box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-labelledby', 'tf-sheet-h');
+      var h = el('p', 'tf-sheet-h', 'Save it, and Sinclair will remind you.'); h.id = 'tf-sheet-h'; box.appendChild(h);
+      box.appendChild(el('p', 'tf-sheet-line', 'Where should the reminder go? Asked once; this device remembers it.'));
+      var f = el('form'); f.noValidate = true;
+      var lab = el('label', 'tf-sr', 'Your email'); lab.htmlFor = 'tf-sheet-email'; f.appendChild(lab);
+      var inp = el('input'); inp.id = 'tf-sheet-email'; inp.type = 'email'; inp.inputMode = 'email'; inp.autocomplete = 'email'; inp.placeholder = 'Your email'; f.appendChild(inp);
+      var go = el('button', 'tf-sheet-go', 'Save'); go.type = 'submit'; f.appendChild(go);
+      box.appendChild(f);
+      var msg = el('p', 'tf-sheet-msg'); msg.hidden = true; msg.setAttribute('aria-live', 'polite'); box.appendChild(msg);
+      box.appendChild(el('p', 'tf-sheet-fine', 'We use your email only for this. Unsubscribe any time.'));
+      var no = el('button', 'tf-sheet-no', 'Not now'); no.type = 'button'; box.appendChild(no);
+      bg.appendChild(box); document.body.appendChild(bg);
+      function close() { document.removeEventListener('keydown', esc); bg.remove(); if (back) try { back.focus(); } catch (e) {} }
+      function esc(e) { if (e.key === 'Escape') close(); }
+      document.addEventListener('keydown', esc);
+      bg.addEventListener('click', function (e) { if (e.target === bg) close(); });
+      no.addEventListener('click', close);
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var v = (inp.value || '').trim();
+        if (!goodEmail(v)) { msg.textContent = 'That email does not look right.'; msg.hidden = false; inp.focus(); return; }
+        go.disabled = true; go.textContent = 'Saving...';
+        onEmail(v).then(function (res) {
+          if (res.ok) { close(); return; }
+          go.disabled = false; go.textContent = 'Save'; msg.textContent = (res.j && res.j.error) || "That didn't save. Please try again in a minute."; msg.hidden = false;
+        }).catch(function () { go.disabled = false; go.textContent = 'Save'; msg.textContent = "That didn't save. Please try again in a minute."; msg.hidden = false; });
+      });
+      setTimeout(function () { try { inp.focus(); } catch (e) {} }, 30);
+    }
+
+    window.tfSaveInPlace = function (card, btn, row, surface, eventName) {
+      var item = itemFrom(card.save, card.name);
+      if (!item) { location.href = card.save; return; }
+      var done = function (state) { return function (res) {
+        if (res.ok) { markSaved(btn, row, res.j.line); track(eventName || 'save_in_place', { surface: surface, store: card.host || '', state: state }); }
+        return res;
+      }; };
+      var email = knownEmail();
+      if (email) {
+        btn.textContent = 'Saving...';
+        postSave(email, item).then(done('remembered')).then(function (res) { if (!res.ok) { btn.textContent = 'Save'; row.appendChild(el('p', 'ask-saved-line', "That didn't save. Please try again in a minute.")); } })
+          .catch(function () { btn.textContent = 'Save'; });
+        return;
+      }
+      sheet(function (v) {
+        return postSave(v, item).then(function (res) {
+          if (res.ok) { try { localStorage.setItem('tf_email', v); } catch (e) {} track('save_email_sheet_submit', { surface: surface }); }
+          return done('typed')(res);
+        });
+      }, btn);
+    };
+
+    // Sinclair's example asks, from the list Cowork rotates (src/content/sinclair-examples.json).
+    var examples = null;
+    function loadExamples() {
+      if (examples) return examples;
+      examples = fetch('/api/ask/examples', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { return d && d.ok && d.examples && d.examples.length ? d : null; })
+        .catch(function () { return null; });
+      return examples;
+    }
+    // Same rule as src/lib/ask/examples.ts: small words (my, a, for) do not make a different ask.
+    var SMALL = { a: 1, an: 1, the: 1, my: 1, our: 1, for: 1, to: 1, of: 1, who: 1, that: 1, some: 1 };
+    function norm(t) { return String(t || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(function (w) { return w && !SMALL[w]; }).join(' '); }
+    function askIt(q, where, surface) {
+      track('example_ask_click', { surface: surface, target: where, query: q });
+      if (window.tfAsk) window.tfAsk(q, 'example');
+      var box = document.getElementById('ask'); if (box) box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function exampleRow(list, where, surface) {
+      var row = el('div', 'ex-row');
+      list.forEach(function (q) { var b = el('button', null, q); b.type = 'button'; b.setAttribute('data-ask', q); b.addEventListener('click', function () { askIt(q, where, surface); }); row.appendChild(b); });
+      return row;
+    }
+    // The Ask box's empty state: the "Try" chips come from the same list.
+    var also = document.getElementById('ask-also');
+    if (also) loadExamples().then(function (d) {
+      if (!d) return;
+      Array.prototype.forEach.call(also.querySelectorAll('button[data-ask]'), function (b) { b.remove(); });
+      d.examples.forEach(function (q) { var b = el('button', null, q); b.type = 'button'; b.setAttribute('data-ask', q); b.addEventListener('click', function () { askIt(q, 'chip', 'home'); }); also.appendChild(b); });
+    });
+
+    // Popular in Sinclair's answers this week: up to 8 products, each live from its store at this visit.
+    var popular = null;
+    function loadPopular() {
+      if (popular) return popular;
+      popular = fetch('/api/popular', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { return d && d.ok && d.cards && d.cards.length ? d : null; })
+        .catch(function () { return null; });
+      return popular;
+    }
+    function popCard(c, i, surface) {
+      var card = el('div', 'pop-card');
+      var ia = el('a', 'pop-img'); ia.href = c.link; ia.target = '_blank'; ia.rel = c.earns ? 'sponsored noopener' : 'noopener';
+      var im = document.createElement('img'); im.src = sized(c.image, 480); im.alt = c.name; im.loading = 'lazy'; im.decoding = 'async'; im.referrerPolicy = 'no-referrer';
+      im.onerror = function () { card.remove(); };
+      ia.appendChild(im); card.appendChild(ia);
+      var body = el('div', 'pop-body');
+      var nm = el('a', 'pop-name', c.name); nm.href = c.link; nm.target = '_blank'; nm.rel = ia.rel; body.appendChild(nm);
+      body.appendChild(el('span', 'pop-store', c.store));
+      var pr = el('span', 'pop-price', usd(c.priceCents));
+      var note = 'Store’s price';
+      if (c.checked) { try { note = 'Checked ' + new Date(c.checked).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); } catch (e) {} }
+      pr.appendChild(el('small', null, note)); body.appendChild(pr);
+      var acts = el('div', 'pop-acts');
+      var go = el('a', 'ask-go-store', 'Visit store →'); go.href = c.link; go.target = '_blank'; go.rel = ia.rel; acts.appendChild(go);
+      [ia, nm, go].forEach(function (a) { a.addEventListener('click', function () { track('popular_click', { surface: surface, store: c.host, position: i + 1, kind: c.from }); }); });
+      if (c.save) {
+        var sv = el('a', 'ask-savecard', 'Save'); sv.href = c.save; sv.setAttribute('aria-label', 'Save: ' + c.name);
+        sv.addEventListener('click', function (e) {
+          e.preventDefault(); if (sv.getAttribute('data-saved')) return;
+          window.tfSaveInPlace({ save: c.save, name: c.name, host: c.host }, sv, acts, surface, 'popular_save');
+        });
+        acts.appendChild(sv);
+      }
+      body.appendChild(acts); card.appendChild(body);
+      return card;
+    }
+    function popularInto(grid, fine, surface, onShown) {
+      return loadPopular().then(function (d) {
+        if (!d) return false;
+        clear(grid);
+        d.cards.forEach(function (c, i) { grid.appendChild(popCard(c, i, surface)); });
+        if (fine) fine.hidden = !d.cards.some(function (c) { return c.earns; });
+        if (onShown) onShown();
+        track('popular_view', { surface: surface, shown: d.cards.length, kind: d.cards.filter(function (c) { return c.from === 'week'; }).length ? 'week' : 'pick' });
+        return true;
+      });
+    }
+    var sec = document.getElementById('popular');
+    if (sec && 'IntersectionObserver' in window) {
+      var seen = false;
+      sec.hidden = false; sec.style.display = 'none';
+      loadPopular().then(function (d) {
+        if (!d) { sec.hidden = true; return; }
+        sec.style.display = '';
+        var io = new IntersectionObserver(function (es) {
+          if (seen || !es.some(function (e) { return e.isIntersecting; })) return;
+          seen = true; io.disconnect();
+          popularInto(document.getElementById('popular-grid'), document.getElementById('popular-fine'), 'home');
+        }, { rootMargin: '200px' });
+        io.observe(sec);
+      });
+    }
+
+    // Under every answer: three example asks, the members line, then the Popular row.
+    window.tfAfterAnswer = function (root, asked, surface) {
+      loadExamples().then(function (d) {
+        if (!d) return;
+        var picks = d.examples.filter(function (q) { return norm(q) !== norm(asked); });
+        var start = new Date().getMinutes() % Math.max(1, picks.length);
+        picks = picks.slice(start).concat(picks.slice(0, start)).slice(0, d.alsoCount || 3);
+        if (!picks.length) return;
+        var box = el('div', 'ask-also-asked');
+        box.appendChild(el('h3', null, d.alsoLabel || 'People also asked Sinclair'));
+        box.appendChild(exampleRow(picks, 'also_asked', surface));
+        var ml = el('p', 'ask-member-line', 'Members get reminders before birthdays and holidays. ');
+        var ma = el('a', null, 'See membership →'); ma.href = '/pricing'; ml.appendChild(ma);
+        box.appendChild(ml);
+        root.insertBefore(box, root.firstChild);
+      });
+      var wrap = el('div', 'pop-row');
+      wrap.appendChild(el('h3', null, "Popular in Sinclair's answers this week"));
+      var grid = el('div', 'pop-grid'); wrap.appendChild(grid);
+      var fine = el('p', 'fine'); fine.textContent = "TrueFinds may earn a commission from stores, no cost to you. Sinclair's verdicts are always free and independent."; fine.hidden = true; wrap.appendChild(fine);
+      wrap.hidden = true; root.appendChild(wrap);
+      popularInto(grid, fine, surface + '_answer', function () { wrap.hidden = false; });
+    };
+
+    // Phones: the header's Ask Sinclair goes to the Ask box and opens the keyboard.
+    var navAsk = document.getElementById('nav-ask');
+    if (navAsk) navAsk.addEventListener('click', function (e) {
+      var box = document.getElementById('ask'), q = document.getElementById('ask-q');
+      if (!box) return;
+      e.preventDefault(); box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (q) setTimeout(function () { try { q.focus({ preventScroll: true }); } catch (x) {} }, 350);
+    });
+  })();
+</script>
+<script data-tf="home-v4">
+  // Homepage v4 (Build Board BB-4, 27 Oct 2026): the video box, the live price count and the footer email.
+  (function () {
+    function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+    function track(event, props) {
+      try {
+        var body = JSON.stringify({ event: event, distinct_id: vid(), props: props || {} });
+        if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+      } catch (e) {}
+    }
+
+    // The menu on phones closes when a link in it is tapped or the page is tapped elsewhere.
+    var menu = document.querySelector('details.v4-menu');
+    if (menu) {
+      document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+      Array.prototype.forEach.call(menu.querySelectorAll('nav a'), function (a) { a.addEventListener('click', function () { menu.open = false; }); });
+    }
+
+    // Live count: rows in merchant_price_history, read by the app and refreshed once a day (/api/home/stats).
+    var num = document.getElementById('stat-prices');
+    if (num) {
+      fetch('/api/home/stats', { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && d.ok && typeof d.price_records === 'number' && d.price_records > 0) num.textContent = d.price_records.toLocaleString('en-US');
+          else num.textContent = 'Daily';
+        })
+        .catch(function () { num.textContent = 'Daily'; });
+    }
+
+    // Video to list: a YouTube link (or a photo) becomes the shopper's own private list.
+    var form = document.getElementById('vid-form'), input = document.getElementById('vid');
+    var go = document.getElementById('vid-go'), msg = document.getElementById('vid-msg');
+    var photoBtn = document.getElementById('vid-photo'), file = document.getElementById('vid-file');
+    var busy = false;
+    function say(text, link) {
+      if (!msg) return;
+      while (msg.firstChild) msg.removeChild(msg.firstChild);
+      msg.hidden = !text;
+      if (!text) return;
+      msg.appendChild(document.createTextNode(text));
+      if (link) { msg.appendChild(document.createTextNode(' ')); var a = document.createElement('a'); a.href = link.href; a.textContent = link.text; msg.appendChild(a); }
+    }
+    function setBusy(b, label) { busy = b; if (go) { go.disabled = b; go.textContent = b ? (label || 'Reading...') : 'Make my list'; } if (photoBtn) photoBtn.disabled = b; }
+    function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()); }
+    function poll(id, tries) {
+      fetch('/api/list/import?id=' + encodeURIComponent(id), { headers: { Accept: 'application/json' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { handle(d, tries); })
+        .catch(function () { if (tries > 0) setTimeout(function () { poll(id, tries - 1); }, 4000); else fail(); });
+    }
+    function fail(text) { setBusy(false); say(text || "We couldn't read that one just now. Please try again in a minute."); }
+    function handle(d, tries) {
+      if (!d || !d.ok) {
+        if (d && d.error === 'limit') { setBusy(false); say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); track('home_video_limit', {}); return; }
+        if (d && d.error === 'not_a_list') { setBusy(false); say(d.message || "We didn't find things to buy in that one. Try a recipe, a room or a holiday table."); return; }
+        return fail(d && d.message);
+      }
+      if (d.status === 'done' && d.list_url) { say('Your list is ready.'); track('home_video_list_ready', { cached: !!d.cached }); location.href = d.list_url; return; }
+      if (d.status === 'failed') return fail(d.message);
+      say(d.message || 'Sinclair is reading the video for things to buy. This takes about a minute.');
+      if (tries <= 0) return fail('This is taking longer than usual. Please try again in a few minutes.');
+      setTimeout(function () { poll(d.id, tries - 1); }, 4000);
+    }
+    function start(url, via) {
+      if (busy) return;
+      url = (url || '').trim();
+      if (!url) { say('Paste a YouTube video link to get started.'); if (input) input.focus(); return; }
+      if (!isYouTube(url)) { say('That does not look like a YouTube video link. TikTok, Instagram and recipe links are coming soon.'); return; }
+      setBusy(true, 'Reading...');
+      say('Sinclair is reading the video for things to buy.');
+      track('home_video_submitted', { via: via });
+      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid() }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { handle(d, 45); })
+        .catch(function () { fail(); });
+    }
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value, 'hero'); });
+    var form2 = document.getElementById('vid2-form'), input2 = document.getElementById('vid2');
+    if (form2) form2.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input && input2) input.value = input2.value;
+      var top = document.getElementById('vid-form'); if (top) top.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      start(input2 ? input2.value : '', 'closing');
+    });
+    if (photoBtn && file) {
+      photoBtn.addEventListener('click', function () { if (!busy) file.click(); });
+      file.addEventListener('change', function () {
+        var f = file.files && file.files[0]; if (!f) return;
+        if (f.size > 8 * 1024 * 1024) { say('That photo is over 8 MB. Please pick a smaller one.'); file.value = ''; return; }
+        setBusy(true, 'Reading...');
+        say('Sinclair is reading the photo for things to buy.');
+        track('home_photo_submitted', {});
+        var data = new FormData(); data.append('photo', f); data.append('visitor', vid());
+        fetch('/api/list/import', { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) { file.value = ''; handle(d, 30); })
+          .catch(function () { file.value = ''; fail(); });
+      });
+    }
+
+    // Footer email: the weekly real deals and gift ideas, the same list as every sign-up (Beehiiv, via /api/subscribe).
+    var news = document.getElementById('news-form');
+    if (news) news.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var box = document.getElementById('news'), btn = document.getElementById('news-go'), out = document.getElementById('news-msg');
+      var email = (box.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { out.textContent = 'Please enter a full email address.'; box.focus(); return; }
+      btn.disabled = true; out.textContent = 'Sending...';
+      fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'home_footer' }) })
+        .then(function (r) { if (!r.ok) throw new Error(); news.querySelector('.inputrow').style.display = 'none'; out.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
+        .catch(function () { btn.disabled = false; out.textContent = 'That did not go through. Please try again in a moment.'; });
+    });
+  })();
+</script>
+<script>
+/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
+(function () {
+  try {
+    var v = localStorage.getItem('tf_visitor_id');
+    if (!v) {
+      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('tf_visitor_id', v);
+    }
+  } catch (e) { v = 'anonymous'; }
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
+  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
+  try {
+    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
+    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
+</body>
+</html>
