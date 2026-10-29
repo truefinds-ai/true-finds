@@ -1257,18 +1257,92 @@
       if (tries <= 0) return fail('This is taking longer than usual. Please try again in a few minutes.');
       setTimeout(function () { poll(d.id, tries - 1); }, 4000);
     }
+    // Thanksgiving item 1 (29 Oct 2026): the paste gets its own id; the page asks how far it is every 3 seconds, so a slow
+    // match or a dropped connection never shows an error while the list is still being made. Steps with honest times.
+    var STEPS = ['Reading the video (about 1 minute)', 'Finding the items at stores (about 1 minute)', 'Your list is ready'];
+    function jobId() { var a = new Uint8Array(12); (window.crypto || window.msCrypto).getRandomValues(a); return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); }
+    function showProgress(step, offerEmail, job, url) {
+      if (!msg) return;
+      while (msg.firstChild) msg.removeChild(msg.firstChild);
+      msg.hidden = false;
+      var bar = document.createElement('div'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuemin', '0'); bar.setAttribute('aria-valuemax', '3'); bar.setAttribute('aria-valuenow', String(step));
+      bar.style.cssText = 'height:10px;border-radius:9999px;background:#E2E8F0;overflow:hidden;margin:4px 0 10px';
+      var fill = document.createElement('div'); fill.style.cssText = 'height:100%;background:#1A9E6E;border-radius:9999px;transition:width .6s ease;width:' + [0, 33, 66, 100][step] + '%';
+      bar.appendChild(fill); msg.appendChild(bar);
+      var ol = document.createElement('ol'); ol.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:17px;font-weight:700';
+      STEPS.forEach(function (t, i) {
+        var li = document.createElement('li'); var n = i + 1;
+        li.textContent = (n < step || step === 3 ? '✓ ' : n === step ? '• ' : '') + t;
+        li.style.color = n <= step ? '#1A3C5E' : '#64748B';
+        if (n === step && step < 3) li.setAttribute('aria-current', 'step');
+        ol.appendChild(li);
+      });
+      msg.appendChild(ol);
+      if (offerEmail && step < 3) {
+        var f = document.createElement('form'); f.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center';
+        var lab = document.createElement('label'); lab.textContent = "Email me when it's ready"; lab.style.cssText = 'font-size:16px;font-weight:700;width:100%'; lab.htmlFor = 'vid-notify';
+        var box = document.createElement('input'); box.id = 'vid-notify'; box.type = 'email'; box.autocomplete = 'email'; box.placeholder = 'you@example.com'; box.style.cssText = 'flex:1;min-width:0;height:48px;border:2px solid #64748B;border-radius:9999px;padding:0 16px;font-size:16px;color:#1A3C5E';
+        var b = document.createElement('button'); b.type = 'submit'; b.textContent = 'Email me'; b.style.cssText = 'height:48px;border:0;border-radius:9999px;background:#14734F;color:#FFFFFF;font-size:16px;font-weight:700;padding:0 20px';
+        f.appendChild(lab); f.appendChild(box); f.appendChild(b);
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); var email = (box.value || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { box.focus(); return; }
+          b.disabled = true;
+          fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job, notify: email }) })
+            .then(function (r) { return r.json(); })
+            .then(function () { emailed = true; f.textContent = "Thanks. We'll email you the moment it's ready. You can keep this page open too."; track('home_video_email_ready', {}); })
+            .catch(function () { b.disabled = false; });
+        });
+        msg.appendChild(f);
+      }
+    }
+    var emailed = false;
     function start(url, via) {
       if (busy) return;
       url = (url || '').trim();
       if (!url) { say('Paste a YouTube video link to get started.'); if (input) input.focus(); return; }
       if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
       setBusy(true, 'Reading...');
-      say('Sinclair is reading the video for things to buy. A new video takes about a minute.');
+      emailed = false;
+      var job = jobId(), began = Date.now(), finished = false, step = 1, offered = false, drawn = '1:false';
+      showProgress(1, false, job, url);
       track('home_video_submitted', { via: via });
-      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid() }) })
+      function open(d) { if (finished) return; finished = true; showProgress(3, false, job, url); track('home_video_list_ready', { cached: !!d.cached, landing: 'creator' }); location.href = d.list_url; }
+      function stop(d) {
+        if (finished) return; finished = true;
+        if (d.error === 'limit') { setBusy(false); say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); track('home_video_limit', {}); return; }
+        if (d.error === 'not_a_list') { setBusy(false); say(d.message || "We didn't find things to buy in that one. Try a recipe, a room or a holiday table."); return; }
+        fail(d.message);
+      }
+      // The paste itself: a quick answer (done, limit, not a list) is used; a slow or dropped one is left to the checks.
+      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job }) })
         .then(function (r) { return r.json(); })
-        .then(function (d) { handle(d, 45); })
-        .catch(function () { fail(); });
+        .then(function (d) {
+          if (d && d.ok && d.status === 'done' && d.list_url) return open(d);
+          if (d && !d.ok && d.error !== 'failed') return stop(d);
+        })
+        .catch(function () {});
+      function check() {
+        if (finished) return;
+        fetch('/api/list/import?job=' + encodeURIComponent(job) + '&url=' + encodeURIComponent(url) + '&visitor=' + encodeURIComponent(vid()), { headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (finished || !d) return;
+            if (d.ok && d.status === 'done' && d.list_url) return open(d);
+            if (!d.ok) return stop(d);
+            var waited = Date.now() - began;
+            if (d.step && d.step !== step) step = d.step;
+            if (!offered && waited > 120000) offered = true;
+            // Drawn again only when something changes, so a half-typed email is never wiped.
+            var key = step + ':' + offered;
+            if (!emailed && key !== drawn) { drawn = key; showProgress(step, offered, job, url); }
+            // Ten minutes is far past any real reading; say so plainly and keep the email offer.
+            if (waited > 600000) { finished = true; setBusy(false); if (!emailed) { if (drawn !== step + ':true') showProgress(step, true, job, url); var p = document.createElement('p'); p.textContent = 'This is taking longer than usual. Leave your email and we will send your list when it is ready.'; p.style.cssText = 'margin:10px 0 0;font-size:16px;font-weight:700'; msg.appendChild(p); } return; }
+            setTimeout(check, 3000);
+          })
+          .catch(function () { setTimeout(check, 3000); });
+      }
+      setTimeout(check, 3000);
     }
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value, 'hero'); });
     var form2 = document.getElementById('vid2-form'), input2 = document.getElementById('vid2');
