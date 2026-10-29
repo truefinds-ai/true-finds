@@ -10,7 +10,8 @@
     { "source": "/gifts-guide", "destination": "/guides/gifts-comfort-hobbies-pets.html", "permanent": false },
     { "source": "/deals", "destination": "/real-deals", "permanent": true },
     { "source": "/deals/", "destination": "/real-deals", "permanent": true },
-    { "source": "/deals/:category", "destination": "/real-deals/:category", "permanent": true }
+    { "source": "/deals/:category", "destination": "/real-deals/:category", "permanent": true },
+    { "source": "/attribute", "destination": "/attribution", "permanent": true }
   ],
   "rewrites": [
     { "source": "/api/unsubscribe", "destination": "https://true-finds-app.vercel.app/api/unsubscribe" },
@@ -63,6 +64,8 @@
     { "source": "/c/:handle/shop/:store", "destination": "https://true-finds-app.vercel.app/creator/:handle/shop/:store" },
     { "source": "/ai-ready", "destination": "https://true-finds-app.vercel.app/ai-ready" },
     { "source": "/api/ai-ready/:path*", "destination": "https://true-finds-app.vercel.app/api/ai-ready/:path*" },
+    { "source": "/attribution", "destination": "https://true-finds-app.vercel.app/attribution" },
+    { "source": "/api/attribution/:path*", "destination": "https://true-finds-app.vercel.app/api/attribution/:path*" },
     { "source": "/creator-app/:path*", "destination": "https://true-finds-app.vercel.app/creator-app/:path*" },
     { "source": "/preview/home", "destination": "/preview/home/index.html" },
     { "source": "/prime", "destination": "https://true-finds-app.vercel.app/prime" },

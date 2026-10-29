@@ -90,7 +90,15 @@
   <!-- For stores and brands -->
   <url>
     <loc>https://truefinds.ai/for-stores</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- TrueFinds Attribution for Shopify stores (BB-27) -->
+  <url>
+    <loc>https://truefinds.ai/attribution</loc>
+    <lastmod>2026-10-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
