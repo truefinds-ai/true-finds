@@ -353,7 +353,7 @@
 
 <section style="background:#1A3C5E;color:#FFFFFF;padding:36px 0">
  <div class="wrap three">
-  <div class="stat"><div id="stat-prices" style="font-size:38px;font-weight:800;color:#2DC98D;min-height:46px"></div><div style="font-size:17px;font-weight:700;margin-top:4px"><span id="stat-prices-label">store prices recorded, so Sinclair knows a real sale.</span> <a href="/how-it-works" style="color:#FFFFFF">How we measure</a></div></div>
+  <div class="stat"><div id="stat-prices" style="font-size:38px;font-weight:800;color:#2DC98D;min-height:46px">650,000+</div><div style="font-size:17px;font-weight:700;margin-top:4px"><span id="stat-prices-label">store prices recorded, so Sinclair knows a real sale.</span> <a href="/how-it-works" style="color:#FFFFFF">How we measure</a></div></div>
   <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Billions</div><div style="font-size:17px;font-weight:700;margin-top:4px">of products Sinclair searches, from millions of independent stores in Shopify's catalog</div></div>
   <div class="stat" style="border-left:2px solid #2E5679;padding-left:24px"><div style="font-size:38px;font-weight:800;color:#2DC98D">Free</div><div style="font-size:17px;font-weight:700;margin-top:4px">to ask, save and buy. Nothing to install. <a href="/how-we-earn" style="color:#FFFFFF">How we earn</a></div></div>
  </div>
@@ -403,7 +403,7 @@
     <div class="team2">
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Marco</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">compares stores for you</div></div>
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Scout</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">keeps your saved finds</div></div>
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge">Members</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge" style="white-space:nowrap;margin-left:0;display:inline-block;font-size:11px">With Sinclair's Team</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Nov 10</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
     </div>
    </div>
@@ -482,7 +482,7 @@
 <section id="business" style="background:#F3F8F5;padding:48px 0">
  <div class="wrap">
   <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between">
-   <div><div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">FOR CREATORS, STORES AND PARTNERS</div><div style="font-size:24px;font-weight:800;margin-top:6px">Your video, your store or your families' lists, shopped through TrueFinds.</div></div>
+   <div><div style="font-size:14px;font-weight:700;color:#14734F;letter-spacing:0.6px">FOR CREATORS, STORES AND PARTNERS</div><div style="font-size:24px;font-weight:800;margin-top:6px">Your video, your store, or the lists your families shop, shopped through TrueFinds.</div></div>
    <a href="/for-stores" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">Grow with TrueFinds</a>
   </div>
  </div>
@@ -1211,15 +1211,16 @@
     }
 
     // Live count: rows in merchant_price_history, read by the app and refreshed once a day (/api/home/stats).
+    // The page HTML carries a starting value (a floor below the real count) so the number is never blank;
+    // when the stats call is slow, blocked or fails, that starting value stays.
     var num = document.getElementById('stat-prices');
     if (num) {
       fetch('/api/home/stats', { headers: { Accept: 'application/json' } })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (d) {
           if (d && d.ok && typeof d.price_records === 'number' && d.price_records > 0) num.textContent = d.price_records.toLocaleString('en-US');
-          else num.textContent = 'Daily';
         })
-        .catch(function () { num.textContent = 'Daily'; });
+        .catch(function () {});
     }
 
     // Video to list: a YouTube link (or a photo) becomes the shopper's own private list.
