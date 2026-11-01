@@ -530,7 +530,7 @@
     <span id="news-msg" role="status" aria-live="polite" style="font-size:13px;font-weight:600;color:#334155">Free. Unsubscribe anytime.</span>
    </form>
   </div>
-  <div class="footlinks" style="display:flex;flex-wrap:wrap;gap:4px 22px;font-size:16px;font-weight:700"><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add Sinclair to Chrome</a><a href="/how-we-earn">How we earn</a><a href="/about">About</a><a href="/attribution">For business</a><a href="/for-stores">For stores and brands</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+  <div class="footlinks" style="display:flex;flex-wrap:wrap;gap:4px 22px;font-size:16px;font-weight:700"><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="https://chromewebstore.google.com/detail/aihgijjpngfknihpkmiapndkpigdogni" target="_blank" rel="noopener">Add Sinclair to Chrome</a><a href="/how-we-earn">How we earn</a><a href="/about">About</a><a href="/attribution">For business</a><a href="/for-stores">For stores and brands</a><a href="/privacy">Privacy</a><a href="/privacy-choices">Your privacy choices</a><a href="/terms">Terms</a></div>
   <p style="margin:0;font-size:14px;line-height:21px;font-weight:600;color:#334155;max-width:900px">How we make money: a small commission when you buy through us (it never changes your price), and members who choose our premium tools. We will never sell your personal information. Sponsors do not influence recommendations. As an Amazon Associate, TrueFinds earns from qualifying purchases.</p>
  </div>
 </footer>
@@ -1386,6 +1386,7 @@
 <script>
 /* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
 (function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
   try {
     var v = localStorage.getItem('tf_visitor_id');
     if (!v) {
@@ -1402,7 +1403,13 @@
   } catch (e) {}
 })();
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script>
+/* Vercel Web Analytics, loaded only when measurement is on (GPC and Your privacy choices, 1 Nov 2026). */
+(function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
+  var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
+})();
+</script>
 <script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
 </body>
 </html>

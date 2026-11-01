@@ -65,6 +65,7 @@
     { "source": "/ai-ready", "destination": "https://true-finds-app.vercel.app/ai-ready" },
     { "source": "/api/ai-ready/:path*", "destination": "https://true-finds-app.vercel.app/api/ai-ready/:path*" },
     { "source": "/attribution", "destination": "https://true-finds-app.vercel.app/attribution" },
+    { "source": "/privacy-choices", "destination": "https://true-finds-app.vercel.app/privacy-choices" },
     { "source": "/api/attribution/:path*", "destination": "https://true-finds-app.vercel.app/api/attribution/:path*" },
     { "source": "/creator-app/:path*", "destination": "https://true-finds-app.vercel.app/creator-app/:path*" },
     { "source": "/preview/home", "destination": "/preview/home/index.html" },
