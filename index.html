@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name='impact-site-verification' value='f825d650-f73a-46cb-ac69-169bc152720b'>
   <title>TrueFinds: Sinclair, your shopping agent</title>
-  <meta name="description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
+  <meta name="description" content="Saw a product you love in a video? Paste the link and TrueFinds builds the shopping list, with fair prices from stores you can trust.">
   <meta property="og:title" content="TrueFinds: Sinclair, your shopping agent">
-  <meta property="og:description" content="Sinclair is your shopping agent. Tell him what you need, and he&#39;ll help you choose the right product and find a fair price from a store you can trust.">
+  <meta property="og:description" content="Saw a product you love in a video? Paste the link and TrueFinds builds the shopping list, with fair prices from stores you can trust.">
   <meta property="og:url" content="https://truefinds.ai">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://truefinds.ai/social-card.png">
@@ -86,6 +86,17 @@
      .vidcard{width:100% !important}
      .newsrow{flex-direction:column;align-items:stretch !important}
      .pcard{padding:24px !important}
+    }
+    .sub-short{display:none}
+    /* Homepage less reading (Jon 3 Nov 2026): on phones the paste box shows on the first screen at 375x667 and 390x844. */
+    @media (max-width:640px){
+     .herosect{padding:18px 0 40px !important}
+     .hero-eyebrow{font-size:13px !important;padding:5px 12px !important}
+     .h1{font-size:30px !important;line-height:35px !important;letter-spacing:-0.6px !important;margin:14px 0 10px !important}
+     .hero-sub{font-size:18px !important;line-height:26px !important;margin:0 0 14px !important}
+     .hero-sub .sub-long{display:none}
+     .hero-sub .sub-short{display:inline}
+     #vid-form label{margin:0 6px 8px !important}
     }
     @media (max-width:359px){.team2{grid-template-columns:minmax(0,1fr)}}
     /* Ask Sinclair answer styles, carried unchanged from homepage v3. */
@@ -298,12 +309,12 @@
 <div style="border-bottom:1px solid #E2E8F0;padding:8px 16px;text-align:center;font-size:13px;line-height:18px;font-weight:600;color:#334155">TrueFinds may earn a commission when you buy, at no cost to you. Sponsors do not influence recommendations. <a href="/how-we-earn" style="font-weight:700">How we earn</a></div>
 
 <main>
-<section class="herosect" style="background:#F3F8F5;padding:72px 0 88px">
+<section class="herosect" style="background:#F3F8F5;padding:44px 0 88px">
  <div class="wrap hero-grid">
   <div>
-   <div style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:14px;font-weight:700;color:#14734F">See it. Love it. Get it. Enjoy the moment.</div>
+   <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:14px;font-weight:700;color:#14734F">See it. Love it. Get it. Enjoy the moment.</div>
    <h1 class="h1" style="margin:22px 0 18px;font-size:60px;line-height:64px;font-weight:800;letter-spacing:-1.2px;color:#1A3C5E">Saw a product you love in a&nbsp;video?<br>Paste the link. We'll find it for&nbsp;you.</h1>
-   <p style="margin:0 0 28px;font-size:21px;line-height:31px;color:#334155;max-width:560px">TrueFinds turns every item in a cooking, home or holiday video into one shopping list, with fair prices from stores you can trust.</p>
+   <p class="hero-sub" style="margin:0 0 28px;font-size:21px;line-height:31px;color:#334155;max-width:560px"><span class="sub-long">TrueFinds turns every item in a cooking, home or holiday video into one shopping list, with fair prices from stores you can trust.</span><span class="sub-short">Every item in a cooking, home or holiday video, one shopping list, fair&nbsp;prices.</span></p>
    <form id="vid-form" novalidate style="background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:12px;max-width:600px">
     <label for="vid" style="display:block;font-size:17px;font-weight:800;color:#1A3C5E;margin:2px 6px 10px">Paste a YouTube video link</label>
     <div class="inputrow">
@@ -404,7 +415,7 @@
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Marco</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">compares stores for you</div></div>
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Scout</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">keeps your saved finds</div></div>
      <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge" style="white-space:nowrap;margin-left:0;display:inline-block;font-size:11px">With Sinclair's Team</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Nov 10</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
+     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Dec 1</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
     </div>
    </div>
    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:24px;padding:28px">
@@ -494,7 +505,7 @@
   <div style="display:flex;flex-direction:column;gap:12px">
    <details open class="v4-faq"><summary>Is TrueFinds free?</summary><p>Yes. Asking, saving and buying are free. We earn a small commission from stores when you buy, and it never changes your price.</p></details>
    <details class="v4-faq"><summary>Which videos work?</summary><p>YouTube videos today. Photos, TikTok, Instagram and recipe links are coming soon.</p></details>
-   <details class="v4-faq"><summary>Do creators get credit?</summary><p>Yes. The creator's name stays on the list, their own picks keep their links, and they earn when you buy.</p></details>
+   <details class="v4-faq"><summary>Do creators get credit?</summary><p>Yes. The creator's name stays on the list and their own picks keep their links. Creators who partner with TrueFinds also earn when you buy.</p></details>
    <details class="v4-faq"><summary>How does TrueFinds earn money?</summary><p>A small commission from the store when you buy through us. It never changes your price, and sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></p></details>
    <details class="v4-faq"><summary>Do I need an account?</summary><p>Only to save a list. It's free, with no password: we email you a code.</p></details>
    <details class="v4-faq"><summary>How do you pick the stores?</summary><p>Sinclair shows stores that pass our checks, with the return policy and shipping up front. Sponsors do not influence recommendations.</p></details>
