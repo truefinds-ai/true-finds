@@ -14,6 +14,8 @@
     { "source": "/attribute", "destination": "/attribution", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/api/ads/slot", "destination": "https://true-finds-app.vercel.app/api/ads/slot" },
+    { "source": "/ads.txt", "destination": "https://true-finds-app.vercel.app/api/ads/ads-txt" },
     { "source": "/api/unsubscribe", "destination": "https://true-finds-app.vercel.app/api/unsubscribe" },
     { "source": "/api/subscribe", "destination": "https://true-finds-app.vercel.app/api/subscribe" },
     { "source": "/api/watch", "destination": "https://true-finds-app.vercel.app/api/watch" },
