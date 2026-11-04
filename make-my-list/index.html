@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paste a video, get the shopping list | TrueFinds</title>
+  <meta name="description" content="Saw a product you love in a video? Paste the YouTube link. TrueFinds turns every item in it into one shopping list, with fair prices from stores you can trust. Free.">
+  <meta property="og:title" content="Paste a video, get the shopping list | TrueFinds">
+  <meta property="og:description" content="Saw a product you love in a video? Paste the link. We'll find it for you. Every item in the video becomes one shopping list.">
+  <meta property="og:url" content="https://truefinds.ai/make-my-list">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://truefinds.ai/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@gotruefinds">
+  <meta name="twitter:image" content="https://truefinds.ai/social-card.png">
+  <link rel="canonical" href="https://truefinds.ai/make-my-list">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/make-my-list/img/video-roasted-veg.webp">
+  <style>
+    /* truefinds.ai/make-my-list (Build Board BB-45, mockup v5 approved by Jon 3 Nov 2026, 4:20 PM ET:
+       docs/content/pages/MAKE_MY_LIST_v5_mockup.html in true-finds-app). Photos: Pixabay (licence row in the Notion
+       Terms Register, 3 Nov 2026). Screens: real TrueFinds screens. No Amazon link and no store prices on this page. */
+    :root{--ink:#1A3C5E;--leaf:#1A9E6E;--leafdeep:#16794F;--mint:#EAF3EE;--paper:#FFFFFF;--rule:#CFE2D8;--slate:#2E4A63;--muted:#41566A}
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:'Atkinson Hyperlegible',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);background:var(--mint);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,.disp{font-family:'Bricolage Grotesque','Atkinson Hyperlegible',sans-serif;letter-spacing:-.02em;margin:0;color:var(--ink)}
+    p{margin:0}
+    a{color:var(--leafdeep)}
+    img{max-width:100%;height:auto}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:10px 14px;border-radius:10px}
+    /* Header */
+    .nav{background:var(--ink);color:#fff}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:60px}
+    .logo{display:flex;gap:10px;align-items:center;color:#fff;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;min-height:44px}
+    .links{display:none;gap:28px;align-items:center}
+    .links a{color:#fff;font-weight:700;font-size:16px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+    .links a[aria-current]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+    .menu{position:relative}
+    .menu summary{list-style:none;cursor:pointer;border:2px solid #fff;border-radius:999px;padding:0 18px;min-height:44px;display:flex;align-items:center;font-weight:700;font-size:16px}
+    .menu summary::-webkit-details-marker{display:none}
+    .menu nav{position:absolute;right:0;top:54px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 12px 32px rgba(15,23,42,.22);padding:8px;min-width:230px;display:flex;flex-direction:column}
+    .menu nav a{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:10px;color:var(--ink);font-size:17px;font-weight:700;text-decoration:none}
+    .menu nav a:hover{background:var(--mint)}
+    .disc{background:#fff;text-align:center;font-size:16px;line-height:1.4;padding:8px 16px;border-bottom:1px solid var(--rule)}
+    .disc a{font-weight:700}
+    /* Hero */
+    .hero{display:grid;gap:26px;padding:18px 0 34px}
+    .eb{display:inline-block;border:2px solid #6CC59E;background:#fff;color:var(--leafdeep);font-weight:700;border-radius:999px;padding:3px 10px;font-size:16px;letter-spacing:-.01em;margin-bottom:10px}
+    h1{font-size:30px;line-height:1.08;font-weight:800}
+    h1 em{font-style:normal;color:var(--leafdeep);display:block}
+    .sub{margin-top:10px;font-size:19px}
+    .dk{display:none}
+    .box{margin-top:16px;background:#fff;border:3px solid var(--leaf);border-radius:22px;padding:16px 18px 18px}
+    .box label{font-weight:700;font-size:18px;display:block}
+    .box input{display:block;width:100%;margin-top:8px;border:2px solid var(--ink);border-radius:999px;padding:0 20px;height:54px;color:var(--ink);font:inherit;font-size:18px;background:#fff}
+    .box input::placeholder{color:#556677;opacity:1}
+    .box input:focus{outline:3px solid #6CC59E;outline-offset:2px}
+    .btn{display:block;width:100%;margin-top:12px;border:0;cursor:pointer;background:var(--leafdeep);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-align:center;border-radius:999px;min-height:56px;padding:12px;font-size:21px}
+    .btn:hover{background:#12623F}.btn:disabled{opacity:.7;cursor:progress}
+    .works{margin-top:10px;font-size:16px;color:var(--muted)}
+    .msg{margin-top:12px;font-size:17px;line-height:1.45;font-weight:700}
+    .ex{display:flex;justify-content:center;align-items:center;min-height:44px;margin-top:6px;text-align:center;font-weight:700;color:var(--leafdeep);text-decoration:underline;text-underline-offset:4px;font-size:18px}
+    .trust{display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700;font-size:18px;margin-top:14px}
+    .trust span{display:inline-flex;gap:6px;align-items:center}
+    /* Hero picture: a recipe video becomes the real list */
+    .stage{position:relative;min-height:440px}
+    .vid{position:absolute;left:0;top:0;width:78%;border-radius:20px;overflow:hidden;box-shadow:0 14px 36px rgba(26,60,94,.25);transform:rotate(-2deg);background:#fff}
+    .vid img{width:100%;height:220px;object-fit:cover;display:block}
+    .vid .bar{background:var(--ink);color:#fff;font-weight:700;font-size:16px;padding:9px 14px;display:flex;justify-content:space-between}
+    .play{position:absolute;left:50%;top:110px;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center}
+    .play:after{content:'';border-left:21px solid var(--ink);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+    .real{position:absolute;right:0;top:150px;width:64%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 44px rgba(26,60,94,.28);transform:rotate(2deg);border:2px solid var(--rule)}
+    .real img{width:100%;display:block;height:280px;object-fit:cover;object-position:top}
+    .real .rh{background:var(--leafdeep);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;padding:10px 16px}
+    /* Sections */
+    section{padding:38px 0;border-top:2px dashed var(--rule)}
+    h2{font-size:30px;line-height:1.15;font-weight:800;margin-bottom:16px}
+    .lead{margin:-6px 0 16px;font-size:18px}
+    .steps{display:grid;gap:16px;counter-reset:s;list-style:none;margin:0;padding:0}
+    .step{background:#fff;border-radius:20px;padding:18px;box-shadow:0 6px 20px rgba(26,60,94,.08)}
+    .step h3{font-size:22px;display:flex;align-items:center;gap:10px}
+    .step h3:before{counter-increment:s;content:counter(s);font-size:18px;background:var(--ink);color:#fff;border-radius:999px;width:34px;height:34px;flex:0 0 34px;display:inline-flex;align-items:center;justify-content:center}
+    .step p{margin:8px 0 12px;font-size:18px}
+    .fr{height:300px;border-radius:14px;border:1px solid var(--rule);overflow:hidden;background:#F7FBF9;display:flex;align-items:center;position:relative}
+    .fr.top{align-items:flex-start}
+    .fr img{width:100%;display:block}
+    .shopfr{align-items:flex-end}
+    .shopfr .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .shopfr .ov{position:relative;margin:14px;background:#fff;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.25);overflow:hidden;width:100%}
+    .ideas{display:grid;gap:14px}
+    .idea{position:relative;display:block;border-radius:18px;overflow:hidden;height:200px;box-shadow:0 8px 24px rgba(26,60,94,.15);text-decoration:none;color:var(--ink)}
+    .idea img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+    .idea:hover img{transform:scale(1.03)}
+    .idea:focus-visible{outline:3px solid var(--leafdeep);outline-offset:3px}
+    .idea .tg{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;font-weight:700;font-size:17px;line-height:1.3;padding:8px 12px;border-radius:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .idea .tg span{color:var(--leafdeep);white-space:nowrap}
+    .live{display:inline-flex;align-items:center;gap:10px;background:#fff;border:3px solid var(--leaf);border-radius:999px;padding:10px 18px;font-weight:700;font-size:19px}
+    .live b{background:var(--leafdeep);color:#fff;border-radius:999px;padding:2px 12px;font-size:16px}
+    .soon{margin-top:12px;font-size:18px}
+    .faq{display:grid;gap:12px}
+    .faq div{background:#fff;border-radius:16px;padding:16px 18px}
+    .faq h3{font-family:'Atkinson Hyperlegible',sans-serif;letter-spacing:0;font-size:19px;font-weight:700}
+    .faq p{font-size:18px;margin-top:4px}
+    .cr{background:var(--slate);color:#fff;border-radius:24px;padding:24px;display:grid;gap:16px;align-items:center}
+    .cr h2{color:#fff;margin:0 0 6px}
+    .cr p{font-weight:700;font-size:19px}
+    .cr a{display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:#fff;color:var(--ink);font-weight:800;font-family:'Bricolage Grotesque',sans-serif;border-radius:999px;padding:10px 24px;font-size:18px;text-decoration:none;justify-self:start}
+    .end{text-align:center}
+    .end .box{max-width:560px;margin:16px auto 0;text-align:left}
+    footer{background:var(--ink);color:#fff;font-size:16px;line-height:1.9;padding:22px 0;margin-top:36px}
+    footer a{color:#fff;font-weight:700}
+    @media(min-width:900px){
+      .menu{display:none}.links{display:flex}
+      h1{font-size:50px}.dk{display:inline}.mb{display:none}
+      .hero{grid-template-columns:1fr 1fr;align-items:center;padding:42px 0 50px;gap:48px}
+      .stage{min-height:500px}.vid img{height:250px}.play{top:125px}.real{top:160px;width:62%}.real img{height:320px}
+      .steps{grid-template-columns:repeat(3,1fr)}.ideas{grid-template-columns:repeat(3,1fr)}.faq{grid-template-columns:1fr 1fr}
+      .cr{grid-template-columns:1fr auto;padding:30px 36px}
+    }
+    @media(prefers-reduced-motion:reduce){.idea img{transition:none}}
+  </style>
+</head>
+<body>
+<a class="skip" href="#paste">Skip to the paste box</a>
+<header class="nav">
+ <div class="wrap">
+  <a class="logo" href="/"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A9E6E" d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"/></svg>TrueFinds</a>
+  <nav class="links" aria-label="Main"><a href="/make-my-list" aria-current="page">Make my list</a><a href="/#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/guides">Guides</a><a href="/attribution">For business</a></nav>
+  <details class="menu">
+   <summary aria-label="Open menu">Menu</summary>
+   <nav aria-label="Menu"><a href="/make-my-list" aria-current="page">Make my list</a><a href="/#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/guides">Guides</a><a href="/attribution">For business</a><a href="/signin">Sign in</a></nav>
+  </details>
+ </div>
+</header>
+<div class="disc">TrueFinds may earn a commission when you buy, at no cost to you. Sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></div>
+
+<main class="wrap">
+ <div class="hero">
+  <div>
+   <span class="eb">See it. Love it. Get it. Enjoy the moment.</span>
+   <h1>Saw a product you love in a video?<em>Paste the link. We'll find it for you.</em></h1>
+   <p class="sub"><span class="dk">Every item in the video becomes one shopping list, with fair prices from stores you can trust.</span><span class="mb">Every item in the video, one shopping list.</span></p>
+   <form class="box" id="paste" data-form="hero" novalidate>
+    <label for="vid">Paste a YouTube video link</label>
+    <input id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link">
+    <button class="btn" type="submit">Make my list</button>
+    <p class="msg" role="status" aria-live="polite" hidden></p>
+    <p class="works">Works with YouTube today. Photos, TikTok, Instagram, recipe links and PDFs coming soon.</p>
+    <a class="ex" href="/c/example-stuffing?preview=pk_Ng1xsqQawx3n4G45zgEchB9J" data-example="hero">No video handy? Try an example list</a>
+   </form>
+   <div class="trust"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to ask</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to save</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to buy</span></div>
+  </div>
+  <div class="stage" role="img" aria-label="A recipe video turns into a TrueFinds shopping list">
+   <div class="vid"><img src="/make-my-list/img/video-roasted-veg.webp" alt="" width="960" height="540"><div class="play"></div><div class="bar"><span>Your recipe video</span><span>12:40</span></div></div>
+   <div class="real"><div class="rh">Your shopping list</div><img src="/make-my-list/img/screen-list.webp" alt="" width="720" height="1100"></div>
+  </div>
+ </div>
+
+ <section aria-labelledby="how">
+  <h2 id="how">How it works</h2>
+  <ol class="steps">
+   <li class="step"><h3>Paste the link</h3><p>Copy the link of any cooking, home or holiday video and paste it in the box.</p><div class="fr shopfr"><img class="bg" src="/make-my-list/img/photo-herb-potatoes.webp" alt="" loading="lazy" width="900" height="506"><div class="ov"><img src="/make-my-list/img/screen-paste.webp" alt="The TrueFinds paste box with a YouTube link in it" loading="lazy" width="720" height="371"></div></div></li>
+   <li class="step"><h3>Get your list</h3><p>Every item from the video, in one list. Tap off what you already have.</p><div class="fr top"><img src="/make-my-list/img/screen-list.webp" alt="A TrueFinds shopping list with every item checked" loading="lazy" width="720" height="1100"></div></li>
+   <li class="step"><h3>Shop the rest</h3><p>Tap Shop this list. We pick stores with fair prices and clear shipping and returns.</p><div class="fr shopfr"><img class="bg" src="/make-my-list/img/photo-mushrooms.webp" alt="" loading="lazy" width="760" height="428"><div class="ov"><img src="/make-my-list/img/screen-shop.webp" alt="The Save this list and Shop this list buttons" loading="lazy" width="720" height="270"></div></div></li>
+  </ol>
+ </section>
+
+ <section aria-labelledby="ideas">
+  <h2 id="ideas">Paste a video like these</h2>
+  <p class="lead">Thanksgiving sides, holiday hosting, weeknight dinners. If it's on YouTube, we can turn it into a list. Each of these lists was made from a real recipe video.</p>
+  <div class="ideas">
+   <a class="idea" href="/c/example-stuffing?preview=pk_Ng1xsqQawx3n4G45zgEchB9J" data-example="idea" data-position="1"><img src="/make-my-list/img/photo-bread.webp" alt="" loading="lazy" width="760" height="428"><div class="play"></div><div class="tg">Thanksgiving stuffing <span>See the list</span></div></a>
+   <a class="idea" href="/c/example-sheet-pan?preview=pk_6n2ogdANJBL69yXbnFK-ybDK" data-example="idea" data-position="2"><img src="/make-my-list/img/photo-herb-potatoes.webp" alt="" loading="lazy" width="900" height="506"><div class="play"></div><div class="tg">Sheet pan chicken and veggies <span>See the list</span></div></a>
+   <a class="idea" href="/c/example-fall-dinner?preview=pk_pWJXmJCn3JoUQra8PA3cP2qe" data-example="idea" data-position="3"><img src="/make-my-list/img/photo-fall-table.webp" alt="" loading="lazy" width="900" height="506"><div class="play"></div><div class="tg">Fall dinner and apple crisp <span>See the list</span></div></a>
+  </div>
+ </section>
+
+ <section aria-labelledby="what">
+  <h2 id="what">What you can paste</h2>
+  <span class="live">YouTube videos <b>Live now</b></span>
+  <p class="soon">Coming soon: photos, TikTok, Instagram, recipe links and PDFs.</p>
+ </section>
+
+ <section aria-labelledby="faq">
+  <h2 id="faq">Questions</h2>
+  <div class="faq">
+   <div><h3>Is it free?</h3><p>Yes. Making a list is free, and so is saving it. You only pay the store for what you buy.</p></div>
+   <div><h3>Do I need an account?</h3><p>No. Paste a link and your list is ready. Add your email only if you want the list saved.</p></div>
+   <div><h3>Which stores?</h3><p>Stores we trust, including Amazon, with fair prices and clear shipping and return policies.</p></div>
+   <div><h3>Do creators get credit?</h3><p>Yes. The creator's name stays on the list and their own picks keep their links. Creators who partner with TrueFinds also earn when you buy.</p></div>
+  </div>
+ </section>
+
+ <section aria-label="For creators">
+  <div class="cr"><div><h2>Make videos?</h2><p>Turn your recipes into shopping lists your viewers can buy from, with your name on every list.</p></div><a href="mailto:hello@truefinds.ai?subject=My%20creator%20page">Get your creator page</a></div>
+ </section>
+
+ <section class="end" aria-labelledby="again">
+  <h2 id="again">Try it with your favorite recipe video</h2>
+  <form class="box" data-form="closing" novalidate>
+   <label for="vid2">Paste a YouTube video link</label>
+   <input id="vid2" name="url" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link">
+   <button class="btn" type="submit">Make my list</button>
+   <p class="msg" role="status" aria-live="polite" hidden></p>
+  </form>
+ </section>
+</main>
+
+<footer><div class="wrap">&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/privacy-choices">Your privacy choices</a></div></footer>
+
+<script>
+/* The paste box: the same flow as the homepage video box (index.html, Thanksgiving item 1, 29 Oct 2026), with every
+   event tagged surface "make-my-list" (BB-45). A YouTube link becomes the shopper's own private list. */
+(function () {
+  var SURFACE = 'make-my-list';
+  function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+  function track(event, props) {
+    try {
+      var p = props || {}; p.surface = SURFACE;
+      var body = JSON.stringify({ event: event, distinct_id: vid(), props: p });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+    } catch (e) {}
+  }
+  var menu = document.querySelector('details.menu');
+  if (menu) document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-example]'), function (a) {
+    a.addEventListener('click', function () { track('example_list_click', { target: a.getAttribute('data-example'), position: Number(a.getAttribute('data-position') || 0), kind: a.getAttribute('href').split('/').pop().split('?')[0] }); });
+  });
+
+  var STEPS = ['Reading the video (about 1 minute)', 'Finding the items at stores (about 1 minute)', 'Your list is ready'];
+  var busy = false;
+  function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()); }
+  function jobId() { var a = new Uint8Array(12); (window.crypto || window.msCrypto).getRandomValues(a); return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+  function wire(form) {
+    var input = form.querySelector('input'), go = form.querySelector('button'), msg = form.querySelector('.msg'), where = form.getAttribute('data-form');
+    var emailed = false;
+    function say(text, link) {
+      clear(msg); msg.hidden = !text; if (!text) return;
+      msg.appendChild(document.createTextNode(text));
+      if (link) { msg.appendChild(document.createTextNode(' ')); var a = document.createElement('a'); a.href = link.href; a.textContent = link.text; msg.appendChild(a); }
+    }
+    function setBusy(b) { busy = b; go.disabled = b; go.textContent = b ? 'Reading...' : 'Make my list'; }
+    function fail(text) { setBusy(false); say(text || "We couldn't read that one just now. Please try again in a minute."); }
+    function showProgress(step, offerEmail, job, url) {
+      clear(msg); msg.hidden = false;
+      var bar = document.createElement('div'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuemin', '0'); bar.setAttribute('aria-valuemax', '3'); bar.setAttribute('aria-valuenow', String(step));
+      bar.style.cssText = 'height:10px;border-radius:9999px;background:#DDE7E1;overflow:hidden;margin:4px 0 10px';
+      var fill = document.createElement('div'); fill.style.cssText = 'height:100%;background:#1A9E6E;border-radius:9999px;transition:width .6s ease;width:' + [0, 33, 66, 100][step] + '%';
+      bar.appendChild(fill); msg.appendChild(bar);
+      var ol = document.createElement('ol'); ol.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px';
+      STEPS.forEach(function (t, i) {
+        var li = document.createElement('li'), n = i + 1;
+        li.textContent = (n < step || step === 3 ? '✓ ' : n === step ? '• ' : '') + t;
+        li.style.color = n <= step ? '#1A3C5E' : '#556677';
+        if (n === step && step < 3) li.setAttribute('aria-current', 'step');
+        ol.appendChild(li);
+      });
+      msg.appendChild(ol);
+      if (offerEmail && step < 3) {
+        var f = document.createElement('form'); f.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center';
+        var id = 'notify-' + where;
+        var lab = document.createElement('label'); lab.textContent = "Email me when it's ready"; lab.htmlFor = id; lab.style.cssText = 'width:100%;font-size:16px';
+        var box = document.createElement('input'); box.id = id; box.type = 'email'; box.autocomplete = 'email'; box.placeholder = 'you@example.com'; box.style.cssText = 'flex:1;min-width:0;height:48px;margin:0;border:2px solid #1A3C5E;border-radius:9999px;padding:0 16px;font:inherit;font-size:16px;color:#1A3C5E';
+        var b = document.createElement('button'); b.type = 'submit'; b.textContent = 'Email me'; b.style.cssText = 'height:48px;border:0;border-radius:9999px;background:#16794F;color:#FFFFFF;font:inherit;font-size:16px;font-weight:700;padding:0 20px;cursor:pointer';
+        f.appendChild(lab); f.appendChild(box); f.appendChild(b);
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); var email = (box.value || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { box.focus(); return; }
+          b.disabled = true;
+          fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job, notify: email }) })
+            .then(function (r) { return r.json(); })
+            .then(function () { emailed = true; f.textContent = "Thanks. We'll email you the moment it's ready. You can keep this page open too."; track('home_video_email_ready', {}); })
+            .catch(function () { b.disabled = false; });
+        });
+        msg.appendChild(f);
+      }
+    }
+    function start(url) {
+      if (busy) return;
+      url = (url || '').trim();
+      if (!url) { say('Paste a YouTube video link to get started.'); input.focus(); return; }
+      if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
+      setBusy(true); emailed = false;
+      var job = jobId(), began = Date.now(), finished = false, step = 1, offered = false, drawn = '1:false';
+      showProgress(1, false, job, url);
+      track('home_video_submitted', { via: where });
+      function open(d) { if (finished) return; finished = true; showProgress(3, false, job, url); track('home_video_list_ready', { via: where, state: d.cached ? 'cached' : 'read' }); location.href = d.list_url; }
+      function stop(d) {
+        if (finished) return; finished = true;
+        if (d.error === 'limit') { setBusy(false); say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); track('home_video_limit', { via: where }); return; }
+        if (d.error === 'not_a_list') { setBusy(false); say(d.message || "We didn't find things to buy in that one. Try a recipe, a room or a holiday table."); return; }
+        fail(d.message);
+      }
+      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.ok && d.status === 'done' && d.list_url) return open(d);
+          if (d && !d.ok && d.error !== 'failed') return stop(d);
+        })
+        .catch(function () {});
+      function check() {
+        if (finished) return;
+        fetch('/api/list/import?job=' + encodeURIComponent(job) + '&url=' + encodeURIComponent(url) + '&visitor=' + encodeURIComponent(vid()), { headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (finished || !d) return;
+            if (d.ok && d.status === 'done' && d.list_url) return open(d);
+            if (!d.ok) return stop(d);
+            var waited = Date.now() - began;
+            if (d.step && d.step !== step) step = d.step;
+            if (!offered && waited > 120000) offered = true;
+            var key = step + ':' + offered;
+            if (!emailed && key !== drawn) { drawn = key; showProgress(step, offered, job, url); }
+            if (waited > 600000) { finished = true; setBusy(false); if (!emailed) { if (drawn !== step + ':true') showProgress(step, true, job, url); var p = document.createElement('p'); p.textContent = 'This is taking longer than usual. Leave your email and we will send your list when it is ready.'; p.style.cssText = 'margin:10px 0 0'; msg.appendChild(p); } return; }
+            setTimeout(check, 3000);
+          })
+          .catch(function () { setTimeout(check, 3000); });
+      }
+      setTimeout(check, 3000);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-form]'), wire);
+})();
+</script>
+<script>
+/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
+(function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
+  try {
+    var v = localStorage.getItem('tf_visitor_id');
+    if (!v) {
+      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('tf_visitor_id', v);
+    }
+  } catch (e) { v = 'anonymous'; }
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
+  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
+  try {
+    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
+    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script>
+/* Vercel Web Analytics, loaded only when measurement is on (GPC and Your privacy choices, 1 Nov 2026). */
+(function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
+  var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

@@ -11,7 +11,8 @@
     { "source": "/deals", "destination": "/real-deals", "permanent": true },
     { "source": "/deals/", "destination": "/real-deals", "permanent": true },
     { "source": "/deals/:category", "destination": "/real-deals/:category", "permanent": true },
-    { "source": "/attribute", "destination": "/attribution", "permanent": true }
+    { "source": "/attribute", "destination": "/attribution", "permanent": true },
+    { "source": "/video-to-list", "destination": "/make-my-list", "statusCode": 301 }
   ],
   "rewrites": [
     { "source": "/api/ads/slot", "destination": "https://true-finds-app.vercel.app/api/ads/slot" },
