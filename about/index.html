@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About TrueFinds | Honest shopping help from Sinclair</title>
-<meta name="description" content="TrueFinds helps you buy with confidence. Sinclair, your free shopping agent, checks pricing, points you to stores you can trust, and lets you know when it matters.">
+<title>About TrueFinds | Recipe videos to one shopping list</title>
+<meta name="description" content="TrueFinds turns the recipe videos you love into one shopping list, credited to the creator who made it. Fair prices, stores you can trust, and Sinclair, your free shopping agent.">
 <link rel="canonical" href="https://truefinds.ai/about">
 <style>  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -93,59 +93,236 @@
     .topbar .tf-menu > summary { width:42px; }
   }
   /* tf-menu:end */
+
+  /* about-v2:start (11 Nov 2026) */
+  .hero.v2 { text-align:left; padding:56px 24px 64px; }
+  .hero.v2 .wrap { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:1fr; gap:36px; align-items:center; }
+  @media (min-width:900px) { .hero.v2 .wrap { grid-template-columns:1.1fr .9fr; } }
+  .hero.v2 h1 { font-size:clamp(32px,5vw,50px); margin-bottom:14px; }
+  .hero.v2 p { margin:0; max-width:560px; font-size:19px; color:#fff; font-weight:600; }
+  .hero.v2 .eyebrow { display:inline-block; font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:#BFE8D6; margin-bottom:12px; }
+  .hero-btns { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+  .hero-btns a { text-decoration:none; font-weight:800; font-size:17px; padding:15px 28px; border-radius:999px; min-height:48px; display:inline-flex; align-items:center; }
+  .hero-btns .primary { background:#1A9E6E; color:#fff; }
+  .hero-btns .ghost { color:#fff; box-shadow:0 0 0 2px rgba(255,255,255,.85) inset; }
+  .hero-trust { margin-top:18px; font-size:15px; font-weight:700; color:#BFE8D6; }
+  .phone-frame { background:#2E4A63; border-radius:36px; padding:12px; box-shadow:0 24px 48px rgba(0,0,0,.25); max-width:300px; margin:0 auto; }
+  .phone-frame .screen { border-radius:26px; overflow:hidden; background:#fff; height:520px; }
+  .phone-frame img { width:100%; display:block; }
+  .wide { max-width:1080px; margin:0 auto; padding:0 22px; }
+  .band { padding:64px 0; }
+  .band.tint { background:#F3F8F6; }
+  .band h2 { color:var(--navy); font-size:clamp(26px,3.6vw,34px); text-align:center; margin-bottom:10px; }
+  .band .sub { text-align:center; color:#33475A; font-size:18px; max-width:640px; margin:0 auto 34px; line-height:1.6; }
+  .pgrid { display:grid; grid-template-columns:1fr; gap:22px; }
+  @media (min-width:860px) { .pgrid { grid-template-columns:1fr 1fr; } }
+  .pcol h3 { display:flex; align-items:center; gap:10px; color:var(--navy); font-size:20px; margin-bottom:12px; }
+  .pcol h3 .dot { width:12px; height:12px; border-radius:50%; }
+  .pcard { display:flex; gap:14px; background:#fff; border:1px solid #DDE7EE; border-radius:16px; padding:16px 18px; margin-bottom:12px; }
+  .pcard .ic { flex:none; width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:#EAF7F1; color:#14734F; }
+  .pcard .ic svg { width:24px; height:24px; }
+  .pcard b { display:block; color:var(--navy); font-size:17px; margin-bottom:4px; }
+  .pcard span { color:#33475A; font-size:16px; line-height:1.5; }
+  .stats { display:grid; grid-template-columns:1fr; gap:16px; margin-top:30px; }
+  @media (min-width:760px) { .stats { grid-template-columns:repeat(3,1fr); } }
+  .stat { background:#2E4A63; color:#fff; border-radius:16px; padding:20px; }
+  .stat b { display:block; font-size:34px; font-weight:800; color:#fff; }
+  .stat span { display:block; font-size:16px; font-weight:700; color:#fff; line-height:1.45; margin-top:4px; }
+  .stat small { display:block; margin-top:8px; font-size:13px; font-weight:600; color:#D7E6F0; }
+  .steps { display:grid; grid-template-columns:1fr; gap:28px; }
+  @media (min-width:860px) { .steps { grid-template-columns:repeat(3,1fr); } }
+  .step { text-align:center; }
+  .step .num { display:inline-grid; place-items:center; width:40px; height:40px; border-radius:50%; background:#1A9E6E; color:#fff; font-weight:800; font-size:18px; margin-bottom:10px; }
+  .step h3 { color:var(--navy); font-size:20px; margin-bottom:6px; }
+  .step p { color:#33475A; font-size:16.5px; line-height:1.55; margin-bottom:16px; }
+  .step .phone-frame .screen { height:440px; }
+  .fgrid { display:grid; grid-template-columns:1fr; gap:14px; }
+  @media (min-width:700px) { .fgrid { grid-template-columns:1fr 1fr; } }
+  @media (min-width:1000px) { .fgrid { grid-template-columns:repeat(3,1fr); } }
+  .fcard { border:1px solid #DDE7EE; border-radius:16px; padding:18px; background:#fff; }
+  .fcard b { display:block; color:var(--navy); font-size:17.5px; margin-bottom:6px; }
+  .fcard span { color:#33475A; font-size:16px; line-height:1.5; }
+  .panels { display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:860px) { .panels { grid-template-columns:1fr 1fr; } }
+  .panel { border-radius:20px; padding:28px; }
+  .panel.navy { background:#1A3C5E; color:#fff; }
+  .panel.green { background:#14734F; color:#fff; }
+  .panel h3 { font-size:24px; margin-bottom:8px; color:#fff; }
+  .panel p { font-size:17px; font-weight:700; line-height:1.55; color:#fff; margin-bottom:18px; }
+  .panel a { display:inline-flex; align-items:center; min-height:48px; padding:0 24px; border-radius:999px; background:#fff; color:#1A3C5E; font-weight:800; text-decoration:none; font-size:16.5px; }
+  .avatar { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; color:#fff; font-weight:800; font-size:18px; margin-bottom:10px; }
+
+  /* about-v3 device frames */
+  .device { position:relative; width:280px; margin:0 auto; background:#3A4048; border-radius:46px; padding:11px; box-shadow:0 0 0 2px #59616B inset, 0 28px 56px rgba(16,32,48,.28); }
+  .device .scr { position:relative; border-radius:36px; overflow:hidden; background:#fff; }
+  .device .sbar { height:34px; display:flex; align-items:center; justify-content:space-between; padding:0 22px 0 26px; font:600 13px/1 -apple-system,system-ui,sans-serif; color:#1A3C5E; background:#1A3C5E; color:#fff; }
+  .device .sbar.light { background:#fff; color:#1A3C5E; }
+  .device .island { position:absolute; top:9px; left:50%; transform:translateX(-50%); width:84px; height:24px; background:#3A4048; border-radius:14px; z-index:2; }
+  .device .sbar i { display:inline-flex; gap:5px; align-items:center; font-style:normal; }
+  .device .sbar i b { display:inline-block; width:22px; height:11px; border:1.5px solid currentColor; border-radius:3px; position:relative; }
+  .device .sbar i b::after { content:""; position:absolute; inset:1.5px; right:4px; background:currentColor; border-radius:1px; }
+  .device img { display:block; width:100%; height:auto; aspect-ratio:780/1328; }
+  .device.sm { width:232px; border-radius:40px; padding:9px; }
+  .device.sm .scr { border-radius:32px; }
+  .device.sm .sbar { height:30px; font-size:12px; padding:0 18px 0 22px; }
+  .device.sm .island { width:70px; height:20px; top:8px; }
+  .browser { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 0 0 1px #D5DEE6, 0 28px 56px rgba(16,32,48,.22); }
+  .browser .bar { display:flex; align-items:center; gap:7px; padding:10px 14px; background:#EEF2F5; border-bottom:1px solid #DDE5EC; }
+  .browser .bar span { width:11px; height:11px; border-radius:50%; background:#E0645C; }
+  .browser .bar span:nth-child(2) { background:#E6B44A; } .browser .bar span:nth-child(3) { background:#5DBB63; }
+  .browser .bar em { flex:1; margin-left:10px; background:#fff; border-radius:7px; padding:5px 12px; font:600 13px/1.2 system-ui,sans-serif; font-style:normal; color:#33475A; max-width:420px; }
+  .browser img { display:block; width:100%; height:auto; aspect-ratio:1440/900; }
+  .hero-visual { position:relative; }
+  .hero-visual { padding:0 0 60px; }
+  .hero-visual .device { position:absolute; right:-6px; bottom:0; width:150px; border-radius:28px; padding:6px; }
+  .hero-visual .device .scr { border-radius:23px; }
+  .hero-visual .device .sbar { height:20px; font-size:9px; padding:0 12px 0 15px; }
+  .hero-visual .device .island { width:44px; height:13px; top:5px; }
+  .hero-visual .device .sbar i b { width:15px; height:8px; }
+  .step p { min-height:3.1em; }
+  @media (min-width:900px) {
+    .hero.v2 .wrap { grid-template-columns:.95fr 1.05fr; }
+    .hero-visual { padding:10px 0 40px 0; }
+    .hero-visual .device { right:-18px; bottom:-30px; width:232px; border-radius:40px; padding:9px; }
+    .hero-visual .device .scr { border-radius:32px; }
+    .hero-visual .device .sbar { height:30px; font-size:12px; padding:0 18px 0 22px; }
+    .hero-visual .device .island { width:70px; height:20px; top:8px; }
+    .hero-visual .device .sbar i b { width:22px; height:11px; }
+  }
+  .steps.four { gap:30px; }
+  @media (min-width:700px) { .steps.four { grid-template-columns:1fr 1fr; } }
+  @media (min-width:1040px) { .steps.four { grid-template-columns:repeat(4,1fr); } }
+  .screens { display:grid; grid-template-columns:1fr; gap:34px; align-items:center; }
+  @media (min-width:900px) { .screens { grid-template-columns:1.25fr .75fr; } }
+  .screens.one { grid-template-columns:1fr !important; max-width:760px; margin:0 auto; }
+  .screens .copy h3 { color:var(--navy); font-size:24px; margin-bottom:10px; }
+  .screens .copy p { color:#33475A; font-size:17px; line-height:1.6; margin-bottom:14px; }
+  .screens .copy ul { margin:0; padding-left:20px; color:#33475A; font-size:17px; line-height:1.7; }
+  /* about-v2:end */
 </style>
 </head>
 <body>
 <div class="topbar">
   <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
   <div class="links">
+    <a class="tl" href="/#ask">Ask Sinclair</a>
     <a class="tl" href="/real-deals">Real Deals</a>
-    <a class="tl" href="/how-it-works">How It Works</a>
     <a class="tl" href="/guides">Guides</a>
-    <a class="tcta" href="/pricing"><span class="tcta-full">Become a Founding Member</span><span class="tcta-short">Be a Founding Member</span></a>
-    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/about" aria-current="page">About</a><a class="tf-menu-cta" href="/pricing">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+    <a class="tcta" href="/make-my-list"><span class="tcta-full">Make my list</span><span class="tcta-short">Make my list</span></a>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/make-my-list">Video to list</a><a href="/#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/guides">Guides</a><a href="/creators">For creators</a><a href="/attribution">For business</a><a href="/about" aria-current="page">About</a><a class="tf-menu-cta" href="/make-my-list">Make my list</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
   </div>
 </div>
 
-<div class="hero">
-  <h1>About TrueFinds</h1>
-  <p>TrueFinds helps you buy with confidence. Sinclair, your free shopping agent, checks pricing, points you to stores you can trust, and lets you know when it matters.</p>
+<div class="hero v2">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">About TrueFinds</span>
+      <h1><span style="white-space:nowrap">See it. Love it.</span> <span style="white-space:nowrap">Get it.</span></h1>
+      <p>TrueFinds turns the recipe videos you love into one shopping list. Fair prices, stores you can trust, and every list credited to the creator who made it.</p>
+      <div class="hero-btns"><a class="primary" href="/make-my-list">Make my list</a><a class="ghost" href="/creators">For creators</a></div>
+      <div class="hero-trust">Free to ask. Free to save. Free to buy.</div>
+    </div>
+    <div class="hero-visual"><div class="browser"><div class="bar"><span></span><span></span><span></span><em>truefinds.ai</em></div><img src="/about/img/desktop-home.jpg" alt="The TrueFinds home page on a computer: paste a video link and get one shopping list" width="1440" height="900"></div><div class="device sm"><div class="scr"><span class="island"></span><div class="sbar"><span>9:41</span><i>5G <b></b></i></div><img src="/about/img/phone-list.jpg" alt="A TrueFinds shopping list made from a sheet pan chicken recipe video" width="780" height="1328"></div></div></div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wide">
+    <h2>The problems we solve</h2>
+    <p class="sub">Recipe videos are wonderful to watch and hard to shop from.</p>
+    <div class="pgrid">
+      <div class="pcol">
+        <h3><span class="dot" style="background:#E53935"></span>On YouTube</h3>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div><div><b>&ldquo;Comment RECIPE&rdquo; goes nowhere.</b><span>YouTube gives creators no way to message you the link.</span></div></div>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 9.5v5l4-2.5z"/></svg></div><div><b>Links in Shorts can&rsquo;t be tapped.</b><span>They haven&rsquo;t worked in Shorts descriptions or comments since 2023.</span></div></div>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="13" rx="2"/><path d="M8 21h8"/></svg></div><div><b>You can&rsquo;t tap a link on your TV.</b><span>More of YouTube is watched on TV than anywhere else in the US.</span></div></div>
+      </div>
+      <div class="pcol">
+        <h3><span class="dot" style="background:#C13584"></span>On Instagram</h3>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><div><b>&ldquo;Comment LINK&rdquo; messages can fail to arrive.</b><span>Or they land unseen in your message requests.</span></div></div>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg></div><div><b>Links in captions don&rsquo;t work.</b><span>So &ldquo;link in bio&rdquo; turns into a hunt.</span></div></div>
+        <div class="pcard"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4z"/></svg></div><div><b>Saved posts can&rsquo;t be searched.</b><span>And Stories vanish in 24 hours.</span></div></div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>44%+</b><span>of US YouTube watch time now happens on TV screens.</span><small>eMarketer data via TechCrunch, Apr 2026</small></div>
+      <div class="stat"><b>56.7%</b><span>of home cooks screenshot ingredients or steps to shop later.</span><small>Allspice Labs survey, 2026</small></div>
+      <div class="stat"><b>2023</b><span>The year links in YouTube Shorts stopped being tappable.</span><small>YouTube Help; Tubefilter, Aug 2023</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="band tint">
+  <div class="wide">
+    <h2>One link that works everywhere</h2>
+    <p class="sub">Paste the video, or tap the creator&rsquo;s TrueFinds link. Every item becomes one list on its own page that you can find again anytime.</p>
+    <div class="steps four">
+      <div class="step"><div class="num">1</div><h3>Paste the link</h3><p>Any YouTube recipe video.</p><div class="device "><div class="scr"><span class="island"></span><div class="sbar"><span>9:41</span><i>5G <b></b></i></div><img src="/about/img/phone-paste.jpg" alt="The TrueFinds paste box for a YouTube video link" loading="lazy" width="780" height="1328"></div></div></div>
+      <div class="step"><div class="num">2</div><h3>Get every item</h3><p>Tick off what you already have.</p><div class="device "><div class="scr"><span class="island"></span><div class="sbar"><span>9:41</span><i>5G <b></b></i></div><img src="/about/img/phone-list.jpg" alt="Every ingredient and tool from the video in one list" loading="lazy" width="780" height="1328"></div></div></div>
+      <div class="step"><div class="num">3</div><h3>See fair prices</h3><p>Real prices from stores you can trust.</p><div class="device "><div class="scr"><span class="island"></span><div class="sbar light"><span>9:41</span><i>5G <b></b></i></div><img src="/about/img/phone-prices.jpg" alt="Items matched to stores with prices for each one" loading="lazy" width="780" height="1328"></div></div></div>
+      <div class="step"><div class="num">4</div><h3>Buy it all in one tap</h3><p>Your total, then one button to check out.</p><div class="device "><div class="scr"><span class="island"></span><div class="sbar light"><span>9:41</span><i>5G <b></b></i></div><img src="/about/img/phone-buyall.jpg" alt="The list total with Start shopping and Buy all at Amazon buttons" loading="lazy" width="780" height="1328"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wide">
+    <h2>Watch on the big screen. Shop on any screen.</h2>
+    <p class="sub">TrueFinds works the same on your TV, phone, tablet and computer.</p>
+    <div class="fgrid">
+      <div class="fcard"><div class="pcard" style="border:0;padding:0;margin:0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="13" rx="2"/><path d="M8 21h8"/></svg></div><div><b>Watching on TV</b><span>Type the creator&rsquo;s page on your phone while the video plays.</span></div></div></div>
+      <div class="fcard"><div class="pcard" style="border:0;padding:0;margin:0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></div><div><b>On your computer</b><span>Paste a link and shop the full list on a bigger screen.</span></div></div></div>
+      <div class="fcard"><div class="pcard" style="border:0;padding:0;margin:0"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18h2"/></svg></div><div><b>On your phone</b><span>Every list has its own page, so you can open it again on any device.</span></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="band tint">
+  <div class="wide">
+    <h2>What you&rsquo;ll find here</h2>
+    <p class="sub">Home cooks and family shoppers who would rather spend their time cooking than making lists, plus the creators they love and the stores they buy from.</p>
+    <div class="fgrid">
+      <div class="fcard"><b>Video to list</b><span>Paste a YouTube recipe link and get every ingredient and tool in one shopping list.</span></div>
+      <div class="fcard"><b>Buy it all in one tap</b><span>Check out across stores in one go, or buy everything at Amazon.</span></div>
+      <div class="fcard"><b>Creator pages</b><span>Your favorite creators&rsquo; recipes, ready to shop, with their picks and every video easy to find again.</span></div>
+      <div class="fcard"><b>Sinclair, your shopping agent</b><span>Ask about any product and get a fair price, stores you can trust, and a heads-up when it matters.</span></div>
+      <div class="fcard"><b>Real Deals</b><span>Discounts measured against real price history, so you know a deal is real.</span></div>
+      <div class="fcard"><b>Guides, gifts and lists</b><span>Plain advice, gift ideas, and lists for life&rsquo;s big moments.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="band">
+  <div class="wide">
+    <div class="panels">
+      <div class="panel navy"><h3>For creators</h3><p>Turn every recipe video into a page your viewers can shop. Founding Creators earn on what their viewers buy.</p><a href="/creators">Get your free page</a></div>
+      <div class="panel green"><h3>For stores and brands</h3><p>Get found by AI shoppers and pay only when they buy.</p><a href="/attribution">See how it works</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="band tint">
+  <div class="wide">
+    <h2>The team behind your answers</h2>
+    <p class="sub">Sinclair leads a small team of shopping helpers, each with one job.</p>
+    <div class="team">
+      <div class="tcard"><div class="avatar" style="background:#1A3C5E">S</div><b>Sinclair</b><span>Leads your list: fair prices and stores you can trust.</span></div>
+      <div class="tcard"><div class="avatar" style="background:#14734F">M</div><b>Marco</b><span>Finds a store you can trust, and where else it&rsquo;s sold.</span></div>
+      <div class="tcard"><div class="avatar" style="background:#B5562C">G</div><b>Gifted</b><span>Helps with gifts for everyone on your list.</span></div>
+      <div class="tcard"><div class="avatar" style="background:#5B4B8A">S</div><b>Sage</b><span>Ask Sage what the label really means.</span><br><span class="soon">Coming Dec 1</span></div>
+    </div>
+  </div>
 </div>
 
 <main>
-  <section class="prose">
-    <h2>Why we built it</h2>
-    <p>Shopping got noisy. Red price tags, countdown timers and &ldquo;was&rdquo; prices are everywhere, and they rarely tell you what you really need to know: is this a good price for this product?</p>
-    <p>So we built a companion that checks. Sinclair looks at a product&rsquo;s own price history and gives you one plain answer: a real deal, a typical price, a discount that isn&rsquo;t what it claims, or not enough history yet to say. No chart to puzzle over.</p>
-
-    <h2>Who we&rsquo;re for</h2>
-    <p>US shoppers who know what they want, value their time, and would rather buy once and buy right, plus the families they shop for.</p>
-
-    <h2>What you&rsquo;ll find here</h2>
-    <ul>
-      <li><strong>Price checks.</strong> Paste a product link or name and Sinclair tells you whether today&rsquo;s price is really low.</li>
-      <li><strong>Real Deals.</strong> Discounts Sinclair has checked against real price history.</li>
-      <li><strong>Stores we&rsquo;ve checked.</strong> Independent stores with honest product pages and a clear button to buy.</li>
-      <li><strong>Guides.</strong> Plain, sourced advice on real deals, shipping cutoffs, returns, gifts and more, new every day.</li>
-      <li><strong>Gifts and lists.</strong> Ideas for the people (and pets) you love, and lists for life&rsquo;s big moments.</li>
-      <li><strong>A free Chrome extension</strong> that checks the page you&rsquo;re on with one click.</li>
-      <li><strong>Help that keeps up with you.</strong> Sinclair lets you know what matters to you, and keeps learning as your life changes. The rest comes in your weekly summary.</li>
-    </ul>
-
-    <h2>The team behind your answers</h2>
-    <div class="team">
-      <div class="tcard"><b>Sinclair</b><span>Leads: price truth and plain verdicts.</span></div>
-      <div class="tcard"><b>Marco</b><span>Finds a store you can trust, and where else it&rsquo;s sold.</span></div>
-      <div class="tcard"><b>Gifted</b><span>Helps with gifts for everyone on your list.</span></div>
-      <div class="tcard"><b>Sage</b><span>Ask Sage what the label really means.</span><br><span class="soon">Coming Dec 1</span></div>
-    </div>
-
+  <section class="prose" style="padding-top:8px">
     <h2>How we make money</h2>
-    <p>We keep this simple and in the open.</p>
+    <p>We keep this simple and in the open. Free to ask. Free to save. Free to buy.</p>
     <ul>
-      <li><strong>Commissions from stores.</strong> When you buy through our links, TrueFinds may earn a commission from the store, at no cost to you. Sinclair&rsquo;s verdicts are always free and independent.</li>
+      <li><strong>Commissions from stores.</strong> When you buy through our links, TrueFinds may earn a commission from the store, at no cost to you.</li>
+      <li><strong>Creators share in it.</strong> When you shop a creator&rsquo;s list, part of what we earn goes to that creator.</li>
       <li><strong>Members.</strong> Some shoppers choose our paid plans for extra help, like gift plans and reminders.</li>
-      <li><strong>Sponsors.</strong> Sponsored placements are always labeled. Sponsors do not influence recommendations. Verdicts are not for sale.</li>
+      <li><strong>Sponsors.</strong> Sponsored placements are always labeled. Sponsors do not influence recommendations.</li>
     </ul>
     <p>The details are on <a href="/how-we-earn">how TrueFinds earns money</a>.</p>
     <div class="promise">And one promise: <strong>we will never sell your personal information.</strong></div>
@@ -156,12 +333,12 @@
     <p>Questions or ideas? Write to us at <a href="mailto:hello@truefinds.ai">hello@truefinds.ai</a>.</p>
 
     <div class="btns">
-      <a class="primary" href="/#ask">Check a price</a>
-      <a class="secondary" href="/guides">Read our guides</a>
+      <a class="primary" href="/make-my-list">Make my list</a>
+      <a class="secondary" href="/#ask">Ask Sinclair</a>
     </div>
   </section>
 </main>
-<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/attribution">For business</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/privacy-choices">Your privacy choices</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/support">Support</a></footer>
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/creators">For creators</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/attribution">For business</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/privacy-choices">Your privacy choices</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/support">Support</a></footer>
 <script>
 /* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
 (function () {
