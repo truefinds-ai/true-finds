@@ -293,7 +293,6 @@
   <nav class="navlinks" aria-label="Main">
    <a href="#how" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Video to list</a>
    <a href="#ask" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Ask Sinclair</a>
-   <a href="/real-deals" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Real Deals</a>
    <a href="/gifts" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">Gifts</a>
    <a href="/attribution" style="color:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none">For business</a>
    <a href="/signin" style="color:#1A3C5E;background:#FFFFFF;font-weight:700;font-size:16px;text-decoration:none;border-radius:9999px;padding:10px 18px;min-height:44px;display:inline-flex;align-items:center">Sign in</a>
@@ -302,7 +301,7 @@
    <summary aria-label="Open menu" style="background:transparent;border:2px solid #FFFFFF;border-radius:9999px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:#FFFFFF;cursor:pointer;list-style:none">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
    </summary>
-   <nav aria-label="Menu"><a href="#how">Video to list</a><a href="#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/attribution">For business</a><a href="/signin">Sign in</a></nav>
+   <nav aria-label="Menu"><a href="#how">Video to list</a><a href="#ask">Ask Sinclair</a><a href="/gifts">Gifts</a><a href="/attribution">For business</a><a href="/signin">Sign in</a></nav>
   </details>
  </div>
 </header>
@@ -312,9 +311,9 @@
 <section class="herosect" style="background:#F3F8F5;padding:44px 0 88px">
  <div class="wrap hero-grid">
   <div>
-   <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:14px;font-weight:700;color:#14734F">See it. Love it. Get it. Enjoy the moment.</div>
-   <h1 class="h1" style="margin:22px 0 18px;font-size:60px;line-height:64px;font-weight:800;letter-spacing:-1.2px;color:#1A3C5E">Saw a product you love in a&nbsp;video?<br>Paste the link. We'll find it for&nbsp;you.</h1>
-   <p class="hero-sub" style="margin:0 0 28px;font-size:21px;line-height:31px;color:#334155;max-width:560px"><span class="sub-long">TrueFinds turns every item in a cooking, home or holiday video into one shopping list, with fair prices from stores you can trust.</span><span class="sub-short">Every item in a cooking, home or holiday video, one shopping list, fair&nbsp;prices.</span></p>
+   <div class="hero-eyebrow" style="display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;border:2px solid #5CBF94;border-radius:9999px;padding:6px 14px;font-size:15px;font-weight:700;color:#14734F">Cooking for Thanksgiving? Start here.</div>
+   <h1 class="h1" style="margin:22px 0 18px;font-size:58px;line-height:62px;font-weight:800;letter-spacing:-1.2px;color:#1A3C5E">Turn any recipe video into your shopping&nbsp;list.</h1>
+   <p class="hero-sub" style="margin:0 0 26px;font-size:21px;line-height:31px;color:#334155;max-width:560px">Paste a YouTube link. TrueFinds lists every ingredient and tool, finds fair prices at stores you can trust, and lets you shop the whole list in one&nbsp;place.</p>
    <form id="vid-form" novalidate style="background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:12px;max-width:600px">
     <label for="vid" style="display:block;font-size:17px;font-weight:800;color:#1A3C5E;margin:2px 6px 10px">Paste a YouTube video link</label>
     <div class="inputrow">
@@ -332,28 +331,39 @@
    </div>
   </div>
 
-  <div aria-hidden="true" style="position:relative;padding:8px 0 24px">
-   <div class="vidcard" style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;overflow:hidden;width:86%">
-    <div style="position:relative;height:250px;background:#C9724B url('/img/home/one-pan-example.jpg') center/cover no-repeat;display:flex;align-items:flex-end">
-     <div style="position:absolute;left:50%;top:50%;width:68px;height:68px;margin:-34px 0 0 -34px;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center">
-      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#1A3C5E"></path></svg>
-     </div>
-     <div style="position:absolute;left:14px;top:14px;background:#1A3C5E;color:#FFFFFF;border-radius:10px;padding:6px 12px;font-size:14px;font-weight:700">Example: one-pan lemon chicken, 12 min</div>
-    </div>
+  <div class="hero-photo" style="position:relative;padding:8px 0 40px">
+   <div style="border-radius:24px;overflow:hidden;box-shadow:0 18px 40px rgba(26,60,94,.22)">
+    <img src="/img/home/thanksgiving-table.webp" width="1200" height="675" fetchpriority="high" alt="A Thanksgiving table with a roast turkey and sides" style="display:block;width:100%;height:420px;object-fit:cover">
    </div>
-   <div class="listcard" style="position:absolute;left:44%;top:150px;width:58%;min-width:300px;background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:18px">
+   <div class="listcard" aria-hidden="true" style="position:absolute;right:-12px;bottom:0;width:300px;background:#FFFFFF;border:2px solid #1A9E6E;border-radius:20px;padding:18px;box-shadow:0 12px 30px rgba(26,60,94,.18)">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
      <span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">YOUR LIST</span>
-     <span style="font-size:13px;font-weight:600;color:#334155">9 items · 3 stores</span>
+     <span style="font-size:13px;font-weight:600;color:#334155">Thanksgiving stuffing</span>
     </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Chicken thighs, 2 lb</span><span style="font-size:13px;font-weight:600;color:#334155">Hudson Grocery</span></div>
-     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">Smoked paprika</span><span style="font-size:13px;font-weight:600;color:#334155">Savory Spice</span></div>
-     <div style="display:flex;gap:10px;align-items:center"><span style="width:22px;height:22px;flex:0 0 auto;border-radius:6px;border:2px solid #64748B"></span><span style="flex:1;font-size:16px;font-weight:700;color:#475569;text-decoration:line-through">Lemons, 3</span><span style="font-size:13px;font-weight:700;color:#1A3C5E;background:#F1F5F9;border-radius:9999px;padding:3px 10px">Already have it</span></div>
-     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span><span style="flex:1;font-size:16px;font-weight:700">12-inch skillet</span><span style="font-size:13px;font-weight:600;color:#334155">Martie</span></div>
+    <div style="display:flex;flex-direction:column;gap:9px;font-size:16px;font-weight:700;color:#1A3C5E">
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>Bread</div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>Celery</div>
+     <div style="display:flex;gap:10px;align-items:center"><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span>Onion</div>
+     <div style="display:flex;gap:10px;align-items:center"><span style="width:22px;height:22px;flex:0 0 auto;border-radius:6px;border:2px solid #64748B"></span><span style="flex:1;color:#475569;text-decoration:line-through">Butter</span><span style="font-size:13px;font-weight:700;background:#F1F5F9;border-radius:9999px;padding:3px 10px">Already have it</span></div>
     </div>
-    <div style="margin-top:14px;background:#14734F;color:#FFFFFF;border-radius:9999px;text-align:center;font-size:17px;font-weight:700;padding:10px 12px;line-height:22px">Shop this list<span style="display:block;font-size:14px;line-height:18px;opacity:.9">Items from 3 stores</span></div>
+    <div style="margin-top:14px;background:#14734F;color:#FFFFFF;border-radius:9999px;text-align:center;font-size:17px;font-weight:700;padding:11px 12px">Shop this list</div>
    </div>
+   <button type="button" id="watch-btn" style="position:absolute;left:16px;top:24px;display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;color:#1A3C5E;border:none;border-radius:9999px;padding:10px 18px 10px 10px;min-height:44px;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(0,0,0,.18)"><span style="width:34px;height:34px;border-radius:50%;background:#14734F;display:inline-flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="#FFFFFF"></path></svg></span>Watch it work (20 sec)</button>
+   <dialog id="watch-dlg" aria-label="How TrueFinds turns a recipe video into a shopping list" style="border:none;border-radius:24px;padding:12px;background:#1A3C5E;max-width:min(360px,92vw)">
+    <video id="watch-vid" src="https://ykrhtfocekcbyvtvopse.supabase.co/storage/v1/object/public/social/videos/2026-11-01/TF_M1_Stuffing_Nov2_v2.mp4" muted playsinline controls preload="none" style="display:block;width:100%;aspect-ratio:9/16;border-radius:16px;background:#000"></video>
+    <button type="button" id="watch-close" style="margin:12px auto 2px;display:block;min-height:44px;padding:0 24px;border:2px solid #FFFFFF;border-radius:9999px;background:transparent;color:#FFFFFF;font-size:17px;font-weight:700;cursor:pointer">Close</button>
+   </dialog>
+   <script>
+    (function(){
+     var b=document.getElementById('watch-btn'),d=document.getElementById('watch-dlg'),v=document.getElementById('watch-vid'),c=document.getElementById('watch-close');
+     if(!b||!d||!d.showModal){if(b)b.addEventListener('click',function(){window.open('https://ykrhtfocekcbyvtvopse.supabase.co/storage/v1/object/public/social/videos/2026-11-01/TF_M1_Stuffing_Nov2_v2.mp4','_blank','noopener')});return;}
+     b.addEventListener('click',function(){d.showModal();try{v.currentTime=0;v.play()}catch(e){}});
+     function shut(){try{v.pause()}catch(e){}d.close()}
+     c.addEventListener('click',shut);
+     d.addEventListener('click',function(e){if(e.target===d)shut()});
+     d.addEventListener('close',function(){try{v.pause()}catch(e){}});
+    })();
+   </script>
   </div>
  </div>
 </section>
@@ -406,13 +416,7 @@
      </div>
     </form>
     <p class="ask-note" id="ask-note" hidden aria-live="polite"></p>
-    <h3 style="margin:32px 0 12px;font-size:22px;font-weight:800;color:#1A3C5E">Meet the Team</h3>
-    <div class="team2">
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Marco</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">compares stores for you</div></div>
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Scout</span> <span class="v4-badge">Live</span><div style="font-size:15px;color:#334155;margin-top:4px">keeps your saved finds</div></div>
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Gifted</span> <span class="v4-badge" style="white-space:nowrap;margin-left:0;display:inline-block;font-size:11px">With Sinclair's Team</span><div style="font-size:15px;color:#334155;margin-top:4px">plans gifts and birthdays</div></div>
-     <div style="border:1px solid #E2E8F0;border-radius:14px;padding:14px"><span style="font-size:17px;font-weight:800">Sage</span> <span class="v4-badge" style="background:#F1F5F9;color:#1A3C5E">Dec 1</span><div style="font-size:15px;color:#334155;margin-top:4px">reads the truth in labels</div></div>
-    </div>
+    <p style="margin:28px 0 0;font-size:18px;line-height:27px;font-weight:700;color:#1A3C5E">Sinclair's team works behind every answer: Marco compares stores, Scout keeps your saved finds, and Gifted plans gifts and birthdays.</p>
    </div>
    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:24px;padding:28px">
     <div style="font-size:13px;font-weight:700;color:#2DC98D;letter-spacing:0.5px">A REAL ANSWER FROM SINCLAIR</div>
@@ -477,9 +481,9 @@
    <p style="margin:0 0 22px;font-size:18px;line-height:27px;color:#334155">A reminder before the dates that matter, with gift ideas people love this week.</p>
    <div aria-hidden="true" style="background:#F3F8F5;border-radius:18px;padding:16px;margin:0 0 24px;display:flex;flex-direction:column;gap:8px">
     <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;font-weight:700;color:#14734F;letter-spacing:0.4px">COMING UP</span><span style="font-size:13px;font-weight:700;color:#1A3C5E">Reminders on</span></div>
-    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">14</div></div><div><div style="font-size:16px;font-weight:800">Mom's birthday</div><div style="font-size:13px;font-weight:600;color:#334155">Reminder 2 weeks before</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
     <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">NOV</div><div style="font-size:18px;font-weight:800;line-height:20px">26</div></div><div><div style="font-size:16px;font-weight:800">Thanksgiving</div><div style="font-size:13px;font-weight:600;color:#334155">Hosting list ready</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
-    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700">Gift ideas for Mom: 3 picks people love this week</div>
+    <div class="v4-row"><div style="display:flex;gap:12px;align-items:center"><div class="v4-date"><div style="font-size:11px;font-weight:700">DEC</div><div style="font-size:18px;font-weight:800;line-height:20px">6</div></div><div><div style="font-size:16px;font-weight:800">Sister's birthday</div><div style="font-size:13px;font-weight:600;color:#334155">Reminder 2 weeks before</div></div></div><span class="v4-tick"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg></span></div>
+    <div style="background:#1A3C5E;color:#FFFFFF;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:700">Gift ideas for your sister: 3 picks people love this week</div>
    </div>
    <a class="pbtn" href="/plan" style="display:inline-flex;align-items:center;min-height:52px;padding:0 24px;border-radius:9999px;background:#1A3C5E;color:#FFFFFF;font-size:18px;font-weight:700;text-decoration:none">See gift plans</a>
   </div>
