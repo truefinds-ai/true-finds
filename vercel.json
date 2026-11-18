@@ -126,6 +126,7 @@
     { "source": "/support", "destination": "/support/index.html" },
     { "source": "/support/", "destination": "/support/index.html" },
     { "source": "/contact", "destination": "/support/index.html" },
-    { "source": "/contact/", "destination": "/support/index.html" }
+    { "source": "/contact/", "destination": "/support/index.html" },
+    { "source": "/:handle([A-Za-z0-9@][A-Za-z0-9._-]{2,30})", "destination": "https://true-finds-app.vercel.app/creator-home/:handle" }
   ]
 }
