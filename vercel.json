@@ -4,7 +4,7 @@
     { "source": "/preview/:path*", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
   ],
   "redirects": [
-    { "source": "/guides/how-the-sinclair-verdict-works.html", "destination": "/how-it-works", "permanent": true },
+    { "source": "/guides/how-the-sinclair-verdict-works.html", "destination": "/price-verdicts", "permanent": true },
     { "source": "/ig", "destination": "/?utm_source=instagram&utm_medium=organic&utm_campaign=bio", "permanent": false },
     { "source": "/fb", "destination": "/?utm_source=facebook&utm_medium=organic&utm_campaign=profile", "permanent": false },
     { "source": "/gifts-guide", "destination": "/guides/gifts-comfort-hobbies-pets.html", "permanent": false },
@@ -123,6 +123,10 @@
     { "source": "/for-stores", "destination": "/for-stores/index.html" },
     { "source": "/for-stores/", "destination": "/for-stores/index.html" },
     { "source": "/muse/", "destination": "/muse/index.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works/index.html" },
+    { "source": "/how-it-works/", "destination": "/how-it-works/index.html" },
+    { "source": "/price-verdicts", "destination": "/price-verdicts/index.html" },
+    { "source": "/price-verdicts/", "destination": "/price-verdicts/index.html" },
     { "source": "/support", "destination": "/support/index.html" },
     { "source": "/support/", "destination": "/support/index.html" },
     { "source": "/contact", "destination": "/support/index.html" },

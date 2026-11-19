@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price verdicts: how Sinclair reads a price | TrueFinds</title>
+<meta name="description" content="Sinclair, the free shopping agent from TrueFinds, reads 12 months of real Amazon price history and gives one of four plain verdicts. No login, no charts to interpret.">
+<style>
+  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
+  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; }
+  .topbar .links { display:flex; gap:18px; align-items:center; }
+  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:600; }
+  .topbar a.tl:hover { color:#fff; }
+  .topbar a.tcta { background:#14734F; color:#fff; text-decoration:none; font-size:14px; font-weight:700; padding:9px 18px; border-radius:999px; }
+  @media (max-width:560px) {
+    .topbar { padding:12px 16px; }
+    .topbar .links { gap:12px; }
+    .topbar a.tl { font-size:13px; white-space:nowrap; }
+    .topbar a.tcta { font-size:13px; padding:8px 14px; }
+  }
+  /* tf-topbar-phone:start (5 Oct 2026) */
+  .topbar .tcta-short { display:none; }
+  @media (max-width:479px) {
+    .topbar { justify-content:flex-start; padding:10px 16px; gap:6px 0; }
+    .topbar .links { display:contents; }
+    .topbar a.brand { order:1; margin-right:8px; }
+    .topbar a.tcta { order:2; margin-left:auto; display:inline-flex; align-items:center; min-height:44px; padding:0 14px; font-size:15px; white-space:nowrap; }
+    .topbar::after { content:""; order:3; flex-basis:100%; height:0; }
+    .topbar a.tl { order:4; display:inline-flex; align-items:center; min-height:36px; margin-right:20px; font-size:15px; }
+    .topbar .tcta-full { display:none; }
+    .topbar .tcta-short { display:inline; }
+  }
+  /* tf-topbar-phone:end */
+  .hero { background:var(--navy); color:#fff; text-align:center; padding:64px 24px 72px; }
+  .hero h1 { font-size:clamp(30px,5vw,44px); line-height:1.2; margin-bottom:16px; }
+  .hero p { max-width:640px; margin:0 auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.88); }
+  main { max-width:960px; margin:0 auto; padding:0 22px; }
+  section { padding:56px 0 8px; }
+  h2.sec { color:var(--navy); font-size:clamp(24px,3.5vw,30px); text-align:center; margin-bottom:8px; }
+  p.sec-sub { text-align:center; color:#48586A; font-size:16.5px; max-width:620px; margin:0 auto 36px; line-height:1.6; }
+  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
+  .step { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
+  .step .n { width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+  .step h3 { color:var(--navy); font-size:17px; margin-bottom:8px; }
+  .step p { font-size:15px; line-height:1.6; color:#48586A; }
+  .verdicts { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:18px; }
+  .vcard { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
+  .chip { display:inline-block; font-weight:800; font-size:14px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; border-width:2px; border-style:solid; margin-bottom:14px; }
+  .chip.gd { color:#116947; background:#DCFCE7; border-color:var(--green); }
+  .chip.inf { color:#92400E; background:#FEF3C7; border-color:#92400E; }
+  .chip.tp { color:#334155; background:var(--slate-tint); border-color:var(--slate); }
+  .chip.ned { color:var(--navy); background:#F1F5F9; border-color:var(--navy); }
+  .vcard .def { font-weight:700; color:var(--navy); font-size:16.5px; margin-bottom:8px; }
+  .vcard p.body { font-size:15px; line-height:1.65; color:#48586A; }
+  .demo-wrap { background:var(--navy); border-radius:18px; padding:44px 24px; text-align:center; }
+  .demo-card { background:#fff; border-radius:14px; max-width:430px; margin:0 auto; padding:26px 26px 24px; text-align:left; }
+  .demo-title { font-weight:700; color:#22303C; font-size:17px; margin-bottom:10px; }
+  .demo-price { font-size:30px; font-weight:800; color:var(--navy); }
+  .demo-was { color:#94A3B8; text-decoration:line-through; font-size:16px; margin-left:10px; }
+  .demo-chip { display:inline-block; margin-top:12px; font-weight:800; font-size:13px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; color:#fff; background:var(--green); }
+  .demo-line { color:#48586A; font-size:14px; margin-top:12px; }
+  .demo-note { color:rgba(255,255,255,0.6); font-size:12.5px; margin-top:16px; }
+  .why { max-width:680px; margin:0 auto; }
+  .why p { font-size:17px; line-height:1.75; margin-bottom:16px; }
+  .privacy { background:var(--navy-deep); border-radius:18px; color:#fff; padding:36px 28px; text-align:center; }
+  .privacy h3 { font-size:20px; margin-bottom:10px; }
+  .privacy p { color:rgba(255,255,255,0.85); font-size:15.5px; line-height:1.65; max-width:640px; margin:0 auto; }
+  .cta { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:18px; padding:36px 28px; text-align:center; margin:56px 0 64px; }
+  .cta p { font-size:16.5px; line-height:1.65; max-width:640px; margin:0 auto 20px; }
+  .cta a.btn { display:inline-block; background:#14734F; color:#fff; text-decoration:none; font-weight:700; font-size:17px; padding:15px 32px; border-radius:999px; }
+  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
+  footer a { color:var(--green); text-decoration:none; font-weight:600; }
+  /* tf-menu:start (6 Oct 2026) */
+  .tf-menu { position:relative; flex:0 0 auto; }
+  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
+  .tf-menu > summary::-webkit-details-marker { display:none; }
+  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
+  .tf-menu .tf-x { display:none; }
+  .tf-menu[open] .tf-x { display:block; }
+  .tf-menu[open] .tf-bars { display:none; }
+  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; box-shadow:0 10px 30px rgba(26,60,94,0.25), 0 0 0 1px #E1E7EE; }
+  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
+  .tf-menu nav a:hover { background:#F4F7FA; }
+  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#14734F; color:#fff; padding:0 16px; }
+  .tf-menu nav a.tf-menu-cta:hover { background:#0F5C3F; }
+  .nav .tf-menu > summary { color:#1A3C5E; }
+  .nav .tf-menu > summary:hover { background:#EEF2F6; }
+  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
+  @media (max-width:479px) {
+    /* CODE_INBOX FIX LIST 9 Oct, item 1: in a desktop-mode browser at phone width (Add to Chrome shown) the
+       row ran 19px past 375px. The logo shrinks first, the button tightens, the open panel stays on screen. */
+    .nav-inner { padding:10px 14px; gap:10px; min-width:0; }
+    .nav-inner .nav-logo { flex:0 1 auto; min-width:0; display:flex; }
+    .nav-inner .nav-logo svg { width:100%; height:auto; max-width:128px; max-height:40px; }
+    .nav-inner .btn-sm { flex:0 0 auto; padding:8px 12px; font-size:14px; }
+    .tf-menu nav { max-width:calc(100vw - 24px); }
+    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
+    .topbar a.brand svg { height:22px !important; }
+    .topbar a.tcta { padding:0 11px; font-size:14px; }
+    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
+    .topbar .tf-menu > summary { width:42px; }
+  }
+  /* tf-menu:end */
+</style>
+<link rel="canonical" href="https://truefinds.ai/price-verdicts">
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
+  <div class="links">
+    <a class="tl" href="/real-deals">Real Deals</a>
+    <a class="tl" href="/how-it-works">How It Works</a>
+    <a class="tl" href="/guides">Guides</a>
+    <a class="tcta" href="/make-my-list"><span class="tcta-full">Make my list</span><span class="tcta-short">Make my list</span></a>
+    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/about">About</a><a class="tf-menu-cta" href="/pricing">See plans</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+  </div>
+</div>
+
+<div class="hero">
+  <h1>Four plain verdicts.<br>Zero guessing.</h1>
+  <p>Sinclair, our free shopping agent, reads 12 months of a product's real Amazon price history and answers one question in plain language: is this price actually good? No login. No charts to interpret. About one second.</p>
+</div>
+
+<main>
+<section>
+  <h2 class="sec">How it works</h2>
+  <p class="sec-sub">You shop the way you always have. Sinclair does the checking you never had time for.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>You look at a product</h3><p>On any Amazon product page, Sinclair wakes up automatically. Nothing to click, nothing to sign into.</p></div>
+    <div class="step"><div class="n">2</div><h3>Sinclair reads the history</h3><p>12 months of that product's real price record: what it actually sold for, not what the seller says it was worth.</p></div>
+    <div class="step"><div class="n">3</div><h3>One plain verdict appears</h3><p>Right on the page, before you click buy. The evidence is there if you want to look deeper. The conclusion is there if you don't.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">The four verdicts</h2>
+  <p class="sec-sub">Only four possible answers, each one deliberately simple. Two give you permission, one shows you a better option, one admits the limits.</p>
+  <div class="verdicts">
+    <div class="vcard"><span class="chip gd">GENUINE DEAL</span><div class="def">A real low. Good time to buy.</div><p class="body">The price is at or near this product's true low over its recorded history. Not "lower than the sticker," which any seller can arrange, but low against what it actually sold for.</p></div>
+    <div class="vcard"><span class="chip inf">COMPARE FIRST</span><div class="def">Compare other stores, or save it for later.</div><p class="body">The "was" price is not what this product usually sells for, so Sinclair tells you where today's price really sits and shows you the best option he found: the same item for less, a similar item with better value, or the honest answer that this is the best price right now.</p></div>
+    <div class="vcard"><span class="chip tp">TYPICAL PRICE</span><div class="def">Normal price. Fine to buy if you need it.</div><p class="body">This is roughly what the product usually costs. Not a warning; if you need it today, the normal price is a fair price. Just the truth, so you decide with accurate expectations.</p></div>
+    <div class="vcard"><span class="chip ned">NOT ENOUGH DATA</span><div class="def">Too new to judge. Not enough price history yet.</div><p class="body">A tool that always has an answer is guessing some of the time. Our standard is the opposite: every verdict backed by data, or no verdict at all. When we don't know, we say so.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="demo-wrap">
+    <div class="demo-card">
+      <div class="demo-title">Wireless Noise-Canceling Headphones</div>
+      <span class="demo-price">$248</span><span class="demo-was">was $349</span><br>
+      <span class="demo-chip">GENUINE DEAL</span>
+      <div class="demo-line">Lowest price in 90 days. No inflated markup.</div>
+    </div>
+    <div class="demo-note">Illustration with sample data. Real verdicts are computed from each product's actual price history.</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Not ready to buy the product yet? Save it.</h2>
+  <div class="why">
+    <p>Tap Save and the product goes to your Sinclair list, not your Amazon cart. Your list stays in your own browser, so nobody who shares your Amazon account checks out a pile of things you were only thinking about. Open it anytime from the Sinclair icon at the top right of Chrome, and Sinclair re-checks every verdict when you do.</p>
+    <p>Your saved list shows each product's verdict, never a price, and it is stored in your browser and never sent anywhere.</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="sec">Why a verdict instead of a chart</h2>
+  <div class="why">
+    <p>Price history charts have existed for years, and most shoppers never use them, because reading a chart at the moment of purchase is work. You came to buy headphones, not to interpret a graph.</p>
+    <p>A verdict is the chart's conclusion with the work already done. The evidence stays available for anyone who wants to look deeper. But nobody has to earn the truth by studying a graph; it's just there, in plain words, next to the price it describes.</p>
+  </div>
+</section>
+
+<section>
+  <div class="privacy">
+    <h3>The privacy promise</h3>
+    <p>Sinclair reads the product page you are on. Nothing else. No browsing history, no tracking across sites, and the narrowest permissions Chrome allows for the job. Any future feature that learns your preferences requires your explicit approval first. How we make money: a small commission from Amazon when you buy through our deal pages (it never changes your price), and members who choose our premium tools. We will never sell your personal information. We answer to you, not advertisers.</p>
+  </div>
+</section>
+
+<div class="cta">
+  <p><strong>The verdict is free.</strong> Free to ask, free to save, free to buy. Members who want more can choose a plan.</p>
+  <a class="btn" href="/pricing?utm_source=price-verdicts&utm_medium=site&utm_campaign=verdict-page">See plans</a>
+</div>
+</main>
+
+<!-- tf-join:start (footer Join strip, 4 Oct 2026, Jon: "We need a "Join" or "Sign Up" on the footer, too, so we keep the user engaged." Source of truth: true-finds-app/scripts/guides/join_strip.html) -->
+<section class="tf-join" aria-labelledby="tf-join-title">
+  <style>
+    .tf-join { background:#1A3C5E; color:#fff; padding:28px 20px; }
+    .tf-join-inner { max-width:720px; margin:0 auto; text-align:center; }
+    .tf-join h2 { font-size:22px; line-height:1.3; margin:0 0 6px; color:#fff; font-family:inherit; }
+    .tf-join p.tf-join-line { font-size:16px; line-height:1.5; margin:0 0 16px; color:rgba(255,255,255,0.9); }
+    .tf-join form { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .tf-join input[type=email] { flex:1 1 240px; max-width:340px; min-height:48px; padding:0 16px; font-size:17px; border-radius:999px; border:2px solid #fff; color:#1A3C5E; background:#fff; }
+    .tf-join button { min-height:48px; padding:0 26px; font-size:17px; font-weight:700; border-radius:999px; border:0; background:#14734F; color:#fff; cursor:pointer; }
+    .tf-join button:disabled { opacity:0.7; cursor:default; }
+    .tf-join .tf-join-note { font-size:13px; margin:12px 0 0; color:rgba(255,255,255,0.8); }
+    .tf-join .tf-join-msg { font-size:16px; font-weight:600; margin:12px 0 0; min-height:1px; }
+    .tf-join .tf-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+  </style>
+  <div class="tf-join-inner">
+    <h2 id="tf-join-title">Join TrueFinds, free</h2>
+    <p class="tf-join-line">Sinclair verified real deals and early access to new features.</p>
+    <form class="tf-join-form" novalidate>
+      <label class="tf-sr" for="tf-join-email">Your email</label>
+      <input id="tf-join-email" type="email" name="email" autocomplete="email" placeholder="Your email" required>
+      <button type="submit">Join free</button>
+    </form>
+    <p class="tf-join-msg" role="status" aria-live="polite"></p>
+    <p class="tf-join-note">We will never sell your personal information.</p>
+  </div>
+  <script>
+  (function () {
+    var root = document.currentScript.closest('.tf-join');
+    var form = root.querySelector('form'), input = root.querySelector('input'), btn = root.querySelector('button'), msg = root.querySelector('.tf-join-msg');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = (input.value || '').trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
+      btn.disabled = true; msg.textContent = 'Joining...';
+      fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'footer' }) })
+        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
+        .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
+    });
+  })();
+  </script>
+</section>
+<!-- tf-join:end -->
+<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/attribution">For business</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/privacy-choices">Your privacy choices</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
+<script>
+/* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
+(function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
+  try {
+    var v = localStorage.getItem('tf_visitor_id');
+    if (!v) {
+      v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'tf-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      localStorage.setItem('tf_visitor_id', v);
+    }
+  } catch (e) { v = 'anonymous'; }
+  var q = new URLSearchParams(location.search), utm = {};
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) { if (q.get(k)) utm[k] = q.get(k).slice(0, 100); });
+  var body = JSON.stringify({ path: location.pathname, referrer: document.referrer || '', distinct_id: v, utm: utm });
+  try {
+    if (navigator.sendBeacon) navigator.sendBeacon('/api/pv', new Blob([body], { type: 'application/json' }));
+    else fetch('/api/pv', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body, keepalive: true }).catch(function () {});
+  } catch (e) {}
+})();
+</script>
+<script>
+/* Vercel Web Analytics, loaded only when measurement is on (GPC and Your privacy choices, 1 Nov 2026). */
+(function () {
+  try { if (navigator.globalPrivacyControl === true || /(?:^|;\s*)tf_measure=off(?:;|$)/.test(document.cookie)) return; } catch (e) {}
+  var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
+})();
+</script>
+<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
+</body>
+</html>
