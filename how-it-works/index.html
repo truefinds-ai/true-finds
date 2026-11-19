@@ -1,236 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How It Works: The Sinclair Verdict | TrueFinds</title>
-<meta name="description" content="Sinclair, the free shopping agent from TrueFinds, reads 12 months of real Amazon price history and gives one of four plain verdicts. No login, no charts to interpret.">
-<style>
-  :root { --navy:#1A3C5E; --navy-deep:#0D2137; --green:#1A9E6E; --green-tint:#EAF7F1; --red-tint:#FEE2E2; --red-deep:#991B1B; --slate:#475569; --slate-tint:#E2E8F0; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; color:#22303C; background:#fff; }
-  .topbar { background:var(--navy); padding:14px 24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; }
-  .topbar a.brand { color:#fff; text-decoration:none; font-weight:700; font-size:19px; display:flex; align-items:center; gap:9px; }
-  .topbar .links { display:flex; gap:18px; align-items:center; }
-  .topbar a.tl { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:600; }
-  .topbar a.tl:hover { color:#fff; }
-  .topbar a.tcta { background:#14734F; color:#fff; text-decoration:none; font-size:14px; font-weight:700; padding:9px 18px; border-radius:999px; }
-  @media (max-width:560px) {
-    .topbar { padding:12px 16px; }
-    .topbar .links { gap:12px; }
-    .topbar a.tl { font-size:13px; white-space:nowrap; }
-    .topbar a.tcta { font-size:13px; padding:8px 14px; }
-  }
-  /* tf-topbar-phone:start (5 Oct 2026) */
-  .topbar .tcta-short { display:none; }
-  @media (max-width:479px) {
-    .topbar { justify-content:flex-start; padding:10px 16px; gap:6px 0; }
-    .topbar .links { display:contents; }
-    .topbar a.brand { order:1; margin-right:8px; }
-    .topbar a.tcta { order:2; margin-left:auto; display:inline-flex; align-items:center; min-height:44px; padding:0 14px; font-size:15px; white-space:nowrap; }
-    .topbar::after { content:""; order:3; flex-basis:100%; height:0; }
-    .topbar a.tl { order:4; display:inline-flex; align-items:center; min-height:36px; margin-right:20px; font-size:15px; }
-    .topbar .tcta-full { display:none; }
-    .topbar .tcta-short { display:inline; }
-  }
-  /* tf-topbar-phone:end */
-  .hero { background:var(--navy); color:#fff; text-align:center; padding:64px 24px 72px; }
-  .hero h1 { font-size:clamp(30px,5vw,44px); line-height:1.2; margin-bottom:16px; }
-  .hero p { max-width:640px; margin:0 auto; font-size:18px; line-height:1.65; color:rgba(255,255,255,0.88); }
-  main { max-width:960px; margin:0 auto; padding:0 22px; }
-  section { padding:56px 0 8px; }
-  h2.sec { color:var(--navy); font-size:clamp(24px,3.5vw,30px); text-align:center; margin-bottom:8px; }
-  p.sec-sub { text-align:center; color:#48586A; font-size:16.5px; max-width:620px; margin:0 auto 36px; line-height:1.6; }
-  .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
-  .step { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
-  .step .n { width:34px; height:34px; border-radius:50%; background:var(--navy); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
-  .step h3 { color:var(--navy); font-size:17px; margin-bottom:8px; }
-  .step p { font-size:15px; line-height:1.6; color:#48586A; }
-  .verdicts { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr)); gap:18px; }
-  .vcard { border:1px solid #E3E9EF; border-radius:14px; padding:24px 22px; }
-  .chip { display:inline-block; font-weight:800; font-size:14px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; border-width:2px; border-style:solid; margin-bottom:14px; }
-  .chip.gd { color:#116947; background:#DCFCE7; border-color:var(--green); }
-  .chip.inf { color:var(--red-deep); background:var(--red-tint); border-color:var(--red-deep); }
-  .chip.tp { color:#334155; background:var(--slate-tint); border-color:var(--slate); }
-  .chip.ned { color:var(--navy); background:#F1F5F9; border-color:var(--navy); }
-  .vcard .def { font-weight:700; color:var(--navy); font-size:16.5px; margin-bottom:8px; }
-  .vcard p.body { font-size:15px; line-height:1.65; color:#48586A; }
-  .demo-wrap { background:var(--navy); border-radius:18px; padding:44px 24px; text-align:center; }
-  .demo-card { background:#fff; border-radius:14px; max-width:430px; margin:0 auto; padding:26px 26px 24px; text-align:left; }
-  .demo-title { font-weight:700; color:#22303C; font-size:17px; margin-bottom:10px; }
-  .demo-price { font-size:30px; font-weight:800; color:var(--navy); }
-  .demo-was { color:#94A3B8; text-decoration:line-through; font-size:16px; margin-left:10px; }
-  .demo-chip { display:inline-block; margin-top:12px; font-weight:800; font-size:13px; letter-spacing:0.4px; padding:7px 16px; border-radius:999px; color:#fff; background:var(--green); }
-  .demo-line { color:#48586A; font-size:14px; margin-top:12px; }
-  .demo-note { color:rgba(255,255,255,0.6); font-size:12.5px; margin-top:16px; }
-  .why { max-width:680px; margin:0 auto; }
-  .why p { font-size:17px; line-height:1.75; margin-bottom:16px; }
-  .privacy { background:var(--navy-deep); border-radius:18px; color:#fff; padding:36px 28px; text-align:center; }
-  .privacy h3 { font-size:20px; margin-bottom:10px; }
-  .privacy p { color:rgba(255,255,255,0.85); font-size:15.5px; line-height:1.65; max-width:640px; margin:0 auto; }
-  .cta { background:var(--green-tint); border:1px solid #CBE9DC; border-radius:18px; padding:36px 28px; text-align:center; margin:56px 0 64px; }
-  .cta p { font-size:16.5px; line-height:1.65; max-width:640px; margin:0 auto 20px; }
-  .cta a.btn { display:inline-block; background:#14734F; color:#fff; text-decoration:none; font-weight:700; font-size:17px; padding:15px 32px; border-radius:999px; }
-  footer { border-top:1px solid #E3E9EF; padding:26px 24px; text-align:center; font-size:13px; color:#6B7A88; }
-  footer a { color:var(--green); text-decoration:none; font-weight:600; }
-  /* tf-menu:start (6 Oct 2026) */
-  .tf-menu { position:relative; flex:0 0 auto; }
-  .tf-menu > summary { list-style:none; cursor:pointer; width:44px; height:44px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:#fff; }
-  .tf-menu > summary::-webkit-details-marker { display:none; }
-  .tf-menu > summary:hover { background:rgba(255,255,255,0.12); }
-  .tf-menu .tf-x { display:none; }
-  .tf-menu[open] .tf-x { display:block; }
-  .tf-menu[open] .tf-bars { display:none; }
-  .tf-menu nav { position:absolute; right:0; top:calc(100% + 8px); z-index:60; width:256px; background:#fff; border-radius:16px; padding:8px 0; box-shadow:0 10px 30px rgba(26,60,94,0.25), 0 0 0 1px #E1E7EE; }
-  .tf-menu nav a { display:flex; align-items:center; min-height:48px; padding:0 20px; font-size:17px; font-weight:700; color:#1A3C5E; text-decoration:none; white-space:nowrap; }
-  .tf-menu nav a:hover { background:#F4F7FA; }
-  .tf-menu nav a.tf-menu-cta { margin:8px 12px 4px; justify-content:center; border-radius:999px; background:#14734F; color:#fff; padding:0 16px; }
-  .tf-menu nav a.tf-menu-cta:hover { background:#0F5C3F; }
-  .nav .tf-menu > summary { color:#1A3C5E; }
-  .nav .tf-menu > summary:hover { background:#EEF2F6; }
-  @media (max-width:900px) { .nav-inner .nav-logo { margin-right:auto; } .nav-inner .btn { margin-left:0 !important; } }
-  @media (max-width:479px) {
-    /* CODE_INBOX FIX LIST 9 Oct, item 1: in a desktop-mode browser at phone width (Add to Chrome shown) the
-       row ran 19px past 375px. The logo shrinks first, the button tightens, the open panel stays on screen. */
-    .nav-inner { padding:10px 14px; gap:10px; min-width:0; }
-    .nav-inner .nav-logo { flex:0 1 auto; min-width:0; display:flex; }
-    .nav-inner .nav-logo svg { width:100%; height:auto; max-width:128px; max-height:40px; }
-    .nav-inner .btn-sm { flex:0 0 auto; padding:8px 12px; font-size:14px; }
-    .tf-menu nav { max-width:calc(100vw - 24px); }
-    .topbar a.brand { font-size:17px; gap:6px; margin-right:6px; }
-    .topbar a.brand svg { height:22px !important; }
-    .topbar a.tcta { padding:0 11px; font-size:14px; }
-    .topbar .tf-menu { order:2; margin-left:2px; margin-right:-6px; }
-    .topbar .tf-menu > summary { width:42px; }
-  }
-  /* tf-menu:end */
-</style>
-<link rel="canonical" href="https://truefinds.ai/how-it-works">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How it works: a video becomes your shopping list | TrueFinds</title>
+  <meta name="description" content="Stop pausing the video to write it all down. Paste a YouTube link and TrueFinds puts every ingredient and tool on one list, with fair prices from stores you can trust. Free.">
+  <meta property="og:title" content="How TrueFinds turns a video into your shopping list">
+  <meta property="og:description" content="Paste a YouTube link. Every ingredient and tool lands on one list, with fair prices from stores you can trust.">
+  <meta property="og:url" content="https://truefinds.ai/how-it-works">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://truefinds.ai/social-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@gotruefinds">
+  <meta name="twitter:image" content="https://truefinds.ai/social-card.png">
+  <link rel="canonical" href="https://truefinds.ai/how-it-works">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/make-my-list/img/video-roasted-veg.webp">
+  <style>
+    /* truefinds.ai/how-it-works (Build Board BB-81, mockup approved by Jon 20 Nov 2026 with the critique fixes).
+       Built from make-my-list (BB-45): same paste box, photos (Pixabay, Notion Terms Register 3 Nov 2026) and real
+       TrueFinds screens. Order is problem, solution, how it works (Jon 19 Nov). The old price-verdict page moved to
+       /price-verdicts. No Amazon link and no store prices on this page. */
+    :root{--ink:#1A3C5E;--leaf:#1A9E6E;--leafdeep:#16794F;--mint:#EAF3EE;--paper:#FFFFFF;--rule:#CFE2D8;--slate:#2E4A63;--muted:#41566A}
+    *{box-sizing:border-box}
+    html{-webkit-text-size-adjust:100%}
+    body{margin:0;font-family:'Atkinson Hyperlegible',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--ink);background:var(--mint);font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,.disp{font-family:'Bricolage Grotesque','Atkinson Hyperlegible',sans-serif;letter-spacing:-.02em;margin:0;color:var(--ink)}
+    p{margin:0}
+    a{color:var(--leafdeep)}
+    img{max-width:100%;height:auto}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+    .skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:#fff;padding:10px 14px;border-radius:10px}
+    /* Header */
+    .nav{background:var(--ink);color:#fff}
+    .nav .wrap{display:flex;align-items:center;justify-content:space-between;min-height:60px}
+    .logo{display:flex;gap:10px;align-items:center;color:#fff;text-decoration:none;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;min-height:44px}
+    .links{display:none;gap:28px;align-items:center}
+    .links a{color:#fff;font-weight:700;font-size:16px;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+    .links a[aria-current]{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+    .menu{position:relative}
+    .menu summary{list-style:none;cursor:pointer;border:2px solid #fff;border-radius:999px;padding:0 18px;min-height:44px;display:flex;align-items:center;font-weight:700;font-size:16px}
+    .menu summary::-webkit-details-marker{display:none}
+    .menu nav{position:absolute;right:0;top:54px;z-index:50;background:#fff;border-radius:16px;box-shadow:0 12px 32px rgba(15,23,42,.22);padding:8px;min-width:230px;display:flex;flex-direction:column}
+    .menu nav a{display:flex;align-items:center;min-height:48px;padding:0 14px;border-radius:10px;color:var(--ink);font-size:17px;font-weight:700;text-decoration:none}
+    .menu nav a:hover{background:var(--mint)}
+    .disc{background:#fff;text-align:center;font-size:16px;line-height:1.4;padding:8px 16px;border-bottom:1px solid var(--rule)}
+    .disc a{font-weight:700}
+    /* Hero */
+    .hero{display:grid;gap:26px;padding:18px 0 34px}
+    .eb{display:inline-block;border:2px solid #6CC59E;background:#fff;color:var(--leafdeep);font-weight:700;border-radius:999px;padding:3px 10px;font-size:16px;letter-spacing:-.01em;margin-bottom:10px}
+    h1{font-size:30px;line-height:1.08;font-weight:800}
+    h1 em{font-style:normal;color:var(--leafdeep);display:block}
+    .sub{margin-top:10px;font-size:19px}
+    .dk{display:none}
+    .box{margin-top:16px;background:#fff;border:3px solid var(--leaf);border-radius:22px;padding:16px 18px 18px}
+    .box label{font-weight:700;font-size:18px;display:block}
+    .box input{display:block;width:100%;margin-top:8px;border:2px solid var(--ink);border-radius:999px;padding:0 20px;height:54px;color:var(--ink);font:inherit;font-size:18px;background:#fff}
+    .box input::placeholder{color:#556677;opacity:1}
+    .box input:focus{outline:3px solid #6CC59E;outline-offset:2px}
+    .btn{display:block;width:100%;margin-top:12px;border:0;cursor:pointer;background:var(--leafdeep);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-align:center;border-radius:999px;min-height:56px;padding:12px;font-size:21px}
+    .btn:hover{background:#12623F}.btn:disabled{opacity:.7;cursor:progress}
+    .works{margin-top:10px;font-size:16px;color:var(--muted)}
+    .msg{margin-top:12px;font-size:17px;line-height:1.45;font-weight:700}
+    .ex{display:flex;justify-content:center;align-items:center;min-height:44px;margin-top:6px;text-align:center;font-weight:700;color:var(--leafdeep);text-decoration:underline;text-underline-offset:4px;font-size:18px}
+    .trust{display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700;font-size:18px;margin-top:14px}
+    .trust span{display:inline-flex;gap:6px;align-items:center}
+    /* Hero picture: a recipe video becomes the real list */
+    .stage{position:relative;min-height:560px}
+    .vid{position:absolute;left:0;top:0;width:78%;border-radius:20px;overflow:hidden;box-shadow:0 14px 36px rgba(26,60,94,.25);transform:rotate(-2deg);background:#fff}
+    .vid img{width:100%;height:220px;object-fit:cover;display:block}
+    .vid .bar{background:var(--ink);color:#fff;font-weight:700;font-size:16px;padding:9px 14px;display:flex;justify-content:space-between}
+    .play{position:absolute;left:50%;top:110px;transform:translate(-50%,-50%);width:66px;height:66px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center}
+    .play:after{content:'';border-left:21px solid var(--ink);border-top:13px solid transparent;border-bottom:13px solid transparent;margin-left:6px}
+    .real{position:absolute;right:0;top:150px;width:64%;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 20px 44px rgba(26,60,94,.28);transform:rotate(2deg);border:2px solid var(--rule)}
+    .real img{width:100%;display:block;height:auto}
+    .real .rh{background:var(--leafdeep);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:19px;padding:10px 16px}
+    /* Sections */
+    section{padding:38px 0;border-top:2px dashed var(--rule)}
+    h2{font-size:30px;line-height:1.15;font-weight:800;margin-bottom:16px}
+    .lead{margin:-6px 0 16px;font-size:18px}
+    .steps{display:grid;gap:16px;counter-reset:s;list-style:none;margin:0;padding:0}
+    .step{background:#fff;border-radius:20px;padding:18px;box-shadow:0 6px 20px rgba(26,60,94,.08)}
+    .step h3{font-size:22px;display:flex;align-items:center;gap:10px}
+    .step h3:before{counter-increment:s;content:counter(s);font-size:18px;background:var(--ink);color:#fff;border-radius:999px;width:34px;height:34px;flex:0 0 34px;display:inline-flex;align-items:center;justify-content:center}
+    .step p{margin:8px 0 12px;font-size:18px}
+    .fr{height:300px;border-radius:14px;border:1px solid var(--rule);overflow:hidden;background:#F7FBF9;display:flex;align-items:center;position:relative}
+    .fr.top{align-items:flex-start}
+    .fr img{width:100%;display:block}
+    .shopfr{align-items:flex-end}
+    .shopfr .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .shopfr .ov{position:relative;margin:14px;background:#fff;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.25);overflow:hidden;width:100%}
+    .ideas{display:grid;gap:14px}
+    .idea{position:relative;display:block;border-radius:18px;overflow:hidden;height:200px;box-shadow:0 8px 24px rgba(26,60,94,.15);text-decoration:none;color:var(--ink)}
+    .idea img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+    .idea:hover img{transform:scale(1.03)}
+    .idea:focus-visible{outline:3px solid var(--leafdeep);outline-offset:3px}
+    .idea .tg{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;font-weight:700;font-size:17px;line-height:1.3;padding:8px 12px;border-radius:10px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+    .idea .tg span{color:var(--leafdeep);white-space:nowrap}
+    .live{display:inline-flex;align-items:center;gap:10px;background:#fff;border:3px solid var(--leaf);border-radius:999px;padding:10px 18px;font-weight:700;font-size:19px}
+    .live b{background:var(--leafdeep);color:#fff;border-radius:999px;padding:2px 12px;font-size:16px}
+    .soon{margin-top:12px;font-size:18px}
+    .kick{margin:0 0 6px;font-weight:700;font-size:15px;letter-spacing:.08em;color:var(--leafdeep)}
+    .probs{display:grid;gap:16px}
+    .prob{background:#fff;border:1px solid var(--rule);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:8px}
+    .prob h3{font-size:22px;line-height:1.2}
+    .prob .num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:42px;line-height:1;color:var(--leafdeep);margin-top:6px}
+    .prob .num.word{font-size:30px}
+    .prob .fact{font-weight:700}
+    .prob .src{font-size:16px;color:var(--muted)}
+    .prob .more{font-weight:700;font-size:17px;margin-top:4px}
+    .fixes{display:grid;gap:14px}
+    .fix{display:grid;gap:10px}
+    .fix .was{background:#fff;border:1px solid var(--rule);border-radius:16px;padding:16px 18px;color:var(--muted)}
+    .fix .was b{color:var(--ink);display:block}
+    .fix .now{background:#fff;border:2px solid var(--leaf);border-radius:16px;padding:16px 18px}
+    .cards3{display:grid;gap:16px}
+    .card{background:#fff;border:1px solid var(--rule);border-radius:18px;padding:20px}
+    .card h3{font-size:21px;margin-bottom:6px}
+    .faq{display:grid;gap:12px}
+    .faq div{background:#fff;border-radius:16px;padding:16px 18px}
+    .faq h3{font-family:'Atkinson Hyperlegible',sans-serif;letter-spacing:0;font-size:19px;font-weight:700}
+    .faq p{font-size:18px;margin-top:4px}
+    .cr{background:var(--slate);color:#fff;border-radius:24px;padding:24px;display:grid;gap:16px;align-items:center}
+    .cr h2{color:#fff;margin:0 0 6px}
+    .cr p{font-weight:700;font-size:19px}
+    .cr a{display:inline-flex;align-items:center;justify-content:center;min-height:52px;background:#fff;color:var(--ink);font-weight:800;font-family:'Bricolage Grotesque',sans-serif;border-radius:999px;padding:10px 24px;font-size:18px;text-decoration:none;justify-self:start}
+    .end{text-align:center}
+    .end .box{max-width:560px;margin:16px auto 0;text-align:left}
+    footer{background:var(--ink);color:#fff;font-size:16px;line-height:1.9;padding:22px 0;margin-top:36px}
+    footer a{color:#fff;font-weight:700}
+    @media(min-width:900px){
+      .menu{display:none}.links{display:flex}
+      h1{font-size:50px}.dk{display:inline}.mb{display:none}
+      .hero{grid-template-columns:1fr 1fr;align-items:center;padding:42px 0 50px;gap:48px}
+      .stage{min-height:500px}.vid img{height:250px}.play{top:125px}.real{top:160px;width:62%}.real img{height:320px}
+      .steps{grid-template-columns:repeat(3,1fr)}.ideas{grid-template-columns:repeat(3,1fr)}.faq{grid-template-columns:1fr 1fr}
+      .probs,.cards3{grid-template-columns:repeat(3,1fr)}.fix{grid-template-columns:1fr 2fr}
+      .cr{grid-template-columns:1fr auto;padding:30px 36px}
+    }
+    @media(prefers-reduced-motion:reduce){.idea img{transition:none}}
+  </style>
 </head>
 <body>
-<div class="topbar">
-  <a class="brand" href="/"><svg viewBox="0 0 100 100" style="height:26px;width:auto"><path d="M 50,10 L 57.5,42.5 L 90,50 L 57.5,57.5 L 50,90 L 42.5,57.5 L 10,50 L 42.5,42.5 Z" fill="#1A9E6E"/></svg> TrueFinds</a>
-  <div class="links">
-    <a class="tl" href="/real-deals">Real Deals</a>
-    <a class="tl" href="/how-it-works">How It Works</a>
-    <a class="tl" href="/guides">Guides</a>
-    <a class="tcta" href="/pricing"><span class="tcta-full">Become a Founding Member</span><span class="tcta-short">Be a Founding Member</span></a>
-    <details class="tf-menu" data-tf="menu"><summary aria-label="Menu"><svg class="tf-bars" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="tf-x" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></summary><nav aria-label="Menu"><a href="/">Check a price</a><a href="/real-deals">Real Deals</a><a href="/gifts">Gifts</a><a href="/plan">Lists</a><a href="/guides">Guides</a><a href="/about">About</a><a class="tf-menu-cta" href="/pricing">Be a Founding Member</a></nav></details><script data-tf="menu-close">document.addEventListener('click',function(e){var m=document.querySelector('details.tf-menu[open]');if(m&&!m.contains(e.target))m.open=false;});</script>
+<a class="skip" href="#paste">Skip to the paste box</a>
+<header class="nav">
+ <div class="wrap">
+  <a class="logo" href="/"><svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A9E6E" d="M12 0c.6 6.2 5.8 11.4 12 12-6.2.6-11.4 5.8-12 12-.6-6.2-5.8-11.4-12-12C6.2 11.4 11.4 6.2 12 0z"/></svg>TrueFinds</a>
+  <nav class="links" aria-label="Main"><a href="/make-my-list">Make my list</a><a href="/#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/guides">Guides</a><a href="/attribution">For business</a></nav>
+  <details class="menu">
+   <summary aria-label="Open menu">Menu</summary>
+   <nav aria-label="Menu"><a href="/make-my-list">Make my list</a><a href="/#ask">Ask Sinclair</a><a href="/real-deals">Real Deals</a><a href="/guides">Guides</a><a href="/attribution">For business</a><a href="/signin">Sign in</a></nav>
+  </details>
+ </div>
+</header>
+<div class="disc">TrueFinds may earn a commission when you buy, at no cost to you. Sponsors do not influence recommendations. <a href="/how-we-earn">How we earn</a></div>
+
+<main class="wrap">
+ <div class="hero">
+  <div>
+   <span class="eb">See it. Love it. Get it. Enjoy the moment.</span>
+   <h1>How TrueFinds turns a video into<em>your shopping list.</em></h1>
+   <p class="sub">Paste a YouTube link. Every ingredient and tool lands on one list, with fair prices from stores you can trust.</p>
+   <form class="box" id="paste" data-form="hero" novalidate>
+    <label for="vid">Paste a YouTube video link</label>
+    <input id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link">
+    <button class="btn" type="submit">Make my list</button>
+    <p class="msg" role="status" aria-live="polite" hidden></p>
+    <p class="works">Works with YouTube today. Photos, TikTok, Instagram, recipe links and PDFs coming soon.</p>
+    <a class="ex" href="/c/example-stuffing?preview=pk_Ng1xsqQawx3n4G45zgEchB9J" data-example="hero">No video handy? Try an example list</a>
+   </form>
+   <div class="trust"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to ask</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to save</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to buy</span></div>
   </div>
-</div>
-
-<div class="hero">
-  <h1>Four plain verdicts.<br>Zero guessing.</h1>
-  <p>Sinclair, our free shopping agent, reads 12 months of a product's real Amazon price history and answers one question in plain language: is this price actually good? No login. No charts to interpret. About one second.</p>
-</div>
-
-<main>
-<section>
-  <h2 class="sec">How it works</h2>
-  <p class="sec-sub">You shop the way you always have. Sinclair does the checking you never had time for.</p>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><h3>You look at a product</h3><p>On any Amazon product page, Sinclair wakes up automatically. Nothing to click, nothing to sign into.</p></div>
-    <div class="step"><div class="n">2</div><h3>Sinclair reads the history</h3><p>12 months of that product's real price record: what it actually sold for, not what the seller says it was worth.</p></div>
-    <div class="step"><div class="n">3</div><h3>One plain verdict appears</h3><p>Right on the page, before you click buy. The evidence is there if you want to look deeper. The conclusion is there if you don't.</p></div>
+  <div class="stage" role="img" aria-label="A recipe video turns into a TrueFinds shopping list">
+   <div class="vid"><img src="/make-my-list/img/video-roasted-veg.webp" alt="" width="960" height="540"><div class="play"></div><div class="bar"><span>Your recipe video</span><span>12:40</span></div></div>
+   <div class="real"><div class="rh">Your shopping list</div><img src="/make-my-list/img/screen-list.webp" alt="" width="720" height="1100"></div>
   </div>
-</section>
+ </div>
 
-<section>
-  <h2 class="sec">The four verdicts</h2>
-  <p class="sec-sub">Only four possible answers, each one deliberately simple. Two give you permission, one shows you a better option, one admits the limits.</p>
-  <div class="verdicts">
-    <div class="vcard"><span class="chip gd">GENUINE DEAL</span><div class="def">A real low. Good time to buy.</div><p class="body">The price is at or near this product's true low over its recorded history. Not "lower than the sticker," which any seller can arrange, but low against what it actually sold for.</p></div>
-    <div class="vcard"><span class="chip inf">COMPARE FIRST</span><div class="def">Compare other stores, or save it for later.</div><p class="body">The "was" price is not what this product usually sells for, so Sinclair tells you where today's price really sits and shows you the best option he found: the same item for less, a similar item with better value, or the honest answer that this is the best price right now.</p></div>
-    <div class="vcard"><span class="chip tp">TYPICAL PRICE</span><div class="def">Normal price. Fine to buy if you need it.</div><p class="body">This is roughly what the product usually costs. Not a warning; if you need it today, the normal price is a fair price. Just the truth, so you decide with accurate expectations.</p></div>
-    <div class="vcard"><span class="chip ned">NOT ENOUGH DATA</span><div class="def">Too new to judge. Not enough price history yet.</div><p class="body">A tool that always has an answer is guessing some of the time. Our standard is the opposite: every verdict backed by data, or no verdict at all. When we don't know, we say so.</p></div>
+ <section aria-labelledby="problem">
+  <p class="kick">THE PROBLEM</p>
+  <h2 id="problem">You found the perfect recipe. Then the hard part started.</h2>
+  <p class="lead">Pressing play is easy. Getting everything in the video into your kitchen is not.</p>
+  <div class="probs">
+   <div class="prob"><h3>Pause. Screenshot. Write it all down.</h3><p>You stop the video every few seconds to catch an ingredient, then copy it onto a list by hand.</p><p class="num">56.7%</p><p class="fact">of home cooks screenshot ingredients or steps to shop later.</p><p class="src">Allspice Labs survey, 2026</p></div>
+   <div class="prob"><h3>The video is on the TV. The shopping is on your phone.</h3><p>From the couch there is no link to tap, so the recipe stays on the screen.</p><p class="num">44%+</p><p class="fact">of US YouTube watch time now happens on TV screens.</p><p class="src">EMARKETER data via TechCrunch, Apr 2026</p><p class="more">Your phone is already in your hand: 35% of adults 55 to 64 use it while the TV is on.</p><p class="src">Omdia data via MNTN Research, Apr 2026</p></div>
+   <div class="prob"><h3>Saw it in a Short. The link won't open.</h3><p>You find a great recipe in a quick Short, tap the link, and nothing happens.</p><p class="num word">Not clickable</p><p class="fact">Links in YouTube Shorts descriptions and comments can't be tapped.</p><p class="src">YouTube Help, read Nov 2026</p></div>
   </div>
-</section>
+ </section>
 
-<section>
-  <div class="demo-wrap">
-    <div class="demo-card">
-      <div class="demo-title">Wireless Noise-Canceling Headphones</div>
-      <span class="demo-price">$248</span><span class="demo-was">was $349</span><br>
-      <span class="demo-chip">GENUINE DEAL</span>
-      <div class="demo-line">Lowest price in 90 days. No inflated markup.</div>
-    </div>
-    <div class="demo-note">Illustration with sample data. Real verdicts are computed from each product's actual price history.</div>
+ <section aria-labelledby="solution">
+  <p class="kick">THE SOLUTION</p>
+  <h2 id="solution">One paste. One list. Everything from the video.</h2>
+  <div class="fixes">
+   <div class="fix"><div class="was"><b>Instead of screenshots</b>no more pausing and copying by hand</div><div class="now"><b>Every ingredient and tool, on one list.</b> Amounts from the recipe, kitchen tools in their own box. Tap "Already have it" to skip what's at home.</div></div>
+   <div class="fix"><div class="was"><b>Instead of a link you can't tap</b>on the TV across the room</div><div class="now"><b>Open it on your phone and shop from anywhere.</b> Paste the link once; your list is ready on the phone in your hand.</div></div>
+   <div class="fix"><div class="was"><b>Instead of a Short link that won't open</b>tapping and getting nowhere</div><div class="now"><b>Paste the Short itself.</b> Tap Share, copy the link, paste it here, and the list is ready. Save this list and we email it to you; a free account keeps every list on your phone and your computer.</div></div>
   </div>
-</section>
+ </section>
 
-<section>
-  <h2 class="sec">Not ready to buy the product yet? Save it.</h2>
-  <div class="why">
-    <p>Tap Save and the product goes to your Sinclair list, not your Amazon cart. Your list stays in your own browser, so nobody who shares your Amazon account checks out a pile of things you were only thinking about. Open it anytime from the Sinclair icon at the top right of Chrome, and Sinclair re-checks every verdict when you do.</p>
-    <p>Your saved list shows each product's verdict, never a price, and it is stored in your browser and never sent anywhere.</p>
+ <section aria-labelledby="how">
+  <p class="kick">HOW IT WORKS</p>
+  <h2 id="how">Three steps, from the video to your door.</h2>
+  <ol class="steps">
+   <li class="step"><h3>Paste the link</h3><p>Copy the link of any cooking, home or holiday video and paste it in the box.</p><div class="fr shopfr"><img class="bg" src="/make-my-list/img/photo-herb-potatoes.webp" alt="" loading="lazy" width="900" height="506"><div class="ov"><img src="/make-my-list/img/screen-paste.webp" alt="The TrueFinds paste box with a YouTube link in it" loading="lazy" width="720" height="371"></div></div></li>
+   <li class="step"><h3>Get your list</h3><p>Every item from the video, in one list. Tap off what you already have.</p><div class="fr top"><img src="/make-my-list/img/screen-list.webp" alt="A TrueFinds shopping list with every item checked" loading="lazy" width="720" height="1100"></div></li>
+   <li class="step"><h3>Shop the rest</h3><p>Tap Shop this list. We pick stores with fair prices and clear shipping and returns.</p><div class="fr shopfr"><img class="bg" src="/make-my-list/img/photo-mushrooms.webp" alt="" loading="lazy" width="760" height="428"><div class="ov"><img src="/make-my-list/img/screen-shop.webp" alt="The Save this list and Shop this list buttons" loading="lazy" width="720" height="270"></div></div></li>
+  </ol>
+ </section>
+
+ <section aria-labelledby="ideas">
+  <h2 id="ideas">Paste a video like these</h2>
+  <p class="lead">Thanksgiving sides, holiday hosting, weeknight dinners. If it's on YouTube, we can turn it into a list. Each of these lists was made from a real recipe video.</p>
+  <div class="ideas">
+   <a class="idea" href="/c/example-stuffing?preview=pk_Ng1xsqQawx3n4G45zgEchB9J" data-example="idea" data-position="1"><img src="/make-my-list/img/photo-bread.webp" alt="" loading="lazy" width="760" height="428"><div class="play"></div><div class="tg">Thanksgiving stuffing <span>See the list</span></div></a>
+   <a class="idea" href="/c/example-sheet-pan?preview=pk_6n2ogdANJBL69yXbnFK-ybDK" data-example="idea" data-position="2"><img src="/make-my-list/img/photo-herb-potatoes.webp" alt="" loading="lazy" width="900" height="506"><div class="play"></div><div class="tg">Sheet pan chicken and veggies <span>See the list</span></div></a>
+   <a class="idea" href="/c/example-fall-dinner?preview=pk_pWJXmJCn3JoUQra8PA3cP2qe" data-example="idea" data-position="3"><img src="/make-my-list/img/photo-fall-table.webp" alt="" loading="lazy" width="900" height="506"><div class="play"></div><div class="tg">Fall dinner and apple crisp <span>See the list</span></div></a>
   </div>
-</section>
+ </section>
 
-<section>
-  <h2 class="sec">Why a verdict instead of a chart</h2>
-  <div class="why">
-    <p>Price history charts have existed for years, and most shoppers never use them, because reading a chart at the moment of purchase is work. You came to buy headphones, not to interpret a graph.</p>
-    <p>A verdict is the chart's conclusion with the work already done. The evidence stays available for anyone who wants to look deeper. But nobody has to earn the truth by studying a graph; it's just there, in plain words, next to the price it describes.</p>
+ <section aria-labelledby="stores">
+  <p class="kick">HOW WE PICK STORES</p>
+  <h2 id="stores">A fair price, from a store you can trust</h2>
+  <div class="cards3">
+   <div class="card"><h3>Returns and shipping up front</h3><p>See the return policy, shipping and the order-by date before you click.</p></div>
+   <div class="card"><h3>Stores we trust</h3><p>Sinclair, your shopping agent, shows stores that pass our checks. Sponsors do not influence recommendations.</p></div>
+   <div class="card"><h3>Know when a sale is real</h3><p>Sinclair records prices every day, so he can tell a real low from a normal price. <a href="/price-verdicts">How price verdicts work</a></p></div>
   </div>
-</section>
+ </section>
 
-<section>
-  <div class="privacy">
-    <h3>The privacy promise</h3>
-    <p>Sinclair reads the product page you are on. Nothing else. No browsing history, no tracking across sites, and the narrowest permissions Chrome allows for the job. Any future feature that learns your preferences requires your explicit approval first. How we make money: a small commission from Amazon when you buy through our deal pages (it never changes your price), and members who choose our premium tools. We will never sell your personal information. We answer to you, not advertisers.</p>
+ <section aria-labelledby="what">
+  <h2 id="what">What you can paste</h2>
+  <span class="live">YouTube videos <b>Live now</b></span>
+  <p class="soon">Coming soon: photos, TikTok, Instagram, recipe links and PDFs.</p>
+ </section>
+
+ <section aria-labelledby="faq">
+  <h2 id="faq">Questions</h2>
+  <div class="faq">
+   <div><h3>Is it free?</h3><p>Yes. Making a list is free, and so is saving it. You only pay the store for what you buy.</p></div>
+   <div><h3>Do I need an account?</h3><p>No. Paste a link and your list is ready. Add your email only if you want the list saved.</p></div>
+   <div><h3>Which stores?</h3><p>Stores we trust, including Amazon, with fair prices and clear shipping and return policies.</p></div>
+   <div><h3>Do creators get credit?</h3><p>Yes. Every list credits the video it came from. Creators who join TrueFinds get their own page, their picks on their own links, and earn when you buy.</p></div>
   </div>
-</section>
+ </section>
 
-<div class="cta">
-  <p><strong>The verdict will always be free.</strong> Founding membership is limited to 500 people: reserving a spot is free, there is nothing to pay today, and the decision to join is yours at launch. Founding members keep $8.97 a month while their membership stays active; later members pay the higher public rate.</p>
-  <a class="btn" href="/pricing?utm_source=how-it-works&utm_medium=site&utm_campaign=verdict-page">Become a Founding Member</a>
-</div>
+ <section aria-label="For creators">
+  <div class="cr"><div><h2>Make videos?</h2><p>Turn your recipes into shopping lists your viewers can buy from, with your name on every list.</p></div><a href="/creators?utm_source=how-it-works">Get your creator page</a></div>
+ </section>
+
+ <section class="end" aria-labelledby="again">
+  <h2 id="again">Try it with your favorite recipe video</h2>
+  <form class="box" data-form="closing" novalidate>
+   <label for="vid2">Paste a YouTube video link</label>
+   <input id="vid2" name="url" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link">
+   <button class="btn" type="submit">Make my list</button>
+   <p class="msg" role="status" aria-live="polite" hidden></p>
+  </form>
+ </section>
 </main>
 
-<!-- tf-join:start (footer Join strip, 4 Oct 2026, Jon: "We need a "Join" or "Sign Up" on the footer, too, so we keep the user engaged." Source of truth: true-finds-app/scripts/guides/join_strip.html) -->
-<section class="tf-join" aria-labelledby="tf-join-title">
-  <style>
-    .tf-join { background:#1A3C5E; color:#fff; padding:28px 20px; }
-    .tf-join-inner { max-width:720px; margin:0 auto; text-align:center; }
-    .tf-join h2 { font-size:22px; line-height:1.3; margin:0 0 6px; color:#fff; font-family:inherit; }
-    .tf-join p.tf-join-line { font-size:16px; line-height:1.5; margin:0 0 16px; color:rgba(255,255,255,0.9); }
-    .tf-join form { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
-    .tf-join input[type=email] { flex:1 1 240px; max-width:340px; min-height:48px; padding:0 16px; font-size:17px; border-radius:999px; border:2px solid #fff; color:#1A3C5E; background:#fff; }
-    .tf-join button { min-height:48px; padding:0 26px; font-size:17px; font-weight:700; border-radius:999px; border:0; background:#14734F; color:#fff; cursor:pointer; }
-    .tf-join button:disabled { opacity:0.7; cursor:default; }
-    .tf-join .tf-join-note { font-size:13px; margin:12px 0 0; color:rgba(255,255,255,0.8); }
-    .tf-join .tf-join-msg { font-size:16px; font-weight:600; margin:12px 0 0; min-height:1px; }
-    .tf-join .tf-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
-  </style>
-  <div class="tf-join-inner">
-    <h2 id="tf-join-title">Join TrueFinds, free</h2>
-    <p class="tf-join-line">Sinclair verified real deals and early access to new features.</p>
-    <form class="tf-join-form" novalidate>
-      <label class="tf-sr" for="tf-join-email">Your email</label>
-      <input id="tf-join-email" type="email" name="email" autocomplete="email" placeholder="Your email" required>
-      <button type="submit">Join free</button>
-    </form>
-    <p class="tf-join-msg" role="status" aria-live="polite"></p>
-    <p class="tf-join-note">We will never sell your personal information.</p>
-  </div>
-  <script>
-  (function () {
-    var root = document.currentScript.closest('.tf-join');
-    var form = root.querySelector('form'), input = root.querySelector('input'), btn = root.querySelector('button'), msg = root.querySelector('.tf-join-msg');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var email = (input.value || '').trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { msg.textContent = 'Please enter a full email address.'; input.focus(); return; }
-      btn.disabled = true; msg.textContent = 'Joining...';
-      fetch('/api/subscribe', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: email, source: 'footer' }) })
-        .then(function (r) { if (!r.ok) throw new Error(); form.style.display = 'none'; msg.textContent = 'You are in. Look for a welcome email from TrueFinds.'; })
-        .catch(function () { btn.disabled = false; msg.textContent = 'That did not go through. Please try again in a moment.'; });
-    });
-  })();
-  </script>
-</section>
-<!-- tf-join:end -->
-<footer>&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/real-deals">Real Deals</a> &middot; <a href="/how-it-works">How it works</a> &middot; <a href="/guides">Guide library</a> &middot; <a href="/about">About</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/attribution">For business</a> &middot; <a href="/for-stores">For stores and brands</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/privacy-choices">Your privacy choices</a> &middot; <a href="/subscription-terms">Subscription Terms</a> &middot; <a href="/support">Support</a></footer>
+<footer><div class="wrap">&copy; 2026 TrueFinds &middot; <a href="/">truefinds.ai</a> &middot; <a href="/how-we-earn">How we earn</a> &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a> &middot; <a href="/privacy-choices">Your privacy choices</a></div></footer>
+
+<script>
+/* The paste box: the same flow as make-my-list (BB-45), with every event tagged surface "how-it-works" (BB-81).
+   A YouTube link becomes the shopper's own private list. */
+(function () {
+  var SURFACE = 'how-it-works';
+  function vid() { try { return localStorage.getItem('tf_visitor_id') || 'anonymous'; } catch (e) { return 'anonymous'; } }
+  function track(event, props) {
+    try {
+      var p = props || {}; p.surface = SURFACE;
+      var body = JSON.stringify({ event: event, distinct_id: vid(), props: p });
+      if (navigator.sendBeacon) navigator.sendBeacon('/api/compare/event', new Blob([body], { type: 'application/json' }));
+    } catch (e) {}
+  }
+  var menu = document.querySelector('details.menu');
+  if (menu) document.addEventListener('click', function (e) { if (menu.open && !menu.contains(e.target)) menu.open = false; });
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-example]'), function (a) {
+    a.addEventListener('click', function () { track('example_list_click', { target: a.getAttribute('data-example'), position: Number(a.getAttribute('data-position') || 0), kind: a.getAttribute('href').split('/').pop().split('?')[0] }); });
+  });
+
+  var STEPS = ['Reading the video (about 1 minute)', 'Finding the items at stores (about 1 minute)', 'Your list is ready'];
+  var busy = false;
+  function isYouTube(v) { return /^(https?:\/\/)?((www|m|music)\.)?(youtube\.com\/(watch\?|shorts\/|live\/|embed\/)|youtu\.be\/)/i.test(v.trim()); }
+  function jobId() { var a = new Uint8Array(12); (window.crypto || window.msCrypto).getRandomValues(a); return Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join(''); }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+
+  function wire(form) {
+    var input = form.querySelector('input'), go = form.querySelector('button'), msg = form.querySelector('.msg'), where = form.getAttribute('data-form');
+    var emailed = false;
+    function say(text, link) {
+      clear(msg); msg.hidden = !text; if (!text) return;
+      msg.appendChild(document.createTextNode(text));
+      if (link) { msg.appendChild(document.createTextNode(' ')); var a = document.createElement('a'); a.href = link.href; a.textContent = link.text; msg.appendChild(a); }
+    }
+    function setBusy(b) { busy = b; go.disabled = b; go.textContent = b ? 'Reading...' : 'Make my list'; }
+    function fail(text) { setBusy(false); say(text || "We couldn't read that one just now. Please try again in a minute."); }
+    function showProgress(step, offerEmail, job, url) {
+      clear(msg); msg.hidden = false;
+      var bar = document.createElement('div'); bar.setAttribute('role', 'progressbar'); bar.setAttribute('aria-valuemin', '0'); bar.setAttribute('aria-valuemax', '3'); bar.setAttribute('aria-valuenow', String(step));
+      bar.style.cssText = 'height:10px;border-radius:9999px;background:#DDE7E1;overflow:hidden;margin:4px 0 10px';
+      var fill = document.createElement('div'); fill.style.cssText = 'height:100%;background:#1A9E6E;border-radius:9999px;transition:width .6s ease;width:' + [0, 33, 66, 100][step] + '%';
+      bar.appendChild(fill); msg.appendChild(bar);
+      var ol = document.createElement('ol'); ol.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px';
+      STEPS.forEach(function (t, i) {
+        var li = document.createElement('li'), n = i + 1;
+        li.textContent = (n < step || step === 3 ? '✓ ' : n === step ? '• ' : '') + t;
+        li.style.color = n <= step ? '#1A3C5E' : '#556677';
+        if (n === step && step < 3) li.setAttribute('aria-current', 'step');
+        ol.appendChild(li);
+      });
+      msg.appendChild(ol);
+      if (offerEmail && step < 3) {
+        var f = document.createElement('form'); f.style.cssText = 'display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;align-items:center';
+        var id = 'notify-' + where;
+        var lab = document.createElement('label'); lab.textContent = "Email me when it's ready"; lab.htmlFor = id; lab.style.cssText = 'width:100%;font-size:16px';
+        var box = document.createElement('input'); box.id = id; box.type = 'email'; box.autocomplete = 'email'; box.placeholder = 'you@example.com'; box.style.cssText = 'flex:1;min-width:0;height:48px;margin:0;border:2px solid #1A3C5E;border-radius:9999px;padding:0 16px;font:inherit;font-size:16px;color:#1A3C5E';
+        var b = document.createElement('button'); b.type = 'submit'; b.textContent = 'Email me'; b.style.cssText = 'height:48px;border:0;border-radius:9999px;background:#16794F;color:#FFFFFF;font:inherit;font-size:16px;font-weight:700;padding:0 20px;cursor:pointer';
+        f.appendChild(lab); f.appendChild(box); f.appendChild(b);
+        f.addEventListener('submit', function (e) {
+          e.preventDefault(); var email = (box.value || '').trim();
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { box.focus(); return; }
+          b.disabled = true;
+          fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job, notify: email }) })
+            .then(function (r) { return r.json(); })
+            .then(function () { emailed = true; f.textContent = "Thanks. We'll email you the moment it's ready. You can keep this page open too."; track('home_video_email_ready', {}); })
+            .catch(function () { b.disabled = false; });
+        });
+        msg.appendChild(f);
+      }
+    }
+    function start(url) {
+      if (busy) return;
+      url = (url || '').trim();
+      if (!url) { say('Paste a YouTube video link to get started.'); input.focus(); return; }
+      if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
+      setBusy(true); emailed = false;
+      var job = jobId(), began = Date.now(), finished = false, step = 1, offered = false, drawn = '1:false';
+      showProgress(1, false, job, url);
+      track('home_video_submitted', { via: where });
+      function open(d) { if (finished) return; finished = true; showProgress(3, false, job, url); track('home_video_list_ready', { via: where, state: d.cached ? 'cached' : 'read' }); location.href = d.list_url; }
+      function stop(d) {
+        if (finished) return; finished = true;
+        if (d.error === 'limit') { setBusy(false); say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); track('home_video_limit', { via: where }); return; }
+        if (d.error === 'not_a_list') { setBusy(false); say(d.message || "We didn't find things to buy in that one. Try a recipe, a room or a holiday table."); return; }
+        fail(d.message);
+      }
+      fetch('/api/list/import', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({ url: url, visitor: vid(), job: job }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (d && d.ok && d.status === 'done' && d.list_url) return open(d);
+          if (d && !d.ok && d.error !== 'failed') return stop(d);
+        })
+        .catch(function () {});
+      function check() {
+        if (finished) return;
+        fetch('/api/list/import?job=' + encodeURIComponent(job) + '&url=' + encodeURIComponent(url) + '&visitor=' + encodeURIComponent(vid()), { headers: { Accept: 'application/json' } })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (finished || !d) return;
+            if (d.ok && d.status === 'done' && d.list_url) return open(d);
+            if (!d.ok) return stop(d);
+            var waited = Date.now() - began;
+            if (d.step && d.step !== step) step = d.step;
+            if (!offered && waited > 120000) offered = true;
+            var key = step + ':' + offered;
+            if (!emailed && key !== drawn) { drawn = key; showProgress(step, offered, job, url); }
+            if (waited > 600000) { finished = true; setBusy(false); if (!emailed) { if (drawn !== step + ':true') showProgress(step, true, job, url); var p = document.createElement('p'); p.textContent = 'This is taking longer than usual. Leave your email and we will send your list when it is ready.'; p.style.cssText = 'margin:10px 0 0'; msg.appendChild(p); } return; }
+            setTimeout(check, 3000);
+          })
+          .catch(function () { setTimeout(check, 3000); });
+      }
+      setTimeout(check, 3000);
+    }
+    form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('form[data-form]'), wire);
+})();
+</script>
 <script>
 /* Page view count (1 Oct 2026): one anonymous $pageview through /api/pv, plus Vercel Web Analytics. No cookies, no library. */
 (function () {
@@ -258,6 +410,5 @@
   var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
 })();
 </script>
-<script data-tf="skim-guard">(function(){var A=/^(https?:)?\/\/([a-z0-9-]+\.)*(amazon\.com|amzn\.to|amzn\.com|a\.co)(\/|\?|$)/i,D=/^(https?:\/\/(www\.)?truefinds\.ai)?\/deal\//i,C=/[?&](_gsid=|utm_medium=catalog(&|$))/i;function m(r){if(!r||!r.querySelectorAll)return;var a=r.tagName==='A'?[r]:r.querySelectorAll('a[href]');for(var i=0;i<a.length;i++){var h=a[i].getAttribute('href')||'';if(A.test(h)||D.test(h)||C.test(h))a[i].classList.add('noskim');}}m(document);if(window.MutationObserver)new MutationObserver(function(l){for(var i=0;i<l.length;i++){if(l[i].type==='attributes')m(l[i].target);for(var j=0;j<l[i].addedNodes.length;j++)m(l[i].addedNodes[j]);}}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});})();</script>
 </body>
 </html>
