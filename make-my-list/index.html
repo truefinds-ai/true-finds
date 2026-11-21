@@ -359,5 +359,27 @@
   var s = document.createElement('script'); s.defer = true; s.src = '/_vercel/insights/script.js'; document.head.appendChild(s);
 })();
 </script>
+<!-- Phone tab bar, the same four tabs as the app (Build Board card 41f98abef62b81cb9861cac7c05ec543, Jon 21 Nov 2026: "Aproved"). Phones only. -->
+<style>
+.tf-tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:#FFFFFF;border-top:1px solid #CBD5E1;padding-bottom:env(safe-area-inset-bottom)}
+.tf-tabs ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0 2px;list-style:none}
+.tf-tabs li{min-width:0}
+.tf-tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;min-height:56px;padding:8px 0;font-weight:700;font-size:15px;line-height:18px;color:#1A3C5E;text-decoration:none;white-space:nowrap}
+.tf-tabs a[aria-current="page"]{color:#14734F}
+.tf-tabs .tf-ic{display:flex;width:48px;height:32px;align-items:center;justify-content:center;border-radius:999px}
+.tf-tabs a[aria-current="page"] .tf-ic{background:#E8F5EF}
+@media(max-width:374px){.tf-tabs a{font-size:14px}}
+@media(max-width:359px){.tf-tabs a{font-size:13px;letter-spacing:-.2px}}
+@media(max-width:767px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}}
+@media(min-width:768px){.tf-tabs{display:none}}
+</style>
+<nav class="tf-tabs" aria-label="TrueFinds">
+ <ul>
+  <li><a href="/make-my-list" aria-current="page"><span class="tf-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="m10 7.5 4 2.5-4 2.5z"/><path d="M6 20h12"/></svg></span>Make my list</a></li>
+  <li><a href="/#ask"><span class="tf-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>Ask Sinclair</a></li>
+  <li><a href="/real-deals"><span class="tf-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12 12 20 4 12V4h8z"/><circle cx="8.5" cy="8.5" r="1.5"/></svg></span>Real Deals</a></li>
+  <li><a href="/saved"><span class="tf-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.6-9C1 8.4 3 4.5 6.9 4.5c2.1 0 3.6 1.1 5.1 3 1.5-1.9 3-3 5.1-3 3.9 0 5.9 3.9 4.5 7-2.1 4.4-9.6 9-9.6 9Z"/></svg></span>Saved lists</a></li>
+ </ul>
+</nav>
 </body>
 </html>
