@@ -64,6 +64,13 @@
     .btn{display:block;width:100%;margin-top:12px;border:0;cursor:pointer;background:var(--leafdeep);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-align:center;border-radius:999px;min-height:56px;padding:12px;font-size:21px}
     .btn:hover{background:#12623F}.btn:disabled{opacity:.7;cursor:progress}
     .works{margin-top:10px;font-size:16px;color:var(--muted)}
+    .or2{display:flex;align-items:center;gap:12px;margin:14px 0 2px;font-weight:700;color:#334455;font-size:16px}
+    .or2:before,.or2:after{content:'';flex:1;height:2px;background:var(--rule)}
+    .upl{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:10px;min-height:56px;border:2px solid var(--leafdeep);border-radius:999px;background:#fff;color:var(--leafdeep);font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;cursor:pointer}
+    .upl:hover{background:#F7FBF9}.upl:disabled{opacity:.7;cursor:progress}
+    .upl:focus-visible{outline:3px solid #6CC59E;outline-offset:2px}
+    .upn{margin-top:8px;font-size:16px;color:#334455;line-height:1.45}
+    .upn a{font-weight:700}
     .msg{margin-top:12px;font-size:17px;line-height:1.45;font-weight:700}
     .ex{display:flex;justify-content:center;align-items:center;min-height:44px;margin-top:6px;text-align:center;font-weight:700;color:var(--leafdeep);text-decoration:underline;text-underline-offset:4px;font-size:18px}
     .trust{display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700;font-size:18px;margin-top:14px}
@@ -151,7 +158,11 @@
     <input id="vid" name="url" type="url" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link">
     <button class="btn" type="submit">Make my list</button>
     <p class="msg" role="status" aria-live="polite" hidden></p>
-    <p class="works">Works with YouTube today. Photos, TikTok, Instagram, recipe links and PDFs coming soon.</p>
+    <div class="or2">or</div>
+    <button class="upl" type="button" data-upload><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>Upload a photo or PDF</button>
+    <input type="file" accept="image/jpeg,image/png,image/webp,application/pdf" hidden data-upload-file>
+    <p class="upn">A recipe card, a cookbook page, a screenshot from Instagram or TikTok, or a photo of the dish. We read it to make your list and don't keep it. <a href="/privacy">Privacy</a></p>
+    <p class="works">Works with YouTube links, photos, screenshots and recipe PDFs. TikTok and Instagram links coming soon.</p>
     <a class="ex" href="/c/example-stuffing?preview=pk_Ng1xsqQawx3n4G45zgEchB9J" data-example="hero">No video handy? Try an example list</a>
    </form>
    <div class="trust"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to ask</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to save</span><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16794F" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>Free to buy</span></div>
@@ -184,7 +195,8 @@
  <section aria-labelledby="what">
   <h2 id="what">What you can paste</h2>
   <span class="live">YouTube videos <b>Live now</b></span>
-  <p class="soon">Coming soon: photos, TikTok, Instagram, recipe links and PDFs.</p>
+  <span class="live">Photos, screenshots and recipe PDFs <b>Live now</b></span>
+  <p class="soon">Coming soon: TikTok and Instagram links, and recipe website links.</p>
  </section>
 
  <section aria-labelledby="faq">
@@ -288,7 +300,7 @@
       if (busy) return;
       url = (url || '').trim();
       if (!url) { say('Paste a YouTube video link to get started.'); input.focus(); return; }
-      if (!isYouTube(url)) { say('Paste a YouTube video link. Photos, TikTok, Instagram and recipe links are coming soon.'); return; }
+      if (!isYouTube(url)) { say('Paste a YouTube video link, or upload a photo, screenshot or PDF of the recipe. TikTok and Instagram links are coming soon.'); return; }
       setBusy(true); emailed = false;
       var job = jobId(), began = Date.now(), finished = false, step = 1, offered = false, drawn = '1:false';
       showProgress(1, false, job, url);
@@ -328,6 +340,64 @@
       setTimeout(check, 3000);
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); start(input.value); });
+
+    /* Upload a photo, screenshot or recipe PDF (Build Board card "Make my list from a photo, screenshot or recipe PDF",
+       Jon 25 Nov 2026). Read once by the app and never stored. Photos are shrunk in the browser first (longest side
+       2000 px, JPEG), so they stay under the hosting limit for one request (4.5 MB) and send faster; a PDF must be
+       under 4 MB as it is. */
+    var upBtn = form.querySelector('[data-upload]'), upFile = form.querySelector('[data-upload-file]');
+    if (!upBtn || !upFile) return;
+    var UP_STEPS = ['Reading your photo or PDF (about 30 seconds)', 'Finding the items at stores (about 1 minute)', 'Your list is ready'];
+    function upBusy(b) { busy = b; upBtn.disabled = b; go.disabled = b; }
+    function upProgress(step) {
+      clear(msg); msg.hidden = false;
+      var ol = document.createElement('ol'); ol.style.cssText = 'list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px';
+      UP_STEPS.forEach(function (t, i) {
+        var li = document.createElement('li'), n = i + 1;
+        li.textContent = (n < step ? '✓ ' : n === step ? '• ' : '') + t;
+        li.style.color = n <= step ? '#1A3C5E' : '#556677';
+        ol.appendChild(li);
+      });
+      msg.appendChild(ol);
+    }
+    function shrink(file) {
+      return new Promise(function (resolve) {
+        var img = new Image(), url = URL.createObjectURL(file);
+        img.onload = function () {
+          var max = 2000, w = img.naturalWidth, h = img.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+          var c = document.createElement('canvas'); c.width = Math.round(w * k); c.height = Math.round(h * k);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          URL.revokeObjectURL(url);
+          c.toBlob(function (b) { resolve(b || file); }, 'image/jpeg', 0.85);
+        };
+        img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+    upBtn.addEventListener('click', function () { if (!busy) upFile.click(); });
+    upFile.addEventListener('change', function () {
+      var file = upFile.files && upFile.files[0];
+      upFile.value = '';
+      if (!file || busy) return;
+      var isPdf = file.type === 'application/pdf';
+      if (!isPdf && !/^image\/(jpeg|png|webp)$/.test(file.type)) { say('Please pick a JPG, PNG or WebP photo, or a PDF.'); return; }
+      if (isPdf && file.size > 4 * 1024 * 1024) { say('Please pick a PDF under 4 MB.'); return; }
+      upBusy(true); upProgress(1);
+      track('upload_submitted', { via: where, kind: isPdf ? 'pdf' : 'photo' });
+      var later = setTimeout(function () { upProgress(2); }, 20000);
+      (isPdf ? Promise.resolve(file) : shrink(file)).then(function (blob) {
+        var fd = new FormData();
+        fd.append('photo', blob, isPdf ? 'recipe.pdf' : 'photo.jpg');
+        fd.append('visitor', vid());
+        return fetch('/api/list/import', { method: 'POST', headers: { Accept: 'application/json' }, body: fd });
+      }).then(function (r) { return r.json(); }).then(function (d) {
+        clearTimeout(later);
+        if (d && d.ok && d.status === 'done' && d.list_url) { upProgress(3); track('upload_list_ready', { via: where, kind: isPdf ? 'pdf' : 'photo' }); location.href = d.list_url; return; }
+        upBusy(false);
+        if (d && d.error === 'limit') { say(d.message || "You've used this month's free lists.", { href: '/pricing', text: 'See plans' }); return; }
+        say((d && d.message) || "We couldn't read that one just now. Please try again in a minute.");
+      }).catch(function () { clearTimeout(later); upBusy(false); say("We couldn't read that one just now. Please try again in a minute."); });
+    });
   }
   Array.prototype.forEach.call(document.querySelectorAll('form[data-form]'), wire);
 })();
